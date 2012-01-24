@@ -298,3 +298,6 @@
 2012-01-24 13:40:39 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
 2012-01-24 13:43:41 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
 2012-01-24 13:59:17 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 14:17:57 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 14:19:33 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 14:19:50 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
