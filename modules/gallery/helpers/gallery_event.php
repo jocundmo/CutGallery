@@ -255,6 +255,29 @@ class gallery_event_Core {
           }
       }
   }
+  static function delete_album_menu($menu, $theme, $item){
+       if (!empty($item)) {
+        $can_edit = $item && access::can("edit", $item);
+        $can_add = $item && access::can("add", $item);
+
+        $is_album_writable =
+            is_writable($item->is_album() ? $item->file_path() : $item->parent()->file_path());
+        if ($is_album_writable) {
+            $menu->append(Menu::factory("dialog")
+                ->id("delete")
+                ->label("Delete")
+                ->css_class("ui-icon-trash")
+                ->css_class("g-quick-delete")
+                ->url(url::site("quick/form_delete/$item->id?csrf=$csrf&amp;from_id={$item->id}&amp;page_type=$page_type")));
+          } else {
+            message::warning(t("The album '%album_name' is not writable.",
+                               array("album_name" => $item->title)));
+          }
+      }
+      
+      
+      
+  }
   static function edit_album_menu($menu, $theme, $item){
       //$item = $theme->item();
       if (!empty($item)) {
@@ -274,8 +297,8 @@ class gallery_event_Core {
           }
       }
   }
-  static function add_photos_menu($menu, $theme){
-      $item = $theme->item();
+  static function add_photos_menu($menu, $theme, $item){
+      //$item = $theme->item();
       if (!empty($item)) {
         $can_edit = $item && access::can("edit", $item);
         $can_add = $item && access::can("add", $item);

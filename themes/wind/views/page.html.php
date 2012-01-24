@@ -92,7 +92,7 @@
     
 
 <div id="logo">
-LOGO
+    <a href="<?= url::site() ?>">LOGO</a>
 </div>
 
 <div id="mainInfo">
@@ -104,7 +104,7 @@ LOGO
 
 <div id="mainNav">
     <ul>
-        <li id="gallery"> Gallery</li>
+        <li id="gallery"><a href="<?= url::site("albums")?>">Gallery</a></li>
         <li id="intro"> Intro </li>
         <li id="aboutus"> AboutUs </li>
     </ul>

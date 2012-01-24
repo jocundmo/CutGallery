@@ -99,6 +99,8 @@ $(function(){
                         <span>Owner: <?= $child->owner_id ?></span>
                         <span>Pic Quantity:</span>
                         <?= $theme->edit_album_menu($child) ?>
+                        <?= $theme->delete_album_menu($child) ?>
+                        <?= $theme->add_photos_menu($child) ?>
                     </li>
                     <li id="g-item-comments-<?= $child->id ?>" class="album_comments">
                         <span class="g-description"><?= nl2br(html::purify($child->description)) ?></span>

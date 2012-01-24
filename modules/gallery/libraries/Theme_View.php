@@ -112,14 +112,19 @@ class Theme_View_Core extends Gallery_View {
       module::event("add_album_menu", $menu, $this);
       return $menu->render();
   }
+  public function delete_album_menu($item){
+      $menu = Menu::factory("root");
+      module::event("delete_album_menu", $menu, $this, $item);
+      return $menu->render();
+  }
   public function edit_album_menu($item){
       $menu = Menu::factory("root");
       module::event("edit_album_menu", $menu, $this, $item);
       return $menu->render();
   }
-  public function add_photos_menu(){
+  public function add_photos_menu($item){
     $menu = Menu::factory("root");
-    module::event("add_photos_menu", $menu, $this);
+    module::event("add_photos_menu", $menu, $this, $item);
     return $menu->render();
   }
   // CutGallery - Should remove - test.

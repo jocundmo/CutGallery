@@ -61,3 +61,23 @@ float: left;
    width:100%;
    background: aqua;
 }
+
+#home_pictures{
+    background-color: blue;
+    width: 865px;
+    height: 500px; /* CutGallery - Home page picture height */
+    margin: 0 auto;
+    padding: 10px;
+}
+#home_pictures ul{
+    height: 100%;
+}
+#home_pictures li{
+    float: left;
+    background-color: pink;
+    border-width: 1px;
+    margin-left: 10px;
+    border-style:  dashed;
+    width: 275px; /* CutGallery - Home page picture width */
+    height: 100%;
+}
