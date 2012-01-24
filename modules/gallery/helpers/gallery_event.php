@@ -298,6 +298,9 @@ class gallery_event_Core {
       }
   }
   static function add_photos_menu($menu, $theme, $item){
+      if ($item === null){
+          $item = $theme->item();
+      }
       //$item = $theme->item();
       if (!empty($item)) {
         $can_edit = $item && access::can("edit", $item);
