@@ -68,10 +68,10 @@ class Gallery_View_Core extends View {
           $v->last_visible_position = min($this->page * $this->page_size, $v->total);
       // CutGallery - ADDED ==>
       if (count($this->parents)>0){
-        $v->back_page_url = $this->parents[count($this->parents)-1]->url();
+        $v->back_page_url = $this->parents[count($this->parents)-1]->url().'albums';
       }
       else{
-        $v->back_page_url = $this->item->url();
+        $v->back_page_url = $this->item->url().'albums';
       } // <==
     } else if ($this->page_type == "item") {
       $v->position = $this->position;
