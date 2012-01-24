@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule (.*) /gallery3/index.php?kohana_uri=/file_proxy/$1 [L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+  Order Deny,Allow
+  Deny from All
+</IfModule>

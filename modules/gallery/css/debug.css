@@ -1,0 +1,28 @@
+.g-annotated-theme-block {
+  border: 1px solid #C00;
+  clear: both;
+  margin: 1em;
+  padding: 1em;
+  position: relative;
+}
+
+.g-annotated-theme-block_album_top {
+  float: right;
+}
+
+.g-annotated-theme-block_header_bottom {
+  float: right;
+}
+
+.g-annotated-theme-block div.title {
+  background: #C00;
+  border: 1px solid black;
+  color: white;
+  font-size: 110%;
+  padding: 4px;
+  position: absolute;
+  right: -1em;
+  top: -1em;
+  text-align: left;
+  -moz-border-radius: 5%;
+}

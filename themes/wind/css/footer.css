@@ -1,0 +1,16 @@
+#footer 
+{
+border-top-width: 1px;
+border-top-style: solid;
+border-top-color: #AAA;
+height: 80px;
+padding-top: 10px;
+min-width: 1000px;
+text-align: center;
+width: auto;
+background:black;
+color:white;
+}
+#footer a{
+color: white;
+}

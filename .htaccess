@@ -1,0 +1,82 @@
+# Set some reasonable defaults for PHP.  Most of these cannot be set
+# inside the script itself.  For hosts that don't have .htaccess
+# support but do support per-dir php.ini files, these settings are
+# mirrored in php.ini
+#
+<IfModule mod_php5.c>
+  php_flag short_open_tag            On
+  php_flag magic_quotes_gpc          Off
+  php_flag magic_quotes_sybase       Off
+  php_flag magic_quotes_runtime      Off
+  php_flag register_globals          Off
+  php_flag session.auto_start        Off
+  php_flag suhosin.session.encrypt   Off
+  php_value upload_max_filesize      20M
+  php_value post_max_size 	     100M
+</IfModule>
+
+# Try to disable the parts of mod_security that interfere with the Flash uploader
+#
+<IfModule mod_security.c>
+  SecFilterEngine Off
+  SecFilterScanPOST Off
+</IfModule>
+
+# Increase security by uncommenting this block.  It keeps browsers
+# from seeing support files that they shouldn't have access to.  We
+# comment this out because Apache2 requires some minor configuration
+# in order for you to use it.  You must specify "AllowOverride Limit"
+# in your Apache2 config file before you uncomment this block or
+# you'll get an "Internal Server Error".
+#
+# <FilesMatch "(\.(class|fla|gitignore|inc|ini|sql|txt)|(README|LICENSE|.build_number))$">
+#   Order deny,allow
+#   Deny from all
+# </FilesMatch>
+# <FilesMatch "robots.txt">
+#   Order allow,deny
+#   Allow from all
+# </FilesMatch>
+
+
+# Improve performance by uncommenting this block.  It tells the
+# browser that your images don't change very often so it won't keep
+# asking for them.  If you get an error after uncommenting this, make
+# sure you specify "AuthConfig Indexes" in your Apache config file.
+#
+# <IfModule mod_expires.c>
+#   ExpiresActive On
+#   # Cache all files for a month after access (A).
+#   ExpiresDefault A2678400
+#   # Do not cache dynamically generated pages.
+#   ExpiresByType text/html A1
+# </IfModule>
+
+# You can use the mod_rewrite Apache module to get rid of the
+# "index.php" from your Gallery 3 urls.  Uncomment the block below
+# inside the <IfModule> ... </IfModule> lines and then edit the
+# RewriteBase line to match your Gallery 3 URL.
+#
+# Here are some RewriteBase values:
+#   Gallery 3 URL                       RewriteBase line
+#   =============                       ====================
+#   http://example.com/gallery3         RewriteBase /gallery3
+#   http://example.com/~bob/photos      RewriteBase /~bob/photos
+#   http://gallery3.example.com/        RewriteBase /
+#
+# Then just use your Gallery 3 without the index.php in the url.
+#
+# NOTE: future upgrades of Gallery 3 will overwrite this file!  If you
+# want these changes to be persistent, talk to your system admin about
+# putting this block into your Apache config files.
+#
+# <IfModule mod_rewrite.c>
+#   Options +FollowSymLinks
+#   RewriteEngine On
+#   RewriteBase /
+#   RewriteCond %{REQUEST_FILENAME} !-f
+#   RewriteCond %{REQUEST_FILENAME} !-d
+#   RewriteRule ^(.*)$ index.php?kohana_uri=$1 [QSA,PT,L]
+#   RewriteRule ^$ index.php?kohana_uri=$1 [QSA,PT,L]
+#   RewriteRule ^index.php/(.*) $1 [QSA,R,L]
+# </IfModule>

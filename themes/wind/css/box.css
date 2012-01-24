@@ -1,0 +1,42 @@
+#box {
+height: auto;
+margin: 0px auto;
+width: 100%;
+overflow:hidden;
+margin: 0px auto;
+background:black;
+}
+#title{
+height: 90px;
+margin: 0px auto;
+width: 980px;
+}
+#logo{
+background:url(../images/anson_logo.png) no-repeat;
+height: 90px;
+width:150px;
+cursor:pointer;
+}
+#search{
+height: 90px;
+width:830px;
+}
+#menu
+{
+height: 35px;
+width:100%;
+}
+#menu_main
+{
+height: 35px;
+margin: 0px auto;
+width: 980px;
+}
+#search a{width:225px;height:90px;}
+#search .album{background:url(../images/album_1.jpg) no-repeat;}
+#search .contactus{background:url(../images/contact_us_1.jpg) no-repeat;}
+#search .event{background:url(../images/Event.jpg) no-repeat;}
+#search .promotion{background:url(../images/about_us_1.jpg) no-repeat;}
+#search .login{background:url(../images/login_1.jpg) no-repeat;}
+#search .login_off{background:url(../images/logoff_1.jpg) no-repeat;}
+#search a:hover{background-position:0 -90px;}

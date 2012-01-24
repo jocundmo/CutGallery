@@ -1,0 +1,63 @@
+html {
+color: #fff;
+margin: 0;
+}
+
+#logo {
+width: 300px;
+height: 100px;
+background-color: yellow !important;
+color: blue;
+float: left;
+}
+#mainInfo {
+    background-color: pink;
+    width: 40em;
+    font-size: 12px;
+    height: 1em;
+    float: right;
+}
+#mainInfo ul, #mainInfo li{
+    float: right;
+    list-style: none;
+}
+#mainContent {
+    clear: both;
+    width: 80%;
+    height: 520px;
+    background-color: grey;
+    margin: 0 auto;
+}
+#mainNav {
+    color: blue;
+    background-color: white;
+    height: 5em;
+    top: 50px;
+    float: right;
+    clear: right;
+}
+#mainNav li {
+    width: 100px;
+    float: left;
+    list-style: none;
+}
+#album_header {
+
+}
+#album_header li{
+    float: left;
+    margin: 10px;
+    text-align: left;
+    background-color: yellow;
+}
+#g-album-grid{
+    clear: both;
+}
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background: aqua;
+}

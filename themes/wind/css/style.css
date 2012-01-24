@@ -1,0 +1,24 @@
+* {
+border: 0px;
+font-size: 12px;
+margin: 0px;
+padding: 0px;
+}
+html{
+background-color: black;
+}
+body {
+background-color: #000;
+color: #444;
+}
+.left{
+float:left;
+}
+.right{
+float:right;
+}
+a{
+	text-decoration:none;
+	}
+a:visited{color:#fff;}
+a:linked{color:#fff;}

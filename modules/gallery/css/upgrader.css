@@ -1,0 +1,183 @@
+body {
+  background: #eee;
+  font-family: 'Trebuchet MS';
+  font-size: 1.1em;
+}
+
+h1 {
+  font-size: 1.4em;
+}
+
+div#outer {
+  background: #fff;
+  border: 1px solid #999;
+  margin: 0 auto;
+  width: 650px;
+}
+
+div#inner {
+  margin: 0;
+  padding: 0 1em;
+}
+
+div#footer {
+  border-top: 1px solid #ccc;
+  margin: 1em;
+}
+
+table {
+  width: 600px;
+  margin-bottom: 10px;
+}
+
+th.name,
+td.name {
+  text-align: left;
+  padding-left: 30px;
+}
+
+td {
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+tr.current td {
+  opacity: 0.5;
+  font-style: italic;
+}
+
+tr.current td.gallery {
+  color: #00d;
+}
+
+tr.upgradeable td {
+  font-weight: bold;
+}
+
+tr.upgradeable td.gallery {
+  color: #00d;
+}
+
+tr.failed td {
+  color: red;
+}
+
+p {
+  font-size: .9em;
+}
+
+ul {
+  font-size: .9em;
+  list-style: none;
+}
+
+li {
+  display: inline;
+}
+
+li:before {
+  content: "\00BB \0020";
+}
+
+div.button {
+  margin: 0 auto;
+  width: 120px;
+  text-align: center;
+  border: 1px solid #999;
+  background: #eee;
+}
+
+div.button a {
+  text-decoration: none;
+}
+
+div.button-active:hover {
+  background: #ccc;
+}
+
+div#dialog {
+  width: 340px;
+  height: 200px;
+  position: absolute;
+  background: blue;
+  z-index: 1000;
+  margin: 10px;
+  text-align: center;
+}
+
+div#dialog a.close {
+  float: right;
+  padding: 10px;
+  text-decoration: none;
+}
+
+div#dialog div {
+  width: 292px;
+  height: 152px;
+  margin: 2px;
+  padding: 20px;
+  border: 2px solid #999;
+  background: #eee;
+}
+
+.muted {
+  opacity: 0.5;
+}
+
+.failed {
+  color: red;
+}
+
+pre {
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+}
+
+div#upgrade_button {
+  margin-bottom: 20px;
+}
+
+div#welcome_message {
+  margin-left: 30px;
+}
+
+#logo {
+  margin-left: 14px;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.rtl th.name,
+.rtl td.name {
+  text-align: right;
+  padding-right: 30px;
+}
+
+
+.rtl li:before {
+  content: "";
+}
+
+.rtl li:after {
+  content: "\00BB \0020";
+}
+
+.rtl ul {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.rtl div#dialog a.close {
+  float: left;
+}
+
+.rtl div#welcome_message {
+  padding-right: 30px;
+}
+
+.rtl #logo {
+  padding-right: 12px;
+}
