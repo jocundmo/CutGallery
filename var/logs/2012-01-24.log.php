@@ -301,3 +301,62 @@
 2012-01-24 14:17:57 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
 2012-01-24 14:19:33 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
 2012-01-24 14:19:50 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:04:52 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:12:22 +01:00 --- error: Undefined view variable: level
+#0 xdebug eval(1): View->__get('level')
+#1 C:\xampp\htdocs\gallery3\modules\gallery\libraries\Gallery_View.php(64): Gallery_View_Core::paginator()
+#2 C:\xampp\htdocs\gallery3\themes\wind\views\album.html.php(115): Gallery_View_Core->paginator()
+#3 C:\xampp\htdocs\gallery3\system\libraries\View.php(318): include('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\gallery3\system\libraries\View.php(260): View_Core->load_view('C:/xampp/htdocs...', Array)
+#5 C:\xampp\htdocs\gallery3\modules\gallery\libraries\MY_View.php(75): View_Core->render(false, false, false)
+#6 C:\xampp\htdocs\gallery3\system\libraries\View.php(226): View->render()
+#7 C:\xampp\htdocs\gallery3\themes\wind\views\page.html.php(118): View_Core->__toString()
+#8 C:\xampp\htdocs\gallery3\system\libraries\View.php(318): include('C:\xampp\htdocs...')
+#9 C:\xampp\htdocs\gallery3\system\libraries\View.php(260): View_Core->load_view('C:/xampp/htdocs...', Array)
+#10 C:\xampp\htdocs\gallery3\modules\gallery\libraries\MY_View.php(75): View_Core->render(false, false, false)
+#11 C:\xampp\htdocs\gallery3\system\libraries\View.php(226): View->render()
+#12 C:\xampp\htdocs\gallery3\modules\gallery\controllers\albums.php(77): View_Core->__toString()
+#13 C:\xampp\htdocs\gallery3\modules\gallery\controllers\albums.php(22): Albums_Controller->show(Object(Item_Model))
+#14 [internal function]: Albums_Controller->index()
+#15 C:\xampp\htdocs\gallery3\system\core\Kohana.php(331): ReflectionMethod->invokeArgs(Object(Albums_Controller), Array)
+#16 [internal function]: Kohana_Core::instance(NULL)
+#17 C:\xampp\htdocs\gallery3\system\core\Event.php(208): call_user_func_array(Array, Array)
+#18 C:\xampp\htdocs\gallery3\application\Bootstrap.php(67): Event_Core::run('system.execute')
+#19 C:\xampp\htdocs\gallery3\index.php(102): require('C:\xampp\htdocs...')
+#20 {main}
+2012-01-24 15:13:36 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:15:28 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:15:28 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:15:57 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:15:57 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:15:57 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:16:00 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:16:01 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:16:01 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:16:58 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:16:59 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:17:00 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:17:41 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:17:42 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:17:44 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:18:06 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:18:07 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:18:09 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:29:55 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:29:55 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:29:55 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:30:25 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:30:30 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:30:30 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:30:34 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:32:39 +01:00 --- error: File not found: file_proxy/TestAlbum3/.album.jpg
+2012-01-24 15:32:39 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:33:34 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:33:38 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:33:42 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:35:15 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 15:36:27 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:36:51 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 15:37:00 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg
+2012-01-24 16:13:32 +01:00 --- error: File not found: file_proxy/TestAlbum2/.album.jpg
+2012-01-24 16:13:35 +01:00 --- error: File not found: file_proxy/TestAlbum4/.album.jpg

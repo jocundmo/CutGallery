@@ -36,6 +36,9 @@ class Gallery_View_Core extends View {
    * See themes/wind/views/pager.html for documentation on the variables generated here.
    */
   public function paginator() {
+      if ($this->item->level < 2){
+          $this->page_size = 6;
+      }
     $v = new View("paginator.html");
     $v->page_type = $this->page_type;
     $v->page_subtype = $this->page_subtype;
@@ -60,7 +63,7 @@ class Gallery_View_Core extends View {
         $v->next_page_url = url::site(url::merge(array("page" => $this->page + 1)));
         $v->last_page_url = url::site(url::merge(array("page" => $this->max_pages)));
       }
-
+      
       $v->first_visible_position = ($this->page - 1) * $this->page_size + 1;
           $v->last_visible_position = min($this->page * $this->page_size, $v->total);
       // CutGallery - ADDED ==>

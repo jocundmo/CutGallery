@@ -30,8 +30,12 @@ class Albums_Controller extends Items_Controller {
     }
 
     access::required("view", $album);
-
-    $page_size = module::get_var("gallery", "page_size", 9);
+    if ($album->level < 2){
+        $page_size = 6;
+    }
+    else {
+        $page_size = module::get_var("gallery", "page_size", 9);
+    }
     $input = Input::instance();
     $show = $input->get("show");
 
