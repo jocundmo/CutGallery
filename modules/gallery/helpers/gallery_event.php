@@ -255,7 +255,7 @@ class gallery_event_Core {
           }
       }
   }
-  static function edit_photos_menu($menu, $theme, $item){
+  static function edit_album_menu($menu, $theme, $item){
       //$item = $theme->item();
       if (!empty($item)) {
         $can_edit = $item && access::can("edit", $item);
