@@ -90,7 +90,7 @@ $(function(){
                     <li id="g-item-cover-<?= $child->id ?>" class="album_cover">
                         <div>
                             <? if ($child->is_album()): ?>
-                                <?= $child->thumb_img(array("class" => "g-thumbnail")) ?>
+                                <a href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-thumbnail")) ?></a>
                             <? endif ?>
                         </div>
                     </li>
