@@ -99,6 +99,7 @@
     <ul>
         <li><?= $theme->user_menu() ?></li>
         <li>US</li>
+        <li><a href="<?= url::site("admin/home") ?>">admin</a></li>
     </ul>
 </div>
 
