@@ -210,7 +210,7 @@ class gallery_event_Core {
                       ->id("user_menu_edit_profile")
                       ->css_id("g-user-profile-link")
                       ->view("login_current_user.html")
-                      ->url(user_profile::url($user->id))
+                      //->url(user_profile::url($user->id))// CutGallery - Disabled the user profile link
                       ->label($user->display_name()));
 
         if (Router::$controller == "admin") {
@@ -466,6 +466,23 @@ class gallery_event_Core {
 
   static function admin_menu($menu, $theme) {
     $menu
+      // CutGallery - ADDED LINK (others should be hide) ==>
+      ->append(Menu::factory("link")
+              ->id("home")
+              ->label(t("Back"))
+              ->url(url::site()))
+      ->append(Menu::factory("link")
+              ->id("manage_home_pic")
+              ->label(t("Manage Home Pic"))
+              ->url(url::site("admin/manage_home_pic")))
+      ->append(Menu::factory("link")
+              ->id("manage_aboutus_pic")
+              ->label(t("Manage Aboutus Pic"))
+              ->url(url::site("admin/manage_aboutus_pic")))
+      ->append(Menu::factory("link")
+              ->id("user_profile")
+              ->label(t("Profile"))
+              ->url(url::site("admin/home"))) // <==
       ->append(Menu::factory("link")
                ->id("dashboard")
                ->label(t("Dashboard"))

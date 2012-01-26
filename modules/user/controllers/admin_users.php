@@ -368,6 +368,9 @@ class Admin_Users_Controller extends Admin_Controller {
     $group->password("password2")->label(t("Confirm password"))->id("g-password2")
       ->error_messages("matches", t("The passwords you entered do not match"))
       ->matches($group->password);
+    // CutGallery - ADDED comments Field ==>
+    $group->textarea("comments")->label(t("Comments"))->id("g-comment");    
+    // <==
     $group->input("email")->label(t("Email"))->id("g-email")
       ->error_messages("required", t("You must enter a valid email address"))
       ->error_messages("length", t("This email address is too long"))

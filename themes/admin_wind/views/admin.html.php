@@ -57,7 +57,7 @@
   <body <?= $theme->body_attributes() ?>>
     <?= $theme->admin_page_top() ?>
     <? if ($sidebar): ?>
-    <div id="doc3" class="yui-t5 g-view">
+    <div id="doc3" class="yui-t5 g-view"></div>
     <? else: ?>
     <div id="doc3" class="yui-t7 g-view">
     <? endif; ?>
@@ -94,7 +94,7 @@
         <?= $theme->admin_footer() ?>
         <? if (module::get_var("gallery", "show_credits")): ?>
         <ul id="g-credits" class="g-inline">
-          <?= $theme->admin_credits() ?>
+          <?//= $theme->admin_credits() ?>
         </ul>
         <? endif ?>
       </div>
