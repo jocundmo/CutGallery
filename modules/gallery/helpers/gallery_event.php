@@ -210,7 +210,7 @@ class gallery_event_Core {
                       ->id("user_menu_edit_profile")
                       ->css_id("g-user-profile-link")
                       ->view("login_current_user.html")
-                      ->url(user_profile::url($user->id))
+                      //->url(user_profile::url($user->id)) CutGallery - Disabled the user profile link
                       ->label($user->display_name()));
 
         if (Router::$controller == "admin") {
