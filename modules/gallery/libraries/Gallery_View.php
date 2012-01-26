@@ -36,9 +36,12 @@ class Gallery_View_Core extends View {
    * See themes/wind/views/pager.html for documentation on the variables generated here.
    */
   public function paginator() {
-      if ($this->item->level < 2){
-          $this->page_size = 6;
-      }
+    // CutGallery - ADDED ==>
+    if (isset($this->item)){
+        if ($this->item->level < 2){
+            $this->page_size = 6;
+        }
+    }// <==
     $v = new View("paginator.html");
     $v->page_type = $this->page_type;
     $v->page_subtype = $this->page_subtype;
@@ -67,12 +70,14 @@ class Gallery_View_Core extends View {
       $v->first_visible_position = ($this->page - 1) * $this->page_size + 1;
           $v->last_visible_position = min($this->page * $this->page_size, $v->total);
       // CutGallery - ADDED ==>
-      if (count($this->parents)>0){
-        $v->back_page_url = $this->parents[count($this->parents)-1]->url().'albums';
-      }
-      else{
-        $v->back_page_url = $this->item->url().'albums';
-      } // <==
+      if (isset($this->parents)){
+          if (count($this->parents)>0){
+            $v->back_page_url = $this->parents[count($this->parents)-1]->url().'albums';
+          }
+          else{
+            $v->back_page_url = $this->item->url().'albums';
+          }
+      }// <==
     } else if ($this->page_type == "item") {
       $v->position = $this->position;
       $v->total = $this->sibling_count;
@@ -84,9 +89,11 @@ class Gallery_View_Core extends View {
         $v->next_page_url = $this->next_item->url();
       }
       // CutGallery - ADDED ==>
-      $v->back_page_url = $this->parents[count($this->parents)-1]->url();
-      $v->share_url = url::abs_site("form/share/photos/".url::current()."png");
-      $v->download_full_url = url::abs_site("form/download/photos/".url::current().".png");
+      if (isset($this->parents)){
+          $v->back_page_url = $this->parents[count($this->parents)-1]->url();
+          $v->share_url = url::abs_site("form/share/photos/".url::current()."png");
+          $v->download_full_url = url::abs_site("form/download/photos/".url::current().".png");
+      }
       // <==
     }
 

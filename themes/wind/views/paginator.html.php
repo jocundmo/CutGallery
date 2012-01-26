@@ -28,7 +28,7 @@
 
 <ul class="g-paginator ui-helper-clearfix">
   <li class="g-back">
-    <? if ($item->level > 1): ?>
+    <? if (isset($item) && $item->level > 1): ?>
       <a href ="<?= $back_page_url ?>" class="g-button ui-corner-all">Back</a> <!-- CutGallery - ADDED -->
     <? endif ?>
   </li>

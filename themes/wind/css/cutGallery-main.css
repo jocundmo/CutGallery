@@ -61,7 +61,12 @@ float: left;
    width:100%;
    background: aqua;
 }
+#about_content{
+    margin: 0 auto;
+    background-color: grey;
+}
 
+/**/
 #home_pictures{
     background-color: blue;
     width: 865px;
