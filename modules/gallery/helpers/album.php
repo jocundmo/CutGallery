@@ -65,6 +65,12 @@ class album_Core {
         ->error_messages("required", t("You must provide a title"))
       ->error_messages("length", t("Your title is too long"));
     $group->textarea("description")->label(t("Description"))->value($parent->description);
+    // CutGallery - ADDED Field ==>
+    $group->dropdown("album_owner", array("id" => "g-album-owner"))
+      ->label(t("Owner"))
+      ->options($allAvailableVIPs)
+      ->selected($selectedVIP);
+    // <==
     if ($parent->id != 1) {
       $group->input("name")->label(t("Directory Name"))->value($parent->name)
         ->error_messages("conflict", t("There is already a movie, photo or album with this name"))
