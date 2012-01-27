@@ -458,9 +458,15 @@ td {
     display: none; /* When page loaded, by default none is shown until the cursor move on */
 }
 #g-item-panel ul .album_cover{
-    background-color: blueviolet;
+    background: transparent url('../images/album-cover-bg.png') no-repeat center;
+    /*background-color: blueviolet; */
     width: 100%;
     height: 360px;
+}
+#g-item-panel ul .album_cover img{
+    position: absolute;
+    top: 24px;
+    left: 80px;
 }
 #g-item-panel .album_prop{
     background-color: yellow;
@@ -480,6 +486,11 @@ td {
 }
 .album_comments span {
 
+}
+#album_header_cpation{
+    color: royalblue;
+    font-size: 22px;
+    font-weight: 400;
 }
 /* Album content ~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #g-content {
@@ -669,7 +680,7 @@ td {
 }
 
 .g-error,
-.g-info,
+/*.g-info,  CutGallery - Remove the left padding for (Photos 1-6 of 7) */
 .g-success,
 .g-warning {
   padding-left: 30px;
@@ -712,7 +723,7 @@ tr.g-error td.g-error,
 }
 
 .g-info {
-  background: #e8e8e8 url('../images/ico-info.png') no-repeat .4em 50%;
+ /* background: #e8e8e8 url('../images/ico-info.png') no-repeat .4em 50%; //CutGallery - Remove the left padding for (Photos 1-6 of 7) */
 }
 
 .g-success,

@@ -6,7 +6,8 @@ margin: 0;
 #logo {
 width: 300px;
 height: 100px;
-background-color: yellow !important;
+background: transparent url('../images/site-logo.png') no-repeat;
+/* background-color: yellow !important; */
 color: blue;
 float: left;
 }
@@ -14,7 +15,7 @@ float: left;
     background-color: pink;
     width: 40em;
     font-size: 12px;
-    height: 1em;
+    height: 1.2em;
     float: right;
 }
 #mainInfo ul, #mainInfo li{
@@ -31,15 +32,24 @@ float: left;
 #mainNav {
     color: blue;
     background-color: white;
-    height: 5em;
     top: 50px;
     float: right;
     clear: right;
 }
 #mainNav li {
-    width: 100px;
+    width: 160px;
     float: left;
+    height: 60px;
     list-style: none;
+}
+#mainNav #gallery{
+    background: transparent url('../images/album-logo.png') no-repeat;
+}
+#mainNav #intro{
+    background: transparent url('../images/aboutus-logo.png') no-repeat;
+}
+#mainNav #contactus{
+    background: transparent url('../images/contactus-logo.png') no-repeat;
 }
 #album_header {
 
