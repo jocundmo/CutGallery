@@ -2,8 +2,10 @@
 <div class="ui-helper-clearfix">
   <p>
   <? if ($item->is_album()): ?>
-    <?= t("Delete the album <b>%title</b>? All photos and movies in the album will also be deleted.",
+    <!-- CutGallery - Refine warning messing. -->
+    <?= t("Delete the album <b>%title</b>? All photos in the album will also be deleted.",
           array("title" => html::purify($item->title))) ?>
+    <?//= t("Delete the album <b>%title</b>? All photos and movies in the album will also be deleted.", array("title" => html::purify($item->title))) ?>
   <? else: ?>
     <?= t("Are you sure you want to delete <b>%title</b>?", array("title" => html::purify($item->title))) ?>
   <? endif ?>

@@ -72,9 +72,10 @@
             <!-- CutGallery - Disable 'Full name'.
             <th><? //= t("Full name") ?></th>
             -->
-            <!-- CutGallery - Add 'Password', 'Role'. ==> -->
+            <!-- CutGallery - Add 'Password', 'Role', 'Created Date'. ==> -->
             <th><?= t("Password") ?></th>
             <th><?= t("Role") ?></th>
+            <th><?= t("Created Date") ?></th>
             <!-- <== -->
             
             <!-- CutGallery - Disable 'Email', 'Last login'.
@@ -101,12 +102,15 @@
                    height="20" />
               <?= html::clean($user->name) ?>
             </td>
-            <!-- CutGallery - Add 'password', 'Role' ==> -->
+            <!-- CutGallery - Add 'password', 'Role', 'Created Date' ==> -->
             <td>
               <?= html::clean($user->password) ?>
             </td>
             <td>
               <?= html::clean($user->display_group()) ?>
+            </td>
+            <td>
+              <?= html::clean($user->created_date)?>
             </td>
             <!-- <== -->
             
