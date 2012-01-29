@@ -386,7 +386,8 @@ class gallery_event_Core {
           }
 
           if ($item->is_album()) {
-            if ($can_edit) {
+              if (false) {
+// CutGallery - Disable this edit_permissions menu. Original: if ($can_edit) {   
               $options_menu->append(Menu::factory("dialog")
                                     ->id("edit_permissions")
                                     ->label(t("Edit permissions"))
@@ -465,7 +466,7 @@ class gallery_event_Core {
   }
 
   static function admin_menu($menu, $theme) {
-    $menu
+     $menu
       // CutGallery - ADDED LINK (others should be hide) ==>
       ->append(Menu::factory("link")
               ->id("home")
@@ -482,7 +483,10 @@ class gallery_event_Core {
       ->append(Menu::factory("link")
               ->id("user_profile")
               ->label(t("Profile"))
-              ->url(url::site("admin/home"))) // <==
+              ->url(url::site("admin/home"))); // <==*/
+/** CutGallery - Disable 'Dashboard', 'Modules', 'Appearance', 'Maintenance'
+ * Original code:
+      $menu
       ->append(Menu::factory("link")
                ->id("dashboard")
                ->label(t("Dashboard"))
@@ -531,6 +535,8 @@ class gallery_event_Core {
                ->id("maintenance")
                ->label(t("Maintenance"))
                ->url(url::site("admin/maintenance")));
+ * 
+ */
     return $menu;
   }
 
@@ -569,6 +575,7 @@ class gallery_event_Core {
                             ->css_class("ui-icon-pencil")
                             ->url(url::site("quick/form_edit/$item->id?from_id={$theme_item->id}")));
 
+/** CutGallery - 'Rotate' is not allowed
       if ($item->is_photo() && graphics::can("rotate")) {
         $options_menu
           ->append(
@@ -588,6 +595,8 @@ class gallery_event_Core {
                            "\$.gallery_replace_image(data, \$('$thumb_css_selector')) }")
             ->url(url::site("quick/rotate/$item->id/cw?csrf=$csrf&amp;from_id={$theme_item->id}&amp;page_type=$page_type")));
       }
+ * 
+ */
 
       $parent = $item->parent();
       if (access::can("edit", $parent)) {
@@ -628,12 +637,15 @@ class gallery_event_Core {
                    ->id("add_album")
                    ->label(t("Add an album"))
                    ->css_class("ui-icon-note")
-                   ->url(url::site("form/add/albums/$item->id?type=album")))
-          ->append(Menu::factory("dialog")
+                   ->url(url::site("form/add/albums/$item->id?type=album")));
+/** CutGallery: Disable 'Edit Permissions'
+                ->append(Menu::factory("dialog")
                    ->id("edit_permissions")
                    ->label(t("Edit permissions"))
                    ->css_class("ui-icon-key")
                    ->url(url::site("permissions/browse/$item->id")));
+ * 
+ */
       }
     }
   }

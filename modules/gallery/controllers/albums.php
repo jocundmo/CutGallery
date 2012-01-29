@@ -102,7 +102,17 @@ class Albums_Controller extends Items_Controller {
       $album->title = $form->add_album->title->value ?
         $form->add_album->title->value : $form->add_album->inputs["name"]->value;
       $album->description = $form->add_album->description->value;
-      $album->slug = $form->add_album->slug->value;
+      $album->slug = $form->add_album->inputs["name"]->value;
+/** CutGallery - Disable 'slug'
+ *    $album->slug = $form->add_album->slug->value;
+ * 
+ */
+      // ==> CugGallery - Assign owner to this album
+      $vip_users = vip::lookup_vip_users();
+      $owner = user::lookup_by_name($vip_users[$form->add_album->owner->value]);
+      $album->owner_id = $owner->id;
+      // <==
+      
       $album->validate();
     } catch (ORM_Validation_Exception $e) {
       // Translate ORM validation errors into form error messages
@@ -137,12 +147,26 @@ class Albums_Controller extends Items_Controller {
       $valid = $form->validate();
       $album->title = $form->edit_item->title->value;
       $album->description = $form->edit_item->description->value;
+/** CutGallery - Disable 'sort'     
       $album->sort_column = $form->edit_item->sort_order->column->value;
       $album->sort_order = $form->edit_item->sort_order->direction->value;
+ * 
+ */
       if (array_key_exists("name", $form->edit_item->inputs)) {
         $album->name = $form->edit_item->inputs["name"]->value;
       }
+/** CutGallery - Set $album->title as default value for slug
       $album->slug = $form->edit_item->slug->value;
+ * 
+ */
+      // ==> CutGallery - Assign owner to this album, set album title as default value for slug
+      $album->slug = $form->edit_item->title->value;
+      
+      $vip_users = vip::lookup_vip_users();
+      $owner = user::lookup_by_name($vip_users[$form->edit_item->owner->value]);
+      $album->owner_id = $owner->id;
+      // ==<
+      
       $album->validate();
     } catch (ORM_Validation_Exception $e) {
       // Translate ORM validation errors into form error messages

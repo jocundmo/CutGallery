@@ -30,7 +30,10 @@ class User_Model_Core extends ORM implements User_Definition {
 
     case "password":
       $this->password_length = strlen($value);
+/** CutGallery - Password is required to be plaintext..
       $value = user::hash_password($value);
+ * 
+ */
       break;
     }
     parent::__set($column, $value);
@@ -174,6 +177,22 @@ class User_Model_Core extends ORM implements User_Definition {
 
     if (empty($this->email)) {
       $v->add_error("email", "required");
+    }
+  }
+  
+  /**
+   * CutGallery - Display group(role) for a specified user
+   * @return string - 'VIP' or 'Guest', two roles/groups only 
+   */
+  public function display_group() {
+    $suffix = substr($this->name, strlen($this->name) - 4);
+    if (strcmp($suffix, "_VIP") == 0) {
+        // The user belongs to VIP role
+        return "VIP";
+    }
+    else {
+        // The user belongs to Guest role
+        return "Guest";
     }
   }
 }
