@@ -38,12 +38,22 @@ class album_Core {
       ->error_messages("required", t("You must provide a directory name"))
       ->error_messages("length", t("Your directory name is too long"))
       ->error_messages("conflict", t("There is already a movie, photo or album with this name"));
+/** CutGallery - Disalble 'Internet Address'    
     $group->input("slug")->label(t("Internet Address"))
       ->error_messages(
         "not_url_safe",
         t("The internet address should contain only letters, numbers, hyphens and underscores"))
       ->error_messages("required", t("You must provide an internet address"))
       ->error_messages("length", t("Your internet address is too long"));
+ * 
+ */
+    
+    // CutGallery - Add dropdown list for VIP users ==>
+    $group->dropdown("owner", array("id" => "g-album-owner"))
+	->label(t("Owner"))
+	->options(vip::lookup_vip_users());
+    // <== 
+    
     $group->hidden("type")->value("album");
 
     module::event("album_add_form", $parent, $form);
@@ -65,12 +75,15 @@ class album_Core {
         ->error_messages("required", t("You must provide a title"))
       ->error_messages("length", t("Your title is too long"));
     $group->textarea("description")->label(t("Description"))->value($parent->description);
+/** Added by jocund....
     // CutGallery - ADDED Field ==>
     $group->dropdown("album_owner", array("id" => "g-album-owner"))
       ->label(t("Owner"))
       ->options($allAvailableVIPs)
       ->selected($selectedVIP);
     // <==
+ * 
+ */
     if ($parent->id != 1) {
       $group->input("name")->label(t("Directory Name"))->value($parent->name)
         ->error_messages("conflict", t("There is already a movie, photo or album with this name"))
@@ -78,6 +91,7 @@ class album_Core {
         ->error_messages("no_trailing_period", t("The directory name can't end in \".\""))
         ->error_messages("required", t("You must provide a directory name"))
         ->error_messages("length", t("Your directory name is too long"));
+/** CutGallery - Disable 'Internet Addrss'     
       $group->input("slug")->label(t("Internet Address"))->value($parent->slug)
         ->error_messages(
           "conflict", t("There is already a movie, photo or album with this internet address"))
@@ -86,11 +100,24 @@ class album_Core {
           t("The internet address should contain only letters, numbers, hyphens and underscores"))
         ->error_messages("required", t("You must provide an internet address"))
         ->error_messages("length", t("Your internet address is too long"));
+ * 
+ */
     } else {
       $group->hidden("name")->value($parent->name);
       $group->hidden("slug")->value($parent->slug);
     }
+    
+    // CutGallery - Add dropdown list for VIP users and set selected owner for this album ==>
+    $vip_users = vip::lookup_vip_users();
+    $owner = user::lookup($parent->owner_id);
+    $key = array_keys($vip_users, $owner->name);
+    $group->dropdown("owner", array("id" => "g-album-owner"))
+        ->label(t("Owner"))
+	->options($vip_users)
+	->selected($key[0]);
+    // <==
 
+/** CutGallery - Disable 'sorting'
     $sort_order = $group->group("sort_order", array("id" => "g-album-sort-order"))
       ->label(t("Sort Order"));
 
@@ -103,6 +130,8 @@ class album_Core {
       ->options(array("ASC" => t("Ascending"),
                       "DESC" => t("Descending")))
       ->selected($parent->sort_order);
+ * 
+ */
 
     module::event("item_edit_form", $parent, $form);
 

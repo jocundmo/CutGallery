@@ -59,6 +59,11 @@ class IdentityProvider_Gallery_Driver implements IdentityProvider_Driver {
       $hashGenerator = new PasswordHash(10, true);
       return $hashGenerator->CheckPassword($password, $valid);
     }
+    else {  // CutGallery - No need to check hashed password anymore since only plaintext is allowed now.
+        if (!strcmp($valid, $password)) {
+            return true;
+        }
+    }
 
     $salt = substr($valid, 0, 4);
     // Support both old (G1 thru 1.4.0; G2 thru alpha-4) and new password schemes:
