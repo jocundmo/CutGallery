@@ -35,7 +35,7 @@
     <? if (access::can("view_full", $item)): ?>
     <a href="<?= $item->file_url() ?>" class="g-fullsize-link" title="<?= t("View full size")->for_html_attr() ?>">
       <? endif ?>
-      <?= $item->resize_img(array("id" => "g-item-id-{$item->id}", "class" => "g-resize")) ?>
+      <?= $item->resize_img(array("id" => "g-item-id-{$item->id}", "class" => "g-resize ui-corner-all")) ?>
       <? if (access::can("view_full", $item)): ?>
     </a>
     <? endif ?>

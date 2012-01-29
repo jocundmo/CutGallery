@@ -98,7 +98,6 @@
 <div id="mainInfo">
     <ul>
         <li><?= $theme->user_menu() ?></li>
-        <li>US</li>
         <li><a href="<?= url::site("admin/home") ?>">admin</a></li>
     </ul>
 </div>
@@ -107,7 +106,7 @@
     <ul>
         <li id="gallery"><a href="<?= url::site("albums")?>">Gallery</a></li>
         <li id="intro"><a href="<?= url::site("about") ?>">About us</a></li>
-        <li id="aboutus"><a href="<?= url::site("contact") ?>">Contact us</a></li>
+        <li id="contactus"><a href="<?= url::site("contact") ?>">Contact us</a></li>
     </ul>
 </div
 <div id="bd">

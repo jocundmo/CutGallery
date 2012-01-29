@@ -567,10 +567,10 @@ class Item_Model_Core extends ORM_MPTT {
       $extra_attrs["style"] = "margin-top: {$margin_top}em";
       $extra_attrs["title"] = $this->title;
     }
-    // CutGallery - ADDED 
+    // CutGallery - ADDED resize thumb
     if ($this->is_album() && $height){
-        $maxWidth = 540;
-        $maxHeight = 360;
+        $maxWidth = 450;//540;
+        $maxHeight = 300;//360;
             if ($width > $height){
             $scale = $width / $height;
             $width = $maxWidth;
