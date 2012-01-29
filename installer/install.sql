@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS {access_caches};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+/*CutGallery - Add 6 columns 'view_full_3', 'edit_3', 'add_3', 'view_full_4', 'edit_4', 'add_4' for VIP and Guest*/;
 CREATE TABLE {access_caches} (
   `id` int(9) NOT NULL AUTO_INCREMENT,
   `item_id` int(9) DEFAULT NULL,
@@ -10,14 +11,28 @@ CREATE TABLE {access_caches} (
   `view_full_2` binary(1) NOT NULL DEFAULT '0',
   `edit_2` binary(1) NOT NULL DEFAULT '0',
   `add_2` binary(1) NOT NULL DEFAULT '0',
+  `view_full_3` binary(1) NOT NULL DEFAULT '0',
+  `edit_3` binary(1) NOT NULL DEFAULT '0',
+  `add_3` binary(1) NOT NULL DEFAULT '0',
+  `view_full_4` binary(1) NOT NULL DEFAULT '0',
+  `edit_4` binary(1) NOT NULL DEFAULT '0',
+  `add_4` binary(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`)
 ) AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-INSERT INTO {access_caches} VALUES (1,1,'1','0','0','1','0','0');
+/*CutGallery - 
+Set '0' as default value for 'view_full_1', 'view_2' and 'view_full_2'.
+Set '0' as default value for 'view_full_3'(VIP) and 'view_full_4'(Guest), which means neither VIP nor Guest has 'view_full' permission.
+Set '0' as default value for 'add_3'(VIP) and 'add_4'(Guest), which means neither VIP nor Guest has 'add' permission.
+Set '1' as default value for 'edit_3'(VIP), which means VIP has 'edit' permission.
+Set '0' as default value for 'edit_4'(Guest), which means Guest has NO 'edit' permission.
+*/;
+INSERT INTO {access_caches} VALUES (1,1,'0','0','0','0','0','0','0','1','0','0','0','0');
 DROP TABLE IF EXISTS {access_intents};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+/*CutGallery - Add 8 columns 'view_3', 'view_full_3', 'edit_3', 'add_3', 'view_4', 'view_full_4', 'edit_4', 'add_4' for VIP and Guest*/;
 CREATE TABLE {access_intents} (
   `id` int(9) NOT NULL AUTO_INCREMENT,
   `item_id` int(9) DEFAULT NULL,
@@ -29,10 +44,26 @@ CREATE TABLE {access_intents} (
   `view_full_2` binary(1) DEFAULT NULL,
   `edit_2` binary(1) DEFAULT NULL,
   `add_2` binary(1) DEFAULT NULL,
+  `view_3` binary(1) DEFAULT NULL,
+  `view_full_3` binary(1) DEFAULT NULL,
+  `edit_3` binary(1) DEFAULT NULL,
+  `add_3` binary(1) DEFAULT NULL,
+  `view_4` binary(1) DEFAULT NULL,
+  `view_full_4` binary(1) DEFAULT NULL,
+  `edit_4` binary(1) DEFAULT NULL,
+  `add_4` binary(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-INSERT INTO {access_intents} VALUES (1,1,'1','1','0','0','1','1','0','0');
+/*CutGallery - 
+Set '0' as default value for 'view_1', 'view_full_1', 'view_2' and 'view_full_2'.
+Set '1' as default value for 'view_3'(VIP) and 'view_4'(Guest), which means both VIP and Guest have 'view' permission.
+Set '0' as default value for 'view_full_3'(VIP) and 'view_full_4'(Guest), which means neither VIP nor Guest has 'view_full' permission.
+Set '0' as default value for 'add_3'(VIP) and 'add_4'(Guest), which means neither VIP nor Guest has 'add' permission.
+Set '1' as default value for 'edit_3'(VIP), which means VIP has 'edit' permission.
+Set '0' as default value for 'edit_4'(Guest), which means Guest has NO 'edit' permission.
+*/;
+INSERT INTO {access_intents} VALUES (1,1,'0','0','0','0','0','0','0','0','1','0','1','0','1','0','0','0');
 DROP TABLE IF EXISTS {caches};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -116,6 +147,8 @@ CREATE TABLE {groups} (
 /*!40101 SET character_set_client = @saved_cs_client */;
 INSERT INTO {groups} VALUES (1,'Everybody',1);
 INSERT INTO {groups} VALUES (2,'Registered Users',1);
+INSERT INTO {groups} VALUES (3,'VIP',0) /*CutGallery - Add VIP group*/;
+INSERT INTO {groups} VALUES (4,'Guest',0) /*CutGallery - Add Guest group*/;
 DROP TABLE IF EXISTS {groups_users};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -147,6 +180,7 @@ CREATE TABLE {incoming_translations} (
 DROP TABLE IF EXISTS {items};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+/*CutGallery - Add two columns 'view_3', 'view_4' for VIP and Guest*/;
 CREATE TABLE {items} (
   `id` int(9) NOT NULL AUTO_INCREMENT,
   `album_cover_item_id` int(9) DEFAULT NULL,
@@ -181,6 +215,8 @@ CREATE TABLE {items} (
   `width` int(9) DEFAULT NULL,
   `view_1` binary(1) DEFAULT '0',
   `view_2` binary(1) DEFAULT '0',
+  `view_3` binary(1) DEFAULT '0',
+  `view_4` binary(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`),
   KEY `type` (`type`),
@@ -189,7 +225,8 @@ CREATE TABLE {items} (
   KEY `left_ptr` (`left_ptr`)
 ) AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-INSERT INTO {items} VALUES (1,NULL,NULL,UNIX_TIMESTAMP(),'',NULL,1,1,NULL,NULL,2,0,NULL,'','',1,NULL,NULL,2,NULL,'weight','ASC',1,NULL,NULL,'Gallery','album',UNIX_TIMESTAMP(),0,1,NULL,'1','1');
+/*CutGallery - Set '1' as default value for both 'view_3' and 'view_4'*/;
+INSERT INTO {items} VALUES (1,NULL,NULL,UNIX_TIMESTAMP(),'',NULL,1,1,NULL,NULL,2,0,NULL,'','',1,NULL,NULL,2,NULL,'weight','ASC',1,NULL,NULL,'Gallery','album',UNIX_TIMESTAMP(),0,1,NULL,'0','0','1','1');
 DROP TABLE IF EXISTS {items_tags};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -365,8 +402,8 @@ CREATE TABLE {users} (
   `hash` char(32) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `locale` char(10) DEFAULT NULL,
-  `comments` varchar(255) DEFAULT NULL,  /*CutGallery: new column 'comments' for ilovesmile*/
-  `created_date` date NOT NULL DEFAULT 0,/*CutGallery: new column 'created_date' for ilovesmile*/
+  `comments` varchar(255) DEFAULT NULL,  /*CutGallery - new column 'comments' for ilovesmile*/
+  `created_date` date NOT NULL DEFAULT 0,/*CutGallery - new column 'created_date' for ilovesmile*/
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `hash` (`hash`)
