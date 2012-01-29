@@ -185,14 +185,19 @@ class User_Model_Core extends ORM implements User_Definition {
    * @return string - 'VIP' or 'Guest', two roles/groups only 
    */
   public function display_group() {
-    $suffix = substr($this->name, strlen($this->name) - 4);
-    if (strcmp($suffix, "_VIP") == 0) {
-        // The user belongs to VIP role
-        return "VIP";
+    if ($this->id == 2) {
+        return "Admin";
     }
     else {
-        // The user belongs to Guest role
-        return "Guest";
+        $suffix = substr($this->name, strlen($this->name) - 4);
+        if (strcmp($suffix, "_VIP") == 0) {
+            // The user belongs to VIP role
+            return "VIP";
+        }
+        else {
+            // The user belongs to Guest role
+            return "Guest";
+        }   
     }
   }
 }
