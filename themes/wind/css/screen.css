@@ -448,7 +448,7 @@ td {
 
 /* Album content ~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #g-content {
-    background-color: #ffc;
+    /* background-color: red; */
     margin: auto;
     height: 100%;
 }
@@ -457,7 +457,7 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-  background-color: pink;
+  /* background-color: pink; */
   width: 300px;
   float: left;
 /*  position: relative;
@@ -491,7 +491,7 @@ td {
     text-align: left;
 }
 .g-album h2 a{
-    color: grey !important;
+    color: lightgrey !important;
     font-size: 20px;
 }
 .g-album h2 a:hover {

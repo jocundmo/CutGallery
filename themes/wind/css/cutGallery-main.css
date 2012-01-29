@@ -26,7 +26,7 @@ float: left;
     clear: both;
     width: 80%;
     height: 520px;
-    background-color: grey;
+    /* background-color: lightgrey; */
     margin: 0 auto;
 }
 #mainNav {
@@ -69,7 +69,7 @@ float: left;
     color: red !important;
     font-size: 14px !important;
     /* background-color: grey; */
-    margin-left: 20px;
+    margin-left: 10px;
     padding-top: 7px;
 }
 #footer {
@@ -82,7 +82,7 @@ float: left;
 }
 #about_content{
     margin: 0 auto;
-    background-color: grey;
+    /* background-color: grey; */
 }
 
 /**/
@@ -121,7 +121,7 @@ float: left;
 #g-item-panel{
     height: 460px;
     width: 630px;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
     position: absolute;
     margin: 10px;
     right: 0px;
@@ -146,19 +146,34 @@ float: left;
     height: 20px;
 }
 #g-item-panel .album_prop span{
-    padding-left: 20px;
-    background-color: gray;
+    padding-right: 10px;
+    color: lightgrey;
+    font-weight: bold;
+    /* background-color: gray; */
 }
 #g-item-panel .album_prop ul{
     float: right;
+    padding-left: 10px;
+    margin-right: 5px;
 }
-
+#g-item-panel .album_prop ul li a{
+    color: lightgrey !important;
+    font-weight: bold;
+}
+#g-item-panel .album_prop ul li a:hover{
+    color: #fff !important;
+}
 .album_comments {
     background: transparent url("../images/album-comments-bg.png") no-repeat;
     /* background-color: paleturquoise; */
-    height: 105px;
+    height: 100px;
 }
 .album_comments span {
    display: block;
    padding-top: 30px;
+}
+
+#g-add-items {
+    background-color: yellow;
+    width: 8em;
 }

@@ -36,12 +36,15 @@ $(function(){
 <div id="g-add-items">
     <? if ($theme->item->level < 2): ?>
     <ul id="album_header">
-        <li id="album_header_cpation">Albums</li>
+        <li id="album_header_cpation"><?= t("Albums") ?></li>
+        <? if (access::can("add", $item)): ?>
         <li id="album_header_new"><?= $theme->add_album_menu() ?></li>
+        <? endif ?>
     </ul>
     <? else: ?>
-      <?= $theme->add_photos_menu() ?>
-      
+        <? if (access::can("add", $item)): ?>
+            <?= $theme->add_photos_menu() ?>
+        <? endif ?>
     <? endif ?>
 </div>
 <ul id="g-album-grid" class="ui-helper-clearfix <?= ($theme->item->level < 2) ? "album_container" : "photo_container"?>">
@@ -72,13 +75,15 @@ $(function(){
   </li>
   <? endforeach ?>
 <? else: ?>
-  <? if ($user->admin || access::can("add", $item)): ?>
-  <? $addurl = url::site("uploader/index/$item->id") ?>
-  <li><?= t("There aren't any photos here yet! <a %attrs>Add some</a>.",
-            array("attrs" => html::mark_clean("href=\"$addurl\" class=\"g-dialog-link\""))) ?></li>
-  <? else: ?>
-  <li><?= t("There aren't any photos here yet!") ?></li>
-  <? endif; ?>
+<!--  <? // if ($user->admin || access::can("add", $item)): ?>
+  <? //$addurl = url::site("uploader/index/$item->id") ?>
+  <li><? //= t("There aren't any photos here yet! <a %attrs>Add some</a>.",
+          //  array("attrs" => html::mark_clean("href=\"$addurl\" class=\"g-dialog-link\""))) ?></li>
+  <? // else: ?>
+  <li><? //= t("There aren't any photos here yet!") ?></li>
+  <? // endif; ?>-->
+  
+  <?= t("There aren't any items yet!")?>
 <? endif; ?>
 </ul>
 <? if ($theme->item->level < 2): ?>
@@ -98,9 +103,11 @@ $(function(){
                         <span>Album Name: <?= html::purify($child->title) ?></span>
                         <span>Owner: <?= $child->owner_id ?></span>
                         <span>Pic Quantity:</span>
-                        <?= $theme->edit_album_menu($child) ?>
-                        <?= $theme->delete_album_menu($child) ?>
-                        <?= $theme->add_photos_menu($child) ?>
+                        <? if (access::can("add", $item)): ?>
+                            <?= $theme->edit_album_menu($child) ?>
+                            <?= $theme->delete_album_menu($child) ?>
+                            <?= $theme->add_photos_menu($child) ?>
+                        <? endif ?>
                     </li>
                     <li id="g-item-comments-<?= $child->id ?>" class="album_comments">
                         <span class="g-description"><?= nl2br(html::purify($child->description)) ?></span>

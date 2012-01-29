@@ -146,7 +146,7 @@
                   class="g-dialog-link g-button ui-state-default ui-corner-all ui-icon-left">
                 <span class="ui-icon ui-icon-trash"></span><?= t("Delete") ?></a>
               <? else: ?>
-              <span title="<?= t("This user cannot be deleted")->for_html_attr() ?>"
+              <span title="<?= t("This user cannot be deleted, it probably due to the albums/photos is not empty.")->for_html_attr() ?>"
                   class="g-button ui-state-disabled ui-corner-all ui-icon-left">
                 <span class="ui-icon ui-icon-trash"></span><?= t("Delete") ?></span>
               <? endif ?>
