@@ -108,8 +108,16 @@ class Albums_Controller extends Items_Controller {
  * 
  */
       // ==> CugGallery - Assign owner to this album
-      $vip_users = vip::lookup_vip_users();
-      $owner = user::lookup_by_name($vip_users[$form->add_album->owner->value]);
+      $user_name = "admin";
+      if ($form->add_album->owner->value != 0) {// A VIP user has been choosen.
+          $vip_users = vip::lookup_vip_users();
+          $user_name = $vip_users[$form->add_album->owner->value];
+      }
+      else {
+          // Nothing to do...the owner is admin.
+      }
+      
+      $owner = user::lookup_by_name($user_name);
       $album->owner_id = $owner->id;
       // <==
       
@@ -162,8 +170,17 @@ class Albums_Controller extends Items_Controller {
       // ==> CutGallery - Assign owner to this album, set album title as default value for slug
       $album->slug = $form->edit_item->title->value;
       
-      $vip_users = vip::lookup_vip_users();
-      $owner = user::lookup_by_name($vip_users[$form->edit_item->owner->value]);
+      $user_name = "admin";
+      if ($form->edit_item->owner->value != 0) { // A VIP user has been choosen.
+          $vip_users = vip::lookup_vip_users();
+          array_unshift($vip_users, $user_name);
+          $user_name = $vip_users[$form->edit_item->owner->value];
+      }
+      else {
+          // Nothing to do...the owner is admin.
+      }
+      
+      $owner = user::lookup_by_name($user_name);
       $album->owner_id = $owner->id;
       // ==<
       

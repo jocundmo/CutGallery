@@ -569,11 +569,14 @@ class gallery_event_Core {
       $csrf = access::csrf_token();
 
       $theme_item = $theme->item();
+/** CutGallery - Disable 'Edit'.
       $options_menu->append(Menu::factory("dialog")
                             ->id("edit")
                             ->label($edit_title)
                             ->css_class("ui-icon-pencil")
                             ->url(url::site("quick/form_edit/$item->id?from_id={$theme_item->id}")));
+ * 
+ */
 
 /** CutGallery - 'Rotate' is not allowed
       if ($item->is_photo() && graphics::can("rotate")) {

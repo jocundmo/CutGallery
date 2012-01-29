@@ -43,7 +43,7 @@
           Database name
         </td>
         <td>
-          <input name="dbname" value="gallery3"/>
+          <input name="dbname" value="CutGallery"/>
         </td>
       </tr>
       <tr>

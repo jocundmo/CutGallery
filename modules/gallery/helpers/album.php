@@ -49,9 +49,11 @@ class album_Core {
  */
     
     // CutGallery - Add dropdown list for VIP users ==>
+    $owners = vip::lookup_vip_users();
+    array_unshift($owners, "admin");
     $group->dropdown("owner", array("id" => "g-album-owner"))
 	->label(t("Owner"))
-	->options(vip::lookup_vip_users());
+	->options($owners);
     // <== 
     
     $group->hidden("type")->value("album");
@@ -109,6 +111,7 @@ class album_Core {
     
     // CutGallery - Add dropdown list for VIP users and set selected owner for this album ==>
     $vip_users = vip::lookup_vip_users();
+    array_unshift($vip_users, "admin");
     $owner = user::lookup($parent->owner_id);
     $key = array_keys($vip_users, $owner->name);
     $group->dropdown("owner", array("id" => "g-album-owner"))

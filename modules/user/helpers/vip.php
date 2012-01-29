@@ -38,6 +38,7 @@ class vip_Core {
                 ->from("users")
                 ->where("name", "!=", "guest")
                 ->and_where("admin", "!=", "1")
+                ->order_by("name", "ASC")
                 ->execute()->as_array(TRUE);
         
         foreach ($users as $user){
