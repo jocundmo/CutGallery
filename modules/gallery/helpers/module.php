@@ -392,9 +392,21 @@ class module_Core {
     }
 
     foreach (self::$active as $module) {
-      if ($module->name == "gallery") {
+        if (    $module->name == "gallery"      ||
+                $module->name == "comment"      || 
+                $module->name == "organize"     ||
+                $module->name == "info"         ||
+                $module->name == "search"       ||
+                $module->name == "slideshow"    ||
+                $module->name == "tag") {
+            continue;
+          }
+/** CutGallery - Disable 'comment', 'organize', 'info', 'search', 'slideshow', 'tag'
+        if ($module->name == "gallery") {
         continue;
       }
+ * 
+ */
       $class = "{$module->name}_event";
       if (method_exists($class, $function)) {
         call_user_func_array(array($class, $function), $args);

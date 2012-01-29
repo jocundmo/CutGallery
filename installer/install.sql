@@ -372,8 +372,8 @@ CREATE TABLE {users} (
   UNIQUE KEY `hash` (`hash`)
 ) AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-INSERT INTO {users} VALUES (1,'guest','Guest User','',0,0,NULL,0,1,NULL,NULL,NULL,NULL,CURRENT_DATE); /* CutGallery: the last two are default values for 'comments' and 'created_date'*/
-INSERT INTO {users} VALUES (2,'admin','Gallery Administrator','',0,0,'unknown@unknown.com',1,0,NULL,NULL,NULL,NULL,CURRENT_DATE); /* CutGallery: the last two are default value for 'comments' and 'created_date'*/
+INSERT INTO {users} VALUES (1,'guest','Guest User','',0,0,NULL,0,1,NULL,NULL,NULL,NULL,CURRENT_DATE) /* CutGallery: the last two are default values for 'comments' and 'created_date'*/;
+INSERT INTO {users} VALUES (2,'admin','Gallery Administrator','',0,0,'unknown@unknown.com',1,0,NULL,NULL,NULL,NULL,CURRENT_DATE) /* CutGallery: the last two are default value for 'comments' and 'created_date'*/; 
 DROP TABLE IF EXISTS {vars};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

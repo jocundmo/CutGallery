@@ -1,6 +1,7 @@
 <?php defined("SYSPATH") or die("No direct script access.") ?>
+<!-- CutGallery - Disable 'Drop user to Group'.
 <script type="text/javascript">
-  var add_user_to_group_url = "<?= url::site("admin/users/add_user_to_group/__USERID__/__GROUPID__?csrf=$csrf") ?>";
+  var add_user_to_group_url = "<? //= url::site("admin/users/add_user_to_group/__USERID__/__GROUPID__?csrf=$csrf") ?>";
   $(document).ready(function(){
     $("#g-user-admin-list .g-core-info").draggable({
       helper: "clone"
@@ -23,7 +24,7 @@
   });
 
   var reload_group = function(group_id) {
-    var reload_group_url = "<?= url::site("admin/users/group/__GROUPID__") ?>";
+    var reload_group_url = "<? //= url::site("admin/users/group/__GROUPID__") ?>";
     $.get(reload_group_url.replace("__GROUPID__", group_id),
           {},
           function(data) {
@@ -33,7 +34,7 @@
   }
 
   var remove_user = function(user_id, group_id) {
-    var remove_user_url = "<?= url::site("admin/users/remove_user_from_group/__USERID__/__GROUPID__?csrf=$csrf") ?>";
+    var remove_user_url = "<? //= url::site("admin/users/remove_user_from_group/__USERID__/__GROUPID__?csrf=$csrf") ?>";
     $.get(remove_user_url.replace("__USERID__", user_id).replace("__GROUPID__", group_id),
           {},
           function() {
@@ -41,10 +42,15 @@
           });
   }
 </script>
+-->
 
 <div class="g-block">
-  <h1> <?= t("Users and groups") ?> </h1>
-
+  <!-- CutGallery - Disable 'Users and groups'.
+  <h1> <? //= t("Users and groups") ?> </h1>
+  -->
+  <!-- CutGallery - Replace 'Users and groups' with 'Users' only. ==> -->
+  <h1><?= t("Users") ?></h1>
+  <!-- <== -->
   <div class="g-block-content">
 
     <div id="g-user-admin" class="g-block">
@@ -55,20 +61,37 @@
         <?= t("Add a new user") ?>
       </a>
 
-      <h2> <?= t("Users") ?> </h2>
-
+      <!-- CutGallery - Disable this for duplication.
+      <h2> <? //= t("Users") ?> </h2>
+      -->
+      
       <div class="g-block-content">
         <table id="g-user-admin-list">
           <tr>
             <th><?= t("Username") ?></th>
-            <th><?= t("Full name") ?></th>
-            <th><?= t("Email") ?></th>
-            <th><?= t("Last login") ?></th>
+            <!-- CutGallery - Disable 'Full name'.
+            <th><? //= t("Full name") ?></th>
+            -->
+            <!-- CutGallery - Add 'Password', 'Role'. ==> -->
+            <th><?= t("Password") ?></th>
+            <th><?= t("Role") ?></th>
+            <!-- <== -->
+            
+            <!-- CutGallery - Disable 'Email', 'Last login'.
+            <th><? //= t("Email") ?></th>
+            <th><? //= t("Last login") ?></th>
+            -->
             <th><?= t("Albums/Photos") ?></th>
+            
+            <!-- CutGallery - Add 'Comments'. ==> -->
+            <th><?= t("Comments") ?></th>
+            <!-- <== -->
+            
             <th><?= t("Actions") ?></th>
           </tr>
 
           <? foreach ($users as $i => $user): ?>
+          <? if (!strcmp($user->name, "guest") == 0): ?> <!-- CutGallery - Disable 'guest' row. -->
           <tr id="g-user-<?= $user->id ?>" class="<?= text::alternate("g-odd", "g-even") ?> g-user <?= $user->admin ? "g-admin" : "" ?>">
             <td id="g-user-<?= $user->id ?>" class="g-core-info g-draggable">
               <img src="<?= $user->avatar_url(20, $theme->url("images/avatar.jpg", true)) ?>"
@@ -78,24 +101,47 @@
                    height="20" />
               <?= html::clean($user->name) ?>
             </td>
+            <!-- CutGallery - Add 'password', 'Role' ==> -->
             <td>
-              <?= html::clean($user->full_name) ?>
+              <?= html::clean($user->password) ?>
             </td>
             <td>
-              <?= html::clean($user->email) ?>
+              <?= html::clean($user->display_group()) ?>
+            </td>
+            <!-- <== -->
+            
+            <!-- CutGallery - Disable 'Ful Name', 'email', 'last login'.
+            <td>
+              <? //= html::clean($user->full_name) ?>
             </td>
             <td>
-              <?= ($user->last_login == 0) ? "" : gallery::date($user->last_login) ?>
+              <? //= html::clean($user->email) ?>
             </td>
+            <td>
+              <? //= ($user->last_login == 0) ? "" : gallery::date($user->last_login) ?>
+            </td>
+            -->
             <td>
               <?= db::build()->from("items")->where("owner_id", "=", $user->id)->count_records() ?>
             </td>
+            <!-- CutGallery - Add 'Comments' ==> -->
+            <td>
+              <?= html::clean($user->comments) ?>
+            </td>
+            <!-- <== -->
             <td>
               <a href="<?= url::site("admin/users/edit_user_form/$user->id") ?>"
                   open_text="<?= t("Close") ?>"
                   class="g-panel-link g-button ui-state-default ui-corner-all ui-icon-left">
                 <span class="ui-icon ui-icon-pencil"></span><span class="g-button-text"><?= t("Edit") ?></span></a>
-              <? if (identity::active_user()->id != $user->id && !$user->guest): ?>
+              <!-- CutGallery - Only VIP user who has no related album or photo can be deleted.
+              <? // if (identity::active_user()->id != $user->id && !$user->guest): ?>
+              -->
+              <!-- CutGallery - Only VIP user who has no related album or photo can be deleted. ==> -->
+              <? $suffix = substr($user->name, strlen($user->name) - 4) ?>
+              <? $item_count = db::build()->from("items")->where("owner_id", "=", $user->id)->count_records() ?>
+              <? if (identity::active_user()->id != $user->id && !$user->guest && strcmp($suffix, "_VIP") == 0 && $item_count == 0): ?>
+              <!-- <== -->
               <a href="<?= url::site("admin/users/delete_user_form/$user->id") ?>"
                   class="g-dialog-link g-button ui-state-default ui-corner-all ui-icon-left">
                 <span class="ui-icon ui-icon-trash"></span><?= t("Delete") ?></a>
@@ -106,6 +152,7 @@
               <? endif ?>
             </td>
           </tr>
+          <? endif ?> <!-- CutGallery - Disable 'guest' row. -->
           <? endforeach ?>
         </table>
 
@@ -116,6 +163,7 @@
       </div>
     </div>
 
+<!-- CutGallery - Disable Group!!
     <div id="g-group-admin" class="g-block ui-helper-clearfix">
       <a href="<?= url::site("admin/users/add_group_form") ?>"
           class="g-dialog-link g-button g-right ui-icon-left ui-state-default ui-corner-all"
@@ -137,6 +185,6 @@
         </ul>
       </div>
     </div>
-
+-->
   </div>
 </div>
