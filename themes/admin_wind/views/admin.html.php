@@ -64,9 +64,9 @@
       <?= $theme->site_status() ?>
       <div id="g-header" class="ui-helper-clearfix">
         <?= $theme->admin_header_top() ?>
-        <a id="g-logo" class="g-left" href="<?= item::root()->url() ?>" title="<?= t("go back to the Gallery")->for_html_attr() ?>">
+        <!-- CutGallery - Remove admin Logo <a id="g-logo" class="g-left" href="<?= item::root()->url() ?>" title="<?= t("go back to the Gallery")->for_html_attr() ?>">
           &larr; <?= t("back to the ...") ?>
-        </a>
+        </a> -->
         <?= $theme->user_menu() ?>
         <!-- hide the menu until after the page has loaded, to minimize menu flicker -->
         <div id="g-site-admin-menu" class="ui-helper-clearfix" style="visibility: hidden">

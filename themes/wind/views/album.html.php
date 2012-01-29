@@ -66,7 +66,7 @@ $(function(){
         <? if ($child->is_album()): ?>
             <? // if is Album, no thumb img to show.?>
         <? elseif ($child->is_photo()): ?>
-            <?= $child->thumb_img(array("class" => "g-thumbnail ui-corner-all"), 100) ?>
+            <?= $child->thumb_img(array("class" => "g-thumbnail ui-corner-all"), 150) ?>
         <? endif ?> 
       <? endif ?>
     </a>

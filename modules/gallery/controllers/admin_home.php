@@ -11,8 +11,8 @@ class Admin_Home_Controller extends Admin_Controller {
     $view->content->user = $user;
     $view->content->contactable =
       !$user->guest && $user->id != identity::active_user()->id && $user->email;
-    $view->content->editable =
-      identity::is_writable() && !$user->guest && $user->id == identity::active_user()->id;
+//    $view->content->editable =
+//      identity::is_writable() && !$user->guest && $user->id == identity::active_user()->id;
     $event_data = (object)array("user" => $user, "content" => array());
     module::event("show_user_profile", $event_data);
     $view->content->info_parts = $event_data->content;

@@ -39,7 +39,7 @@ class Gallery_View_Core extends View {
     // CutGallery - ADDED ==>
     if (isset($this->item)){
         if ($this->item->level < 2){
-            $this->page_size = 6;
+            $this->page_size = 10; // pagesize
         }
     }// <==
     $v = new View("paginator.html");

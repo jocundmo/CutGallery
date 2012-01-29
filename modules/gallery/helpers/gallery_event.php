@@ -564,7 +564,7 @@ class gallery_event_Core {
         $delete_title = t("Delete this photo");
         break;
       }
-      $cover_title = t("Choose as the album cover");
+      $cover_title = t("Set album cover");
 
       $csrf = access::csrf_token();
 
