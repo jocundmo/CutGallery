@@ -32,7 +32,7 @@ class Albums_Controller extends Items_Controller {
     access::required("view", $album);
     // CutGallery - Modified - pagesize for different level of album.
     if ($album->level < 2){
-        $page_size = 6;
+        $page_size = 10; // pagesize
     }
     else {
         $page_size = module::get_var("gallery", "page_size", 9);

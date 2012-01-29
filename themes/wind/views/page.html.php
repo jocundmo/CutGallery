@@ -85,7 +85,7 @@
     <title>I Love Smile</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
-    <link href="<?= url::file("themes/wind/Content/style.css") ?>" rel="stylesheet" type="text/css" /> 
+    <link href="<?//= url::file("themes/wind/Content/style.css") ?>" rel="stylesheet" type="text/css" /> 
     <script src="Scripts/jquery-1.4.4.min.js" type="text/javascript"></script> 
 </head> -->
 <body> 
@@ -98,7 +98,9 @@
 <div id="mainInfo">
     <ul>
         <li><?= $theme->user_menu() ?></li>
-        <li><a href="<?= url::site("admin/home") ?>">admin</a></li>
+        <? if (identity::active_user()->admin): ?>
+            <li><a href="<?= url::site("admin/home") ?>">admin</a></li>
+        <? endif ?>
     </ul>
 </div>
 
@@ -122,12 +124,14 @@
           </div>
         </div>
 <div id="footer">
-    footer
+    <p class="small"> 
+        Copyright
+    </p> 
 </div>
 
 <!--<div id="main"> 
     <div id="main-photo"> 
-        <img src="<?= url::file("themes/wind/images/indexphoto.jpg") ?>" alt="" /> 
+        <img src="<?//= url::file("themes/wind/images/indexphoto.jpg") ?>" alt="" /> 
     </div> 
 </div> -->
 

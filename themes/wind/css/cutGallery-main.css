@@ -12,7 +12,7 @@ color: blue;
 float: left;
 }
 #mainInfo {
-    background-color: pink;
+    /* background-color: pink; */
     width: 40em;
     font-size: 12px;
     height: 1.2em;
@@ -73,12 +73,15 @@ float: left;
     padding-top: 7px;
 }
 #footer {
+    border-top-width: 1px;
+border-top-style: solid;
+border-top-color: #AAA;
    position:fixed;
    left:0px;
    bottom:0px;
    height:30px;
    width:100%;
-   background: aqua;
+   /* background: aqua; */
 }
 #about_content{
     margin: 0 auto;
@@ -117,6 +120,12 @@ float: left;
     /* behavior: url(/PIE.js); CutGallery - Refer to http://css3pie.com to support IE series render css3 effects.*/
 }
 
+.pic_shadow{ /* CutGallery - Temporary should be merged into one class */
+    -webkit-box-shadow: #666 2px 2px 2px;
+    -moz-box-shadow: #666 2px 2px 2px;
+    box-shadow: #666 2px 2px 2px;
+    background: #EEFF99;
+}
 /* Album panel ~~~~~~~~~~~~~~~~~~~~CutGallery - ADDED*/
 #g-item-panel{
     height: 460px;
@@ -147,7 +156,7 @@ float: left;
 }
 #g-item-panel .album_prop span{
     padding-right: 10px;
-    color: lightgrey;
+    color: grey;
     font-weight: bold;
     /* background-color: gray; */
 }
@@ -157,7 +166,7 @@ float: left;
     margin-right: 5px;
 }
 #g-item-panel .album_prop ul li a{
-    color: lightgrey !important;
+    color: grey !important;
     font-weight: bold;
 }
 #g-item-panel .album_prop ul li a:hover{
@@ -174,6 +183,6 @@ float: left;
 }
 
 #g-add-items {
-    background-color: yellow;
-    width: 8em;
+    /* background-color: yellow; */
+    width: 10em;
 }

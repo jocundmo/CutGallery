@@ -278,6 +278,7 @@ input[readonly] {
 
 .g-short-form .textbox.g-error {
   border: 1px solid #f00;
+  
   color: #f00;
   padding-left: 24px;
 }
@@ -467,7 +468,7 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-  background-color: pink;
+  /* background-color: pink; */
   width: 100%;
   float: left;
 /*  position: relative;
@@ -476,10 +477,11 @@ td {
 #g-content #g-album-grid .g-item {
   border: 1px solid #000;
   float: left;
-  padding: .6em 8px;
+  padding: .36em 8px;
   position: relative;
   text-align: center;
-  width: 104px;
+  background-color: grey;
+  width: 154px; /* CutGallery - g-photo width*/
   z-index: 1;
 }
 /* CutGallery - ADDED start */
@@ -491,7 +493,7 @@ td {
     text-align: left;
 }
 .g-album h2 a{
-    color: lightgrey !important;
+    color: grey !important;
     font-size: 20px;
 }
 .g-album h2 a:hover {
@@ -1050,20 +1052,19 @@ div#g-action-status {
   padding: .2em 0;
   margin: 0 auto;
   /*position: absolute;/* CutGallery - MODIFIED */
-  position: relative;
-  top: 1em;
+  position: absolute;
+  top: 30em;
   clear: both;
-
 }
 
 .g-paginator li {
   float: left;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .g-paginator .g-info {
   /* CutGallery - MODIFIED */
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
   text-align: center;
 }
 
