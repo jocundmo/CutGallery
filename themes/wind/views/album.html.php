@@ -21,10 +21,15 @@ function showItemCover(v){
     //alert('g-item-cover-'+v)
     clearItemCovers();
     document.getElementById('g-item-panel-'+v).style.display='block';
-    //document.getElementById('<?='g-item-panel-'.$child->id?>').style.display='none'
+    //document.getElementById('<?//='g-item-panel-'.$child->id?>').style.display='none'
+}
+function showDefaultCover(){
+    clearItemCovers();
+    document.getElementById('g-item-panel-default').style.display='block';
 }
 $(function(){
     clearItemCovers();
+    showDefaultCover();
 })
 </script>
 <? endif ?>
@@ -89,6 +94,19 @@ $(function(){
 <? if ($theme->item->level < 2): ?>
 <!-- CutGallery - ADDED -->
 <div id="g-item-panel">    
+       <ul id="g-item-panel-default" class="album_panel_parent">
+            <li id="g-item-cover-default" class="album_cover">
+                <div>
+                    <?//= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?>
+                </div>
+            </li>
+            <li id="g-item-prop-default" class="album_prop">
+
+            </li>
+            <li id="g-item-comments-default" class="album_comments">
+                <span class="g-description"></span>
+            </li>
+        </ul>
        <? if (count($children)): ?>
           <? foreach ($children as $i => $child): ?>
                 <ul id="g-item-panel-<?= $child->id ?>" class="album_panel_parent">
