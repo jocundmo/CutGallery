@@ -56,9 +56,9 @@ $(function(){
     <a href="<?= $child->url() ?>">
       <? if ($child->has_thumb()): ?>
         <? if ($child->is_album()): ?>
-
+            <? // if is Album, no thumb img to show.?>
         <? elseif ($child->is_photo()): ?>
-        <?= $child->thumb_img(array("class" => "g-thumbnail"), 100) ?>
+            <?= $child->thumb_img(array("class" => "g-thumbnail ui-corner-all"), 100) ?>
         <? endif ?> 
       <? endif ?>
     </a>
@@ -90,7 +90,7 @@ $(function(){
                     <li id="g-item-cover-<?= $child->id ?>" class="album_cover">
                         <div>
                             <? if ($child->is_album()): ?>
-                                <a href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-thumbnail")) ?></a>
+                                <a href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
                             <? endif ?>
                         </div>
                     </li>
@@ -105,7 +105,7 @@ $(function(){
                     <li id="g-item-comments-<?= $child->id ?>" class="album_comments">
                         <span class="g-description"><?= nl2br(html::purify($child->description)) ?></span>
                     </li>
-                    </ul>
+                </ul>
         <? endforeach ?>
        <? endif ?>
 </div>

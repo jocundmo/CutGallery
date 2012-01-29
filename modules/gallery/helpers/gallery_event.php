@@ -246,7 +246,7 @@ class gallery_event_Core {
             if ($item->is_album()) {
               $menu->append(Menu::factory("dialog")
                                 ->id("add_album_item")
-                                ->label(t("Add an album"))
+                                ->label(t("[new]")) // CutGallery - Modify add album text
                                 ->url(url::site("form/add/albums/$item->id?type=album")));
             }
           } else {

@@ -129,7 +129,7 @@
 
     <? if (identity::active_user()->admin && !$movies_allowed): ?>
     <p class="g-warning">
-      <?= t("Can't find <i>ffmpeg</i> on your system. Movie uploading disabled. <a href=\"%help_url\">Help!</a>", array("help_url" => "http://codex.gallery2.org/Gallery3:FAQ#Why_does_it_say_I.27m_missing_ffmpeg.3F")) ?>
+      <?// CutGallery - Not support movies uploaded yet= t("Can't find <i>ffmpeg</i> on your system. Movie uploading disabled. <a href=\"%help_url\">Help!</a>", array("help_url" => "http://codex.gallery2.org/Gallery3:FAQ#Why_does_it_say_I.27m_missing_ffmpeg.3F")) ?>
     </p>
     <? endif ?>
   </div>

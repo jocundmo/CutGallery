@@ -56,8 +56,8 @@
     <? if ($total): ?>
       <? if ($page_type == "collection"): ?>
         <?= /* @todo This message isn't easily localizable */
-            t2("Photo %from_number of %count",
-               "Photos %from_number - %to_number of %count",
+            t2("Item %from_number of %count",
+               "Items %from_number - %to_number of %count",
                $total,
                array("from_number" => $first_visible_position,
                      "to_number" => $last_visible_position,
@@ -66,7 +66,7 @@
         <?= t("%position of %total", array("position" => $position, "total" => $total)) ?>
       <? endif ?>
     <? else: ?>
-      <?= t("No photos") ?>
+      <?= t("No items") ?>
     <? endif ?>
   </li>
 

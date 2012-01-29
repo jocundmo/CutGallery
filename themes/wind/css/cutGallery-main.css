@@ -56,12 +56,21 @@ float: left;
 }
 #album_header li{
     float: left;
-    margin: 10px;
     text-align: left;
-    background-color: yellow;
+    height: 30px;
+    /* background-color: yellow; */
+
 }
 #g-album-grid{
     clear: both;
+}
+#album_header li a{
+    display: block !important;
+    color: red !important;
+    font-size: 14px !important;
+    /* background-color: grey; */
+    margin-left: 20px;
+    padding-top: 7px;
 }
 #footer {
    position:fixed;
@@ -95,4 +104,61 @@ float: left;
     border-style:  dashed;
     width: 275px; /* CutGallery - Home page picture width */
     height: 100%;
+}
+#album_header_cpation{
+    font-size: 22px;
+    font-weight: bold;
+}
+.g-album-thumbnail{
+    -webkit-box-shadow: #666 6px 4px 6px;
+    -moz-box-shadow: #666 6px 4px 6px;
+    box-shadow: #666 6px 4px 6px;
+    background: #EEFF99;
+    /* behavior: url(/PIE.js); CutGallery - Refer to http://css3pie.com to support IE series render css3 effects.*/
+}
+
+/* Album panel ~~~~~~~~~~~~~~~~~~~~CutGallery - ADDED*/
+#g-item-panel{
+    height: 460px;
+    width: 630px;
+    background-color: yellowgreen;
+    position: absolute;
+    margin: 10px;
+    right: 0px;
+}
+.album_panel_parent{
+    display: none; /* When page loaded, by default none is shown until the cursor move on */
+}
+#g-item-panel ul .album_cover{
+    background: transparent url('../images/album-cover-bg.png') no-repeat center;
+    /*background-color: blueviolet; */
+    width: 100%;
+    height: 360px;
+}
+#g-item-panel ul .album_cover img{
+    position: absolute;
+    top: 24px;
+    left: 80px;
+}
+#g-item-panel .album_prop{
+    /* background-color: yellow; */
+    width: 100%;
+    height: 20px;
+}
+#g-item-panel .album_prop span{
+    padding-left: 20px;
+    background-color: gray;
+}
+#g-item-panel .album_prop ul{
+    float: right;
+}
+
+.album_comments {
+    background: transparent url("../images/album-comments-bg.png") no-repeat;
+    /* background-color: paleturquoise; */
+    height: 105px;
+}
+.album_comments span {
+   display: block;
+   padding-top: 30px;
 }
