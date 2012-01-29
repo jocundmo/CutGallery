@@ -215,6 +215,20 @@ class item_Core {
     if (count($view_restrictions)) {
       $model->and_open()->merge_or_where($view_restrictions)->close();
     }
+    
+    // CutGallery - A VIP can only view albums/photos which belong to him and same as corresponding guest. ==>
+    $user_id = identity::active_user()->id;
+        
+    if ($user_id != 1 && $user_id != 2) {
+        $user_name = identity::active_user()->name;
+        $suffix = substr($user_name, strlen($user_name) - 4);
+        if (strcmp($suffix, "_VIP") != 0) {
+            $vip_user = user::lookup_by_name($user_name."_VIP");
+            $user_id = $vip_user->id;
+        }
+        $model->and_open()->and_where("items.owner_id", "=", $user_id)->close();
+    }
+    // <==
 
     return $model;
   }

@@ -66,16 +66,49 @@ class Admin_Users_Controller extends Admin_Controller {
 
     $form = $this->_get_user_add_form_admin();
     try {
+      // CutGallery - Add VIP user ==>
+      $vip_user = ORM::factory("user");
+      $valid = $form->validate();
+      $vip_user->name = $form->add_user->inputs["name"]->value."_VIP";
+      $vip_user->full_name = $form->add_user->inputs["name"]->value."_VIP";
+      $vip_user->password = $form->add_user->password->value;
+      $vip_user->email = "CutGallery@CutGallery.com";
+      $vip_user->admin = false;
+      $vip_user->comments = $form->add_user->comments->value;
+      $vip_user->created_date = date("Y-m-d");
+      $vip_user->validate();
+      // <==
+      
+      // CutGallery - Add corresponding guest ==>
+      $guest_user = ORM::factory("user");
+      $valid = $form->validate();
+      $guest_user->name = $form->add_user->inputs["name"]->value;
+      $guest_user->full_name = $form->add_user->inputs["name"]->value;
+      $guest_password = $guest_user->name;
+      
+      if (strlen($guest_password) < 5) {
+          $guest_password = $guest_password."_ilovesmile";
+      }
+      $guest_user->password = $guest_password;
+      $guest_user->email = "CuGallery@CutGallery.com";
+      $guest_user->admin = false;
+      $guest_user->created_date = date("Y-m-d");
+      $guest_user->validate();
+      // <==
+        
+/** CutGallery - Disable following code for adding user.
       $user = ORM::factory("user");
       $valid = $form->validate();
-      $user->name = $form->add_user->inputs["name"]->value;
+      $user->name = $form->add_user->inputs["name"]->value; 
       $user->full_name = $form->add_user->full_name->value;
-      $user->password = $form->add_user->password->value;
+      $user->password = $form->add_user->password->value;     
       $user->email = $form->add_user->email->value;
       $user->url = $form->add_user->url->value;
       $user->locale = $form->add_user->locale->value;
       $user->admin = $form->add_user->admin->checked;
       $user->validate();
+ * 
+ */
     } catch (ORM_Validation_Exception $e) {
       // Translate ORM validation errors into form error messages
       foreach ($e->validation->errors() as $key => $error) {
@@ -85,6 +118,31 @@ class Admin_Users_Controller extends Admin_Controller {
     }
 
     if ($valid) {
+      // CutGallery - Save VIP
+      $vip_user->save();
+      // CutGallery - Save guest
+      $guest_user->save();
+      
+      module::event("user_add_form_admin_completed", $vip_user, $form);
+      message::success(t("Created user %user_name", array("user_name" => $vip_user->name)));
+      json::reply(array("result" => "success"));
+    } else {
+      print json::reply(array("result" => "error", "html" => (string)$form));
+    }
+    
+    // CutGallery - Add VIP:username_VIP to VIP group/role ==>
+    $saved_vip_user = user::lookup_by_name($vip_user->name);
+    $saved_vip_group = group::lookup_by_name("VIP");
+    $this->_add_user_to_group_automatically($saved_vip_user->id, $saved_vip_group->id);
+    // <==
+    
+    // CutGallery - Add Guest:username to guest group/role ==>
+    $saved_guest_user = user::lookup_by_name($guest_user->name);
+    $saved_guest_group = group::lookup_by_name("Guest");
+    $this->_add_user_to_group_automatically($saved_guest_user->id, $saved_guest_group->id);
+    // <==
+        
+/** CutGallery - Disable following code for saving only one user.
       $user->save();
       module::event("user_add_form_admin_completed", $user, $form);
       message::success(t("Created user %user_name", array("user_name" => $user->name)));
@@ -92,6 +150,8 @@ class Admin_Users_Controller extends Admin_Controller {
     } else {
       print json::reply(array("result" => "error", "html" => (string)$form));
     }
+ * 
+ */
   }
 
   public function add_user_form() {
@@ -109,7 +169,40 @@ class Admin_Users_Controller extends Admin_Controller {
     if (empty($user)) {
       throw new Kohana_404_Exception();
     }
+    
+    // CutGallery - 
+    // Guest cannot be deleted independently, it must be deleted with corresponding VIP user.
+    // A VIP cannot be deleted if he/she has related album or photo.
+    // ==>
+    $corresponding_user = null;
+    
+    $suffix = substr($user->name, strlen($user->name) - 4);
+    
+    if (strcmp($suffix, "_VIP") == 0) // The user is a VIP
+    {
+        $corresponding_user = user::lookup_by_name(substr($user->name, 0, strlen($user->name) - 4));
+        
+        $form = $this->_get_user_delete_form_admin($user);
+        if($form->validate()) {
+            $name = $user->name;
+            $user->delete();
+            $corresponding_user->delete();
+        } else {
+        json::reply(array("result" => "error", "html" => (string)$form));
+        }
 
+        $message = t("Deleted user %user_name", array("user_name" => $name));
+        log::success("user", $message);
+        message::success($message);
+        json::reply(array("result" => "success"));
+    }
+    else
+    {
+        // Nothing to do...
+    }
+    // <==
+
+/** CutGallery - Disable following code because not every user can be deleted, only VIP user who has no album/photo
     $form = $this->_get_user_delete_form_admin($user);
     if($form->validate()) {
       $name = $user->name;
@@ -122,6 +215,8 @@ class Admin_Users_Controller extends Admin_Controller {
     log::success("user", $message);
     message::success($message);
     json::reply(array("result" => "success"));
+ *
+ */
   }
 
   public function delete_user_form($id) {
@@ -147,17 +242,29 @@ class Admin_Users_Controller extends Admin_Controller {
     try {
       $valid = $form->validate();
       $user->name = $form->edit_user->inputs["name"]->value;
+/** CutGallery - Disable 'Full Name'     
       $user->full_name = $form->edit_user->full_name->value;
+ * 
+ */
       if ($form->edit_user->password->value) {
         $user->password = $form->edit_user->password->value;
       }
+/** CutGallery - Set default value 'CutGallery@CutGallery.com' for email.
       $user->email = $form->edit_user->email->value;
+ * 
+ */
+      $user->email = "CutGallery@CutGallery.com";
+/** CutGallery - Disable 'url', 'locale' and 'admin'.
       $user->url = $form->edit_user->url->value;
       $user->locale = $form->edit_user->locale->value;
       if ($user->id != identity::active_user()->id) {
         $user->admin = $form->edit_user->admin->checked;
       }
-
+ * 
+ */
+      // CutGallery - Add comments for user ==>
+      $user->comments = $form->edit_user->comments->value;
+      // <==
       $user->validate();
     } catch (ORM_Validation_Exception $e) {
       // Translate ORM validation errors into form error messages
@@ -322,13 +429,20 @@ class Admin_Users_Controller extends Admin_Controller {
       ->error_messages("required", t("A name is required"))
       ->error_messages("conflict", t("There is already a user with that username"))
       ->error_messages("length", t("This name is too long"));
+/** CutGallery - Disable 'Full Name'
     $group->input("full_name")->label(t("Full name"))->id("g-fullname")->value($user->full_name)
       ->error_messages("length", t("This name is too long"));
+ * 
+ */
     $group->password("password")->label(t("Password"))->id("g-password")
       ->error_messages("min_length", t("This password is too short"));
     $group->script("")
       ->text(
         '$("form").ready(function(){$(\'input[name="password"]\').user_password_strength();});');
+    // CutGallery - Add 'Comments' textare. ==>
+    $group->textarea("comments")->label(t("Comments"))->id("g-comments");
+    // <==
+/** CutGallery - Disable 'password2', 'email' and 'url'.   
     $group->password("password2")->label(t("Confirm password"))->id("g-password2")
       ->error_messages("matches", t("The passwords you entered do not match"))
       ->matches($group->password);
@@ -339,12 +453,28 @@ class Admin_Users_Controller extends Admin_Controller {
     $group->input("url")->label(t("URL"))->id("g-url")->value($user->url)
       ->error_messages("url", t("You must enter a valid URL"));
     self::_add_locale_dropdown($group, $user);
+ * 
+ */
+    
+/** CutGallery - Disable following code becasue only admin can see 'Admin' checkbox in edit user form.
     $group->checkbox("admin")->label(t("Admin"))->id("g-admin")->checked($user->admin);
 
     // Don't allow the user to control their own admin bit, else you can lock yourself out
     if ($user->id == identity::active_user()->id) {
       $group->admin->disabled(1);
     }
+ * 
+ */
+    // CutGalley - Only admin can see 'Admin' checkbox in edit user form. ==>
+    if ((strcmp($user->name, "admin") == 0)) {
+        $group->checkbox("admin")->label(t("Admin"))->id("g-admin")->checked($user->admin);
+        
+        // Don't allow the user to control their own admin bit, else you can lock yourself out
+        if ($user->id == identity::active_user()->id) {
+            $group->admin->disabled(1);
+        }
+    }
+    // <==
 
     module::event("user_edit_form_admin", $user, $form);
     $group->submit("")->value(t("Modify user"));
@@ -358,19 +488,23 @@ class Admin_Users_Controller extends Admin_Controller {
       ->error_messages("required", t("A name is required"))
       ->error_messages("length", t("This name is too long"))
       ->error_messages("conflict", t("There is already a user with that username"));
+/** CutGallery - Disable 'Full Name'.   
     $group->input("full_name")->label(t("Full name"))->id("g-fullname")
       ->error_messages("length", t("This name is too long"));
+ * 
+ */
     $group->password("password")->label(t("Password"))->id("g-password")
       ->error_messages("min_length", t("This password is too short"));
     $group->script("")
       ->text(
         '$("form").ready(function(){$(\'input[name="password"]\').user_password_strength();});');
+    // CutGallery - Add 'Comments'. ==>
+    $group->textarea("comments")->label(t("Comments"))->id("g-comments");
+    // <==
+/** CutGallery - Disable 'password2', 'comments
     $group->password("password2")->label(t("Confirm password"))->id("g-password2")
       ->error_messages("matches", t("The passwords you entered do not match"))
       ->matches($group->password);
-    // CutGallery - ADDED comments Field ==>
-    $group->textarea("comments")->label(t("Comments"))->id("g-comment");    
-    // <==
     $group->input("email")->label(t("Email"))->id("g-email")
       ->error_messages("required", t("You must enter a valid email address"))
       ->error_messages("length", t("This email address is too long"))
@@ -379,6 +513,8 @@ class Admin_Users_Controller extends Admin_Controller {
       ->error_messages("url", t("You must enter a valid URL"));
     self::_add_locale_dropdown($group);
     $group->checkbox("admin")->label(t("Admin"))->id("g-admin");
+ * 
+ */
 
     module::event("user_add_form_admin", $user, $form);
     $group->submit("")->value(t("Add user"));
@@ -441,5 +577,13 @@ class Admin_Users_Controller extends Admin_Controller {
       t("Are you sure you want to delete group %group_name?", array("group_name" => $group->name)));
     $form_group->submit("")->value(t("Delete"));
     return $form;
+  }
+  
+  private function _add_user_to_group_automatically($user_id, $group_id) {
+    access::verify_csrf();
+    $group = group::lookup($group_id);
+    $user = user::lookup($user_id);
+    $group->add($user);
+    $group->save();
   }
 }

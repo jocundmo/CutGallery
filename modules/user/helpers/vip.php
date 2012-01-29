@@ -18,20 +18,35 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-class user_event_Core {
-  static function admin_menu($menu, $theme) {
-      $menu->append(Menu::factory("link")
-                     ->id("users_groups")
-                     ->label(t("Users"))
-                     ->url(url::site("admin/users")));
-/** CutGallery - Disable 'Group'
-    $menu->add_after("appearance_menu", Menu::factory("link")
-                     ->id("users_groups")
-                     ->label(t("Users/Groups"))
-                     ->url(url::site("admin/users")));
- * 
+/**
+ * CutGallery - 
+ * This is the API for handling vip users.
+ *
+ * Note: by design, this class does not do any permission checking.
  */
 
-    return $menu;
-  }
+/**
+ * Query 'users' table for all the VIP users who have '_VIP' as suffix.
+ */
+class vip_Core {
+    static function lookup_vip_users() {
+        $vip_users = array();
+        $users = array();
+        
+        $users = db::build()
+                ->select("name")
+                ->from("users")
+                ->where("name", "!=", "guest")
+                ->and_where("admin", "!=", "1")
+                ->execute()->as_array(TRUE);
+        
+        foreach ($users as $user){
+            $suffix = substr($user[name], strlen($user[name]) - 4);
+            if (strcmp($suffix, "_VIP") == 0) {
+                array_push($vip_users, $user[name]);
+            }
+        }
+        
+        return $vip_users;
+    }
 }
