@@ -126,7 +126,9 @@
             </td>
             -->
             <td>
-              <?= db::build()->from("items")->where("owner_id", "=", $user->id)->count_records() ?>
+              <? $albums = db::build()->from("items")->where("owner_id", "=", $user->id)->and_where("type", "=", "album")->count_records() ?>
+              <? $photos = db::build()->from("items")->where("owner_id", "=", $user->id)->and_where("type", "=", "photo")->count_records() ?>
+              <?= $albums.'/'.$photos ?>
             </td>
             <!-- CutGallery - Add 'Comments' ==> -->
             <td>

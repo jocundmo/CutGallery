@@ -84,11 +84,7 @@ class Admin_Users_Controller extends Admin_Controller {
       $valid = $form->validate();
       $guest_user->name = $form->add_user->inputs["name"]->value;
       $guest_user->full_name = $form->add_user->inputs["name"]->value;
-      $guest_password = $guest_user->name;
-      
-      if (strlen($guest_password) < 5) {
-          $guest_password = $guest_password."_ilovesmile";
-      }
+      $guest_password = "default";
       $guest_user->password = $guest_password;
       $guest_user->email = "CuGallery@CutGallery.com";
       $guest_user->admin = false;
@@ -241,7 +237,10 @@ class Admin_Users_Controller extends Admin_Controller {
     $form = $this->_get_user_edit_form_admin($user);
     try {
       $valid = $form->validate();
+/** CutGallery - Cannot edit user name.
       $user->name = $form->edit_user->inputs["name"]->value;
+ * 
+ */
 /** CutGallery - Disable 'Full Name'     
       $user->full_name = $form->edit_user->full_name->value;
  * 
@@ -425,10 +424,13 @@ class Admin_Users_Controller extends Admin_Controller {
     $form = new Forge(
       "admin/users/edit_user/$user->id", "", "post", array("id" => "g-edit-user-form"));
     $group = $form->group("edit_user")->label(t("Edit user"));
-    $group->input("name")->label(t("Username"))->id("g-username")->value($user->name)
+    $group->input("name")->label(t("Username"))->id("g-username")->value($user->name)->disabled(1);
+/** CutGallery - Cannot edit user name.        
       ->error_messages("required", t("A name is required"))
       ->error_messages("conflict", t("There is already a user with that username"))
       ->error_messages("length", t("This name is too long"));
+ * 
+ */
 /** CutGallery - Disable 'Full Name'
     $group->input("full_name")->label(t("Full name"))->id("g-fullname")->value($user->full_name)
       ->error_messages("length", t("This name is too long"));
