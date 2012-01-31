@@ -54,6 +54,7 @@ $(function(){
 </div>
 <ul id="g-album-grid" class="ui-helper-clearfix <?= ($theme->item->level < 2) ? "album_container" : "photo_container"?>">
 <? if (count($children)): ?>
+  <? $index = 0; ?>
   <? foreach ($children as $i => $child): ?>
     <? $item_class = "g-photo"; ?>
     <? if ($child->is_album()): ?>
@@ -78,7 +79,13 @@ $(function(){
       <?= $theme->thumb_info($child) ?>
     </ul>
   </li>
+  <? $index++; ?>
   <? endforeach ?>
+  <? if ($theme->item->level > 1):?>
+      <? for (;$index < 20; $index++): ?>
+        <li class="g-item g-photo"></li>
+      <? endfor ?>
+  <? endif ?>
 <? else: ?>
 <!--  <? // if ($user->admin || access::can("add", $item)): ?>
   <? //$addurl = url::site("uploader/index/$item->id") ?>

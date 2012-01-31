@@ -19,7 +19,7 @@
  **********************************************************************/
 
 body, html {
-  background-color: #000;
+  /*background-color: #000;*/
   font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -459,7 +459,7 @@ td {
   position: relative;
   z-index: 1;*/
   /* background-color: pink; */
-  width: 300px;
+ 
   float: left;
 /*  position: relative;
   left: 1em;*/
@@ -468,7 +468,7 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-  /* background-color: pink; */
+   background-color: pink; 
   width: 100%;
   float: left;
 /*  position: relative;
@@ -480,9 +480,12 @@ td {
   padding: .36em 8px;
   position: relative;
   text-align: center;
-  background-color: grey;
-  width: 154px; /* CutGallery - g-photo width*/
+  background-color: grey;  
   z-index: 1;
+}
+ul .g-photo{
+    height: 154px;
+    width: 154px; /* CutGallery - g-photo width*/
 }
 /* CutGallery - ADDED start */
 .g-album{
@@ -1052,8 +1055,6 @@ div#g-action-status {
   padding: .2em 0;
   margin: 0 auto;
   /*position: absolute;/* CutGallery - MODIFIED */
-  position: absolute;
-  top: 30em;
   clear: both;
 }
 

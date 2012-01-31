@@ -439,7 +439,7 @@ class module_Core {
   static function get_var($module_name, $name, $default_value=null) {
     // We cache vars so we can load them all at once for performance.
     if (empty(self::$var_cache)) {
-      //Cache::instance()->delete_all(); // CutGallery - MUST REMOVE
+      //Cache::instance()->delete_all(); // CutGallery - clearcache MUST REMOVE
       self::$var_cache = Cache::instance()->get("var_cache");
       if (empty(self::$var_cache)) {
         // Cache doesn't exist, create it now.

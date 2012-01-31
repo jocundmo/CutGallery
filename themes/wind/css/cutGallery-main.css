@@ -1,14 +1,27 @@
 html {
 color: #fff;
 margin: 0;
+background: transparent url('../images/main-bg.png') repeat;
 }
 
+#mainHead{
+    width: 1024px;
+    margin: 0 auto;
+    background-color: #000;
+        border-bottom-width: 2px;
+border-bottom-style: solid;
+border-bottom-color: #AAA;
+}
+
+.div-clear{
+    clear: both;
+}
 #logo {
 width: 300px;
-height: 100px;
+height: 85px;
 background: transparent url('../images/site-logo.png') no-repeat;
 /* background-color: yellow !important; */
-color: blue;
+/*color: blue;*/
 float: left;
 }
 #mainInfo {
@@ -23,15 +36,15 @@ float: left;
     list-style: none;
 }
 #mainContent {
-    clear: both;
-    width: 80%;
-    height: 520px;
-    /* background-color: lightgrey; */
+    clear: left;
+    width: 1024px;
+/*    height: 520px;*/
+    background-color: #000;
     margin: 0 auto;
 }
 #mainNav {
-    color: blue;
-    background-color: white;
+/*    color: blue;*/
+/*    background-color: white;*/
     top: 50px;
     float: right;
     clear: right;
@@ -73,19 +86,21 @@ float: left;
     padding-top: 7px;
 }
 #footer {
-    border-top-width: 1px;
+    border-top-width: 2px;
 border-top-style: solid;
 border-top-color: #AAA;
-   position:fixed;
+   position: relative;
    left:0px;
    bottom:0px;
    height:30px;
-   width:100%;
+   width:1024px;
+   margin: 0 auto;
+   background-color: black;
    /* background: aqua; */
 }
 #about_content{
     margin: 0 auto;
-    /* background-color: grey; */
+/*    background-color: grey; */
 }
 
 /**/
@@ -128,24 +143,27 @@ border-top-color: #AAA;
 }
 /* Album panel ~~~~~~~~~~~~~~~~~~~~CutGallery - ADDED*/
 #g-item-panel{
-    height: 460px;
-    width: 630px;
+    width: 620px;
     /* background-color: yellowgreen; */
-    position: absolute;
+/*    position: absolute;
     margin: 10px;
-    right: 0px;
+    right: 0px;*/
+
+float: right;
 }
 .album_panel_parent{
     display: none; /* When page loaded, by default none is shown until the cursor move on */
+    height: 500px;
 }
 #g-item-panel ul .album_cover{
     background: transparent url('../images/album-cover-bg.png') no-repeat center;
     /*background-color: blueviolet; */
     width: 100%;
-    height: 360px;
+    height: 374px;
+    text-align: left;
 }
 #g-item-panel ul .album_cover img{
-    position: absolute;
+    position: relative;
     top: 24px;
     left: 80px;
 }
@@ -155,14 +173,14 @@ border-top-color: #AAA;
     height: 20px;
 }
 #g-item-panel .album_prop span{
-    padding-right: 10px;
+    padding-right: 5px;
     color: grey;
     font-weight: bold;
     /* background-color: gray; */
 }
 #g-item-panel .album_prop ul{
     float: right;
-    padding-left: 10px;
+    padding-left: 5px;
     margin-right: 5px;
 }
 #g-item-panel .album_prop ul li a{
@@ -174,12 +192,15 @@ border-top-color: #AAA;
 }
 .album_comments {
     background: transparent url("../images/album-comments-bg.png") no-repeat;
-    /* background-color: paleturquoise; */
-    height: 100px;
+    background-color: paleturquoise;
+    position: absolute;
+    right: 4px;
+    height: 96px;
+    width: 590px;
 }
 .album_comments span {
    display: block;
-   padding-top: 30px;
+   padding-top: 20px;
 }
 
 #g-add-items {

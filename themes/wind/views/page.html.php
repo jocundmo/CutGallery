@@ -66,7 +66,6 @@
     <?= $theme->css("themeroller/ui.base.css") ?>
     <?= $theme->css("screen.css") ?>
     <?= $theme->css("cutGallery-main.css") ?>
-
     <? if (locales::is_rtl()): ?>
     <?= $theme->css("screen-rtl.css") ?>
     <? endif; ?>
@@ -90,41 +89,40 @@
 </head> -->
 <body> 
     
+<div id="mainHead">
+    <div id="logo">
+        <a href="<?= url::site() ?>">LOGO</a>
+    </div>
 
-<div id="logo">
-    <a href="<?= url::site() ?>">LOGO</a>
+    <div id="mainInfo">
+        <ul>
+            <? if (identity::active_user()->admin): ?>
+                <li id="admin"><a href="<?= url::site("admin/home") ?>">admin</a></li>
+            <? endif ?>
+            <li><?= $theme->user_menu() ?></li>
+        </ul>
+    </div>
+
+    <div id="mainNav">
+        <ul>
+            <li id="gallery"><a href="<?= url::site("albums")?>">Gallery</a></li>
+            <li id="intro"><a href="<?= url::site("about") ?>">About us</a></li>
+            <li id="contactus"><a href="<?= url::site("contact") ?>">Contact us</a></li>
+        </ul>
+    </div>
+    <div class="div-clear"></div>
 </div>
 
-<div id="mainInfo">
-    <ul>
-        <li><?= $theme->user_menu() ?></li>
-        <? if (identity::active_user()->admin): ?>
-            <li><a href="<?= url::site("admin/home") ?>">admin</a></li>
-        <? endif ?>
-    </ul>
+<div id="mainContent">
+    <div id="g-content" class="yui-g">
+      <?= $theme->messages() ?>
+      <?= $content ?>
+      <?= $theme->messages() ?>
+    </div>
 </div>
 
-<div id="mainNav">
-    <ul>
-        <li id="gallery"><a href="<?= url::site("albums")?>">Gallery</a></li>
-        <li id="intro"><a href="<?= url::site("about") ?>">About us</a></li>
-        <li id="contactus"><a href="<?= url::site("contact") ?>">Contact us</a></li>
-    </ul>
-</div
-<div id="bd">
-        <div id="yui-main">
-          <div class="yui-b">
-            <div id="mainContent">
-                <div id="g-content" class="yui-g">
-                  <?= $theme->messages() ?>
-                  <?= $content ?>
-                  <?= $theme->messages() ?>
-                </div>
-            </div>
-          </div>
-        </div>
 <div id="footer">
-    <p class="small"> 
+    <p> 
         Copyright
     </p> 
 </div>
