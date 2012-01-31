@@ -1,7 +1,7 @@
 html {
-color: #fff;
+background: #000 url('../images/main-bg.png') repeat;
+color: grey;
 margin: 0;
-background: transparent url('../images/main-bg.png') repeat;
 }
 
 #mainHead{
@@ -201,7 +201,6 @@ float: right;
 }
 
 #g-add-items {
-    background-color: yellow;
     width: 12em;
     height: 2em;
 }

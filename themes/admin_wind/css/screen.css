@@ -21,7 +21,7 @@
  **********************************************************************/
 
 body, html {
-  background-color: #ccc;
+/*  background-color: #000;*/
   font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -148,7 +148,7 @@ textarea {
 }
 
 textarea {
-  height: 12em;
+  height: 6em;
   width: 97%;
 }
 
@@ -335,9 +335,9 @@ th {
 
 .g-block,
 #g-content #g-admin-dashboard .g-block {
-  background-color: #fff;
+  background-color: #000;
   border: 1px solid #ccc;
-  padding: 1em;
+
 }
 
 .g-block h2 {
@@ -455,28 +455,30 @@ th {
 
 /* View container ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-.g-view {
-  background-color: #fff;
-  border: 1px solid #ccc;
+body .g-view {
+/*  background-color: pink;*/
+/*  border: 1px solid #ccc;*/
   border-bottom: none;
-  min-width: 974px !important;
+  text-align: left;
+/*  min-width: 974px !important;*/
+  width: 1024px;
+  margin: auto !important;
 }
 
 /* Layout containers ~~~~~~~~~~~~~~~~~~~~~ */
 
 #g-header {
-  background-color: #e8e8e8;
-  border-bottom: 1px solid #ccc;
+  background-color: #000;
+/*  border-bottom: 1px solid #ccc;*/
   font-size: .8em;
   margin-bottom: 20px;
-  padding: 0 20px;
   position: relative;
+  width: 1024px;
+  margin: 0 auto;
 }
 
 #g-content {
   font-size: 1.1em;
-  padding: 0 2em;
-  width: 96%;
 }
 
 #g-sidebar {
@@ -750,14 +752,14 @@ form .g-error {
   background-color: #c5dbec;
   font-weight: bold;
 }
-
-.g-draggable {
+/* CutGallery - Remove the dash for draggable item */
+/*.g-draggable {
   cursor: move;
 }
 
 .g-draggable:hover {
   border: 1px dashed #000;
-}
+}*/
 
 .ui-sortable .g-target,
 .ui-state-highlight {
@@ -815,8 +817,6 @@ form .g-error {
 #g-site-admin-menu {
   bottom: 0;
   font-size: 1.2em;
-  left: 140px;
-  position: absolute;
 }
 
 #g-site-admin-menu ul {
@@ -832,6 +832,8 @@ form .g-error {
 .g-block {
   clear: both;
   margin-bottom: 2.5em;
+  width: 1024px;
+  margin: 0 auto;
 }
 
 .g-block-content {

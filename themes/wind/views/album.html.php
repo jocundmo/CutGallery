@@ -83,7 +83,7 @@ $(function(){
   <? endforeach ?>
   <? if ($theme->item->level > 1):?>
       <? for (;$index < 20; $index++): ?>
-        <li class="g-item g-photo"></li>
+      <li class="g-item g-photo"></li>
       <? endfor ?>
   <? endif ?>
 <? else: ?>
