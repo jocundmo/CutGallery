@@ -28,9 +28,18 @@
 
 <ul class="g-paginator ui-helper-clearfix">
   <li class="g-back">
+      <? if ($page_type == "collection"): ?>
+        <? if (isset($item) && $item->level > 1): ?>
+          <? $class_seek_back = "ui-icon-seek-back-level-2" ?>
+        <? else: ?>
+          <? $class_seek_back = "ui-icon-seek-back-level-1" ?>
+        <? endif ?>
+      <? elseif ($page_type == "item"): ?>
+        <? $class_seek_back = "ui-icon-seek-back" ?>
+      <? endif ?>
     <? if (isset($item) && $item->level > 1): ?>
       <a href ="<?= $back_page_url ?>" class="g-button ui-corner-all">
-          <span class="ui-icon-2 ui-icon-seek-back"></span></a> <!-- CutGallery - ADDED -->
+          <span class="ui-icon-2 <?=$class_seek_back?>"></span></a> <!-- CutGallery - ADDED -->
     <? endif ?>
   </li>
   

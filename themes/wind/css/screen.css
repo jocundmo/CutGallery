@@ -581,18 +581,7 @@ ul .g-photo{
     margin: 0 auto;
     width: 238px;
 }
-.ui-icon-seek-share{
-    color: black;
-    font-size: 8px;
-    padding-top: 5px;
-}
-.ui-icon-paginator-info-level-1{
-    display: block;
-    color: lightgrey;
-    margin-top: 3px;
-    background-color: #3D3D3D;
-    height: 20px;
-}
+
 #g-item #g-photo,
 #g-item #g-movie {
   position: relative;
@@ -1108,6 +1097,28 @@ div#g-action-status {
   text-align: center;
 }
 
+.ui-icon-seek-share{
+    color: black;
+    font-size: 8px;
+    padding-top: 5px;
+}
+.ui-icon-paginator-info-level-1{
+    display: block;
+    color: lightgrey;
+    margin-top: 3px;
+    width: 60px;
+    background-color: #3D3D3D;
+    height: 20px;
+}
+
+.ui-icon-paginator-info-level-2{
+    display: block;
+    color: lightgrey;
+    margin-top: 2px;
+    width: 80px;
+    background-color: #3D3D3D;
+    height: 20px;
+}
 /* Dialogs and panels ~~~~~~~~~~~~~~~~~~ */
 
 #g-dialog {
