@@ -36,34 +36,54 @@
   
   <li class="g-first">
   <? if ($page_type == "collection"): ?>
-    <? if (isset($first_page_url)): ?>
-      <a href="<?= $first_page_url ?>" class="g-button ui-icon-left ui-corner-all">
-        <span class="ui-icon ui-icon-seek-first"></span><?= t("First") ?></a>
+    <? if (isset($item) && $item->level > 1): ?>
+      <? $class_next = "ui-icon-seek-prev-level-2" ?>
     <? else: ?>
-      <a class="g-button ui-icon-left ui-state-disabled ui-corner-all">
-        <span class="ui-icon ui-icon-seek-first"></span><?= t("First") ?></a>
+      <? $class_next = "ui-icon-seek-prev-level-1" ?>
+    <? endif ?>
+  <? elseif ($page_type == "item"): ?>
+    <? $class_next = "ui-icon-seek-prev" ?>
+  <? endif ?>
+  <? if ($page_type == "collection"): ?>
+    <? if (isset($first_page_url)): ?>
+<!--      <a href="<?= $first_page_url ?>" class="g-button ui-icon-left ui-corner-all">
+        <span class="ui-icon ui-icon-seek-first"></span><?= t("First") ?></a>-->
+    <? else: ?>
+<!--      <a class="g-button ui-icon-left ui-state-disabled ui-corner-all">
+        <span class="ui-icon ui-icon-seek-first"></span><?= t("First") ?></a>-->
     <? endif ?>
   <? endif ?>
   <? if (isset($previous_page_url)): ?>
     <a href="<?= $previous_page_url ?>" class="g-button ui-icon-left ui-corner-all">
-      <span class="ui-icon-2 ui-icon-seek-prev"></span></a> <!-- CutGallery - REMOVE text -->
+      <span class="ui-icon-2 <?=$class_next?>"></span></a> <!-- CutGallery - REMOVE text -->
       
   <? else: ?>
     <a class="g-button ui-icon-left ui-state-disabled ui-corner-all">
-      <span class="ui-icon-2 ui-icon-seek-prev"></span></a> <!-- CutGallery - REMOVE text -->
+      <span class="ui-icon-2 <?=$class_next?>"></span></a> <!-- CutGallery - REMOVE text -->
   <? endif ?>
   </li>
 
   <li class="g-info">
+      <? if ($page_type == "collection"): ?>
+        <? if (isset($item) && $item->level > 1): ?>
+          <? $class_paginator_info = "ui-icon-paginator-info-level-2" ?>
+        <? else: ?>
+          <? $class_paginator_info = "ui-icon-paginator-info-level-1" ?>
+        <? endif ?>
+      <? elseif ($page_type == "item"): ?>
+        <? $class_paginator_info = "ui-icon-paginator-info" ?>
+      <? endif ?>
+      
     <? if ($total): ?>
       <? if ($page_type == "collection"): ?>
+      <span class="ui-corner-all <?=$class_paginator_info?>">
         <?= /* @todo This message isn't easily localizable */
             t2("Item %from_number of %count",
-               "Items %from_number - %to_number of %count",
+               "%from_number-%to_number/%count",
                $total,
                array("from_number" => $first_visible_position,
                      "to_number" => $last_visible_position,
-                     "count" => $total)) ?>
+                     "count" => $total)) ?></span>
       <? else: ?>
         <?= t("%position/%total", array("position" => $position, "total" => $total)) ?>
       <? endif ?>
@@ -73,21 +93,31 @@
   </li>
 
   <li class="g-text-right">
+      <? if ($page_type == "collection"): ?>
+        <? if (isset($item) && $item->level > 1): ?>
+          <? $class_next = "ui-icon-seek-next-level-2" ?>
+        <? else: ?>
+          <? $class_next = "ui-icon-seek-next-level-1" ?>
+        <? endif ?>
+      <? elseif ($page_type == "item"): ?>
+        <? $class_next = "ui-icon-seek-next" ?>
+      <? endif ?>
   <? if (isset($next_page_url)): ?>
+      
     <a href="<?= $next_page_url ?>" class="g-button ui-icon-right ui-corner-all">  
-      <span class="ui-icon-2 ui-icon-seek-next"></span></a> <!--CutGallery - REMOVE-->
+      <span class="ui-icon-2 <?=$class_next?>"></span></a> <!--CutGallery - REMOVE-->
   <? else: ?>
     <a class="g-button ui-state-disabled ui-icon-right ui-corner-all">
-      <span class="ui-icon-2 ui-icon-seek-next"></span></a> <!--CutGallery - REMOVE-->
+      <span class="ui-icon-2 <?=$class_next?>"></span></a> <!--CutGallery - REMOVE-->
   <? endif ?>
 
   <? if ($page_type == "collection"): ?>
     <? if (isset($last_page_url)): ?>
-      <a href="<?= $last_page_url ?>" class="g-button ui-icon-right ui-corner-all">
-        <span class="ui-icon ui-icon-seek-end"></span><?= t("Last") ?></a>
+<!--      <a href="<?= $last_page_url ?>" class="g-button ui-icon-right ui-corner-all">
+        <span class="ui-icon ui-icon-seek-end"></span><?= t("Last") ?></a>-->
     <? else: ?>
-      <a class="g-button ui-state-disabled ui-icon-right ui-corner-all">
-        <span class="ui-icon ui-icon-seek-end"></span><?= t("Last") ?></a>
+<!--      <a class="g-button ui-state-disabled ui-icon-right ui-corner-all">
+        <span class="ui-icon ui-icon-seek-end"></span><?= t("Last") ?></a>-->
     <? endif ?>
   <? endif ?>
   </li>

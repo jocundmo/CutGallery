@@ -123,9 +123,10 @@
         <? endif ?>
       </div>-->
     </div>
+    
     <div id="footer">
         <p> 
-            Copyright
+            Copyright reserved
         </p> 
     </div>
     <?= $theme->admin_page_bottom() ?>

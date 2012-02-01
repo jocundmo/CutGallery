@@ -187,8 +187,11 @@
 .ui-icon-seek-back { background-position: 0px 0px; }
 .ui-icon-seek-next { background-position: -50px 0px;  }
 .ui-icon-seek-prev { background-position: -25px 0px; }
-.ui-icon-seek-share{ background-position: 25px 25px;} /* Share temporary no background image */
+.ui-icon-seek-share { background-position: 25px 25px;} /* Share temporary no background image */
 .ui-icon-seek-download { background-position: -75px 0px; }
+.ui-icon-seek-next-level-1 { background-position: -26px -26px; }
+.ui-icon-seek-prev-level-1 { background-position: 0px -26px; }
+/*.ui-icon-paginator-info-level-1 { background-position: -51px -26px; }*/
 /* <== */
 .ui-icon-seek-end { background-position: -64px -160px; }
 .ui-icon-seek-first { background-position: -80px -160px; }

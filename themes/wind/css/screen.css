@@ -586,6 +586,13 @@ ul .g-photo{
     font-size: 8px;
     padding-top: 5px;
 }
+.ui-icon-paginator-info-level-1{
+    display: block;
+    color: lightgrey;
+    margin-top: 3px;
+    background-color: #3D3D3D;
+    height: 20px;
+}
 #g-item #g-photo,
 #g-item #g-movie {
   position: relative;
@@ -1083,7 +1090,7 @@ div#g-action-status {
 /* Pagination ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .g-paginator {
-  padding: .2em 0;
+
   margin: 0 auto;
   /*position: absolute;/* CutGallery - MODIFIED */
   clear: both;
@@ -1091,12 +1098,13 @@ div#g-action-status {
 
 .g-paginator li {
   float: left;
-  /* background-color: blue; */
+/*  background-color: blue;*/
 }
 
 .g-paginator .g-info {
   /* CutGallery - MODIFIED */
-  /* background-color: blueviolet; */
+/*  background-color: blueviolet;*/
+  padding-top: 3px;
   text-align: center;
 }
 
