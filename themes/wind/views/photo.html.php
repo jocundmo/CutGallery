@@ -29,8 +29,8 @@
   <?= $theme->photo_top() ?>
 
   
-
-  <div id="g-photo">
+  <div id="g-photo-top-decoration"></div>
+  <div id="g-photo"><div id="g-photo-decoration">
     <?= $theme->resize_top($item) ?>
     <? if (access::can("view_full", $item)): ?>
     <a href="<?= $item->file_url() ?>" class="g-fullsize-link" title="<?= t("View full size")->for_html_attr() ?>">
@@ -39,9 +39,10 @@
       <? if (access::can("view_full", $item)): ?>
     </a>
     <? endif ?>
-    <?= $theme->resize_bottom($item) ?>
+    <?= $theme->resize_bottom($item) ?></div>
   </div>
-<?= $theme->paginator() ?>
+  <div id="g-photo-bottom-decoration"><?= $theme->paginator() ?></div>
+
   <div id="g-info">
     <h1><?= html::purify($item->title) ?></h1>
     <div><?= nl2br(html::purify($item->description)) ?></div>

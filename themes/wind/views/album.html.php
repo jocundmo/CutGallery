@@ -23,9 +23,19 @@ function showItemCover(v){
     document.getElementById('g-item-panel-'+v).style.display='block';
     //document.getElementById('<?//='g-item-panel-'.$child->id?>').style.display='none'
 }
-function showDefaultCover(){
-    clearItemCovers();
-    document.getElementById('g-item-panel-default').style.display='block';
+function showDefaultCover(){ // default is the first one
+    var selectionsContainer = document.getElementById("g-item-panel");
+    var selections = selectionsContainer.getElementsByTagName("ul")
+    //var selections = document.getElementsByName('g-item-panel-name');
+    //alert(selections.length)
+
+    for (var i=0;i<selections.length;i++){
+        if (selections[i].id != ''){
+        selections[i].style.display='block';
+        //alert(selections[i].id)
+        break;
+        }
+    }
 }
 $(function(){
     clearItemCovers();
@@ -82,7 +92,7 @@ $(function(){
   <? $index++; ?>
   <? endforeach ?>
   <? if ($theme->item->level > 1):?>
-      <? for (;$index < 20; $index++): ?>
+      <? for (;$index < 25; $index++): ?>
       <li class="g-item g-photo"></li>
       <? endfor ?>
   <? endif ?>
@@ -101,7 +111,7 @@ $(function(){
 <? if ($theme->item->level < 2): ?>
 <!-- CutGallery - ADDED -->
 <div id="g-item-panel">    
-       <ul id="g-item-panel-default" class="album_panel_parent">
+<!--       <ul id="g-item-panel-default" class="album_panel_parent">
             <li id="g-item-cover-default" class="album_cover">
                 <div>
                     <?//= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?>
@@ -113,7 +123,7 @@ $(function(){
             <li id="g-item-comments-default" class="album_comments">
                 <span class="g-description"></span>
             </li>
-        </ul>
+        </ul>-->
        <? if (count($children)): ?>
           <? foreach ($children as $i => $child): ?>
                 <ul id="g-item-panel-<?= $child->id ?>" class="album_panel_parent">

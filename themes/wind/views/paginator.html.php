@@ -29,14 +29,15 @@
 <ul class="g-paginator ui-helper-clearfix">
   <li class="g-back">
     <? if (isset($item) && $item->level > 1): ?>
-      <a href ="<?= $back_page_url ?>" class="g-button ui-corner-all">Back</a> <!-- CutGallery - ADDED -->
+      <a href ="<?= $back_page_url ?>" class="g-button ui-corner-all">
+          <span class="ui-icon-2 ui-icon-seek-back"></span></a> <!-- CutGallery - ADDED -->
     <? endif ?>
   </li>
   
   <li class="g-first">
   <? if ($page_type == "collection"): ?>
     <? if (isset($first_page_url)): ?>
-      <a href="<?= $first_page_url ?>" class="g-button ui-icon-left ui-state-default ui-corner-all">
+      <a href="<?= $first_page_url ?>" class="g-button ui-icon-left ui-corner-all">
         <span class="ui-icon ui-icon-seek-first"></span><?= t("First") ?></a>
     <? else: ?>
       <a class="g-button ui-icon-left ui-state-disabled ui-corner-all">
@@ -44,11 +45,12 @@
     <? endif ?>
   <? endif ?>
   <? if (isset($previous_page_url)): ?>
-    <a href="<?= $previous_page_url ?>" class="g-button ui-icon-left ui-state-default ui-corner-all">
-      <span class="ui-icon ui-icon-seek-prev"></span></a> <!-- CutGallery - REMOVE text -->
+    <a href="<?= $previous_page_url ?>" class="g-button ui-icon-left ui-corner-all">
+      <span class="ui-icon-2 ui-icon-seek-prev"></span></a> <!-- CutGallery - REMOVE text -->
+      
   <? else: ?>
     <a class="g-button ui-icon-left ui-state-disabled ui-corner-all">
-      <span class="ui-icon ui-icon-seek-prev"></span></a> <!-- CutGallery - REMOVE text -->
+      <span class="ui-icon-2 ui-icon-seek-prev"></span></a> <!-- CutGallery - REMOVE text -->
   <? endif ?>
   </li>
 
@@ -63,7 +65,7 @@
                      "to_number" => $last_visible_position,
                      "count" => $total)) ?>
       <? else: ?>
-        <?= t("%position of %total", array("position" => $position, "total" => $total)) ?>
+        <?= t("%position/%total", array("position" => $position, "total" => $total)) ?>
       <? endif ?>
     <? else: ?>
       <?= t("No items") ?>
@@ -72,16 +74,16 @@
 
   <li class="g-text-right">
   <? if (isset($next_page_url)): ?>
-    <a href="<?= $next_page_url ?>" class="g-button ui-icon-right ui-state-default ui-corner-all">  
-      <span class="ui-icon ui-icon-seek-next"></span></a> <!--CutGallery - REMOVE-->
+    <a href="<?= $next_page_url ?>" class="g-button ui-icon-right ui-corner-all">  
+      <span class="ui-icon-2 ui-icon-seek-next"></span></a> <!--CutGallery - REMOVE-->
   <? else: ?>
     <a class="g-button ui-state-disabled ui-icon-right ui-corner-all">
-      <span class="ui-icon ui-icon-seek-next"></span></a> <!--CutGallery - REMOVE-->
+      <span class="ui-icon-2 ui-icon-seek-next"></span></a> <!--CutGallery - REMOVE-->
   <? endif ?>
 
   <? if ($page_type == "collection"): ?>
     <? if (isset($last_page_url)): ?>
-      <a href="<?= $last_page_url ?>" class="g-button ui-icon-right ui-state-default ui-corner-all">
+      <a href="<?= $last_page_url ?>" class="g-button ui-icon-right ui-corner-all">
         <span class="ui-icon ui-icon-seek-end"></span><?= t("Last") ?></a>
     <? else: ?>
       <a class="g-button ui-state-disabled ui-icon-right ui-corner-all">
@@ -91,10 +93,13 @@
   </li>
   <? if ($page_subtype == "photo"): ?>
   <li class="g-share">
-      <a href ="<?= $share_url ?>" class="g-button ui-corner-all">Share</a>
+      <a href ="<?= $share_url ?>" class="g-button ui-corner-all">
+          <span class="ui-icon-2 ui-icon-seek-share">Share</span></a>
   </li>
+  
   <li class="g-download-full">
-      <a href ="<?= $download_full_url ?>" class="g-button ui-corner-all">Download</a>
+      <a href ="<?= $download_full_url ?>" class="g-button ui-corner-all">
+          <span class="ui-icon-2 ui-icon-seek-download"></span></a>
   </li>
   <? endif ?>
 </ul>

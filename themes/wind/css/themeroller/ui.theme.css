@@ -40,6 +40,8 @@
 
 /* states and images */
 .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_469bdd_256x240.png); }
+.ui-icon-2 { display: block; width: 25px; height: 25px; background-image: url(images/ui-icons-normal.png); } /* CutGallery - Customized icons */
+
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_469bdd_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_d8e7f3_256x240.png); }
 .ui-state-default .ui-icon { background-image: url(images/ui-icons_6da8d5_256x240.png); }
@@ -181,8 +183,13 @@
 .ui-icon-pin-s { background-position: -144px -144px; }
 .ui-icon-play { background-position: 0 -160px; }
 .ui-icon-pause { background-position: -16px -160px; }
-.ui-icon-seek-next { background-position: -32px -160px; }
-.ui-icon-seek-prev { background-position: -48px -160px; }
+/* CutGallery - Added & Modified ==>*/
+.ui-icon-seek-back { background-position: 0px 0px; }
+.ui-icon-seek-next { background-position: -50px 0px;  }
+.ui-icon-seek-prev { background-position: -25px 0px; }
+.ui-icon-seek-share{ background-position: 25px 25px;} /* Share temporary no background image */
+.ui-icon-seek-download { background-position: -75px 0px; }
+/* <== */
 .ui-icon-seek-end { background-position: -64px -160px; }
 .ui-icon-seek-first { background-position: -80px -160px; }
 .ui-icon-stop { background-position: -96px -160px; }

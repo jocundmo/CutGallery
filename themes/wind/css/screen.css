@@ -399,9 +399,10 @@ td {
 }
 
 #g-content {
-  padding-left: 20px;
+
   position: relative;
   width: 980px;
+  margin: 0 auto;
 }
 
 #g-sidebar {
@@ -469,8 +470,8 @@ td {
   position: relative;
   z-index: 1;*/
    background-color: pink; 
-  width: 100%;
-  float: left;
+
+
 /*  position: relative;
   left: 1em;*/
 }
@@ -485,7 +486,7 @@ td {
 }
 ul .g-photo{
     height: 154px;
-    width: 154px; /* CutGallery - g-photo width*/
+    width: 178px; /* CutGallery - g-photo width*/
 }
 /* CutGallery - ADDED start */
 .g-album{
@@ -559,10 +560,37 @@ ul .g-photo{
   width: 100%;
 }
 
+#g-photo-top-decoration{
+    height: 49px;
+    background: transparent url("../images/view-photo-top-bg.png") no-repeat;
+}
+#g-photo-decoration {
+    background-color: blue;
+    width: 680px;
+    margin: 0 auto;
+    background: transparent url("../images/view-photo-bg.png") repeat-y;
+}
+#g-photo-bottom-decoration{
+    height: 60px;
+    background: transparent url("../images/view-photo-bottom-bg.png") no-repeat;
+    margin: 0 auto;
+    width: 680px;
+}
+#g-photo-bottom-decoration ul{
+/*    background-color: grey;*/
+    margin: 0 auto;
+    width: 238px;
+}
+.ui-icon-seek-share{
+    color: black;
+    font-size: 8px;
+    padding-top: 5px;
+}
 #g-item #g-photo,
 #g-item #g-movie {
-  padding: .2em 0;
   position: relative;
+  margin: 0 auto;
+/*  background-color: yellow;*/
 }
 
 #g-item img.g-resize,
@@ -686,6 +714,9 @@ tr.g-error td.g-error,
 }
 
 .g-info {
+    font-size: 10px;
+    padding-top: 8px;
+    color: #000;
  /* background: #e8e8e8 url('../images/ico-info.png') no-repeat .4em 50%; //CutGallery - Remove the left padding for (Photos 1-6 of 7) */
 }
 

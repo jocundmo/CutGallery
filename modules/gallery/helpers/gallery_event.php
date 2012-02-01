@@ -479,11 +479,11 @@ class gallery_event_Core {
       ->append(Menu::factory("link")
               ->id("manage_aboutus_pic")
               ->label(t("Manage Aboutus Pic"))
-              ->url(url::site("admin/manage_aboutus_pic")))
-      ->append(Menu::factory("link")
-              ->id("user_profile")
-              ->label(t("Profile"))
-              ->url(url::site("admin/home"))); // <==*/
+              ->url(url::site("admin/manage_aboutus_pic")));
+//      ->append(Menu::factory("link")
+//              ->id("user_profile")
+//              ->label(t("Profile"))
+//              ->url(url::site("admin/home"))); // <==*/
 /** CutGallery - Disable 'Dashboard', 'Modules', 'Appearance', 'Maintenance'
  * Original code:
       $menu
