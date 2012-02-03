@@ -559,7 +559,7 @@ class Item_Model_Core extends ORM_MPTT {
    * @param boolean (optional) $center_vertically Center vertically (default: false)
    * @return string
    */
-  public function thumb_img($extra_attrs=array(), $max=null, $center_vertically=false) {
+  public function thumb_img($extra_attrs=array(), $max=null, $center_vertically=false, $forcedWidth=null, $forcedHeight=null) {
     list ($height, $width) = $this->scale_dimensions($max);
     if ($center_vertically && $max) {
       // The constant is divide by 2 to calculate the file and 10 to convert to em
@@ -591,6 +591,10 @@ class Item_Model_Core extends ORM_MPTT {
         }
     }
     // <==
+    if (isset($forcedWidth))
+        $width=$forcedWidth;
+    if (isset($forcedHeight))
+        $height=$forcedHeight;
     $attrs = array_merge($extra_attrs,
             array(
               "src" => $this->thumb_url(),

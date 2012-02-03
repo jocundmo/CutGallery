@@ -35,12 +35,21 @@
     <? if (access::can("view_full", $item)): ?>
     <a href="<?= $item->file_url() ?>" class="g-fullsize-link" title="<?= t("View full size")->for_html_attr() ?>">
       <? endif ?>
-      <?= $item->resize_img(array("id" => "g-item-id-{$item->id}", "class" => "g-resize ui-corner-all pic_shadow")) ?>
+      <?// here we show the thumb img first for user friendly, at behind, we load the resize img, when done, replace the resize with the fuzzy thumb image. ?>
+      <?= $item->thumb_img(array("id" => "g-item-id-{$item->id}", "class" => "g-resize ui-corner-all pic_shadow"),null,false,$item->resize_width,$item->resize_height) ?>
       <? if (access::can("view_full", $item)): ?>
     </a>
     <? endif ?>
     <?= $theme->resize_bottom($item) ?></div>
   </div>
+  <script language="JavaScript" type="text/javascript">
+	var img = new Image();
+	img.src = "<?= $item->resize_url(); ?>";
+	img.onload = function() {
+	document.getElementById("g-item-id-<?=$item->id?>").src = this.src;
+	}
+  </script>
+
   <div id="g-photo-bottom-decoration"><?= $theme->paginator() ?></div>
 
   <div id="g-info">

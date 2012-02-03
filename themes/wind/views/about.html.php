@@ -1,16 +1,16 @@
 <?php defined("SYSPATH") or die("No direct script access.") ?>
 <div id="about_content">
-<div id="SlidePlayer" style="width: 865px; height: 500px;"> 
-        <ul class="Slides" id="Slides" style="height: 500px;"> 
+<div id="SlidePlayer"> 
+        <ul class="Slides" id="Slides"> 
             
-                    <li style="width: 865px; height: 500px;">
-                        <img title="business" style="width: 865px; height: 500px;" src="<?= url::file("themes/wind/images/business.png") ?>" /></li> 
+                    <li>
+                        <img title="business" src="<?= url::file("themes/wind/images/business.png") ?>" /></li> 
                 
-                    <li style="width: 865px; height: 500px;">
-                        <img title="wedding" style="width: 865px; height: 500px;" src="<?= url::file("themes/wind/images/wedding.png") ?>" /></li> 
+                    <li>
+                        <img title="wedding" src="<?= url::file("themes/wind/images/wedding.png") ?>" /></li> 
                 
-                    <li style="width: 865px; height: 500px;">
-                        <img title="Party" style="width: 865px; height: 500px;" src="<?= url::file("themes/wind/images/party.png") ?>" /></li> 
+                    <li>
+                        <img title="Party" src="<?= url::file("themes/wind/images/party.png") ?>" /></li> 
                 
                     
         </ul> 

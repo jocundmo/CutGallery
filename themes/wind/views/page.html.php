@@ -91,7 +91,7 @@
     
 <div id="mainHead">
     <div id="logo">
-        <a href="<?= url::site() ?>">LOGO</a>
+        <a href="<?= url::site() ?>"></a>
     </div>
 
     <div id="mainInfo">

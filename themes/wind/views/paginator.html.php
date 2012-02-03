@@ -25,8 +25,16 @@
 //   $position                - the position number of this photo
 //
 ?>
-
-<ul class="g-paginator ui-helper-clearfix">
+<? if ($page_type == "collection"): ?>
+    <? if (isset($item) && $item->level > 1): ?>
+      <? $id_g_paginator = "id-g-paginator-level-2" ?>
+    <? else: ?>
+      <? $id_g_paginator = "id-g-paginator-level-1" ?>
+    <? endif ?>
+  <? elseif ($page_type == "item"): ?>
+    <? $id_g_paginator = "id-g-paginator" ?>
+<? endif ?>
+<ul id="<?=$id_g_paginator?>" class="g-paginator ui-helper-clearfix">
   <li class="g-back">
       <? if ($page_type == "collection"): ?>
         <? if (isset($item) && $item->level > 1): ?>

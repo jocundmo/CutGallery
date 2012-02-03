@@ -48,20 +48,16 @@ $(function(){
   <h1><?= html::purify($item->title) ?></h1>
   <div class="g-description"><?= nl2br(html::purify($item->description)) ?></div>
 </div>
+<? if ($theme->item->level < 2): ?>
 <div id="g-add-items">
-    <? if ($theme->item->level < 2): ?>
-    <ul id="album_header">
-        <li id="album_header_cpation"><?= t("Albums") ?></li>
-        <? if (access::can("add", $item)): ?>
-        <li id="album_header_new"><?= $theme->add_album_menu() ?></li>
-        <? endif ?>
-    </ul>
-    <? else: ?>
-        <? if (access::can("add", $item)): ?>
-            <?= $theme->add_photos_menu() ?>
-        <? endif ?>
+<ul id="album_header">
+    <li id="album_header_cpation"><?= t("Albums") ?></li>
+    <? if (access::can("add", $item)): ?>
+    <li id="album_header_new"><?= $theme->add_album_menu() ?></li>
     <? endif ?>
+</ul>
 </div>
+<? endif ?>
 <ul id="g-album-grid" class="ui-helper-clearfix <?= ($theme->item->level < 2) ? "album_container" : "photo_container"?>">
 <? if (count($children)): ?>
   <? $index = 0; ?>
@@ -135,9 +131,9 @@ $(function(){
                         </div>
                     </li>
                     <li id="g-item-prop-<?= $child->id ?>" class="album_prop">
-                        <span>Album Name: <?= html::purify($child->title) ?></span>
+                        <span>Name: <?= html::purify($child->title) ?></span>
                         <span>Owner: <?= $child->owner_id ?></span>
-                        <span>Pic Quantity:</span>
+                        <span>Count:</span>
                         <? if (access::can("add", $item)): ?>
                             <?= $theme->edit_album_menu($child) ?>
                             <?= $theme->delete_album_menu($child) ?>
@@ -157,4 +153,9 @@ $(function(){
 <?= $theme->album_bottom() ?>
 
 <?= $theme->paginator() ?>
+<? if ($theme->item->level > 1): ?>
+    <? if (access::can("add", $item)): ?>
+        <?= $theme->add_photos_menu() ?>
+    <? endif ?>
+<? endif ?>   
 <!--album.html.php end -->
