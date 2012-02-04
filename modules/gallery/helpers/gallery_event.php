@@ -310,7 +310,7 @@ class gallery_event_Core {
             is_writable($item->is_album() ? $item->file_path() : $item->parent()->file_path());
         if ($is_album_writable) {
             $menu->append(Menu::factory("dialog")
-                          ->css_class("add_photos_item_level_$item->level")
+                          ->css_class("add_photos_item_level_".$theme->item->level)
                           ->label(t("Add photos"))
                           ->url(url::site("uploader/index/$item->id")));
           } else {

@@ -123,7 +123,7 @@
 
 <div id="footer">
     <p> 
-        Copyright reserved - internal released v1.3.1
+        Copyright reserved - internal released v1.3.1.0
     </p> 
 </div>
 
