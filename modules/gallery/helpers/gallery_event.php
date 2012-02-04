@@ -310,7 +310,7 @@ class gallery_event_Core {
             is_writable($item->is_album() ? $item->file_path() : $item->parent()->file_path());
         if ($is_album_writable) {
             $menu->append(Menu::factory("dialog")
-                          ->id("add_photos_item")
+                          ->css_class("add_photos_item_level_$item->level")
                           ->label(t("Add photos"))
                           ->url(url::site("uploader/index/$item->id")));
           } else {
@@ -479,11 +479,11 @@ class gallery_event_Core {
       ->append(Menu::factory("link")
               ->id("manage_aboutus_pic")
               ->label(t("Manage Aboutus Pic"))
-              ->url(url::site("admin/manage_aboutus_pic")))
-      ->append(Menu::factory("link")
-              ->id("user_profile")
-              ->label(t("Profile"))
-              ->url(url::site("admin/home"))); // <==*/
+              ->url(url::site("admin/manage_aboutus_pic")));
+//      ->append(Menu::factory("link")
+//              ->id("user_profile")
+//              ->label(t("Profile"))
+//              ->url(url::site("admin/home"))); // <==*/
 /** CutGallery - Disable 'Dashboard', 'Modules', 'Appearance', 'Maintenance'
  * Original code:
       $menu

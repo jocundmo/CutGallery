@@ -19,7 +19,7 @@
  **********************************************************************/
 
 body, html {
-  background-color: #000;
+  /*background-color: #000;*/
   font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -399,9 +399,10 @@ td {
 }
 
 #g-content {
-  padding-left: 20px;
+
   position: relative;
   width: 980px;
+  margin: 0 auto;
 }
 
 #g-sidebar {
@@ -458,8 +459,8 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-  /* background-color: pink; */
-  width: 300px;
+/*  background-color: pink;*/
+
   float: left;
 /*  position: relative;
   left: 1em;*/
@@ -468,21 +469,32 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-  /* background-color: pink; */
-  width: 100%;
-  float: left;
+/*   background-color: pink; */
+
 /*  position: relative;
   left: 1em;*/
 }
-#g-content #g-album-grid .g-item {
-  border: 1px solid #000;
-  float: left;
+#g-content #g-album-grid .g-item{
+    border: 1px solid #000;
+    float: left;
+    
+    position: relative;
+    text-align: center;
+}
+#g-content #g-album-grid .g-album{
+  background-color: #0A0A0A !important;
+  padding: .33em;
+}
+#g-content #g-album-grid .g-photo {
+/*  background-color: grey;  */
+  background: black url("../images/photo-film-bg.png") repeat-x;
   padding: .36em 8px;
-  position: relative;
-  text-align: center;
-  background-color: grey;
-  width: 154px; /* CutGallery - g-photo width*/
   z-index: 1;
+}
+ul .g-photo{
+    margin-top: 5px;
+    height: 154px;
+    width: 178px; /* CutGallery - g-photo width*/
 }
 /* CutGallery - ADDED start */
 .g-album{
@@ -514,7 +526,7 @@ td {
 /* CutGallery -MODIFIED */
 #g-content #g-album-grid .g-album {
   background-color: #000;
-  width: 200px;
+  width: 336px;
 }
 
 #g-content #g-album-grid .g-album h2 span.g-album {
@@ -556,10 +568,33 @@ td {
   width: 100%;
 }
 
+#g-photo-top-decoration{
+    height: 49px;
+    background: transparent url("../images/view-photo-top-bg.png") no-repeat;
+}
+#g-photo-decoration {
+    background-color: blue;
+    width: 680px;
+    margin: 0 auto;
+    background: transparent url("../images/view-photo-bg.png") repeat-y;
+}
+#g-photo-bottom-decoration{
+    height: 60px;
+    background: transparent url("../images/view-photo-bottom-bg.png") no-repeat;
+    margin: 0 auto;
+    width: 680px;
+}
+#g-photo-bottom-decoration ul{
+/*    background-color: grey;*/
+    margin: 0 auto;
+    width: 238px;
+}
+
 #g-item #g-photo,
 #g-item #g-movie {
-  padding: .2em 0;
   position: relative;
+  margin: 0 auto;
+/*  background-color: yellow;*/
 }
 
 #g-item img.g-resize,
@@ -683,6 +718,9 @@ tr.g-error td.g-error,
 }
 
 .g-info {
+    font-size: 10px;
+    padding-top: 8px;
+    color: #000;
  /* background: #e8e8e8 url('../images/ico-info.png') no-repeat .4em 50%; //CutGallery - Remove the left padding for (Photos 1-6 of 7) */
 }
 
@@ -1047,27 +1085,73 @@ div#g-action-status {
 }
 
 /* Pagination ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
+.g-menu{
+    float: left;
+    height: 35px;
+    width: 90px;
+    background-color: yellow;
+    vertical-align: middle;
+}
+.g-menu li{
+    height: 100%;
+}
+.add_photos_item_level_2 {
+    display: block;
+    height: 100%;
+    background-color: green;
+    padding-top: 6px;
+}
+#id-g-paginator-level-1 {
+    float: left;
+    background-color: pink;
+    width: auto;
+}
+#id-g-paginator-level-2 {
+    float: left;
+    background-color: pink;
+    width: auto;
+}
 .g-paginator {
-  padding: .2em 0;
+/* background-color: blue;*/
+
   margin: 0 auto;
   /*position: absolute;/* CutGallery - MODIFIED */
-  position: absolute;
-  top: 30em;
   clear: both;
 }
-
 .g-paginator li {
   float: left;
-  /* background-color: blue; */
+/*  background-color: blue;*/
 }
 
 .g-paginator .g-info {
   /* CutGallery - MODIFIED */
-  /* background-color: blueviolet; */
+/*  background-color: blueviolet;*/
+  padding-top: 3px;
   text-align: center;
 }
 
+.ui-icon-seek-share{
+    color: black;
+    font-size: 8px;
+    padding-top: 5px;
+}
+.ui-icon-paginator-info-level-1{
+    display: block;
+    color: lightgrey;
+    margin-top: 3px;
+    width: 60px;
+    background-color: #3D3D3D;
+    height: 20px;
+}
+
+.ui-icon-paginator-info-level-2{
+    display: block;
+    color: lightgrey;
+    margin-top: 2px;
+    width: 80px;
+    background-color: #3D3D3D;
+    height: 20px;
+}
 /* Dialogs and panels ~~~~~~~~~~~~~~~~~~ */
 
 #g-dialog {

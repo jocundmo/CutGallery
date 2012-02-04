@@ -84,7 +84,7 @@ $(document).ready(function() {
         }
         // CutGallery - MODIFIED - need comment for IE ==>
         if ($.browser.msie && $.browser.version <= 8) {
-          sib_height = sib_height + 1;
+          // sib_height = sib_height + 1; // Test from IE8 on win7, not an issue anymore.
         }
         //<==
         $(this).css("height", sib_height);
