@@ -111,6 +111,7 @@ class Albums_Controller extends Items_Controller {
       $user_name = "admin";
       if ($form->add_album->owner->value != 0) {// A VIP user has been choosen.
           $vip_users = vip::lookup_vip_users();
+          array_unshift($vip_users, $user_name);
           $user_name = $vip_users[$form->add_album->owner->value];
       }
       else {
