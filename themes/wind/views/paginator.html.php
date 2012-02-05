@@ -105,7 +105,8 @@
         <?= t("%position/%total", array("position" => $position, "total" => $total)) ?>
       <? endif ?>
     <? else: ?>
-      <?= t("No items") ?>
+      <span class="ui-corner-all <?=$class_paginator_info?>"> 
+      <?= t("No items") ?></span>
     <? endif ?>
   </li>
 
