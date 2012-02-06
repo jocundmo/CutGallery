@@ -265,7 +265,7 @@ class gallery_event_Core {
         if ($is_album_writable) {
             $menu->append(Menu::factory("dialog")
                 ->id("delete")
-                ->label("Delete")
+                ->label(t("Delete"))
                 ->css_class("ui-icon-trash")
                 ->css_class("g-quick-delete")
                 ->url(url::site("quick/form_delete/$item->id?csrf=$csrf&amp;from_id={$item->id}&amp;page_type=$page_type")));
@@ -479,7 +479,11 @@ class gallery_event_Core {
       ->append(Menu::factory("link")
               ->id("manage_aboutus_pic")
               ->label(t("Manage Aboutus Pic"))
-              ->url(url::site("admin/manage_aboutus_pic")));
+              ->url(url::site("admin/manage_aboutus_pic")))
+      ->append(Menu::factory("link")
+              ->id("manage_album")
+              ->label(t("manage_album"))
+              ->url(url::site("albums")));
 //      ->append(Menu::factory("link")
 //              ->id("user_profile")
 //              ->label(t("Profile"))
