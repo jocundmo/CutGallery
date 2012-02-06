@@ -1089,7 +1089,7 @@ div#g-action-status {
     float: left;
     height: 35px;
     width: 90px;
-    background-color: yellow;
+/*    background-color: yellow;*/
     vertical-align: middle;
 }
 .g-menu li{
@@ -1098,17 +1098,17 @@ div#g-action-status {
 .add_photos_item_level_2 {
     display: block;
     height: 100%;
-    background-color: green;
+/*    background-color: green;*/
     padding-top: 6px;
 }
 #id-g-paginator-level-1 {
     float: left;
-    background-color: pink;
+/*    background-color: pink;*/
     width: auto;
 }
 #id-g-paginator-level-2 {
     float: left;
-    background-color: pink;
+/*    background-color: pink;*/
     width: auto;
 }
 .g-paginator {

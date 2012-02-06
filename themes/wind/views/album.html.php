@@ -101,7 +101,13 @@ $(function(){
   <li><? //= t("There aren't any photos here yet!") ?></li>
   <? // endif; ?>-->
   
-  <?= t("There aren't any items yet!")?>
+  <li><?= t("There aren't any items yet!")?></li>
+  <? $index=0; ?>
+  <? if ($theme->item->level > 1):?>
+      <? for (;$index < 25; $index++): ?>
+      <li class="g-item g-photo"></li>
+      <? endfor ?>
+  <? endif ?>
 <? endif; ?>
 </ul>
 <? if ($theme->item->level < 2): ?>

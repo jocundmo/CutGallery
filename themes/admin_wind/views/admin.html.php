@@ -58,7 +58,7 @@
   <body <?= $theme->body_attributes() ?>>
     <div id="mainHead">
         <div id="logo">
-            <a href="<?= url::site() ?>">LOGO</a>
+            <a href="<?= url::site() ?>"></a>
         </div>
 
         <div id="mainInfo">
@@ -72,9 +72,9 @@
 
         <div id="mainNav">
             <ul>
-                <li id="gallery"><a href="<?= url::site("albums")?>">Gallery</a></li>
-                <li id="intro"><a href="<?= url::site("about") ?>">About us</a></li>
-                <li id="contactus"><a href="<?= url::site("contact") ?>">Contact us</a></li>
+                <li id="gallery"><a href="<?= url::site("albums")?>"></a></li>
+                <li id="intro"><a href="<?= url::site("about") ?>"></a></li>
+                <li id="contactus"><a href="<?= url::site("contact") ?>"></a></li>
             </ul>
         </div>
         <div class="div-clear"></div>
