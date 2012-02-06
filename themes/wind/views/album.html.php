@@ -137,9 +137,9 @@ $(function(){
                         </div>
                     </li>
                     <li id="g-item-prop-<?= $child->id ?>" class="album_prop">
-                        <span>Name: <?= html::purify($child->title) ?></span>
-                        <span>Owner: <?= $child->owner_id ?></span>
-                        <span>Count:</span>
+                        <span><?= t("Name").":" ?> <?= html::purify($child->title) ?></span>
+                        <span><?= t("Owner").":" ?> <?= user::lookup($child->owner_id)->name ?></span>
+                        <span><?= t("Photos").":" ?> <?= item::lookup_photos_by_owner($child->owner_id) ?></span>
                         <? if (access::can("add", $item)): ?>
                             <?= $theme->edit_album_menu($child) ?>
                             <?= $theme->delete_album_menu($child) ?>
