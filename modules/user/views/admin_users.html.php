@@ -152,7 +152,12 @@
                   class="g-dialog-link g-button ui-state-default ui-corner-all ui-icon-left">
                 <span class="ui-icon ui-icon-trash"></span><?= t("Delete") ?></a>
               <? else: ?>
-              <span title="<?= t("This user cannot be deleted, it probably due to the albums/photos is not empty.")->for_html_attr() ?>"
+                <? if ($user->display_group() === "Guest"): // CutGallery - TODO - Not the best way to distinguish a guest here.?>
+                   <? $userCantDeleteTitle = "This user cannot be deleted because it is a guest account, it would be deleted along with the VIP." ?>
+                <? else: ?>
+                   <? $userCantDeleteTitle = "This user cannot be deleted,a it probably due to the albums/photos is not empty." ?>
+                <? endif ?>
+              <span title="<?= t($userCantDeleteTitle)->for_html_attr() ?>"
                   class="g-button ui-state-disabled ui-corner-all ui-icon-left">
                 <span class="ui-icon ui-icon-trash"></span><?= t("Delete") ?></span>
               <? endif ?>
