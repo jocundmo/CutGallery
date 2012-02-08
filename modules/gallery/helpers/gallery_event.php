@@ -247,7 +247,7 @@ class gallery_event_Core {
               $menu->append(Menu::factory("dialog")
                                 ->id("add_album_item")
                                 ->label(t("[new]")) // CutGallery - Modify add album text
-                                ->url(url::site("form/add/albums/$item->id?type=album")));
+                                ->url(url::site("form/add/albums/$item->id?type=album"))); // CutGallery - After added album, should not go into the album.
             }
           } else {
             message::warning(t("The album '%album_name' is not writable.",
