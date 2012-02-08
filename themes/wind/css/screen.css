@@ -510,11 +510,11 @@ ul .g-photo{
     font-size: 20px;
 }
 .g-album h2 a:hover {
-    color: white !important;
+/*    color: lightgrey !important;*/
     text-decoration: none;
 }
-/* ADDED end */
 
+/* ADDED end */
 #g-content #g-album-grid .g-item h2 {
   margin: 5px 0;
 }
