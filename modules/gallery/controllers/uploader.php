@@ -60,6 +60,7 @@ class Uploader_Controller extends Controller {
         $item->name = substr(basename($temp_filename), 10);  // Skip unique identifier Kohana adds
         $item->title = item::convert_filename_to_title($item->name);
         $item->parent_id = $album->id;
+        $item->hashed_name = md5($album->name."/".$item->name);
         // CutGallery - Assign album owner to this photo
         $item->owner_id = $album->owner_id;
         $item->set_data_file($temp_filename);
