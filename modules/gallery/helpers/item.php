@@ -416,4 +416,18 @@ class item_Core {
 
     return $position;
   }
+  
+  /**
+   * CutGallery - Add
+   * Find the count of photos by owner id
+   * 
+   * @param owner id
+   */
+  static function lookup_photos_by_owner($owner_id) {
+        return ORM::factory("item")
+                ->select("id")
+                ->where("owner_id", "=", $owner_id)
+                ->and_where("type", "=", "photo")
+                ->count_all();   
+    }
 }
