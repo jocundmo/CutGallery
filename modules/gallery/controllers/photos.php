@@ -26,20 +26,68 @@ class Photos_Controller extends Items_Controller {
       download::send($file_path);
   }
   public function form_share($md5_combined_album_photo){
+      $photo = ORM::factory("item")
+              ->select("name")
+              ->where("hashed_name", "=", $md5_combined_album_photo);
+      
+      self::show($photo, true);
       //$combined_album_photo = $album.'$photo';
 //      $md5_album_photo = md5($combined_album_photo);
 //      $share_url = url::site($md5_album_photo);http://xxxxx/Gallery3/msiaksddlasfoxlz.
   }
   // <==
-  public function show($photo) {
+  public function show($photo, $is_shared=false) {
      if (!is_object($photo)) {
       // show() must be public because we route to it in url::parse_url(), so make
       // sure that we're actually receiving an object
       throw new Kohana_404_Exception();
     }
 
-    access::required("view", $photo);
+    if (!$is_shared) {
+        access::required("view", $photo);
+        
+        $where = array(array("type", "!=", "album"));
+        $position = item::get_position($photo, $where);
+        if ($position > 1) {
+            list ($previous_item, $ignore, $next_item) =
+            $photo->parent()->viewable()->children(3, $position - 2, $where);
+        } else {
+            $previous_item = null;
+            list ($next_item) = $photo->parent()->viewable()->children(1, $position, $where);
+        }
 
+        $template = new Theme_View("page.html", "item", "photo");
+        $template->set_global(
+        array("item" => $photo,
+            "children" => array(),
+            "children_count" => 0,
+            "parents" => $photo->parents()->as_array(),
+            "next_item" => $next_item,
+            "previous_item" => $previous_item,
+            "sibling_count" => $photo->parent()->viewable()->children_count($where),
+            "position" => $position));
+
+        $template->content = new View("photo.html");
+
+        $photo->increment_view_count();
+
+    }
+    else {
+        $template = new Theme_View("page.html", "item", "photo");
+        $template->set_global(
+        array("item" => $photo,
+            "children" => array(),
+            "children_count" => 0,
+            "parents" => $photo->parents()->as_array(),
+            "next_item" => 0,
+            "previous_item" => 0,
+            "sibling_count" => 0,
+            "position" => 0));
+
+        $template->content = new View("photo.html");
+    }
+
+/**
     $where = array(array("type", "!=", "album"));
     $position = item::get_position($photo, $where);
     if ($position > 1) {
@@ -64,6 +112,8 @@ class Photos_Controller extends Items_Controller {
     $template->content = new View("photo.html");
 
     $photo->increment_view_count();
+ * 
+ */
 
     print $template;
   }
