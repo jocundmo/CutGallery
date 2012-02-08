@@ -42,7 +42,7 @@ $(function(){
     showDefaultCover();
 })
 </script>
-<? endif ?>
+<? endif ?> 
 <div id="g-info" style="display:none"> <!-- CutGallery - Hide -->
   <?= $theme->album_top() ?>
   <h1><?= html::purify($item->title) ?></h1>
@@ -57,6 +57,11 @@ $(function(){
     <? endif ?>
 </ul>
 </div>
+<? else: ?>
+<?= $theme->paginator() ?>
+<? if (access::can("add", $item)): ?>
+    <?= $theme->add_photos_menu() ?>
+<? endif ?>
 <? endif ?>
 <ul id="g-album-grid" class="ui-helper-clearfix <?= ($theme->item->level < 2) ? "album_container" : "photo_container"?>">
 <? if (count($children)): ?>

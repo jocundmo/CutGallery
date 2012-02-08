@@ -470,7 +470,7 @@ td {
   position: relative;
   z-index: 1;*/
 /*   background-color: pink; */
-
+clear: left;
 /*  position: relative;
   left: 1em;*/
 }
@@ -495,6 +495,7 @@ ul .g-photo{
     margin-top: 5px;
     height: 154px;
     width: 178px; /* CutGallery - g-photo width*/
+
 }
 /* CutGallery - ADDED start */
 .g-album{
@@ -1108,8 +1109,9 @@ div#g-action-status {
 }
 #id-g-paginator-level-2 {
     float: left;
-/*    background-color: pink;*/
-    width: auto;
+width: auto;
+/*background-color: pink;*/
+height: 30px;
 }
 .g-paginator {
 /* background-color: blue;*/
