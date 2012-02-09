@@ -1189,7 +1189,7 @@ INSERT INTO `incoming_translations` (`key`, `locale`, `message`, `revision`, `tr
 ('a53108f7543b75adbb34afc035d4cdf6', 'zh_CN', 's:3:"run";', 19398, 's:6:"运行";'),
 ('ec53a8c4f07baed5d8825072c89799be', 'zh_CN', 's:6:"Status";', 19401, 's:6:"状态";'),
 ('4059b0251f66a18cb56f544728796875', 'zh_CN', 's:4:"Info";', 19402, 's:6:"信息";'),
-('b6f4a2ec6356bbd56d49f2096bf9d3d3', 'zh_CN', 's:5:"Owner";', 19403, 's:9:"执行者";'),
+('b6f4a2ec6356bbd56d49f2096bf9d3d3', 'zh_CN', 's:5:"Owner";', 19403, 's:9:"拥有者";'),
 ('505a83f220c02df2f85c3810cd9ceb38', 'zh_CN', 's:7:"Success";', 19404, 's:6:"成功";'),
 ('0f6969d7052da9261e31ddb6e88c136e', 'zh_CN', 's:6:"remove";', 19334, 's:6:"删除";'),
 ('eca9f0518196a3f339870efd48dc00cd', 'zh_CN', 's:15:"By: %owner_name";', 54153, 's:19:"作者: %owner_name";'),
@@ -1892,7 +1892,8 @@ INSERT INTO `incoming_translations` (`key`, `locale`, `message`, `revision`, `tr
 ('af2aaadea86884b471c95cba74a5a70f', 'zh_CN', 's:31:"The upload script was not found";', 70848, 's:21:"上传脚本没找到";'),
 ('73029e2d748c750a80eae314ba0b643c', 'zh_CN', 's:48:"Renamed tag <i>%old_name</i> to <i>%new_name</i>";', 70795, 's:52:"标签<i>%old_name</i> 重命名为 <i>%new_name</i>";'),
 ('7c1e55cfdb9d523c9abd95740023cae4', 'zh_CN', 's:8:"Undelete";', 70902, 's:6:"恢复";'),
-('ef82963e406866dd18141dc6f344ec10', 'zh_CN', 's:11:"Modify user";', 00001, 's:12:"添加图片";');
+('ef82963e406866dd18141dc6f344ec10', 'zh_CN', 's:11:"Modify user";', 00001, 's:12:"添加图片";'),
+('f7dab6093873d0239d4a5ed2c7290294', 'zh_CN', 's:55:"There is already a movie, photo or album with this name";', NULL, 's:18:"相册名已存在";');
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS {items};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -1909,6 +1910,7 @@ CREATE TABLE {items} (
   `level` int(9) NOT NULL,
   `mime_type` varchar(64) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `hashed_name` varchar(64) DEFAULT NULL,
   `owner_id` int(9) DEFAULT NULL,
   `parent_id` int(9) NOT NULL,
   `rand_key` decimal(11,10) DEFAULT NULL,
@@ -1943,7 +1945,7 @@ CREATE TABLE {items} (
 ) AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*CutGallery - Set '1' as default value for both 'view_3' and 'view_4'*/;
-INSERT INTO {items} VALUES (1,NULL,NULL,UNIX_TIMESTAMP(),'',NULL,1,1,NULL,NULL,2,0,NULL,'','',1,NULL,NULL,2,NULL,'weight','ASC',1,NULL,NULL,'Gallery','album',UNIX_TIMESTAMP(),0,1,NULL,'0','0','1','1');
+INSERT INTO {items} VALUES (1,NULL,NULL,UNIX_TIMESTAMP(),'',NULL,1,1,NULL,NULL,NULL,2,0,NULL,'','',1,NULL,NULL,2,NULL,'weight','ASC',1,NULL,NULL,'Gallery','album',UNIX_TIMESTAMP(),0,1,NULL,'0','0','1','1');
 DROP TABLE IF EXISTS {items_tags};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
