@@ -99,15 +99,22 @@ class Albums_Controller extends Items_Controller {
       $album = ORM::factory("item");
       $album->type = "album";
       $album->parent_id = $parent_id;
+/** CutGallery - Use Ymd_Hms_millisecond as directory name, for example, 20120209_032342_322
       $album->name = $form->add_album->inputs["name"]->value;
+ * ==> 
+ */
+      $date_time = date("Ymd_Hms", time());
+      $splitted_microtime = split( '   ',   microtime());
+      $millisecond = $splitted_microtime[0] * 1000;
+      $album->name = $date_time."_".substr($millisecond, 0, 3);
       $album->title = $form->add_album->title->value ?
         $form->add_album->title->value : $form->add_album->inputs["name"]->value;
       $album->description = $form->add_album->description->value;
-      $album->slug = $form->add_album->inputs["name"]->value;
-/** CutGallery - Disable 'slug'
+/** CutGallery - Disable 'slug'.
  *    $album->slug = $form->add_album->slug->value;
- * 
+ * ==>
  */
+
       // ==> CugGallery - Assign owner to this album
       $user_name = "admin";
       if ($form->add_album->owner->value != 0) {// A VIP user has been choosen.
@@ -142,7 +149,9 @@ class Albums_Controller extends Items_Controller {
 
       json::reply(array("result" => "success", "location" => $album->url()));
     } else {
-      print $form;
+      json::reply(array("result" => "error", "html" => (string)$form));
+      // CutGallery - disable this line
+      // print $form;
     }
   }
 
@@ -165,13 +174,11 @@ class Albums_Controller extends Items_Controller {
       if (array_key_exists("name", $form->edit_item->inputs)) {
         $album->name = $form->edit_item->inputs["name"]->value;
       }
-/** CutGallery - Set $album->title as default value for slug
+/** CutGallery - Disable slug
       $album->slug = $form->edit_item->slug->value;
  * 
  */
-      // ==> CutGallery - Assign owner to this album, set album title as default value for slug
-      $album->slug = $form->edit_item->title->value;
-      
+      // ==> CutGallery - Assign owner to this album
       $user_name = "admin";
       if ($form->edit_item->owner->value != 0) { // A VIP user has been choosen.
           $vip_users = vip::lookup_vip_users();
