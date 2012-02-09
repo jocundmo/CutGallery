@@ -27,13 +27,9 @@ class Photos_Controller extends Items_Controller {
   }
   public function form_share($md5_combined_album_photo){
       $photo = ORM::factory("item")
-              ->select("name")
-              ->where("hashed_name", "=", $md5_combined_album_photo);
+              ->where("hashed_name", "=", $md5_combined_album_photo)->find();
       
       self::show($photo, true);
-      //$combined_album_photo = $album.'$photo';
-//      $md5_album_photo = md5($combined_album_photo);
-//      $share_url = url::site($md5_album_photo);http://xxxxx/Gallery3/msiaksddlasfoxlz.
   }
   // <==
   public function show($photo, $is_shared=false) {
@@ -62,6 +58,7 @@ class Photos_Controller extends Items_Controller {
             "children" => array(),
             "children_count" => 0,
             "parents" => $photo->parents()->as_array(),
+            "is_share" => false,
             "next_item" => $next_item,
             "previous_item" => $previous_item,
             "sibling_count" => $photo->parent()->viewable()->children_count($where),
@@ -79,8 +76,9 @@ class Photos_Controller extends Items_Controller {
             "children" => array(),
             "children_count" => 0,
             "parents" => $photo->parents()->as_array(),
-            "next_item" => 0,
-            "previous_item" => 0,
+            "is_share" => true,
+            "next_item" => null,
+            "previous_item" => null,
             "sibling_count" => 0,
             "position" => 0));
 

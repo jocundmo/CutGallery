@@ -72,7 +72,13 @@ class Quick_Controller extends Controller {
 
     json::reply(array("result" => "success", "reload" => 1));
   }
+  public function form_share($id) {
+    $item = model_cache::get("item", $id);
+    $v = new View("quick_share_confirm.html");
+    $v->item = $item;
 
+    print $v;
+  }
   public function form_delete($id) {
     $item = model_cache::get("item", $id);
     access::required("view", $item);

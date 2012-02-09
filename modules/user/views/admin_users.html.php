@@ -166,21 +166,19 @@
           <? endif ?> <!-- CutGallery - Disable 'guest' row. -->
           <? endforeach ?>
         </table>
-
         <div class="g-paginator">
           <?= $theme->paginator() ?>
         </div>
-
       </div>
     </div>
 
 <!-- CutGallery - Disable Group!!
     <div id="g-group-admin" class="g-block ui-helper-clearfix">
-      <a href="<?= url::site("admin/users/add_group_form") ?>"
+      <a href="<?//= url::site("admin/users/add_group_form") ?>"
           class="g-dialog-link g-button g-right ui-icon-left ui-state-default ui-corner-all"
-          title="<?= t("Create a new group")->for_html_attr() ?>">
+          title="<?//= t("Create a new group")->for_html_attr() ?>">
         <span class="ui-icon ui-icon-circle-plus"></span>
-        <?= t("Add a new group") ?>
+        <?//= t("Add a new group") ?>
       </a>
 
       <h2> <?= t("Groups") ?> </h2>

@@ -233,3 +233,9 @@ float: right;
     width: 865px;
 }
 
+#g-share-dialog input{
+    display: inline;
+    width: 300px;
+    cursor: text;
+}
+

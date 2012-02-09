@@ -89,7 +89,7 @@ a,
 a.ui-state-hover,
 input.ui-state-hover,
 button.ui-state-hover {
-  color: #A0A0A0 !important; /* CutGallery - TODO: Change Font color */
+  color: #A0A0A0 !important; /* CutGallery - @TODO: Change Font color */
   cursor: pointer !important;
   text-decoration: none;
   -moz-outline-style: none;
@@ -1088,9 +1088,9 @@ div#g-action-status {
 /* Pagination ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .g-menu{
     float: left;
-    height: 35px;
+    height: 30px;
     width: 90px;
-/*    background-color: yellow;*/
+    background-color: yellow;
     vertical-align: middle;
 }
 .g-menu li{
@@ -1109,13 +1109,22 @@ div#g-action-status {
 }
 #id-g-paginator-level-2 {
     float: left;
-width: auto;
+    width: auto;
 /*background-color: pink;*/
-height: 30px;
+    height: 30px;
+}
+#id-g-paginator .g-menu li a{ /* override .g-menu for share */
+    color: black !important;
+}
+#id-g-paginator .g-menu{ /* override .g-menu for share */
+    float: none;
+    height: auto;
+    width: auto;
+    background-color: yellow;
+    vertical-align: middle;
 }
 .g-paginator {
 /* background-color: blue;*/
-
   margin: 0 auto;
   /*position: absolute;/* CutGallery - MODIFIED */
   clear: both;
@@ -1124,7 +1133,6 @@ height: 30px;
   float: left;
 /*  background-color: blue;*/
 }
-
 .g-paginator .g-info {
   /* CutGallery - MODIFIED */
 /*  background-color: blueviolet;*/

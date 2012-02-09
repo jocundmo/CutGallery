@@ -49,8 +49,12 @@
 	document.getElementById("g-item-id-<?=$item->id?>").src = this.src;
 	}
   </script>
-
-  <div id="g-photo-bottom-decoration"><?= $theme->paginator() ?></div>
+ 
+  <div id="g-photo-bottom-decoration">
+      <? if (!$theme->is_share): ?>
+         <?= $theme->paginator() ?>
+      <? endif ?>
+  </div>
 
   <div id="g-info">
     <h1><?= html::purify($item->title) ?></h1>

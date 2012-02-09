@@ -255,6 +255,16 @@ class gallery_event_Core {
           }
       }
   }
+  static function share_photo_menu($menu, $theme, $item){
+       if (!empty($item)) {
+            $menu->append(Menu::factory("dialog")
+                ->id("share")
+                ->label(t("Share"))
+                ->css_class("ui-icon-2")
+                ->css_class("ui-icon-seek-share")
+                ->url(url::site("quick/form_share/$item->id?csrf=$csrf&amp;from_id={$item->id}&amp;page_type=$page_type")));
+      }
+  }
   static function delete_album_menu($menu, $theme, $item){
        if (!empty($item)) {
         $can_edit = $item && access::can("edit", $item);
@@ -274,9 +284,6 @@ class gallery_event_Core {
                                array("album_name" => $item->title)));
           }
       }
-      
-      
-      
   }
   static function edit_album_menu($menu, $theme, $item){
       //$item = $theme->item();
