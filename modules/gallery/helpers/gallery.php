@@ -67,6 +67,13 @@ class gallery_Core {
         $allowed = false;
       }
       if (!$allowed) {
+        // CutGallery - bypass the permission check for specific controller and form ==>
+        if (Router::$controller == "home" ||
+            Router::$controller == "about" ||
+            Router::$controller == "contact" ||
+            Router::$method == "form_share"){
+            return;}
+        // <==
         if (Router::$controller == "admin") {
           // At this point we're in the admin theme and it doesn't have a themed login page, so
           // we can't just swap in the login controller and have it work.  So redirect back to the
