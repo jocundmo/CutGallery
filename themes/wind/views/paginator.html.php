@@ -121,7 +121,6 @@
         <? $class_next = "ui-icon-seek-next" ?>
       <? endif ?>
   <? if (isset($next_page_url)): ?>
-      
     <a href="<?= $next_page_url ?>" class="g-button ui-icon-right ui-corner-all">  
       <span class="ui-icon-2 <?=$class_next?>"></span></a> <!--CutGallery - REMOVE-->
   <? else: ?>
@@ -140,10 +139,11 @@
   <? endif ?>
   </li>
   <? if ($page_subtype == "photo"): ?>
-  <li class="g-share">
-      <a href ="<?= $share_url ?>" class="g-button ui-corner-all">
-          <span class="ui-icon-2 ui-icon-seek-share">Share</span></a>
-  </li>
+  <?= $this->parent_theme->share_photo_menu($item) ?>
+<!--  <li class="g-share">
+      <a href ="<?//= $this->parent_theme->share_photo_menu($item) ?>" class="g-button ui-corner-all">
+          <span class="ui-icon-2 ui-icon-seek-share"></span></a>
+  </li>-->
   
   <li class="g-download-full">
       <a href ="<?= $download_full_url ?>" class="g-button ui-corner-all">

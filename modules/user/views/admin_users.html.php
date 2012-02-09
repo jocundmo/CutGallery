@@ -152,7 +152,12 @@
                   class="g-dialog-link g-button ui-state-default ui-corner-all ui-icon-left">
                 <span class="ui-icon ui-icon-trash"></span><?= t("Delete") ?></a>
               <? else: ?>
-              <span title="<?= t("This user cannot be deleted, it probably due to the albums/photos is not empty.")->for_html_attr() ?>"
+                <? if ($user->display_group() === "Guest"): // CutGallery - TODO - Not the best way to distinguish a guest here.?>
+                   <? $userCantDeleteTitle = "This user cannot be deleted because it is a guest account, it would be deleted along with the VIP." ?>
+                <? else: ?>
+                   <? $userCantDeleteTitle = "This user cannot be deleted,a it probably due to the albums/photos is not empty." ?>
+                <? endif ?>
+              <span title="<?= t($userCantDeleteTitle)->for_html_attr() ?>"
                   class="g-button ui-state-disabled ui-corner-all ui-icon-left">
                 <span class="ui-icon ui-icon-trash"></span><?= t("Delete") ?></span>
               <? endif ?>
@@ -161,21 +166,19 @@
           <? endif ?> <!-- CutGallery - Disable 'guest' row. -->
           <? endforeach ?>
         </table>
-
         <div class="g-paginator">
           <?= $theme->paginator() ?>
         </div>
-
       </div>
     </div>
 
 <!-- CutGallery - Disable Group!!
     <div id="g-group-admin" class="g-block ui-helper-clearfix">
-      <a href="<?= url::site("admin/users/add_group_form") ?>"
+      <a href="<?//= url::site("admin/users/add_group_form") ?>"
           class="g-dialog-link g-button g-right ui-icon-left ui-state-default ui-corner-all"
-          title="<?= t("Create a new group")->for_html_attr() ?>">
+          title="<?//= t("Create a new group")->for_html_attr() ?>">
         <span class="ui-icon ui-icon-circle-plus"></span>
-        <?= t("Add a new group") ?>
+        <?//= t("Add a new group") ?>
       </a>
 
       <h2> <?= t("Groups") ?> </h2>

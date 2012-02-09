@@ -14,14 +14,24 @@ function clearItemCovers(){
     for (var i=0;i<selections.length;i++){
         if (selections[i].id != ''){
         selections[i].style.display='none'
+        $("#g-album-grid li h2 a").css("color", "");
+        
         }
     }
 }
-function showItemCover(v){
-    //alert('g-item-cover-'+v)
+var originalColor;
+function leaveItem(v){
+    $("#g-item-id-"+v+" h2 a").css("color", originalColor + " !important");
+}
+function overItem(v){
+    originalColor=$("#g-item-id-"+v+" h2 a").css("color");
+    $("#g-item-id-"+v+" h2 a").css("color", "lightgrey !important");
+}
+function selectItem(v){
     clearItemCovers();
     document.getElementById('g-item-panel-'+v).style.display='block';
-    //document.getElementById('<?//='g-item-panel-'.$child->id?>').style.display='none'
+    $("#g-item-id-"+v+" h2 a").css("color", "white !important");
+    originalColor=$("#g-item-id-"+v+" h2 a").css("color");
 }
 function showDefaultCover(){ // default is the first one
     var selectionsContainer = document.getElementById("g-item-panel");
@@ -42,7 +52,7 @@ $(function(){
     showDefaultCover();
 })
 </script>
-<? endif ?>
+<? endif ?> 
 <div id="g-info" style="display:none"> <!-- CutGallery - Hide -->
   <?= $theme->album_top() ?>
   <h1><?= html::purify($item->title) ?></h1>
@@ -57,6 +67,11 @@ $(function(){
     <? endif ?>
 </ul>
 </div>
+<? else: ?>
+<?= $theme->paginator() ?>
+<? if (access::can("add", $item)): ?>
+    <?= $theme->add_photos_menu() ?>
+<? endif ?>
 <? endif ?>
 <ul id="g-album-grid" class="ui-helper-clearfix <?= ($theme->item->level < 2) ? "album_container" : "photo_container"?>">
 <? if (count($children)): ?>
@@ -66,7 +81,7 @@ $(function(){
     <? if ($child->is_album()): ?>
       <? $item_class = "g-album"; ?>
     <? endif ?> <!-- CutGallery - MODIFIED -->
-    <li id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseover=showItemCover($child->id)" : ""?>>
+    <li id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem($child->id); onmouseover=overItem($child->id); onclick=selectItem($child->id)" : ""?>>
     <?= $theme->thumb_top($child) ?>
     <a href="<?= $child->url() ?>">
       <? if ($child->has_thumb()): ?>
@@ -80,7 +95,12 @@ $(function(){
     <?= $theme->thumb_bottom($child) ?>
     <?= $theme->context_menu($child, "#g-item-id-{$child->id} .g-thumbnail") ?>
     <h2><span class="<?= $item_class ?>"></span>
-      <a href="<?= $child->url() ?>"><?= html::purify($child->title) ?></a></h2>
+        <? if ($child->is_album()): ?>
+            <a href="#"><?= html::purify($child->title) ?></a>
+        <? else: ?>
+            <a href="<?= $child->url() ?>"><?= html::purify($child->title) ?></a>
+        <? endif ?>
+    </h2>
     <ul class="g-metadata">
       <?= $theme->thumb_info($child) ?>
     </ul>

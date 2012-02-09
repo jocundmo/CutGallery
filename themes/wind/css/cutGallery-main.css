@@ -203,7 +203,7 @@ float: right;
 }
 .album_comments {
     background: transparent url("../images/album-comments-bg.png") no-repeat;
-    background-color: paleturquoise;
+/*    background-color: pink;*/
     position: absolute;
     right: 4px;
     height: 96px;
@@ -231,5 +231,11 @@ float: right;
 #contact_content img{
     height: 530px;
     width: 865px;
+}
+
+#g-share-dialog input{
+    display: inline;
+    width: 300px;
+    cursor: text;
 }
 

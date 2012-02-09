@@ -112,6 +112,11 @@ class Theme_View_Core extends Gallery_View {
       module::event("add_album_menu", $menu, $this);
       return $menu->render();
   }
+  public function share_photo_menu($item) {
+      $menu = Menu::factory("root");
+      module::event("share_photo_menu", $menu, $this, $item);
+      return $menu->render();
+  }
   public function delete_album_menu($item){
       $menu = Menu::factory("root");
       module::event("delete_album_menu", $menu, $this, $item);
