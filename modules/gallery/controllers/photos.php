@@ -21,7 +21,7 @@ class Photos_Controller extends Items_Controller {
   // CutGallery - ADDED ==>
   public function form_download($album, $photo){
       $document_root = $_SERVER['DOCUMENT_ROOT'];
-      $file_path = $document_root.'/Gallery3/var/albums/'.$album.'/'.$photo; // CutGallery - Hard coded 'Gallery3/var/albums' temporary.
+      $file_path = $document_root.'/Gallery3/var/albums/'.$album.'/'.$photo; // CutGallery - @TODO: Hard coded 'Gallery3/var/albums' temporary.
       download::dialog($file_path);
       download::send($file_path);
   }
