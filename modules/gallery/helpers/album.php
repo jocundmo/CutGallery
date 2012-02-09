@@ -31,14 +31,22 @@ class album_Core {
       ->label(t("Add an album to %album_title", array("album_title" => $parent->title)));
     $group->input("title")->label(t("Title"))
       ->error_messages("required", t("You must provide a title"))
-      ->error_messages("length", t("Your title is too long"));
+      ->error_messages("length", t("Your title is too long")) // CutGallery - Add more validations ==>
+      ->error_messages("conflict", t("There is already a movie, photo or album with this name"))
+      ->error_messages("no_slashes", t("The directory name can't contain a \"/\""))
+      ->error_messages("no_trailing_period", t("The directory name can't end in \".\""));
+    // <==
     $group->textarea("description")->label(t("Description"));
+/** CutGallery - Disable 'Directory name'
     $group->input("name")->label(t("Directory name"))
       ->error_messages("no_slashes", t("The directory name can't contain the \"/\" character"))
       ->error_messages("required", t("You must provide a directory name"))
       ->error_messages("length", t("Your directory name is too long"))
       ->error_messages("conflict", t("There is already a movie, photo or album with this name"));
-/** CutGallery - Disalble 'Internet Address'    
+ * 
+ */    
+
+/** CutGallery - Disalble 'Internet Address'
     $group->input("slug")->label(t("Internet Address"))
       ->error_messages(
         "not_url_safe",
@@ -74,25 +82,24 @@ class album_Core {
     $group = $form->group("edit_item")->label(t("Edit Album"));
 
     $group->input("title")->label(t("Title"))->value($parent->title)
-        ->error_messages("required", t("You must provide a title"))
-      ->error_messages("length", t("Your title is too long"));
-    $group->textarea("description")->label(t("Description"))->value($parent->description);
-/** Added by jocund....
-    // CutGallery - ADDED Field ==>
-    $group->dropdown("album_owner", array("id" => "g-album-owner"))
-      ->label(t("Owner"))
-      ->options($allAvailableVIPs)
-      ->selected($selectedVIP);
+      ->error_messages("required", t("You must provide a title"))
+      ->error_messages("length", t("Your title is too long")) // CutGallery - Add more validations ==>
+      ->error_messages("conflict", t("There is already a movie, photo or album with this name"))
+      ->error_messages("no_slashes", t("The directory name can't contain a \"/\""))
+      ->error_messages("no_trailing_period", t("The directory name can't end in \".\""));
     // <==
- * 
- */
+    $group->textarea("description")->label(t("Description"))->value($parent->description);
+
     if ($parent->id != 1) {
+/** CutGallery - Disable 'Directory Name'
       $group->input("name")->label(t("Directory Name"))->value($parent->name)
         ->error_messages("conflict", t("There is already a movie, photo or album with this name"))
         ->error_messages("no_slashes", t("The directory name can't contain a \"/\""))
         ->error_messages("no_trailing_period", t("The directory name can't end in \".\""))
         ->error_messages("required", t("You must provide a directory name"))
         ->error_messages("length", t("Your directory name is too long"));
+ * 
+ */
 /** CutGallery - Disable 'Internet Addrss'     
       $group->input("slug")->label(t("Internet Address"))->value($parent->slug)
         ->error_messages(

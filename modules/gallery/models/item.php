@@ -756,11 +756,15 @@ class Item_Model_Core extends ORM_MPTT {
                                        "callbacks" => array(array($this, "valid_name"))),
         "parent_id"           => array("callbacks" => array(array($this, "valid_parent"))),
         "rand_key"            => array("rule"      => array("decimal")),
+/**
         "slug"                => array("rules"     => array("length[0,255]", "required"),
                                        "callbacks" => array(array($this, "valid_slug"))),
+ * 
+ */
         "sort_column"         => array("callbacks" => array(array($this, "valid_field"))),
         "sort_order"          => array("callbacks" => array(array($this, "valid_field"))),
-        "title"               => array("rules"     => array("length[0,255]", "required")),
+        "title"               => array("rules"     => array("length[0,255]", "required"),
+                                       "callbacks" => array(array($this, "valid_title"))),
         "type"                => array("callbacks" => array(array($this, "read_only"),
                                                             array($this, "valid_field"))),
       );
@@ -795,6 +799,30 @@ class Item_Model_Core extends ORM_MPTT {
         ->where("slug", "=", $this->slug)
         ->count_records()) {
       $v->add_error("slug", "conflict");
+    }
+  }
+  
+    /**
+   * Validate the item title.  It can't conflict with other titles, can't contain slashes or
+   * trailing periods.
+   */
+  public function valid_title(Validation $v, $field) {
+    if (strpos($this->title, "/") !== false) {
+      $v->add_error("title", "no_slashes");
+      return;
+    } else if (rtrim($this->title, ".") !== $this->title) {
+      $v->add_error("title", "no_trailing_period");
+      return;
+    }
+
+    if (db::build()
+        ->from("items")
+        ->where("parent_id", "=", $this->parent_id)
+        ->where("title", "=", $this->title)
+        ->merge_where($this->id ? array(array("id", "<>", $this->id)) : null)
+        ->count_records()) {
+      $v->add_error("title", "conflict");
+      return;
     }
   }
 
