@@ -262,7 +262,7 @@ class gallery_event_Core {
                 ->label(t("Share"))
                 ->css_class("ui-icon-2")
                 ->css_class("ui-icon-seek-share")
-                ->url(url::site("quick/form_share/$item->id?csrf=$csrf&amp;from_id={$item->id}&amp;page_type=$page_type")));
+                ->url(url::site("quick/form_share/$item->id?from_id={$item->id}&amp;page_type=$page_type")));
       }
   }
   static function delete_album_menu($menu, $theme, $item){
