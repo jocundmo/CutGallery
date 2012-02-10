@@ -1,18 +1,33 @@
 <?php defined("SYSPATH") or die("No direct script access.") ?>
+<script language="JavaScript" type="text/javascript">
+	var img1 = new Image();
+        var img2 = new Image();
+        var img3 = new Image();
+	img1.src = "<?= url::file("themes/wind/images/business.png") ?>";
+        img2.src = "<?= url::file("themes/wind/images/wedding.png") ?>";
+        img3.src = "<?= url::file("themes/wind/images/party.png") ?>";
+	img1.onload = function() {
+	document.getElementById("img-business").src = this.src;
+	}
+        img2.onload = function() {
+	document.getElementById("img-wedding").src = this.src;
+	}
+        img3.onload = function() {
+	document.getElementById("img-party").src = this.src;
+	}
+</script>
 <div id="about_content">
 <div id="SlidePlayer"> 
         <ul class="Slides" id="Slides"> 
             
                     <li>
-                        <img title="business" src="<?= url::file("themes/wind/images/business.png") ?>" /></li> 
+                        <img id="img-business" title="business" src="<?= url::file("themes/wind/images/business-thumb.png") ?>" /></li> 
                 
                     <li>
-                        <img title="wedding" src="<?= url::file("themes/wind/images/wedding.png") ?>" /></li> 
+                        <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/images/wedding-thumb.png") ?>" /></li> 
                 
                     <li>
-                        <img title="Party" src="<?= url::file("themes/wind/images/party.png") ?>" /></li> 
-                
-                    
+                        <img id="img-party" title="Party" src="<?= url::file("themes/wind/images/party-thumb.png") ?>" /></li> 
         </ul> 
         <ul class="SlideTriggers" id="SlideTriggers" style="display: block"> 
             <li class="current">1</li> 
