@@ -184,18 +184,18 @@ class item_Core {
       ->url(url::abs_file("modules/gallery/js/item_form_delete.js"));
     return $form;
   }
-// CutGallery - @TODO: No needed from now.
-//  static function get_share_form($item){
-//
-//    $form = new Forge(
-//      "quick/delete/2?page_type=&from_id=2", "",
-//      "post", array("id" => "g-confirm-delete1"));
-//    $group = $form->group("confirm_delete")->label(t("Confirm Deletion"));
-//    $group->submit("")->value(t("Delete"));
-//    $form->script("")
-//      ->url(url::abs_file("modules/gallery/js/item_form_delete.js"));
-//    return $form;
-//  }
+// CutGallery -> ADDED
+  static function get_share_form($item){
+
+    $form = new Forge(
+      "", "",
+      "post", array("id" => "g-confirm-share"));
+    $group = $form->group("confirm_share")->label(t("Share this to your friends"));
+    $group->submit("")->value(t("Share"));
+    $form->script("")
+      ->url(url::abs_file("modules/gallery/js/item_form_delete.js"));
+    return $form;
+  }
   /**
    * Get the next weight value
    */
