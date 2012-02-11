@@ -82,7 +82,7 @@ $(function(){
     <? if ($child->is_album()): ?>
       <? $item_class = "g-album"; ?>
     <? endif ?> <!-- CutGallery - MODIFIED -->
-    <li id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
+    <li title="<?= t("Click album cover to enter")?>" id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
     <?= $theme->thumb_top($child) ?>
     <a href="<?= $child->url() ?>">
       <? if ($child->has_thumb()): ?>
