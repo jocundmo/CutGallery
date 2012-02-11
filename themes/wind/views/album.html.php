@@ -15,36 +15,37 @@ function clearItemCovers(){
         if (selections[i].id != ''){
         selections[i].style.display='none'
         $("#g-album-grid li h2 a").css("color", "");
-        
+        $("#g-album-grid li").css("background-color", "")
         }
     }
 }
 var originalColor;
-function leaveItem(v){
-    $("#g-item-id-"+v+" h2 a").css("color", originalColor + " !important");
+var originalBackColor;
+function leaveItem(full_id){
+    $("#" + full_id + " h2 a").css("color", originalColor + " !important");
+    $("#" + full_id).css("background-color", originalBackColor + " !important");
 }
-function overItem(v){
-    originalColor=$("#g-item-id-"+v+" h2 a").css("color");
-    $("#g-item-id-"+v+" h2 a").css("color", "lightgrey !important");
+function overItem(full_id){
+    originalColor=$("#" + full_id + " h2 a").css("color");
+    originalBackColor=$("#" + full_id).css("background-color");
+    $("#" + full_id + " h2 a").css("color", "lightgrey !important");
+    $("#" + full_id).css("background-color", "#303030 !important");
 }
-function selectItem(v){
+function selectItem(full_id, container_id){
     clearItemCovers();
-    document.getElementById('g-item-panel-'+v).style.display='block';
-    $("#g-item-id-"+v+" h2 a").css("color", "white !important");
-    originalColor=$("#g-item-id-"+v+" h2 a").css("color");
+    document.getElementById(container_id).style.display='block';
+    $("#" + full_id + " h2 a").css("color", "white !important");
+    $("#" + full_id).css("background-color", "#707070 !important");
+    originalColor=$("#" + full_id + " h2 a").css("color");
+    originalBackColor=$("#" + full_id).css("background-color");
 }
 function showDefaultCover(){ // default is the first one
-    var selectionsContainer = document.getElementById("g-item-panel");
-    var selections = selectionsContainer.getElementsByTagName("ul")
-    //var selections = document.getElementsByName('g-item-panel-name');
-    //alert(selections.length)
-
-    for (var i=0;i<selections.length;i++){
-        if (selections[i].id != ''){
-        selections[i].style.display='block';
-        //alert(selections[i].id)
-        break;
-        }
+    var album_panel_container = document.getElementById("g-item-panel");
+    var album_panel_list = album_panel_container.getElementsByTagName("ul");
+    var album_container = document.getElementById("g-album-grid");
+    var album_list = album_container.getElementsByTagName("li");
+    if (album_panel_list.length > 0 && album_list.length > 0){
+            selectItem(album_list[0].id, album_panel_list[0].id);
     }
 }
 $(function(){
@@ -81,7 +82,7 @@ $(function(){
     <? if ($child->is_album()): ?>
       <? $item_class = "g-album"; ?>
     <? endif ?> <!-- CutGallery - MODIFIED -->
-    <li id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem($child->id); onmouseover=overItem($child->id); onclick=selectItem($child->id)" : ""?>>
+    <li id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
     <?= $theme->thumb_top($child) ?>
     <a href="<?= $child->url() ?>">
       <? if ($child->has_thumb()): ?>
@@ -94,8 +95,8 @@ $(function(){
     </a>
     <?= $theme->thumb_bottom($child) ?>
     <?= $theme->context_menu($child, "#g-item-id-{$child->id} .g-thumbnail") ?>
-    <h2><span class="<?= $item_class ?>"></span>
-        <? if ($child->is_album()): ?>
+   <h2><!-- <span class="<?//= $item_class ?>"></span>-->
+        <? if ($child->is_album()): ?>  
             <a href="#"><?= html::purify($child->title) ?></a>
         <? else: ?>
             <a href="<?= $child->url() ?>"><?= html::purify($child->title) ?></a>
