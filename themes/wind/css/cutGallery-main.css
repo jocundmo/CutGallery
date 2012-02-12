@@ -171,12 +171,23 @@ float: right;
     /*background-color: blueviolet; */
     width: 100%;
     height: 374px;
-    text-align: left;
+/*    text-align: left;*/
+}
+#g-item-panel ul .album_cover div{
+/*    background-color: pink;
+    display: block;*/
+    position: relative;
+    width: 510px;
+    height: 310px;
+    top: 24px;
+    left: 80px;
 }
 #g-item-panel ul .album_cover img{
     position: relative;
-    top: 24px;
-    left: 80px;
+    margin: 0 auto;
+
+/*    top: 24px;
+    left: 80px;*/
 }
 #g-item-panel .album_prop{
     /* background-color: yellow; */
