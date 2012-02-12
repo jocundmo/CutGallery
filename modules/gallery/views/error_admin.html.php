@@ -168,15 +168,11 @@
       </h2>
       <p>
         There's an error message below and you can find more details
-        in gallery3/var/logs (look for the file with the most recent
-        date on it).  Stuck?  Stop by the <a href="http://gallery.menalto.com/forum/96">Gallery 3
-        Forums</a> and ask for help.  You can also look at our list
-        of <a href="http://sourceforge.net/apps/trac/gallery/roadmap">open
-        tickets</a> to see if the problem you're seeing has been
-        reported.  If you post a request, here's some useful
+        in [site_domain]/var/logs (look for the file with the most recent
+        date on it). If you post a request, here's some useful
         information to include:
         <?=  @gallery_block::get("platform_info") ?>
-        <?=  @gallery_block::get("stats") ?>
+        <?=  @gallery_block::get("stats") ?>-->
       </p>
       <div id="kohana_error">
         <h3>
