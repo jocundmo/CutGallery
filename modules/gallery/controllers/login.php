@@ -32,7 +32,14 @@ class Login_Controller extends Controller {
 
     list ($valid, $form) = $this->_auth("login/auth_ajax");
     if ($valid) {
-      json::reply(array("result" => "success"));
+      if ($form->continue_url->value == ""){
+          json::reply(array("result" => "success"));
+      }else{
+          $view = new View("login_successful.html");
+          // CutGallery - @TODO - This is something walkaround, I only know we can use "result" => "error" ,"html"=> ???
+          // could trigger load "login_successful.html".
+          json::reply(array("result" => "error", "html" => (string)$view)); 
+      }
     } else {
       $view = new View("login_ajax.html");
       $view->form = $form;
