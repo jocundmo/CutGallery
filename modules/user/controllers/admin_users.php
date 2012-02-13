@@ -119,25 +119,25 @@ class Admin_Users_Controller extends Admin_Controller {
       // CutGallery - Save guest
       $guest_user->save();
       
+      // CutGallery - Add VIP:username_VIP to VIP group/role ==>
+      $saved_vip_user = user::lookup_by_name($vip_user->name);
+      $saved_vip_group = group::lookup_by_name("VIP");
+      $this->_add_user_to_group_automatically($saved_vip_user->id, $saved_vip_group->id);
+      // <==
+
+      // CutGallery - Add Guest:username to guest group/role ==>
+      $saved_guest_user = user::lookup_by_name($guest_user->name);
+      $saved_guest_group = group::lookup_by_name("Guest");
+      $this->_add_user_to_group_automatically($saved_guest_user->id, $saved_guest_group->id);
+      // <==
+      
       module::event("user_add_form_admin_completed", $vip_user, $form);
       message::success(t("Created user %user_name", array("user_name" => $vip_user->name)));
       json::reply(array("result" => "success"));
     } else {
       print json::reply(array("result" => "error", "html" => (string)$form));
     }
-    
-    // CutGallery - Add VIP:username_VIP to VIP group/role ==>
-    $saved_vip_user = user::lookup_by_name($vip_user->name);
-    $saved_vip_group = group::lookup_by_name("VIP");
-    $this->_add_user_to_group_automatically($saved_vip_user->id, $saved_vip_group->id);
-    // <==
-    
-    // CutGallery - Add Guest:username to guest group/role ==>
-    $saved_guest_user = user::lookup_by_name($guest_user->name);
-    $saved_guest_group = group::lookup_by_name("Guest");
-    $this->_add_user_to_group_automatically($saved_guest_user->id, $saved_guest_group->id);
-    // <==
-        
+   
 /** CutGallery - Disable following code for saving only one user.
       $user->save();
       module::event("user_add_form_admin_completed", $user, $form);
