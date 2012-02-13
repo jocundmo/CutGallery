@@ -91,9 +91,11 @@ class Gallery_View_Core extends View {
       }
       // CutGallery - ADDED ==>
       if (isset($this->parents)){
+          $album_name = $this->parents[count($this->parents)-1]->name;
+          $photo_name = $this->item->name;
           $v->back_page_url = $this->parents[count($this->parents)-1]->url();
-          $v->share_url = url::abs_site("form/share/photos/".url::current()."png");
-          $v->download_full_url = url::abs_site("form/download/photos/".url::current().".png");
+          $v->share_url = url::abs_site("form/share/photos/$album_name/$photo_name");
+          $v->download_full_url = url::abs_site("form/download/photos/$album_name/$photo_name");
       }
       // <==
     }

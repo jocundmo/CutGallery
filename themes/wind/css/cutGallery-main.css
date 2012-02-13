@@ -171,12 +171,23 @@ float: right;
     /*background-color: blueviolet; */
     width: 100%;
     height: 374px;
-    text-align: left;
+/*    text-align: left;*/
+}
+#g-item-panel ul .album_cover div{
+/*    background-color: pink;
+    display: block;*/
+    position: relative;
+    width: 510px;
+    height: 310px;
+    top: 24px;
+    left: 80px;
 }
 #g-item-panel ul .album_cover img{
     position: relative;
-    top: 24px;
-    left: 80px;
+    margin: 0 auto;
+
+/*    top: 24px;
+    left: 80px;*/
 }
 #g-item-panel .album_prop{
     /* background-color: yellow; */
@@ -186,13 +197,13 @@ float: right;
 #g-item-panel .album_prop span{
     padding-right: 5px;
     color: grey;
-    font-weight: bold;
-    /* background-color: gray; */
+/*    font-weight: bold;*/
 }
 #g-item-panel .album_prop ul{
     float: right;
-    padding-left: 5px;
-    margin-right: 5px;
+    padding-left: 3px;
+    margin-right: 3px;
+    width: auto;
 }
 #g-item-panel .album_prop ul li a{
     color: grey !important;
@@ -227,6 +238,10 @@ float: right;
 #SlidePlayer{
     width: 100%; 
     height: 530px;
+}
+#SlidePlayer ul li img{
+    width: 931px; 
+    height: 577px;
 }
 #contact_content img{
     height: 530px;

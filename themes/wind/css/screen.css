@@ -527,15 +527,17 @@ ul .g-photo{
 /* CutGallery -MODIFIED */
 #g-content #g-album-grid .g-album {
   background-color: #000;
-  width: 336px;
+  width: 306px;
+  padding-left: 30px;
 }
 
 #g-content #g-album-grid .g-album h2 span.g-album {
-  background: transparent url('../images/ico-album.png') no-repeat top left;
-  display: inline-block;
+/*  background: transparent url('../images/ico-album.png') no-repeat top left;*/
+/*  display: inline-block;
   height: 16px;
   margin-right: 5px;
   width: 16px;
+  background-color: transparent;*/
 }
 
 #g-content #g-album-grid .g-hover-item {
@@ -1090,7 +1092,7 @@ div#g-action-status {
     float: left;
     height: 30px;
     width: 90px;
-    background-color: yellow;
+/*    background-color: yellow;*/
     vertical-align: middle;
 }
 .g-menu li{

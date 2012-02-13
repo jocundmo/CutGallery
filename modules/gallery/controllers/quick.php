@@ -120,7 +120,9 @@ class Quick_Controller extends Controller {
         $from_id != $id /* deleted the item we were viewing */) {
       json::reply(array("result" => "success", "reload" => 1));
     } else {
-      json::reply(array("result" => "success", "location" => $parent->url()));
+        json::reply(array("result" => "success", "reload" => 1));
+      // CutGallery - This should use reload instead. 
+      // json::reply(array("result" => "success", "location" => $parent->url()));
     }
   }
 

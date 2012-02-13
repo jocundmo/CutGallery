@@ -147,7 +147,7 @@ class Albums_Controller extends Items_Controller {
       message::success(t("Created album %album_title",
                          array("album_title" => html::purify($album->title))));
       //json::reply(array("result" => "success", "location" => $album->url())); // CutGallery - After added one albums, should leave at the level 1 album
-      json::reply(array("result" => "success", "location" => url::site("albums"))); 
+      json::reply(array("result" => "success", "reload" => 1)); 
     } else {
       json::reply(array("result" => "error", "html" => (string)$form));
       // CutGallery - disable this line
@@ -213,7 +213,7 @@ class Albums_Controller extends Items_Controller {
       if ($form->from_id->value == $album->id) {
         // Use the new url; it might have changed.
         // json::reply(array("result" => "success", "location" => $album->url())); // CutGallery - After added one albums, should leave at the level 1 album
-        json::reply(array("result" => "success", "location" => url::site("albums")));
+        json::reply(array("result" => "success", "reload" => 1));
       } else {
         // Stay on the same page
         json::reply(array("result" => "success"));
