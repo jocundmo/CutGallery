@@ -147,7 +147,7 @@ class Albums_Controller extends Items_Controller {
       message::success(t("Created album %album_title",
                          array("album_title" => html::purify($album->title))));
       //json::reply(array("result" => "success", "location" => $album->url())); // CutGallery - After added one albums, should leave at the level 1 album
-      json::reply(array("result" => "success", "reload" => 1)); 
+      json::reply(array("result" => "success", "reload" => 1));
     } else {
       json::reply(array("result" => "error", "html" => (string)$form));
       // CutGallery - disable this line
@@ -160,6 +160,7 @@ class Albums_Controller extends Items_Controller {
     $album = ORM::factory("item", $album_id);
     access::required("view", $album);
     access::required("edit", $album);
+    $old_owner_id = "";
 
     $form = album::get_edit_form($album);
     try {
@@ -179,6 +180,7 @@ class Albums_Controller extends Items_Controller {
  * 
  */
       // ==> CutGallery - Assign owner to this album
+      $old_owner_id = $album->owner_id; // Keeps the old owner id for update.
       $user_name = "admin";
       if ($form->edit_item->owner->value != 0) { // A VIP user has been choosen.
           $vip_users = vip::lookup_vip_users();
@@ -204,6 +206,7 @@ class Albums_Controller extends Items_Controller {
 
     if ($valid) {
       $album->save();
+      item::update_owner_id($old_owner_id, $album->owner_id, $album->id); // CutGallery - Update photoes of this album with new owner id.
       module::event("item_edit_form_completed", $album, $form);
 
       log::success("content", "Updated album", "<a href=\"albums/$album->id\">view</a>");
