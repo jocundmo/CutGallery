@@ -83,7 +83,7 @@ class gallery_Core {
           Session::instance()->set("continue_url", url::abs_current());
           Router::$controller = "login";
           Router::$controller_path = MODPATH . "gallery/controllers/login.php";
-          Router::$method = "html";
+          Router::$method = "ajax";
         }
       }
     }

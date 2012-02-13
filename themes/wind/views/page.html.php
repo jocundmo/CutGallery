@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <html> 
-      <head>
+<head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <? $theme->start_combining("script,css") ?>
     <title>
@@ -79,8 +79,8 @@
 
     <!-- LOOKING FOR YOUR JAVASCRIPT? It's all been combined into the link below -->
     <?= $theme->get_combined("script") ?>
-<!--  </head>
-<head> 
+</head>
+<!--  <head> 
     <title>I Love Smile</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
@@ -88,7 +88,7 @@
     <script src="Scripts/jquery-1.4.4.min.js" type="text/javascript"></script> 
 </head> -->
 <body> 
-    
+
 <div id="mainHead">
     <div id="logo">
         <a href="<?= url::site() ?>"></a>
@@ -105,11 +105,12 @@
 
     <div id="mainNav">
         <ul>
-            <li id="gallery"><a href="<?= url::site("albums")?>"></a></li>
+            <li id="gallery"><a class="<?= ($theme->user->name == "guest" ? "g-dialog-link" : "") ?>" href="<?= url::site("albums")?>"></a></li>
             <li id="intro"><a href="<?= url::site("about") ?>"></a></li>
             <li id="contactus"><a href="<?= url::site("contact") ?>"></a></li>
         </ul>
     </div>
+
     <div class="div-clear"></div>
 </div>
 
