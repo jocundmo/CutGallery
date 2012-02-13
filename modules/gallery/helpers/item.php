@@ -184,9 +184,8 @@ class item_Core {
       ->url(url::abs_file("modules/gallery/js/item_form_delete.js"));
     return $form;
   }
-// CutGallery -> ADDED
+  // CutGallery -> ADDED
   static function get_share_form($item){
-
     $form = new Forge(
       "", "",
       "post", array("id" => "g-confirm-share"));
@@ -196,6 +195,7 @@ class item_Core {
       ->url(url::abs_file("modules/gallery/js/item_form_delete.js"));
     return $form;
   }
+
   /**
    * Get the next weight value
    */
@@ -432,7 +432,7 @@ class item_Core {
    * CutGallery - Add
    * Find the count of photos by owner id
    * 
-   * @param owner id
+   * @param owner_id
    */
   static function lookup_photos_by_owner($owner_id) {
         return ORM::factory("item")
@@ -440,5 +440,22 @@ class item_Core {
                 ->where("owner_id", "=", $owner_id)
                 ->and_where("type", "=", "photo")
                 ->count_all();   
-    }
+  }
+  
+  /**
+   * CutGallery - Add
+   * Update old owner id by new one for certain album
+   * 
+   * @param old_owner_id: old owner id
+   * @param new_owner_id: new owner id
+   * @param parent_id: identifies which album
+   */
+  static function update_owner_id($old_owner_id, $new_owner_id, $parent_id) {
+      db::build()
+        ->update("items")
+        ->set("owner_id", $new_owner_id)
+        ->where('owner_id', '=', $old_owner_id)
+        ->where('parent_id', '=', $parent_id)
+        ->execute();
+  }
 }
