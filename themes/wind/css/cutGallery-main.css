@@ -254,3 +254,10 @@ float: right;
     cursor: text;
 }
 
+#g-dialog{
+    background: transparent url('../images/dialog-bg.png') repeat;
+}
+
+.requires-flash div {
+    background-color: #FFF;
+}
