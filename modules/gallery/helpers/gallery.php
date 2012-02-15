@@ -71,6 +71,7 @@ class gallery_Core {
         if (Router::$controller == "home" ||
             Router::$controller == "about" ||
             Router::$controller == "contact" ||
+            Router::$controller == "BrowserNotSupport" ||
             Router::$method == "form_share"){
             return;}
         // <==
