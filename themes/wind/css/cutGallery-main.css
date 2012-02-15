@@ -240,8 +240,8 @@ float: right;
     height: 530px;
 }
 #SlidePlayer ul li img{
-    width: 931px; 
-    height: 577px;
+    width: 865px; 
+    height: 530px
 }
 #contact_content img{
     height: 530px;
@@ -260,4 +260,8 @@ float: right;
 
 .requires-flash div {
     background-color: #FFF;
+}
+
+#g-upload-done{
+/*    background-color:red;*/
 }
