@@ -20,7 +20,7 @@
 
 #g-add-photos-canvas {
   border: 1px solid  #ccc;
-  height: 200px;
+  height: 120px;
   margin: .5em 0;
   padding: 2.8em 0 0 0;
   overflow: auto;
@@ -55,7 +55,7 @@
 
 #g-add-photos-status {
   border: 1px solid #ccc;
-  height: 125px;
+  height: 225px;
   margin: .4em 0;
   overflow: auto;
 }
