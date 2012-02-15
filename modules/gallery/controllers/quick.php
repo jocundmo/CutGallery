@@ -76,7 +76,7 @@ class Quick_Controller extends Controller {
     $item = model_cache::get("item", $id);
     $v = new View("quick_share_confirm.html");
     $v->item = $item;
-
+    $v->form = item::get_share_form($item);
     print $v;
   }
   public function form_delete($id) {

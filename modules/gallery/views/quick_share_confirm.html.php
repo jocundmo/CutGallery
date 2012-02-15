@@ -13,7 +13,7 @@
   <? else: ?>
     <input readonly="true" class="share-url" value='<?= t("%title", array("title" => html::purify("http://".$_SERVER["SERVER_NAME"].url::site("form/share/photos/".$item->hashed_name)))) ?>'></input>
     <span class="share-title">
-        <?= t("Share this link") ?>
+        <?= t("Copy") ?>
     </span>
   <? endif ?>
   <?= $form ?>
