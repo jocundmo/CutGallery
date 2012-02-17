@@ -45,9 +45,9 @@
 name:广告图片轮转显示
 */
 
-var $ = function(id) {
-    return "string" == typeof id ? document.getElementById(id) : id;
-};
+//var $ = function(id) {
+//    return "string" == typeof id ? document.getElementById(id) : id;
+//};
 
 var Class = {
     create: function() {
