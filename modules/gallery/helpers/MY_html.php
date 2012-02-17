@@ -46,6 +46,12 @@ class html extends html_Core {
     return SafeString::purify($html);
   }
 
+  static function truncate($string, $max) {
+      if (strlen($string) > $max){
+          return substr($string, 0, $max)."...";
+          }
+      return $string;
+  }
   /**
    * Flags the given string as safe to be used in HTML (free of malicious HTML/JS).
    *

@@ -750,7 +750,7 @@ class Item_Model_Core extends ORM_MPTT {
     if (!$array) {
       $this->rules = array(
         "album_cover_item_id" => array("callbacks" => array(array($this, "valid_album_cover"))),
-        "description"         => array("rules"     => array("length[0,65535]")),
+        "description"         => array("rules"     => array("length[0,150]")),
         "mime_type"           => array("callbacks" => array(array($this, "valid_field"))),
         "name"                => array("rules"     => array("length[0,255]", "required"),
                                        "callbacks" => array(array($this, "valid_name"))),
@@ -763,7 +763,7 @@ class Item_Model_Core extends ORM_MPTT {
  */
         "sort_column"         => array("callbacks" => array(array($this, "valid_field"))),
         "sort_order"          => array("callbacks" => array(array($this, "valid_field"))),
-        "title"               => array("rules"     => array("length[0,255]", "required"),
+        "title"               => array("rules"     => array("length[0,15]", "required"),
                                        "callbacks" => array(array($this, "valid_title"))),
         "type"                => array("callbacks" => array(array($this, "read_only"),
                                                             array($this, "valid_field"))),

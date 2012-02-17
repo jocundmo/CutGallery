@@ -158,7 +158,7 @@ $(function(){
                         </div>
                     </li>
                     <li id="g-item-prop-<?= $child->id ?>" class="album_prop">
-                        <span><?= t("Name").":" ?> <?= html::purify($child->title) ?></span>
+                        <span title="<?= html::purify($child->title)?>"><?= t("Name").":" ?> <?= html::truncate(html::purify($child->title), 21) ?></span>
                         <span><?= t("Owner").":" ?> <?= user::lookup($child->owner_id)->name ?></span>
                         <span><?= t("Photos").":" ?> <?= item::lookup_photos_by_owner($child->owner_id) ?></span>
                         <? if (access::can("add", $item)): ?>
@@ -168,7 +168,7 @@ $(function(){
                         <? endif ?>
                     </li>
                     <li id="g-item-comments-<?= $child->id ?>" class="album_comments">
-                        <span class="g-description"><?= nl2br(html::purify($child->description)) ?></span>
+                        <span class="g-description"><?= html::truncate(nl2br(html::purify($child->description)), 155) ?></span>
                     </li>
                 </ul>
         <? endforeach ?>
