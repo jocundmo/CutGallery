@@ -280,3 +280,11 @@ float: right;
     width: 510px;
     height: 310px;
 }
+
+#add_photo_helper{
+    display: block;
+    height: 24px;
+    padding-top: 5px;
+/*    background-color: pink;*/
+    float: left;
+}

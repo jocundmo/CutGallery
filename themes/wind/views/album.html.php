@@ -72,6 +72,7 @@ $(function(){
 <?= $theme->paginator() ?>
 <? if (access::can("add", $item)): ?>
     <?= $theme->add_photos_menu() ?>
+    <div id="add_photo_helper"><?= t("Batch Upload Access ftp folder @ ftp://")?><?=$_SERVER['SERVER_ADDR'].'/' ?><?= $theme->item->name ?></div>
 <? endif ?>
 <? endif ?>
 <ul id="g-album-grid" class="ui-helper-clearfix <?= ($theme->item->level < 2) ? "album_container" : "photo_container"?>">

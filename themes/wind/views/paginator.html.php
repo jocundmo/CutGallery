@@ -95,7 +95,7 @@
       <? if ($page_type == "collection"): ?>
       <span class="ui-corner-all <?=$class_paginator_info?>">
         <?= /* @todo This message isn't easily localizable */
-            t2("Item %from_number of %count",
+            t2("%from_number/%count",
                "%from_number-%to_number/%count",
                $total,
                array("from_number" => $first_visible_position,
