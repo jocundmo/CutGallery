@@ -125,7 +125,7 @@ border-top-color: #AAA;
 
 /**/
 #home_pictures{
-    background-color: gray;
+/*    background-color: gray;*/
     width: 865px;
     height: 500px; /* CutGallery - Home page picture height */
     margin: 0 auto;
@@ -136,10 +136,10 @@ border-top-color: #AAA;
 }
 #home_pictures li{
     float: left;
-    background-color: darkgray;
+/*    background-color: darkgray;*/
     border-width: 1px;
     margin-left: 10px;
-    border-style:  dashed;
+    border-style: outset;
     width: 275px; /* CutGallery - Home page picture width */
     height: 100%;
 }
