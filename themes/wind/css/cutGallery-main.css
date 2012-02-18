@@ -1,16 +1,16 @@
 html {
 color: #fff;
 margin: 0;
-background: transparent url('../images/main-bg.png') repeat;
+background: #000 url('../images/main-bg.png') repeat;
 }
 
 #mainHead{
     width: 1024px;
     margin: 0 auto;
     background-color: #000;
-        border-bottom-width: 2px;
-border-bottom-style: solid;
-border-bottom-color: #AAA;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #AAA;
 }
 
 .div-clear{
@@ -241,7 +241,7 @@ float: right;
 }
 #about_content{
     margin: 0 auto;
-    width: 865px;
+    width: 980px;
 
 }
 #SlidePlayer{
@@ -249,12 +249,12 @@ float: right;
     height: 530px;
 }
 #SlidePlayer ul li img{
-    width: 865px; 
+    width: 980px; 
     height: 530px
 }
 #contact_content img{
     height: 530px;
-    width: 865px;
+    width: 980px;
 }
 
 #g-share-dialog input{
