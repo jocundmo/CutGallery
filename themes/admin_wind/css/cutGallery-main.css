@@ -228,3 +228,7 @@ float: right;
     width: 12em;
     height: 2em;
 }
+
+#g-dialog{
+    background: transparent url('../images/dialog-bg.png') repeat;
+}
