@@ -153,7 +153,12 @@ $(function(){
                     <li id="g-item-cover-<?= $child->id ?>" class="album_cover">
                         <div>
                             <? if ($child->is_album()): ?>
-                                <a style="display:block" href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
+                               <? if ($child->album_cover()): ?>
+                                   <a style="display:block" href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
+                               <? else: ?>
+                                   <a style="display:block" href='<?= $child->url() ?>'><img id="g-item-cover-no-item" class="g-album-thumbnail ui-corner-all" src="<?= url::file("themes/wind/images/album-cover-noitem.jpg")?>"/></a>
+                               <? endif ?>
+                                
                             <? endif ?>
                         </div>
                     </li>

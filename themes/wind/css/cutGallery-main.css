@@ -59,7 +59,6 @@ float: left;
     float: left;
     height: 70px;
     list-style: none;
-
     background-color: white !important;
 
 }
@@ -264,4 +263,9 @@ float: right;
 
 #g-upload-done{
 /*    background-color:red;*/
+}
+
+#g-item-cover-no-item{
+    width: 510px;
+    height: 310px;
 }
