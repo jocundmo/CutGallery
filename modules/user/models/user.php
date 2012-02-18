@@ -126,7 +126,8 @@ class User_Model_Core extends ORM implements User_Definition {
    * @return string
    */
   public function display_name() {
-    return empty($this->full_name) ? $this->name : $this->full_name;
+    // return empty($this->full_name) ? $this->name : $this->full_name; // CutGallery - Always show name instead of full_name
+      return $this->name;
   }
 
   /**
