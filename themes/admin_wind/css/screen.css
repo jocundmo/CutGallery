@@ -75,7 +75,7 @@ a,
 a.ui-state-hover,
 input.ui-state-hover,
 button.ui-state-hover {
-  color: #5382BF !important;
+  color: grey !important;
   text-decoration: none;
   -moz-outline-style: none;
 }
