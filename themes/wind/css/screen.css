@@ -19,7 +19,7 @@
  **********************************************************************/
 
 body, html {
-  /*background-color: #000;*/
+
   font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -165,7 +165,6 @@ textarea {
   border-left-color: #ccc;
   clear: both;
   color: #333;
-  width: 50%;
 }
 
 textarea {
@@ -450,7 +449,7 @@ td {
 
 /* Album content ~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #g-content {
-    /* background-color: red; */
+/*    background-color: red; */
     margin: auto;
     height: 100%;
 }
@@ -459,7 +458,7 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-/*  background-color: pink;*/
+/*  background-color: green !important;*/
 
   float: left;
 /*  position: relative;
@@ -1122,7 +1121,7 @@ div#g-action-status {
     float: none;
     height: auto;
     width: auto;
-    background-color: yellow;
+/*    background-color: yellow;*/
     vertical-align: middle;
 }
 .g-paginator {

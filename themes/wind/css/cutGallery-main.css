@@ -59,7 +59,7 @@ float: left;
     float: left;
     height: 70px;
     list-style: none;
-    background-color: white !important;
+/*    background-color: white !important;*/
 
 }
 #mainNav #gallery{
@@ -112,7 +112,7 @@ border-top-color: #AAA;
    position: relative;
    left:0px;
    bottom:0px;
-   height:30px;
+   height:60px;
    width:1024px;
    margin: 0 auto;
    background-color: black;
@@ -223,7 +223,7 @@ float: right;
 }
 .album_comments {
     background: transparent url("../images/album-comments-bg.png") no-repeat;
-/*    background-color: pink;*/
+/*    background-color: pink !important;*/
     position: absolute;
     right: 4px;
     height: 96px;
@@ -231,7 +231,7 @@ float: right;
 }
 .album_comments span {
    display: block;
-   padding-top: 20px;
+   padding-top: 8px;
 }
 
 #g-add-items {
