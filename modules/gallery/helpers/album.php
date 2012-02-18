@@ -88,7 +88,7 @@ class album_Core {
       ->error_messages("no_slashes", t("The directory name can't contain a \"/\""))
       ->error_messages("no_trailing_period", t("The directory name can't end in \".\""));
     // <==
-    $group->textarea("description")->label(t("Description"))->value($parent->description)->maxLength('3');
+    $group->textarea("description")->label(t("Description"))->value($parent->description)->maxLength('150');
 
     if ($parent->id != 1) {
 /** CutGallery - Disable 'Directory Name'
