@@ -153,7 +153,7 @@ $(function(){
                     <li id="g-item-cover-<?= $child->id ?>" class="album_cover">
                         <div>
                             <? if ($child->is_album()): ?>
-                                <a href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
+                                <a style="display:block" href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
                             <? endif ?>
                         </div>
                     </li>
@@ -168,7 +168,7 @@ $(function(){
                         <? endif ?>
                     </li>
                     <li id="g-item-comments-<?= $child->id ?>" class="album_comments">
-                        <span class="g-description"><?= html::truncate(nl2br(html::purify($child->description)), 155) ?></span>
+                        <span class="g-description"><?= html::max_rows(html::truncate(nl2br(html::purify($child->description)), 155), 3) ?></span>
                     </li>
                 </ul>
         <? endforeach ?>

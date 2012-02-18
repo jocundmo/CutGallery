@@ -29,14 +29,14 @@ class album_Core {
     $form = new Forge("albums/create/{$parent->id}", "", "post", array("id" => "g-add-album-form"));
     $group = $form->group("add_album")
       ->label(t("Add an album to %album_title", array("album_title" => $parent->title)));
-    $group->input("title")->label(t("Title"))
+    $group->input("title")->label(t("Title"))->maxLength('15')
       ->error_messages("required", t("You must provide a title"))
       ->error_messages("length", t("Your title is too long")) // CutGallery - Add more validations ==>
       ->error_messages("conflict", t("There is already a movie, photo or album with this name"))
       ->error_messages("no_slashes", t("The directory name can't contain a \"/\""))
       ->error_messages("no_trailing_period", t("The directory name can't end in \".\""));
     // <==
-    $group->textarea("description")->label(t("Description"));
+    $group->textarea("description")->label(t("Description"))->maxLength('150');
 /** CutGallery - Disable 'Directory name'
     $group->input("name")->label(t("Directory name"))
       ->error_messages("no_slashes", t("The directory name can't contain the \"/\" character"))
@@ -81,14 +81,14 @@ class album_Core {
     $form->hidden("from_id")->value($parent->id);
     $group = $form->group("edit_item")->label(t("Edit Album"));
 
-    $group->input("title")->label(t("Title"))->value($parent->title)
+    $group->input("title")->label(t("Title"))->value($parent->title)->maxLength('15')
       ->error_messages("required", t("You must provide a title"))
       ->error_messages("length", t("Your title is too long")) // CutGallery - Add more validations ==>
       ->error_messages("conflict", t("There is already a movie, photo or album with this name"))
       ->error_messages("no_slashes", t("The directory name can't contain a \"/\""))
       ->error_messages("no_trailing_period", t("The directory name can't end in \".\""));
     // <==
-    $group->textarea("description")->label(t("Description"))->value($parent->description);
+    $group->textarea("description")->label(t("Description"))->value($parent->description)->maxLength('3');
 
     if ($parent->id != 1) {
 /** CutGallery - Disable 'Directory Name'

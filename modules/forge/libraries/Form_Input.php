@@ -76,6 +76,11 @@ class Form_Input_Core {
 		{
 			// Do nothing. The name should stay static once it is set.
 		}
+                elseif ($method == 'maxLength')
+                {
+                       $this->data['onkeypress'] = 'return isNotMax(this)';
+                       $this->data[$method] = $args[0];
+                }
 		else
 		{
 			$this->data[$method] = $args[0];
