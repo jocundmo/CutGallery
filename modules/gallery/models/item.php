@@ -378,6 +378,13 @@ class Item_Model_Core extends ORM_MPTT {
           mkdir($this->file_path());
           mkdir(dirname($this->thumb_path()));
           mkdir(dirname($this->resize_path()));
+		  
+		  // CutGallery - Add: Create same folders under ftp root and bakcup root.
+          $ftp_root = module::get_var("gallery", "ftp_root");
+          $back_root = module::get_var("gallery", "back_root");
+          mkdir($ftp_root."\\".$this->name);
+          mkdir($back_root."\\".$this->name);
+          // <==
           break;
 
         case "photo":

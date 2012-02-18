@@ -442,7 +442,7 @@ class Admin_Users_Controller extends Admin_Controller {
       ->text(
         '$("form").ready(function(){$(\'input[name="password"]\').user_password_strength();});');
     // CutGallery - Add 'Comments' textare. ==>
-    $group->textarea("comments")->label(t("Comments"))->id("g-comments")->maxLength("50");
+    $group->textarea("comments")->label(t("Comments"))->id("g-comments")->maxLength("50")->value($user->comments);
     // <==
 /** CutGallery - Disable 'password2', 'email' and 'url'.   
     $group->password("password2")->label(t("Confirm password"))->id("g-password2")
