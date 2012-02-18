@@ -569,8 +569,8 @@ class Item_Model_Core extends ORM_MPTT {
     }
     // CutGallery - ADDED resize thumb
     if ($this->is_album() && $height){
-        $maxWidth = 450;//540;
-        $maxHeight = 300;//360;
+        $maxWidth = 474;//540;
+        $maxHeight = 316;//360;
             if ($width > $height){
             $scale = $width / $height;
             $width = $maxWidth;
