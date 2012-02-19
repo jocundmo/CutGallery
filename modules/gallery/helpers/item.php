@@ -173,6 +173,12 @@ class item_Core {
    * @return string form
    */
   static function get_delete_form($item) {
+//      $cmd = "E:\14.Projects\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe";
+//      system($cmd);
+//      $result = new com("TestCore.Class1");
+//      $show = $result->Run();
+//    exec("C:\windows\system32\HelloWorld.exe");  
+
     $page_type = Input::instance()->get("page_type");
     $from_id = Input::instance()->get("from_id");
     $form = new Forge(
@@ -192,7 +198,14 @@ class item_Core {
     $group = $form->group("confirm_share")->label(t("Share this to your friends"));
     return $form;
   }// <--
-
+  
+  static function get_add_photos_help_form($item){
+      $form = new Forge(
+      "", "",
+      "post", array("id" => "g-confirm-add-photos-help"));
+    $group = $form->group("confirm_add_photos_help")->label(t("批量上传帮助"));
+    return $form;
+  }
   /**
    * Get the next weight value
    */

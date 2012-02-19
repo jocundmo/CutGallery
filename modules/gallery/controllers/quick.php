@@ -72,6 +72,14 @@ class Quick_Controller extends Controller {
 
     json::reply(array("result" => "success", "reload" => 1));
   }
+  public function form_add_photos_help($id) {
+    $item = model_cache::get("item", $id);
+    $v = new View("quick_add_photos_help.html");
+    $v->item = $item;
+    $v->form = item::get_add_photos_help_form($item);
+    print $v;
+  }
+  
   public function form_share($id) {
     $item = model_cache::get("item", $id);
     $v = new View("quick_share_confirm.html");

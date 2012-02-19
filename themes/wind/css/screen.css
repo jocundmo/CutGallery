@@ -1091,7 +1091,7 @@ div#g-action-status {
     float: left;
     height: 30px;
     width: 90px;
-/*    background-color: yellow;*/
+/*    background-color: yellow !important;*/
     vertical-align: middle;
 }
 .g-menu li{
@@ -1121,7 +1121,7 @@ div#g-action-status {
     float: none;
     height: auto;
     width: auto;
-/*    background-color: yellow;*/
+/*    background-color: yellow !important;*/
     vertical-align: middle;
 }
 .g-paginator {

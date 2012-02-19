@@ -486,7 +486,8 @@ class Admin_Users_Controller extends Admin_Controller {
   static function _get_user_add_form_admin() {
     $form = new Forge("admin/users/add_user", "", "post", array("id" => "g-add-user-form"));
     $group = $form->group("add_user")->label(t("Add user"));
-    $group->input("name")->label(t("Username"))->id("g-username")->maxLength("11")
+
+    $group->input("name")->label(t("Username")." （请使用 “申请名_VIP” 登陆）")->id("g-username")->maxLength("11")
       ->error_messages("required", t("A name is required"))
       ->error_messages("length", t("This name is too long"))
       ->error_messages("conflict", t("There is already a user with that username"));

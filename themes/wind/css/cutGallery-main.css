@@ -281,10 +281,10 @@ float: right;
     height: 310px;
 }
 
-#add_photo_helper{
+.g-add-photos-help{
     display: block;
     height: 24px;
-    padding-top: 5px;
+    padding-top: 7px;
 /*    background-color: pink;*/
     float: left;
 }

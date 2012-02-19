@@ -326,7 +326,19 @@ class gallery_event_Core {
           }
       }
   }
-  
+  static function add_photos_help_menu($menu, $theme, $item){
+       if ($item === null){
+          $item = $theme->item();
+      }
+      if (!empty($item)) {
+            $menu->append(Menu::factory("dialog")
+                ->id("share")
+                ->label(t("批量上传"))
+                ->css_class("ui-icon-2")
+                ->css_class("g-add-photos-help")
+                ->url(url::site("quick/form_add_photos_help/$item->id")));
+      }
+  }
   static function site_menu($menu, $theme, $item_css_selector) {
     if ($theme->page_subtype != "login") {
       $menu->append(Menu::factory("link")
@@ -491,6 +503,10 @@ class gallery_event_Core {
               ->id("manage_album")
               ->label(t("Manage Album"))
               ->url(url::site("albums")));
+//      ->append(Menu::factory("link")
+//                        ->id("languages")
+//                        ->label(t("Languages"))
+//                        ->url(url::site("admin/languages")));
 //      ->append(Menu::factory("link")
 //              ->id("user_profile")
 //              ->label(t("Profile"))
