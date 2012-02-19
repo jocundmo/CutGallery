@@ -1,0 +1,5 @@
+D:\temp\PhotoScanner\PhotoScanner\Test4Php\bin\Release\Test4Php.exe
+D:\temp\PhotoScanner\PhotoScanner\Test4Php\bin\Release\Test4Php.pdb
+D:\temp\PhotoScanner\PhotoScanner\Test4Php\obj\x86\Release\ResolveAssemblyReference.cache
+D:\temp\PhotoScanner\PhotoScanner\Test4Php\obj\x86\Release\Test4Php.exe
+D:\temp\PhotoScanner\PhotoScanner\Test4Php\obj\x86\Release\Test4Php.pdb

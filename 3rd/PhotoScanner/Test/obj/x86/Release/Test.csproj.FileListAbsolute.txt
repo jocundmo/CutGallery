@@ -1,0 +1,10 @@
+D:\temp\PhotoScanner\PhotoScanner\Test\bin\Release\Test.exe
+D:\temp\PhotoScanner\PhotoScanner\Test\bin\Release\Test.pdb
+D:\temp\PhotoScanner\PhotoScanner\Test\obj\x86\Release\ResolveAssemblyReference.cache
+D:\temp\PhotoScanner\PhotoScanner\Test\obj\x86\Release\Test.exe
+D:\temp\PhotoScanner\PhotoScanner\Test\obj\x86\Release\Test.pdb
+E:\temp\PhotoScanner\PhotoScanner\Test\bin\Release\Test.exe
+E:\temp\PhotoScanner\PhotoScanner\Test\bin\Release\Test.pdb
+E:\temp\PhotoScanner\PhotoScanner\Test\obj\x86\Release\ResolveAssemblyReference.cache
+E:\temp\PhotoScanner\PhotoScanner\Test\obj\x86\Release\Test.exe
+E:\temp\PhotoScanner\PhotoScanner\Test\obj\x86\Release\Test.pdb

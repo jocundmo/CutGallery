@@ -1,0 +1,13 @@
+D:\temp\PhotoScanner\PhotoScanner\Scanner\bin\Debug\Scanner.exe
+D:\temp\PhotoScanner\PhotoScanner\Scanner\bin\Debug\Scanner.pdb
+D:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Debug\Scanner.exe
+D:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Debug\Scanner.pdb
+D:\temp\PhotoScanner\PhotoScanner\Scanner\bin\Debug\Scanner.exe.config
+E:\temp\PhotoScanner\PhotoScanner\Scanner\bin\Debug\Scanner.exe.config
+E:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Debug\Scanner.exe
+E:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Debug\Scanner.pdb
+E:\temp\PhotoScanner\PhotoScanner\Scanner\bin\Debug\Scanner.exe
+E:\temp\PhotoScanner\PhotoScanner\Scanner\bin\Debug\Scanner.pdb
+E:\temp\PhotoScanner\PhotoScanner\Scanner\bin\Debug\MySQLDriverCS.dll
+E:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Debug\ResolveAssemblyReference.cache
