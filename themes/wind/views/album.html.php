@@ -7,7 +7,7 @@
 
 function clearItemCovers(){
     var selectionsContainer = document.getElementById("g-item-panel");
-    var selections = selectionsContainer.getElementsByTagName("ul")
+    var selections = selectionsContainer.getElementsByTagName("ul");
     //var selections = document.getElementsByName('g-item-panel-name');
     //alert(selections.length)
 
