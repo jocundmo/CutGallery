@@ -89,7 +89,7 @@ a,
 a.ui-state-hover,
 input.ui-state-hover,
 button.ui-state-hover {
-  color: #A0A0A0 !important; /* CutGallery - @TODO: Change Font color */
+  color: #A0A0A0; /* CutGallery - @TODO: Change Font color */
   cursor: pointer !important;
   text-decoration: none;
   -moz-outline-style: none;
@@ -481,7 +481,7 @@ clear: left;
     text-align: center;
 }
 #g-content #g-album-grid .g-album{
-  background-color: #0A0A0A !important;
+  background-color: #0A0A0A;
   padding: .33em;
 }
 #g-content #g-album-grid .g-photo {
@@ -505,7 +505,7 @@ ul .g-photo{
     text-align: left;
 }
 .g-album h2 a{
-    color: grey !important;
+    color: grey;
     font-size: 18px;
 }
 .g-album h2 a:hover {

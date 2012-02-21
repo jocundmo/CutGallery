@@ -22,20 +22,20 @@ function clearItemCovers(){
 var originalColor;
 var originalBackColor;
 function leaveItem(full_id){
-    $("#" + full_id + " h2 a").css("color", originalColor + " !important");
-    $("#" + full_id).css("background-color", originalBackColor + " !important");
+    $("#" + full_id + " h2 a").css("color", originalColor + "");
+    $("#" + full_id).css("background-color", originalBackColor + "");
 }
 function overItem(full_id){
     originalColor=$("#" + full_id + " h2 a").css("color");
     originalBackColor=$("#" + full_id).css("background-color");
-    $("#" + full_id + " h2 a").css("color", "lightgrey !important");
-    $("#" + full_id).css("background-color", "#303030 !important");
+    $("#" + full_id + " h2 a").css("color", "lightgrey");
+    $("#" + full_id).css("background-color", "#303030");
 }
 function selectItem(full_id, container_id){
     clearItemCovers();
     document.getElementById(container_id).style.display='block';
-    $("#" + full_id + " h2 a").css("color", "white !important");
-    $("#" + full_id).css("background-color", "#707070 !important");
+    $("#" + full_id + " h2 a").css("color", "white");
+    $("#" + full_id).css("background-color", "#707070");
     originalColor=$("#" + full_id + " h2 a").css("color");
     originalBackColor=$("#" + full_id).css("background-color");
 }
