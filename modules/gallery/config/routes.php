@@ -26,7 +26,7 @@ $config["^admin_.*"] = null;
 $config["^form/(edit|add)/admin/(\w+)/(.*)$"] = "admin/$2/form_$1/$3";
 
 // Redirect /form/add and /form/edit to the module/form_(add|edit)/parms.
-$config["^form/(edit|add|download|share|add_photos_help)/(\w+)/(.*)$"] = "$2/form_$1/$3"; // CutGallery added 'download | share'
+$config["^form/(edit|add|download|share|add_photos_help|maintenance)/(\w+)/(.*)$"] = "$2/form_$1/$3"; // CutGallery added 'download | share'
 
 // Default page is the root album
 $config["_default"] = "home"; // CutGallery - Change default controller
