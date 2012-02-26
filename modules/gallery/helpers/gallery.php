@@ -71,7 +71,9 @@ class gallery_Core {
         if (Router::$controller == "home" ||
             Router::$controller == "about" ||
             Router::$controller == "contact" ||
-            Router::$method == "form_share"){
+            Router::$controller == "BrowserNotSupport" ||
+            Router::$method == "form_share" ||
+            Router::$method == "form_download"){
             return;}
         // <==
         if (Router::$controller == "admin") {
@@ -83,7 +85,7 @@ class gallery_Core {
           Session::instance()->set("continue_url", url::abs_current());
           Router::$controller = "login";
           Router::$controller_path = MODPATH . "gallery/controllers/login.php";
-          Router::$method = "html";
+          Router::$method = "ajax";
         }
       }
     }

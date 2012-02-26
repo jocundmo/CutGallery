@@ -45,7 +45,23 @@ class html extends html_Core {
   static function purify($html) {
     return SafeString::purify($html);
   }
+  
+  static function max_rows($string, $max_rows){
+      $result = $string;
+      $inall = split("<br />", $string);
+      if (count($inall) >= $max_rows){
+          $result = $inall[0].'<br />'.$inall[1].'<br />'.$inall[2].'...';
+          }
+      return $result;
+  }
+  
+  static function truncate($string, $max) {
+      if (strlen($string) > $max){
+          return substr($string, 0, $max)."...";
+          }
 
+      return $string;
+  }
   /**
    * Flags the given string as safe to be used in HTML (free of malicious HTML/JS).
    *

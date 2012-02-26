@@ -79,7 +79,7 @@ class User_Model_Core extends ORM implements User_Definition {
                              "callbacks" => array(array($this, "valid_email"))),
         "full_name" => array("rules"     => array("length[0,255]")),
         "locale"    => array("rules"     => array("length[2,10]")),
-        "name"      => array("rules"     => array("length[1,32]", "required"),
+        "name"      => array("rules"     => array("length[1,15]", "required"),
                              "callbacks" => array(array($this, "valid_name"))),
         "password"  => array("callbacks" => array(array($this, "valid_password"))),
         "url"       => array("rules"     => array("valid::url")),
@@ -126,7 +126,8 @@ class User_Model_Core extends ORM implements User_Definition {
    * @return string
    */
   public function display_name() {
-    return empty($this->full_name) ? $this->name : $this->full_name;
+    // return empty($this->full_name) ? $this->name : $this->full_name; // CutGallery - Always show name instead of full_name
+      return $this->name;
   }
 
   /**

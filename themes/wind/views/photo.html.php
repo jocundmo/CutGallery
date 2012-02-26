@@ -32,14 +32,14 @@
   <div id="g-photo-top-decoration"></div>
   <div id="g-photo"><div id="g-photo-decoration">
     <?= $theme->resize_top($item) ?>
-    <? if (access::can("view_full", $item)): ?>
-    <a href="<?= $item->file_url() ?>" class="g-fullsize-link" title="<?= t("View full size")->for_html_attr() ?>">
-      <? endif ?>
+    <!--<?// if (access::can("view_full", $item)): ?>
+    <a href="<?//= $item->file_url() ?>" class="g-fullsize-link" title="<?//= t("View full size")->for_html_attr() ?>">
+      <? //endif ?> -->
       <?// here we show the thumb img first for user friendly, at behind, we load the resize img, when done, replace the resize with the fuzzy thumb image. ?>
       <?= $item->thumb_img(array("id" => "g-item-id-{$item->id}", "class" => "g-resize ui-corner-all pic_shadow"),null,false,$item->resize_width,$item->resize_height) ?>
-      <? if (access::can("view_full", $item)): ?>
+      <!--<?// if (access::can("view_full", $item)): ?>
     </a>
-    <? endif ?>
+    <?// endif ?>-->
     <?= $theme->resize_bottom($item) ?></div>
   </div>
   <script language="JavaScript" type="text/javascript">
@@ -51,15 +51,12 @@
   </script>
  
   <div id="g-photo-bottom-decoration">
-      <? if (!$theme->is_share): ?>
          <?= $theme->paginator() ?>
-      <? endif ?>
   </div>
 
   <div id="g-info">
     <h1><?= html::purify($item->title) ?></h1>
     <div><?= nl2br(html::purify($item->description)) ?></div>
   </div>
-
 
 </div>

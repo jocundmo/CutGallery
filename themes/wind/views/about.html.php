@@ -3,9 +3,9 @@
 	var img1 = new Image();
         var img2 = new Image();
         var img3 = new Image();
-	img1.src = "<?= url::file("themes/wind/images/business.png") ?>";
-        img2.src = "<?= url::file("themes/wind/images/wedding.png") ?>";
-        img3.src = "<?= url::file("themes/wind/images/party.png") ?>";
+	img1.src = "<?= url::file("themes/wind/aboutuspic/business.png") ?>";
+        img2.src = "<?= url::file("themes/wind/aboutuspic/wedding.png") ?>";
+        img3.src = "<?= url::file("themes/wind/aboutuspic/party.png") ?>";
 	img1.onload = function() {
 	document.getElementById("img-business").src = this.src;
 	}
@@ -21,10 +21,10 @@
         <ul class="Slides" id="Slides"> 
             
                     <li>
-                        <img id="img-business" title="business" src="<?= url::file("themes/wind/images/business-thumb.png") ?>" /></li> 
+                        <img id="img-business" title="business" src="<?= url::file("themes/wind/aboutuspic/business-thumb.png") ?>" /></li> 
                 
                     <li>
-                        <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/images/wedding-thumb.png") ?>" /></li> 
+                        <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding-thumb.png") ?>" /></li> 
                 
                     <li>
                         <img id="img-party" title="Party" src="<?= url::file("themes/wind/images/party-thumb.png") ?>" /></li> 
@@ -45,9 +45,9 @@
 name:广告图片轮转显示
 */
 
-var $ = function(id) {
-    return "string" == typeof id ? document.getElementById(id) : id;
-};
+//var $ = function(id) {
+//    return "string" == typeof id ? document.getElementById(id) : id;
+//};
 
 var Class = {
     create: function() {

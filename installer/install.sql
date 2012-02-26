@@ -1138,7 +1138,7 @@ INSERT INTO `incoming_translations` (`key`, `locale`, `message`, `revision`, `tr
 ('bf17ac149e2e7a530c677e9bd51d3fd2', 'zh_CN', 's:7:"Modules";', 3539, 's:6:"模块";'),
 ('0323de4f66a1700e2173e9bcdce02715', 'zh_CN', 's:6:"Logout";', 3552, 's:6:"退出";'),
 ('dae8ace18bdcbcc6ae5aece263e14fe8', 'zh_CN', 's:7:"Options";', 3557, 's:6:"选项";'),
-('e3afed0047b08059d0fada10f400c1e5', 'zh_CN', 's:5:"Admin";', 3563, 's:9:"管理员";'),
+('e3afed0047b08059d0fada10f400c1e5', 'zh_CN', 's:5:"Admin";', 3563, 's:12:"后台管理";'),
 ('5f075ae3e1f9d0382bb8c4632991f96f', 'zh_CN', 's:2:"Go";', 70518, 's:6:"搜索";'),
 ('ed11feb4b275f1a7ef8d7ab0105d5261', 'zh_CN', 's:18:"Search the gallery";', 70517, 's:6:"搜索";'),
 ('d4dccb8ca2dac4e53c01bd9954755332', 'zh_CN', 's:13:"Save settings";', 3533, 's:12:"保存设置";'),
@@ -1893,7 +1893,14 @@ INSERT INTO `incoming_translations` (`key`, `locale`, `message`, `revision`, `tr
 ('73029e2d748c750a80eae314ba0b643c', 'zh_CN', 's:48:"Renamed tag <i>%old_name</i> to <i>%new_name</i>";', 70795, 's:52:"标签<i>%old_name</i> 重命名为 <i>%new_name</i>";'),
 ('7c1e55cfdb9d523c9abd95740023cae4', 'zh_CN', 's:8:"Undelete";', 70902, 's:6:"恢复";'),
 ('ef82963e406866dd18141dc6f344ec10', 'zh_CN', 's:11:"Modify user";', 00001, 's:12:"添加图片";'),
-('f7dab6093873d0239d4a5ed2c7290294', 'zh_CN', 's:55:"There is already a movie, photo or album with this name";', NULL, 's:18:"相册名已存在";');
+('f7dab6093873d0239d4a5ed2c7290294', 'zh_CN', 's:55:"There is already a movie, photo or album with this name";', NULL, 's:18:"相册名已存在";'),
+('f22907fce5442c2080e4115d82a538e6', 'root', 's:26:"Share this to your friends";', NULL, NULL),
+('a612782072a3b8f151c5e2120ef20efd', 'root', 's:17:"Copy to clipboard";', NULL, NULL),
+('4c737896a124b2169a6db73858f4e18f', 'root', 's:12:"Manage Album";', NULL, NULL),
+('55cfc4133b69a1535220304b932100e7', 'root', 's:129:"Page is navigating... <br/> Login is successful... <br/>Please wait...<br/><a href=>Click</a> if your browser is not refreshed...";', NULL, NULL),
+('5daaf223b01f8f3e1bd9287170826fbc', 'root', 's:6:"Photos";', NULL, NULL),
+('3665ffe465b6d1b7f7606936995cde5b', 'root', 's:26:"Click album cover to enter";', NULL, NULL);
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS {items};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -2029,7 +2036,22 @@ INSERT INTO `outgoing_translations` (`base_revision`, `key`, `locale`, `message`
 (NULL, 'fae4d36f787af52b6f74cb6ecbc7679a', 'zh_CN', 's:5:"[new]";', 's:12:"创建相册";'),
 (NULL, '1776af3cd4354cb742a4d740aeff1392', 'zh_CN', 's:8:"No items";', 's:9:"无照片";'),
 (NULL, '4ae2c96fcec6f3a3a837223cb5e00402', 'zh_CN', 's:12:"Created Date";', 's:12:"创建日期";'),
-(NULL, '0557fa923dcee4d0f86b1409f5c2167f', 'zh_CN', 's:4:"Back";', 's:6:"返回";');
+(NULL, '0557fa923dcee4d0f86b1409f5c2167f', 'zh_CN', 's:4:"Back";', 's:6:"返回";'),
+(NULL, 'd2fba9c4678ff45c22df0252c9de63a6', 'zh_CN', 's:15:"Manage Home Pic";', 's:18:"首页图片管理";'),
+(NULL, '077b16b27d830e4a531a720c945199bd', 'zh_CN', 's:18:"Manage Aboutus Pic";', 's:18:"联系我们管理";'),
+(NULL, 'bbbabdbe1b262f75d99d62880b953be1', 'zh_CN', 's:4:"Role";', 's:6:"角色";'),
+(NULL, 'f22907fce5442c2080e4115d82a538e6', 'zh_CN', 's:26:"Share this to your friends";', 's:21:"分享给你的朋友";'),
+(NULL, 'a612782072a3b8f151c5e2120ef20efd', 'zh_CN', 's:17:"Copy to clipboard";', 's:18:"复制到粘贴板";'),
+(NULL, '4c737896a124b2169a6db73858f4e18f', 'zh_CN', 's:12:"Manage Album";', 's:12:"相册管理";'),
+(NULL, '55cfc4133b69a1535220304b932100e7', 'zh_CN', 's:129:"Page is navigating... <br/> Login is successful... <br/>Please wait...<br/><a href=>Click</a> if your browser is not refreshed...";', 's:61:"登录中... <br/> <br/><a href=>点击这里刷新页面</a>";'),
+(NULL, '5daaf223b01f8f3e1bd9287170826fbc', 'zh_CN', 's:6:"Photos";', 's:6:"相片";'),
+(NULL, '8d0c788636bfcd226c6e8216308b4f34', 'zh_CN', 's:15:"Set album cover";', 's:15:"设置为封面";'),
+(NULL, '3665ffe465b6d1b7f7606936995cde5b', 'zh_CN', 's:26:"Click album cover to enter";', 's:24:"点击相册封面进入";'),
+(NULL, 'dcf5d0ed5884d57888429e989a0d3921', 'zh_CN', 's:77:"Delete the album <b>%title</b>? All photos in the album will also be deleted.";', 's:78:"确定要删除相册<b>%title</b>么? 该相册所有的相片将会被删除";'),
+(NULL, '338d4338a4708e65751b906d0b05175e', 'zh_CN', 's:27:"There aren''t any items yet!";', 's:12:"没有内容";'),
+(NULL, 'c8823f03684c3c544c3b3415992d63b6', 'zh_CN', 's:108:"Really delete VIP <b>%vip_user</b>? If true, corresponding guest <b>%guest_user</b> will be deleted as well.";', 's:93:"确定删除VIP用户<b>%vip_user</b>么? 相关联的用户<b>%guest_user</b>也会被删除";');
+
+
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS {permissions};
@@ -2169,7 +2191,7 @@ INSERT INTO {vars} VALUES (NULL,'gallery','date_time_format','Y-M-d H:i:s');
 INSERT INTO {vars} VALUES (NULL,'gallery','time_format','H:i:s');
 INSERT INTO {vars} VALUES (NULL,'gallery','show_credits','1');
 INSERT INTO {vars} VALUES (NULL,'gallery','credits','Powered by <a href=\"%url\">%gallery_version</a>');
-INSERT INTO {vars} VALUES (NULL,'gallery','simultaneous_upload_limit','5');
+INSERT INTO {vars} VALUES (NULL,'gallery','simultaneous_upload_limit','1');
 INSERT INTO {vars} VALUES (NULL,'gallery','admin_area_timeout','5400');
 INSERT INTO {vars} VALUES (NULL,'gallery','maintenance_mode','0');
 INSERT INTO {vars} VALUES (NULL,'gallery','visible_title_length','15');
@@ -2194,3 +2216,5 @@ INSERT INTO {vars} VALUES (NULL,'info','show_name','1');
 INSERT INTO {vars} VALUES (NULL,'info','show_captured','1');
 INSERT INTO {vars} VALUES (NULL,'slideshow','max_scale','0');
 INSERT INTO {vars} VALUES (NULL,'tag','tag_cloud_size','30');
+INSERT INTO {vars} VALUES (NULL,'gallery','ftp_root','C:\\ftproot\\albums\\');
+INSERT INTO {vars} VALUES (NULL,'gallery','back_root','C:\\backuproot\\albums\\');

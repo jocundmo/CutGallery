@@ -113,6 +113,14 @@ class item_Core {
       $parent->thumb_width = $item->thumb_width;
       $parent->thumb_height = $item->thumb_height;
     }
+    if ($item->resize_dirty) {
+      $parent->resize_dirty = 1;
+      graphics::generate($parent);
+    } else {
+      copy($item->resize_path(), $parent->resize_path());
+      $parent->resize_width = $item->resize_width;
+      $parent->resize_height = $item->resize_height;
+    }
     $parent->save();
     $grand_parent = $parent->parent();
     if ($grand_parent && access::can("edit", $grand_parent) &&
@@ -125,6 +133,7 @@ class item_Core {
     access::required("view", $album);
     access::required("edit", $album);
     @unlink($album->thumb_path());
+    @unlink($album->resize_path());
 
     model_cache::clear();
     $album->album_cover_item_id = null;
@@ -173,6 +182,12 @@ class item_Core {
    * @return string form
    */
   static function get_delete_form($item) {
+//      $cmd = "E:\14.Projects\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe";
+//      system($cmd);
+//      $result = new com("TestCore.Class1");
+//      $show = $result->Run();
+//    exec("C:\windows\system32\HelloWorld.exe");  
+
     $page_type = Input::instance()->get("page_type");
     $from_id = Input::instance()->get("from_id");
     $form = new Forge(
@@ -184,16 +199,20 @@ class item_Core {
       ->url(url::abs_file("modules/gallery/js/item_form_delete.js"));
     return $form;
   }
-// CutGallery -> ADDED
+  // CutGallery -> ADDED
   static function get_share_form($item){
-
     $form = new Forge(
       "", "",
       "post", array("id" => "g-confirm-share"));
     $group = $form->group("confirm_share")->label(t("Share this to your friends"));
-    $group->submit("")->value(t("Share"));
-    $form->script("")
-      ->url(url::abs_file("modules/gallery/js/item_form_delete.js"));
+    return $form;
+  }// <--
+  
+  static function get_add_photos_help_form($item){
+      $form = new Forge(
+      "", "",
+      "post", array("id" => "g-confirm-add-photos-help"));
+    $group = $form->group("confirm_add_photos_help")->label(t("批量上传帮助"));
     return $form;
   }
   /**
@@ -432,7 +451,7 @@ class item_Core {
    * CutGallery - Add
    * Find the count of photos by owner id
    * 
-   * @param owner id
+   * @param owner_id
    */
   static function lookup_photos_by_owner($owner_id) {
         return ORM::factory("item")
@@ -440,5 +459,22 @@ class item_Core {
                 ->where("owner_id", "=", $owner_id)
                 ->and_where("type", "=", "photo")
                 ->count_all();   
-    }
+  }
+  
+  /**
+   * CutGallery - Add
+   * Update old owner id by new one for certain album
+   * 
+   * @param old_owner_id: old owner id
+   * @param new_owner_id: new owner id
+   * @param parent_id: identifies which album
+   */
+  static function update_owner_id($old_owner_id, $new_owner_id, $parent_id) {
+      db::build()
+        ->update("items")
+        ->set("owner_id", $new_owner_id)
+        ->where('owner_id', '=', $old_owner_id)
+        ->where('parent_id', '=', $parent_id)
+        ->execute();
+  }
 }

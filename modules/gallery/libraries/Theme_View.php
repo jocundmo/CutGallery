@@ -132,6 +132,11 @@ class Theme_View_Core extends Gallery_View {
     module::event("add_photos_menu", $menu, $this, $item);
     return $menu->render();
   }
+  public function add_photos_help_menu($item){
+    $menu = Menu::factory("root");
+    module::event("add_photos_help_menu", $menu, $this, $item);
+    return $menu->render();
+  }
   // CutGallery - Should remove - test.
   public function link_a(){
     $menu = Menu::factory("root");

@@ -53,8 +53,8 @@
     <? if ($total): ?>
       <? if ($page_type == "collection"): ?>
         <?= /* @todo This message isn't easily localizable */
-            t2("Viewing %from_number of %count",
-               "Viewing %from_number - %to_number of %count",
+            t2("%from_number / %count",
+               "%from_number - %to_number / %count",
                $total,
                array("from_number" => $first_visible_position,
                      "to_number" => $last_visible_position,

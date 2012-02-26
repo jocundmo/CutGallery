@@ -378,6 +378,13 @@ class Item_Model_Core extends ORM_MPTT {
           mkdir($this->file_path());
           mkdir(dirname($this->thumb_path()));
           mkdir(dirname($this->resize_path()));
+		  
+		  // CutGallery - Add: Create same folders under ftp root and bakcup root.
+          $ftp_root = module::get_var("gallery", "ftp_root");
+          $back_root = module::get_var("gallery", "back_root");
+          mkdir($ftp_root."\\".$this->name);
+          mkdir($back_root."\\".$this->name);
+          // <==
           break;
 
         case "photo":
@@ -569,8 +576,8 @@ class Item_Model_Core extends ORM_MPTT {
     }
     // CutGallery - ADDED resize thumb
     if ($this->is_album() && $height){
-        $maxWidth = 450;//540;
-        $maxHeight = 300;//360;
+        $maxWidth = 474;//540;
+        $maxHeight = 316;//360;
             if ($width > $height){
             $scale = $width / $height;
             $width = $maxWidth;
@@ -661,12 +668,38 @@ class Item_Model_Core extends ORM_MPTT {
    * @return string
    */
   public function resize_img($extra_attrs) {
+    $height = $this->resize_height;
+    $width = $this->resize_width;
+    // CutGallery - ADDED resize thumb
+    if ($this->is_album()){
+        $maxWidth = 474;//540;
+        $maxHeight = 316;//360;
+            if ($width > $height){
+            $scale = $width / $height;
+            $width = $maxWidth;
+            $height = $maxWidth / $scale;
+            if ($height > $maxHeight){
+                $height = $maxHeight;
+                $width = $height * $scale;
+            }
+        }
+        else{
+            $scale = $height / $width;
+            $height = $maxHeight;
+            $width = $maxHeight / $scale;
+            if ($width > $maxWidth){
+                $width = $maxWidth;
+                $height = $width / $scale;
+            }
+        }
+        
+    }
     $attrs = array_merge($extra_attrs,
-            array("src" => $this->resize_url(),
-                  "alt" => $this->title,
-                  "width" => $this->resize_width,
-                  "height" => $this->resize_height)
-            );
+                array("src" => $this->resize_url(),
+                      "alt" => $this->title,
+                      "width" => $width,
+                      "height" => $height)
+                );
     // html::image forces an absolute url which we don't want
     return "<img" . html::attributes($attrs) . "/>";
   }
@@ -750,7 +783,7 @@ class Item_Model_Core extends ORM_MPTT {
     if (!$array) {
       $this->rules = array(
         "album_cover_item_id" => array("callbacks" => array(array($this, "valid_album_cover"))),
-        "description"         => array("rules"     => array("length[0,65535]")),
+        "description"         => array("rules"     => array("length[0,150]")),
         "mime_type"           => array("callbacks" => array(array($this, "valid_field"))),
         "name"                => array("rules"     => array("length[0,255]", "required"),
                                        "callbacks" => array(array($this, "valid_name"))),
@@ -763,7 +796,7 @@ class Item_Model_Core extends ORM_MPTT {
  */
         "sort_column"         => array("callbacks" => array(array($this, "valid_field"))),
         "sort_order"          => array("callbacks" => array(array($this, "valid_field"))),
-        "title"               => array("rules"     => array("length[0,255]", "required"),
+        "title"               => array("rules"     => array("length[0,15]", "required"),
                                        "callbacks" => array(array($this, "valid_title"))),
         "type"                => array("callbacks" => array(array($this, "read_only"),
                                                             array($this, "valid_field"))),

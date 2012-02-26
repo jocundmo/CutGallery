@@ -1,0 +1,12 @@
+D:\temp\PhotoScanner\PhotoScanner\PhotoScanner\obj\x86\Release\ResolveAssemblyReference.cache
+D:\temp\PhotoScanner\PhotoScanner\PhotoScanner\bin\Release\PhotoScanner.exe.config
+D:\temp\PhotoScanner\PhotoScanner\PhotoScanner\bin\Release\PhotoScanner.exe
+D:\temp\PhotoScanner\PhotoScanner\PhotoScanner\bin\Release\PhotoScanner.pdb
+D:\temp\PhotoScanner\PhotoScanner\PhotoScanner\obj\x86\Release\PhotoScanner.exe
+D:\temp\PhotoScanner\PhotoScanner\PhotoScanner\obj\x86\Release\PhotoScanner.pdb
+E:\temp\PhotoScanner\PhotoScanner\PhotoScanner\bin\Release\PhotoScanner.exe.config
+E:\temp\PhotoScanner\PhotoScanner\PhotoScanner\bin\Release\PhotoScanner.exe
+E:\temp\PhotoScanner\PhotoScanner\PhotoScanner\bin\Release\PhotoScanner.pdb
+E:\temp\PhotoScanner\PhotoScanner\PhotoScanner\obj\x86\Release\ResolveAssemblyReference.cache
+E:\temp\PhotoScanner\PhotoScanner\PhotoScanner\obj\x86\Release\PhotoScanner.exe
+E:\temp\PhotoScanner\PhotoScanner\PhotoScanner\obj\x86\Release\PhotoScanner.pdb

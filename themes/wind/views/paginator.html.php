@@ -25,42 +25,64 @@
 //   $position                - the position number of this photo
 //
 ?>
+<!-- Identify the css class for each icon -->
 <? if ($page_type == "collection"): ?>
+    <? $is_share = false;?>
     <? if (isset($item) && $item->level > 1): ?>
       <? $id_g_paginator = "id-g-paginator-level-2" ?>
+      <? $class_seek_back = "ui-icon-seek-back-level-2" ?>
+      <? $class_prev = "ui-icon-seek-prev-level-2" ?>
+      <? $class_paginator_info = "ui-icon-paginator-info-level-2" ?>
+      <? $class_next = "ui-icon-seek-next-level-2" ?>
     <? else: ?>
       <? $id_g_paginator = "id-g-paginator-level-1" ?>
+      <? $class_seek_back = "ui-icon-seek-back-level-1" ?>
+      <? $class_prev = "ui-icon-seek-prev-level-1" ?>
+      <? $class_paginator_info = "ui-icon-paginator-info-level-1" ?>
+      <? $class_next = "ui-icon-seek-next-level-1" ?>
     <? endif ?>
   <? elseif ($page_type == "item"): ?>
-    <? $id_g_paginator = "id-g-paginator" ?>
+    <? $is_share = $this->parent_theme->is_share ?>
+    <? $id_g_paginator = $is_share ? "id-g-paginator-share" : "id-g-paginator" ?>
+    <? $class_seek_back = "ui-icon-seek-back" ?>
+    <? $class_prev = "ui-icon-seek-prev" ?>
+    <? $class_paginator_info = "ui-icon-paginator-info" ?>
+    <? $class_next = "ui-icon-seek-next" ?>
+<? endif ?>
+
+<!--Identity the visibility for each icon-->
+<? if (isset($item) && $item->level > 1): ?>
+    <? $show_back = true ?>
+<? else: ?>
+    <? $show_back = false ?>
+<? endif ?>
+<? $show_prev = true ?>
+<? $show_info = true ?>
+<? $show_next = true ?>
+<? if ($page_type == "item"): ?>
+    <? $show_share = true ?>
+    <? $show_download = true ?>
+<? else: ?>
+    <? $show_share = false ?>
+    <? $show_download = false ?>
+<? endif ?>
+<? if ($is_share): ?>
+    <? $show_back = false ?>
+    <? $show_prev = false ?>
+    <? $show_info = false ?>
+    <? $show_next = false ?>
+    <? $show_share = false ?>
+    <? $show_download = true ?>
 <? endif ?>
 <ul id="<?=$id_g_paginator?>" class="g-paginator ui-helper-clearfix">
-  <li class="g-back">
-      <? if ($page_type == "collection"): ?>
-        <? if (isset($item) && $item->level > 1): ?>
-          <? $class_seek_back = "ui-icon-seek-back-level-2" ?>
-        <? else: ?>
-          <? $class_seek_back = "ui-icon-seek-back-level-1" ?>
-        <? endif ?>
-      <? elseif ($page_type == "item"): ?>
-        <? $class_seek_back = "ui-icon-seek-back" ?>
-      <? endif ?>
-    <? if (isset($item) && $item->level > 1): ?>
+<? if($show_back): ?>
+  <li class="g-back">    
       <a href ="<?= $back_page_url ?>" class="g-button ui-corner-all">
           <span class="ui-icon-2 <?=$class_seek_back?>"></span></a> <!-- CutGallery - ADDED -->
-    <? endif ?>
   </li>
-  
+<? endif ?>
+<? if ($show_prev): ?>
   <li class="g-first">
-  <? if ($page_type == "collection"): ?>
-    <? if (isset($item) && $item->level > 1): ?>
-      <? $class_next = "ui-icon-seek-prev-level-2" ?>
-    <? else: ?>
-      <? $class_next = "ui-icon-seek-prev-level-1" ?>
-    <? endif ?>
-  <? elseif ($page_type == "item"): ?>
-    <? $class_next = "ui-icon-seek-prev" ?>
-  <? endif ?>
   <? if ($page_type == "collection"): ?>
     <? if (isset($first_page_url)): ?>
 <!--      <a href="<?= $first_page_url ?>" class="g-button ui-icon-left ui-corner-all">
@@ -72,30 +94,21 @@
   <? endif ?>
   <? if (isset($previous_page_url)): ?>
     <a href="<?= $previous_page_url ?>" class="g-button ui-icon-left ui-corner-all">
-      <span class="ui-icon-2 <?=$class_next?>"></span></a> <!-- CutGallery - REMOVE text -->
+      <span class="ui-icon-2 <?=$class_prev?>"></span></a> <!-- CutGallery - REMOVE text -->
       
   <? else: ?>
     <a class="g-button ui-icon-left ui-state-disabled ui-corner-all">
-      <span class="ui-icon-2 <?=$class_next?>"></span></a> <!-- CutGallery - REMOVE text -->
+      <span class="ui-icon-2 <?=$class_prev?>"></span></a> <!-- CutGallery - REMOVE text -->
   <? endif ?>
   </li>
-
-  <li class="g-info">
-      <? if ($page_type == "collection"): ?>
-        <? if (isset($item) && $item->level > 1): ?>
-          <? $class_paginator_info = "ui-icon-paginator-info-level-2" ?>
-        <? else: ?>
-          <? $class_paginator_info = "ui-icon-paginator-info-level-1" ?>
-        <? endif ?>
-      <? elseif ($page_type == "item"): ?>
-        <? $class_paginator_info = "ui-icon-paginator-info" ?>
-      <? endif ?>
-      
+<? endif ?>
+<? if ($show_info): ?>
+  <li class="g-info">      
     <? if ($total): ?>
       <? if ($page_type == "collection"): ?>
       <span class="ui-corner-all <?=$class_paginator_info?>">
         <?= /* @todo This message isn't easily localizable */
-            t2("Item %from_number of %count",
+            t2("%from_number/%count",
                "%from_number-%to_number/%count",
                $total,
                array("from_number" => $first_visible_position,
@@ -109,17 +122,9 @@
       <?= t("No items") ?></span>
     <? endif ?>
   </li>
-
+<? endif ?>
+<? if ($show_next): ?>
   <li class="g-text-right">
-      <? if ($page_type == "collection"): ?>
-        <? if (isset($item) && $item->level > 1): ?>
-          <? $class_next = "ui-icon-seek-next-level-2" ?>
-        <? else: ?>
-          <? $class_next = "ui-icon-seek-next-level-1" ?>
-        <? endif ?>
-      <? elseif ($page_type == "item"): ?>
-        <? $class_next = "ui-icon-seek-next" ?>
-      <? endif ?>
   <? if (isset($next_page_url)): ?>
     <a href="<?= $next_page_url ?>" class="g-button ui-icon-right ui-corner-all">  
       <span class="ui-icon-2 <?=$class_next?>"></span></a> <!--CutGallery - REMOVE-->
@@ -138,16 +143,18 @@
     <? endif ?>
   <? endif ?>
   </li>
-  <? if ($page_subtype == "photo"): ?>
+<? endif ?>  
+<? if ($show_share): ?>
   <?= $this->parent_theme->share_photo_menu($item) ?>
 <!--  <li class="g-share">
       <a href ="<?//= $this->parent_theme->share_photo_menu($item) ?>" class="g-button ui-corner-all">
           <span class="ui-icon-2 ui-icon-seek-share"></span></a>
   </li>-->
-  
+<? endif ?>
+<? if ($show_download): ?>
   <li class="g-download-full">
       <a href ="<?= $download_full_url ?>" class="g-button ui-corner-all">
           <span class="ui-icon-2 ui-icon-seek-download"></span></a>
   </li>
-  <? endif ?>
+<? endif ?>
 </ul>

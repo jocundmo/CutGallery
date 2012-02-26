@@ -1,7 +1,21 @@
 <!DOCTYPE html> 
 <html> 
-      <head>
+<head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript"> 
+    
+    var browser=navigator.appName 
+    var b_version=navigator.appVersion 
+    var version=b_version.split(";"); 
+    var trim_Version=version[1].replace(/[ ]/g,""); 
+    if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE6.0") 
+    { 
+     window.location="index.php/BrowserNotSupport";
+    } 
+   
+   
+    </script> 
+
     <? $theme->start_combining("script,css") ?>
     <title>
       <? if ($page_title): ?>
@@ -40,6 +54,7 @@
     <?= $theme->script("jquery.form.js") ?>
     <?= $theme->script("jquery-ui.js") ?>
     <?= $theme->script("gallery.common.js") ?>
+    <?= $theme->script("cugGallery.common.js") ?>
     <? /* MSG_CANCEL is required by gallery.dialog.js */ ?>
     <script type="text/javascript">
     var MSG_CANCEL = <?= t('Cancel')->for_js() ?>;
@@ -79,8 +94,8 @@
 
     <!-- LOOKING FOR YOUR JAVASCRIPT? It's all been combined into the link below -->
     <?= $theme->get_combined("script") ?>
-<!--  </head>
-<head> 
+</head>
+<!--  <head> 
     <title>I Love Smile</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
@@ -88,7 +103,7 @@
     <script src="Scripts/jquery-1.4.4.min.js" type="text/javascript"></script> 
 </head> -->
 <body> 
-    
+
 <div id="mainHead">
     <div id="logo">
         <a href="<?= url::site() ?>"></a>
@@ -97,7 +112,7 @@
     <div id="mainInfo">
         <ul>
             <? if (identity::active_user()->admin): ?>
-                <li id="admin"><a href="<?= url::site("admin/home") ?>">admin</a></li>
+                <li id="admin"><a href="<?= url::site("admin/home") ?>">&nbsp; | &nbsp; <?= t("Admin")?></a></li>
             <? endif ?>
             <li><?= $theme->user_menu() ?></li>
         </ul>
@@ -105,11 +120,12 @@
 
     <div id="mainNav">
         <ul>
-            <li id="gallery"><a href="<?= url::site("albums")?>"></a></li>
+            <li id="gallery"><a class="<?= ($theme->user->name == "guest" ? "g-dialog-link" : "") ?>" href="<?= url::site("albums")?>"></a></li>
             <li id="intro"><a href="<?= url::site("about") ?>"></a></li>
             <li id="contactus"><a href="<?= url::site("contact") ?>"></a></li>
         </ul>
     </div>
+
     <div class="div-clear"></div>
 </div>
 
@@ -123,7 +139,7 @@
 
 <div id="footer">
     <p> 
-        Copyright reserved - internal released v1.3.2.0
+        Copyright reserved - internal released v1.3.3.0
     </p> 
 </div>
 

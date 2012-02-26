@@ -119,25 +119,25 @@ class Admin_Users_Controller extends Admin_Controller {
       // CutGallery - Save guest
       $guest_user->save();
       
+      // CutGallery - Add VIP:username_VIP to VIP group/role ==>
+      $saved_vip_user = user::lookup_by_name($vip_user->name);
+      $saved_vip_group = group::lookup_by_name("VIP");
+      $this->_add_user_to_group_automatically($saved_vip_user->id, $saved_vip_group->id);
+      // <==
+
+      // CutGallery - Add Guest:username to guest group/role ==>
+      $saved_guest_user = user::lookup_by_name($guest_user->name);
+      $saved_guest_group = group::lookup_by_name("Guest");
+      $this->_add_user_to_group_automatically($saved_guest_user->id, $saved_guest_group->id);
+      // <==
+      
       module::event("user_add_form_admin_completed", $vip_user, $form);
       message::success(t("Created user %user_name", array("user_name" => $vip_user->name)));
       json::reply(array("result" => "success"));
     } else {
       print json::reply(array("result" => "error", "html" => (string)$form));
     }
-    
-    // CutGallery - Add VIP:username_VIP to VIP group/role ==>
-    $saved_vip_user = user::lookup_by_name($vip_user->name);
-    $saved_vip_group = group::lookup_by_name("VIP");
-    $this->_add_user_to_group_automatically($saved_vip_user->id, $saved_vip_group->id);
-    // <==
-    
-    // CutGallery - Add Guest:username to guest group/role ==>
-    $saved_guest_user = user::lookup_by_name($guest_user->name);
-    $saved_guest_group = group::lookup_by_name("Guest");
-    $this->_add_user_to_group_automatically($saved_guest_user->id, $saved_guest_group->id);
-    // <==
-        
+   
 /** CutGallery - Disable following code for saving only one user.
       $user->save();
       module::event("user_add_form_admin_completed", $user, $form);
@@ -442,7 +442,7 @@ class Admin_Users_Controller extends Admin_Controller {
       ->text(
         '$("form").ready(function(){$(\'input[name="password"]\').user_password_strength();});');
     // CutGallery - Add 'Comments' textare. ==>
-    $group->textarea("comments")->label(t("Comments"))->id("g-comments");
+    $group->textarea("comments")->label(t("Comments"))->id("g-comments")->maxLength("50")->value($user->comments);
     // <==
 /** CutGallery - Disable 'password2', 'email' and 'url'.   
     $group->password("password2")->label(t("Confirm password"))->id("g-password2")
@@ -486,7 +486,8 @@ class Admin_Users_Controller extends Admin_Controller {
   static function _get_user_add_form_admin() {
     $form = new Forge("admin/users/add_user", "", "post", array("id" => "g-add-user-form"));
     $group = $form->group("add_user")->label(t("Add user"));
-    $group->input("name")->label(t("Username"))->id("g-username")
+
+    $group->input("name")->label(t("Username")." （请使用 “申请名_VIP” 登陆）")->id("g-username")->maxLength("11")
       ->error_messages("required", t("A name is required"))
       ->error_messages("length", t("This name is too long"))
       ->error_messages("conflict", t("There is already a user with that username"));
@@ -501,7 +502,7 @@ class Admin_Users_Controller extends Admin_Controller {
       ->text(
         '$("form").ready(function(){$(\'input[name="password"]\').user_password_strength();});');
     // CutGallery - Add 'Comments'. ==>
-    $group->textarea("comments")->label(t("Comments"))->id("g-comments");
+    $group->textarea("comments")->label(t("Comments"))->id("g-comments")->maxLength("50");
     // <==
 /** CutGallery - Disable 'password2', 'comments
     $group->password("password2")->label(t("Confirm password"))->id("g-password2")

@@ -12,16 +12,16 @@
 ----------------------------------*/
 .ui-widget { font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1.1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1em; }
-.ui-widget-header { border: 1px solid #4297d7; background: #5c9ccc url(images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
+.ui-widget-header { border: 1px solid #353535; background: #494949 url(images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }
-.ui-widget-content { border: 1px solid #a6c9e2; background: #fcfdfd url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #222222; }
+.ui-widget-content { border: 1px solid #969696; background: #fcfdfd url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #222222; }
 .ui-widget-content a { color: #222222; }
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default { border: 1px solid #c5dbec; background: #dfeffc url(images/ui-bg_glass_85_dfeffc_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #2e6e9e; outline: none; }
+.ui-state-default, .ui-widget-content .ui-state-default { border: 1px solid #000000; background: #dfeffc url(images/ui-bg_glass_85_dfeffc_1x400.png) 50% 50% repeat-x; font-weight: bold; color: black/* CutGallery - Login button color*/; outline: none; }
 .ui-state-default a { color: #2e6e9e; text-decoration: none; outline: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus { border: 1px solid #79b7e7; background: #d0e5f5 url(images/ui-bg_glass_75_d0e5f5_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #1d5987; outline: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus { border: 1px solid darkgrey /**/; background: #d0e5f5 url(images/ui-bg_glass_75_d0e5f5_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #000000; outline: none; }
 .ui-state-hover a { color: #1d5987; text-decoration: none; outline: none; }
 .ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #79b7e7; background: #f5f8f9 url(images/ui-bg_inset-hard_100_f5f8f9_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #e17009; outline: none; }
 .ui-state-active a { color: #e17009; outline: none; text-decoration: none; }
@@ -40,6 +40,8 @@
 
 /* states and images */
 .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_469bdd_256x240.png); }
+.ui-icon-2 { display: block; width: 25px; height: 25px; background-image: url(images/ui-icons-normal.png); } /* CutGallery - Customized icons */
+
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_469bdd_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_d8e7f3_256x240.png); }
 .ui-state-default .ui-icon { background-image: url(images/ui-icons_6da8d5_256x240.png); }
@@ -181,8 +183,19 @@
 .ui-icon-pin-s { background-position: -144px -144px; }
 .ui-icon-play { background-position: 0 -160px; }
 .ui-icon-pause { background-position: -16px -160px; }
-.ui-icon-seek-next { background-position: -32px -160px; }
-.ui-icon-seek-prev { background-position: -48px -160px; }
+/* CutGallery - Added & Modified ==>*/
+.ui-icon-seek-back { background-position: 0px 0px; }
+.ui-icon-seek-next { background-position: -50px 0px;  }
+.ui-icon-seek-prev { background-position: -25px 0px; }
+.ui-icon-seek-share { background-position: 25px 25px;} /* Share temporary no background image */
+.ui-icon-seek-download { background-position: -75px 0px; }
+.ui-icon-seek-next-level-1 { background-position: -25px -26px; }
+.ui-icon-seek-prev-level-1 { background-position: 0px -26px; }
+.ui-icon-seek-next-level-2 { background-position: -50px -51px; }
+.ui-icon-seek-prev-level-2 { background-position: -25px -51px; }
+.ui-icon-seek-back-level-2 { background-position: 0px -51px; }
+/*.ui-icon-paginator-info-level-1 { background-position: -51px -26px; }*/
+/* <== */
 .ui-icon-seek-end { background-position: -64px -160px; }
 .ui-icon-seek-first { background-position: -80px -160px; }
 .ui-icon-stop { background-position: -96px -160px; }

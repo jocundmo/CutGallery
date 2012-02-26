@@ -88,7 +88,7 @@
                         .replace("__INFO__", errorObj.info)
                         .replace("__TYPE__", errorObj.type);
           }
-          msg = " - <a target=\"_blank\" href=\"http://codex.gallery2.org/Gallery3:Troubleshooting:Uploading\">" +
+          msg = " - <a target=\"_blank\" href=<?=url::site("contact")?>>" +
             error_msg + "</a>";
 
           $("#g-add-photos-status ul").append(

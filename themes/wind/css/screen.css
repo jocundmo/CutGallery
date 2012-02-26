@@ -19,7 +19,7 @@
  **********************************************************************/
 
 body, html {
-  /*background-color: #000;*/
+
   font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -89,7 +89,7 @@ a,
 a.ui-state-hover,
 input.ui-state-hover,
 button.ui-state-hover {
-  color: #A0A0A0 !important; /* CutGallery - @TODO: Change Font color */
+  color: #A0A0A0; /* CutGallery - @TODO: Change Font color */
   cursor: pointer !important;
   text-decoration: none;
   -moz-outline-style: none;
@@ -165,7 +165,6 @@ textarea {
   border-left-color: #ccc;
   clear: both;
   color: #333;
-  width: 50%;
 }
 
 textarea {
@@ -450,7 +449,7 @@ td {
 
 /* Album content ~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #g-content {
-    /* background-color: red; */
+/*    background-color: red; */
     margin: auto;
     height: 100%;
 }
@@ -459,7 +458,7 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-/*  background-color: pink;*/
+/*  background-color: green !important;*/
 
   float: left;
 /*  position: relative;
@@ -482,7 +481,7 @@ clear: left;
     text-align: center;
 }
 #g-content #g-album-grid .g-album{
-  background-color: #0A0A0A !important;
+  background-color: #0A0A0A;
   padding: .33em;
 }
 #g-content #g-album-grid .g-photo {
@@ -506,8 +505,8 @@ ul .g-photo{
     text-align: left;
 }
 .g-album h2 a{
-    color: grey !important;
-    font-size: 20px;
+    color: grey;
+    font-size: 18px;
 }
 .g-album h2 a:hover {
 /*    color: lightgrey !important;*/
@@ -576,7 +575,7 @@ ul .g-photo{
     background: transparent url("../images/view-photo-top-bg.png") no-repeat;
 }
 #g-photo-decoration {
-    background-color: blue;
+/*    background-color: blue;*/
     width: 680px;
     margin: 0 auto;
     background: transparent url("../images/view-photo-bg.png") repeat-y;
@@ -587,11 +586,11 @@ ul .g-photo{
     margin: 0 auto;
     width: 680px;
 }
-#g-photo-bottom-decoration ul{
-/*    background-color: grey;*/
+/*#g-photo-bottom-decoration ul{
+    background-color: grey;
     margin: 0 auto;
     width: 238px;
-}
+}*/
 
 #g-item #g-photo,
 #g-item #g-movie {
@@ -1092,7 +1091,7 @@ div#g-action-status {
     float: left;
     height: 30px;
     width: 90px;
-/*    background-color: yellow;*/
+/*    background-color: yellow !important;*/
     vertical-align: middle;
 }
 .g-menu li{
@@ -1104,16 +1103,26 @@ div#g-action-status {
 /*    background-color: green;*/
     padding-top: 6px;
 }
+#id-g-paginator-share{
+    width: 45px;
+    margin: 0 auto;
+}
+#id-g-paginator{
+    width: 238px;
+    margin: 0 auto;
+}
 #id-g-paginator-level-1 {
     float: left;
 /*    background-color: pink;*/
     width: auto;
+    width: 238px;
 }
 #id-g-paginator-level-2 {
     float: left;
     width: auto;
 /*background-color: pink;*/
     height: 30px;
+    width: 238px;
 }
 #id-g-paginator .g-menu li a{ /* override .g-menu for share */
     color: black !important;
@@ -1122,18 +1131,18 @@ div#g-action-status {
     float: none;
     height: auto;
     width: auto;
-    background-color: yellow;
+/*    background-color: yellow !important;*/
     vertical-align: middle;
 }
 .g-paginator {
 /* background-color: blue;*/
-  margin: 0 auto;
+
   /*position: absolute;/* CutGallery - MODIFIED */
   clear: both;
 }
 .g-paginator li {
   float: left;
-/*  background-color: blue;*/
+/*  background-color: yellow;*/
 }
 .g-paginator .g-info {
   /* CutGallery - MODIFIED */

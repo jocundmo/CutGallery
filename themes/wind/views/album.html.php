@@ -7,7 +7,7 @@
 
 function clearItemCovers(){
     var selectionsContainer = document.getElementById("g-item-panel");
-    var selections = selectionsContainer.getElementsByTagName("ul")
+    var selections = selectionsContainer.getElementsByTagName("ul");
     //var selections = document.getElementsByName('g-item-panel-name');
     //alert(selections.length)
 
@@ -22,20 +22,20 @@ function clearItemCovers(){
 var originalColor;
 var originalBackColor;
 function leaveItem(full_id){
-    $("#" + full_id + " h2 a").css("color", originalColor + " !important");
-    $("#" + full_id).css("background-color", originalBackColor + " !important");
+    $("#" + full_id + " h2 a").css("color", originalColor + "");
+    $("#" + full_id).css("background-color", originalBackColor + "");
 }
 function overItem(full_id){
     originalColor=$("#" + full_id + " h2 a").css("color");
     originalBackColor=$("#" + full_id).css("background-color");
-    $("#" + full_id + " h2 a").css("color", "lightgrey !important");
-    $("#" + full_id).css("background-color", "#303030 !important");
+    $("#" + full_id + " h2 a").css("color", "lightgrey");
+    $("#" + full_id).css("background-color", "#303030");
 }
 function selectItem(full_id, container_id){
     clearItemCovers();
     document.getElementById(container_id).style.display='block';
-    $("#" + full_id + " h2 a").css("color", "white !important");
-    $("#" + full_id).css("background-color", "#707070 !important");
+    $("#" + full_id + " h2 a").css("color", "white");
+    $("#" + full_id).css("background-color", "#707070");
     originalColor=$("#" + full_id + " h2 a").css("color");
     originalBackColor=$("#" + full_id).css("background-color");
 }
@@ -72,6 +72,7 @@ $(function(){
 <?= $theme->paginator() ?>
 <? if (access::can("add", $item)): ?>
     <?= $theme->add_photos_menu() ?>
+    <?= $theme->add_photos_help_menu() ?>
 <? endif ?>
 <? endif ?>
 <ul id="g-album-grid" class="ui-helper-clearfix <?= ($theme->item->level < 2) ? "album_container" : "photo_container"?>">
@@ -82,7 +83,7 @@ $(function(){
     <? if ($child->is_album()): ?>
       <? $item_class = "g-album"; ?>
     <? endif ?> <!-- CutGallery - MODIFIED -->
-    <li title="<?= t("Click album cover to enter")?>" id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
+    <li title="<?= ($theme->item->level < 2) ? t("Click album cover to enter"): "" ?>" id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
     <?= $theme->thumb_top($child) ?>
     <a href="<?= $child->url() ?>">
       <? if ($child->has_thumb()): ?>
@@ -153,12 +154,17 @@ $(function(){
                     <li id="g-item-cover-<?= $child->id ?>" class="album_cover">
                         <div>
                             <? if ($child->is_album()): ?>
-                                <a href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
+                               <? if ($child->album_cover()): ?>
+                                   <a style="display:block" href='<?= $child->url() ?>'><?= $child->resize_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
+                               <? else: ?>
+                                   <a style="display:block" href='<?= $child->url() ?>'><img id="g-item-cover-no-item" class="g-album-thumbnail ui-corner-all" src="<?= url::file("themes/wind/images/album-cover-noitem.jpg")?>"/></a>
+                               <? endif ?>
+                                
                             <? endif ?>
                         </div>
                     </li>
                     <li id="g-item-prop-<?= $child->id ?>" class="album_prop">
-                        <span><?= t("Name").":" ?> <?= html::purify($child->title) ?></span>
+                        <span title="<?= html::purify($child->title)?>"><?= t("Name").":" ?> <?= html::truncate(html::purify($child->title), 21) ?></span>
                         <span><?= t("Owner").":" ?> <?= user::lookup($child->owner_id)->name ?></span>
                         <span><?= t("Photos").":" ?> <?= item::lookup_photos_by_owner($child->owner_id) ?></span>
                         <? if (access::can("add", $item)): ?>
@@ -168,7 +174,7 @@ $(function(){
                         <? endif ?>
                     </li>
                     <li id="g-item-comments-<?= $child->id ?>" class="album_comments">
-                        <span class="g-description"><?= nl2br(html::purify($child->description)) ?></span>
+                        <span class="g-description"><?= html::max_rows(html::truncate(nl2br(html::purify($child->description)), 155), 3) ?></span>
                     </li>
                 </ul>
         <? endforeach ?>
