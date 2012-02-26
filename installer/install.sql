@@ -1906,6 +1906,7 @@ DROP TABLE IF EXISTS {items};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 /*CutGallery - Add two columns 'view_3', 'view_4' for VIP and Guest*/;
+/*CutGallery - Set 'hashed_name' as unique key*/;
 CREATE TABLE {items} (
   `id` int(9) NOT NULL AUTO_INCREMENT,
   `album_cover_item_id` int(9) DEFAULT NULL,
@@ -1944,6 +1945,7 @@ CREATE TABLE {items} (
   `view_3` binary(1) DEFAULT '0',
   `view_4` binary(1) DEFAULT '0',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `hashed_name` (`hashed_name`),
   KEY `parent_id` (`parent_id`),
   KEY `type` (`type`),
   KEY `random` (`rand_key`),
@@ -1952,7 +1954,8 @@ CREATE TABLE {items} (
 ) AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*CutGallery - Set '1' as default value for both 'view_3' and 'view_4'*/;
-INSERT INTO {items} VALUES (1,NULL,NULL,UNIX_TIMESTAMP(),'',NULL,1,1,NULL,NULL,NULL,2,0,NULL,'','',1,NULL,NULL,2,NULL,'weight','ASC',1,NULL,NULL,'Gallery','album',UNIX_TIMESTAMP(),0,1,NULL,'0','0','1','1');
+/*CutGallery - Change default value from 'gallery' to 'I Love Smile' 2012-02-26*/;
+INSERT INTO {items} VALUES (1,NULL,NULL,UNIX_TIMESTAMP(),'',NULL,1,1,NULL,NULL,NULL,2,0,NULL,'','',1,NULL,NULL,2,NULL,'weight','ASC',1,NULL,NULL,'I Love Smile','album',UNIX_TIMESTAMP(),0,1,NULL,'0','0','1','1');
 DROP TABLE IF EXISTS {items_tags};
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
