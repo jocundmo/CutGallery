@@ -139,7 +139,7 @@
 
 <div id="footer">
     <p> 
-        Copyright reserved - internal released v1.3.3.0
+        Copyright reserved - released v1.3.4.0
     </p> 
 </div>
 
