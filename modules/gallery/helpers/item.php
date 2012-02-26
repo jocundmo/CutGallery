@@ -453,12 +453,11 @@ class item_Core {
    * 
    * @param owner_id
    */
-  static function lookup_photos_by_owner_and_album($owner_id, $album_id) {
+  static function lookup_photos_by_owner($owner_id) {
         return ORM::factory("item")
                 ->select("id")
                 ->where("owner_id", "=", $owner_id)
                 ->and_where("type", "=", "photo")
-                ->and_where("parent_id", "=", $album_id)
                 ->count_all();   
   }
   
