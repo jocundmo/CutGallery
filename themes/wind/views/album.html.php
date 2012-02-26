@@ -166,7 +166,7 @@ $(function(){
                     <li id="g-item-prop-<?= $child->id ?>" class="album_prop">
                         <span title="<?= html::purify($child->title)?>"><?= t("Name").":" ?> <?= html::truncate(html::purify($child->title), 21) ?></span>
                         <span><?= t("Owner").":" ?> <?= user::lookup($child->owner_id)->name ?></span>
-                        <span><?= t("Photos").":" ?> <?= item::lookup_photos_by_owner_and_album($child->owner_id, $child->id) ?></span>
+                        <span><?= t("Photos").":" ?> <?= item::lookup_photos_by_owner_and_album($child->owner_id, $child->id) ?></span> <!-- CutGallery - Fix the count of photos -->
                         <? if (access::can("add", $item)): ?>
                             <?= $theme->edit_album_menu($child) ?>
                             <?= $theme->delete_album_menu($child) ?>

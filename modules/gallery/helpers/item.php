@@ -449,7 +449,7 @@ class item_Core {
   
   /**
    * CutGallery - Add
-   * Find the count of photos by owner id
+   * Find the count of photos by owner id and album id
    * 
    * @param owner_id
    */
