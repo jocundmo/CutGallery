@@ -575,7 +575,7 @@ ul .g-photo{
     background: transparent url("../images/view-photo-top-bg.png") no-repeat;
 }
 #g-photo-decoration {
-    background-color: blue;
+/*    background-color: blue;*/
     width: 680px;
     margin: 0 auto;
     background: transparent url("../images/view-photo-bg.png") repeat-y;
@@ -586,11 +586,11 @@ ul .g-photo{
     margin: 0 auto;
     width: 680px;
 }
-#g-photo-bottom-decoration ul{
-/*    background-color: grey;*/
+/*#g-photo-bottom-decoration ul{
+    background-color: grey;
     margin: 0 auto;
     width: 238px;
-}
+}*/
 
 #g-item #g-photo,
 #g-item #g-movie {
@@ -1103,16 +1103,26 @@ div#g-action-status {
 /*    background-color: green;*/
     padding-top: 6px;
 }
+#id-g-paginator-share{
+    width: 45px;
+    margin: 0 auto;
+}
+#id-g-paginator{
+    width: 238px;
+    margin: 0 auto;
+}
 #id-g-paginator-level-1 {
     float: left;
 /*    background-color: pink;*/
     width: auto;
+    width: 238px;
 }
 #id-g-paginator-level-2 {
     float: left;
     width: auto;
 /*background-color: pink;*/
     height: 30px;
+    width: 238px;
 }
 #id-g-paginator .g-menu li a{ /* override .g-menu for share */
     color: black !important;
@@ -1126,13 +1136,13 @@ div#g-action-status {
 }
 .g-paginator {
 /* background-color: blue;*/
-  margin: 0 auto;
+
   /*position: absolute;/* CutGallery - MODIFIED */
   clear: both;
 }
 .g-paginator li {
   float: left;
-/*  background-color: blue;*/
+/*  background-color: yellow;*/
 }
 .g-paginator .g-info {
   /* CutGallery - MODIFIED */

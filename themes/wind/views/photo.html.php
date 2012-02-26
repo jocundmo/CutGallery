@@ -51,15 +51,12 @@
   </script>
  
   <div id="g-photo-bottom-decoration">
-      <? if (!$theme->is_share): ?>
          <?= $theme->paginator() ?>
-      <? endif ?>
   </div>
 
   <div id="g-info">
     <h1><?= html::purify($item->title) ?></h1>
     <div><?= nl2br(html::purify($item->description)) ?></div>
   </div>
-
 
 </div>
