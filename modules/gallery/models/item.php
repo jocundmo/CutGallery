@@ -668,12 +668,38 @@ class Item_Model_Core extends ORM_MPTT {
    * @return string
    */
   public function resize_img($extra_attrs) {
+    $height = $this->resize_height;
+    $width = $this->resize_width;
+    // CutGallery - ADDED resize thumb
+    if ($this->is_album()){
+        $maxWidth = 474;//540;
+        $maxHeight = 316;//360;
+            if ($width > $height){
+            $scale = $width / $height;
+            $width = $maxWidth;
+            $height = $maxWidth / $scale;
+            if ($height > $maxHeight){
+                $height = $maxHeight;
+                $width = $height * $scale;
+            }
+        }
+        else{
+            $scale = $height / $width;
+            $height = $maxHeight;
+            $width = $maxHeight / $scale;
+            if ($width > $maxWidth){
+                $width = $maxWidth;
+                $height = $width / $scale;
+            }
+        }
+        
+    }
     $attrs = array_merge($extra_attrs,
-            array("src" => $this->resize_url(),
-                  "alt" => $this->title,
-                  "width" => $this->resize_width,
-                  "height" => $this->resize_height)
-            );
+                array("src" => $this->resize_url(),
+                      "alt" => $this->title,
+                      "width" => $width,
+                      "height" => $height)
+                );
     // html::image forces an absolute url which we don't want
     return "<img" . html::attributes($attrs) . "/>";
   }

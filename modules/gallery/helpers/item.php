@@ -113,6 +113,14 @@ class item_Core {
       $parent->thumb_width = $item->thumb_width;
       $parent->thumb_height = $item->thumb_height;
     }
+    if ($item->resize_dirty) {
+      $parent->resize_dirty = 1;
+      graphics::generate($parent);
+    } else {
+      copy($item->resize_path(), $parent->resize_path());
+      $parent->resize_width = $item->resize_width;
+      $parent->resize_height = $item->resize_height;
+    }
     $parent->save();
     $grand_parent = $parent->parent();
     if ($grand_parent && access::can("edit", $grand_parent) &&
@@ -125,6 +133,7 @@ class item_Core {
     access::required("view", $album);
     access::required("edit", $album);
     @unlink($album->thumb_path());
+    @unlink($album->resize_path());
 
     model_cache::clear();
     $album->album_cover_item_id = null;

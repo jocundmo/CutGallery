@@ -155,7 +155,7 @@ $(function(){
                         <div>
                             <? if ($child->is_album()): ?>
                                <? if ($child->album_cover()): ?>
-                                   <a style="display:block" href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
+                                   <a style="display:block" href='<?= $child->url() ?>'><?= $child->resize_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
                                <? else: ?>
                                    <a style="display:block" href='<?= $child->url() ?>'><img id="g-item-cover-no-item" class="g-album-thumbnail ui-corner-all" src="<?= url::file("themes/wind/images/album-cover-noitem.jpg")?>"/></a>
                                <? endif ?>
