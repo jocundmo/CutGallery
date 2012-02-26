@@ -72,7 +72,8 @@ class gallery_Core {
             Router::$controller == "about" ||
             Router::$controller == "contact" ||
             Router::$controller == "BrowserNotSupport" ||
-            Router::$method == "form_share"){
+            Router::$method == "form_share" ||
+            Router::$method == "form_download"){
             return;}
         // <==
         if (Router::$controller == "admin") {
