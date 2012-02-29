@@ -449,15 +449,16 @@ class item_Core {
   
   /**
    * CutGallery - Add
-   * Find the count of photos by owner id
+   * Find the count of photos by owner id and album id
    * 
    * @param owner_id
    */
-  static function lookup_photos_by_owner($owner_id) {
+  static function lookup_photos_by_owner_and_album($owner_id, $album_id) {
         return ORM::factory("item")
                 ->select("id")
                 ->where("owner_id", "=", $owner_id)
                 ->and_where("type", "=", "photo")
+                ->and_where("parent_id", "=", $album_id)
                 ->count_all();   
   }
   
