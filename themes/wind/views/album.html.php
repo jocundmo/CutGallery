@@ -133,9 +133,24 @@ $(function(){
 <? endif; ?>
 </ul>
 <? if ($theme->item->level < 2): ?>
+ <script language="JavaScript" type="text/javascript">
+        function Test(item){
+            var imga = new Image();
+            imga.src = item.src.replace("thumbs", "resizes");
+            imga.onload = function() {
+                item.src = this.src;
+            }
+	}
+        $(function(){
+            var img_covers = $(".album_cover div a img");
+                for (var i = 0; i < img_covers.length; i++){
+                    Test(img_covers[i]);
+                    }
+            });
+  </script>
 <!-- CutGallery - ADDED -->
-<div id="g-item-panel">    
-<!--       <ul id="g-item-panel-default" class="album_panel_parent">
+<div id="g-item-panel">
+<!-- <ul id="g-item-panel-default" class="album_panel_parent">
             <li id="g-item-cover-default" class="album_cover">
                 <div>
                     <?//= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all")) ?>
@@ -147,7 +162,7 @@ $(function(){
             <li id="g-item-comments-default" class="album_comments">
                 <span class="g-description"></span>
             </li>
-        </ul>-->
+        </ul> -->
        <? if (count($children)): ?>
           <? foreach ($children as $i => $child): ?>
                 <ul id="g-item-panel-<?= $child->id ?>" class="album_panel_parent">
@@ -155,7 +170,7 @@ $(function(){
                         <div>
                             <? if ($child->is_album()): ?>
                                <? if ($child->album_cover()): ?>
-                                   <a style="display:block" href='<?= $child->url() ?>'><?= $child->resize_img(array("class" => "g-album-thumbnail ui-corner-all")) ?></a>
+                                   <a style="display:block" href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all", "id" => "img-cover-".$child->id)) ?></a>
                                <? else: ?>
                                    <a style="display:block" href='<?= $child->url() ?>'><img id="g-item-cover-no-item" class="g-album-thumbnail ui-corner-all" src="<?= url::file("themes/wind/images/album-cover-noitem.jpg")?>"/></a>
                                <? endif ?>
