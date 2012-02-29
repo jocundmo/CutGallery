@@ -85,7 +85,7 @@ $(function(){
     <? endif ?> <!-- CutGallery - MODIFIED -->
     <li title="<?= ($theme->item->level < 2) ? t("Click album cover to enter"): "" ?>" id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
     <?= $theme->thumb_top($child) ?>
-    <a href="<?= $child->url() ?>">
+    <a href="<?= $_REQUEST['page'] == '' ? $child->url() : $child->url().'?page='.$_REQUEST['page'] ?>">
       <? if ($child->has_thumb()): ?>
         <? if ($child->is_album()): ?>
             <? // if is Album, no thumb img to show.?>
@@ -100,7 +100,7 @@ $(function(){
         <? if ($child->is_album()): ?>  
             <a href="#"><?= html::purify($child->title) ?></a>
         <? else: ?>
-            <a href="<?= $child->url() ?>"><?= html::purify($child->title) ?></a>
+            <a href="<?= $_REQUEST['page'] == '' ? $child->url() : $child->url().'?page='.$_REQUEST['page'] ?>"><?= html::purify($child->title) ?></a>
         <? endif ?>
     </h2>
     <ul class="g-metadata">
@@ -133,6 +133,7 @@ $(function(){
 <? endif; ?>
 </ul>
 <? if ($theme->item->level < 2): ?>
+
  <script language="JavaScript" type="text/javascript">
         function LoadClearImage(item){
             var imga = new Image();
@@ -143,9 +144,10 @@ $(function(){
 	}
         $(function(){
             var img_covers = $(".album_cover div a img");
-                for (var i = 0; i < img_covers.length; i++){
-                    LoadClearImage(img_covers[i]);
-                    }
+            for (var i = 0; i < img_covers.length; i++){
+                LoadClearImage(img_covers[i]);
+                }
+            
             });
   </script>
 <!-- CutGallery - ADDED -->
