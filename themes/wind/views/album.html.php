@@ -134,7 +134,7 @@ $(function(){
 </ul>
 <? if ($theme->item->level < 2): ?>
  <script language="JavaScript" type="text/javascript">
-        function Test(item){
+        function LoadClearImage(item){
             var imga = new Image();
             imga.src = item.src.replace("thumbs", "resizes");
             imga.onload = function() {
@@ -144,7 +144,7 @@ $(function(){
         $(function(){
             var img_covers = $(".album_cover div a img");
                 for (var i = 0; i < img_covers.length; i++){
-                    Test(img_covers[i]);
+                    LoadClearImage(img_covers[i]);
                     }
             });
   </script>
