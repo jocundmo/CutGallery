@@ -14,7 +14,7 @@ using System.Diagnostics;
 
 namespace Scanner
 {
-    
+
     public class Program
     {
         static void Main(string[] args)
@@ -29,7 +29,7 @@ namespace Scanner
 
                 PhotoScanner myScanner = new PhotoScanner();
                 myScanner.LookupAndProcessPhoto(@"C:\ftproot\albums", @"C:\xampp\htdocs\CutGallery\var\Gallery_Folder", @"C:\backuproot\albums");
-               
+
             }
             else
             {
@@ -51,7 +51,7 @@ namespace Scanner
             try
             {
                 thumbIsEmpty = false;
-                mySqlHelper = new DatabaseHelper("cutgallery", "root", "mjm831119");
+                mySqlHelper = new DatabaseHelper("cutgallery", "root", "Admin123456");
                 item = new Dictionary<string, string>();
                 InitialItem(item);
             }
@@ -223,11 +223,35 @@ namespace Scanner
         /// </summary>
         /// <param name="oldPath">Path to identify where a photo is.</param>
         /// <param name="newPath">Path to identify where a photo will be.</param>
+        /// <remarks>
+        /// Actually, copy it to backup foler and then delete the file by Delete()
+        /// </remarks>
         private void Cut(string source, string destination)
         {
             try
             {
+                if (File.Exists(destination))
+                {
+                    File.Delete(destination);
+                }
+
                 File.Move(source, destination);
+            }
+            catch (Exception ex)
+            {
+                messageLogger.LogMessage(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Delete specified file
+        /// </summary>
+        /// <param name="source"></param>
+        private void Delete(string source)
+        {
+            try
+            {
+                File.Delete(source);
             }
             catch (Exception ex)
             {
@@ -274,6 +298,70 @@ namespace Scanner
             item.Add("view_3", "1");
             item.Add("view_4", "1");
         }
+
+        private bool IsPhotoOpened(string file)
+        {
+            bool result = false;
+            FileStream fileStream = null;
+
+            try
+            {
+                using (fileStream = File.OpenWrite(file))
+                {
+                    fileStream.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                messageLogger.LogMessage(ex.ToString());
+                result = true;
+            }
+            finally
+            {
+                if (fileStream != null)
+                {
+                    fileStream.Dispose();
+                }
+            }
+
+            return result;
+        }
+
+        private bool IsPhotoInUse(string file)
+        {
+            bool inUse = false;
+            FileStream fileStream = null;
+
+            try
+            {
+                using (fileStream = new FileStream(file, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
+                {
+                    if (fileStream.CanWrite)
+                    {
+                        inUse = false;
+                    }
+                    else
+                    {
+                        inUse = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                messageLogger.LogMessage(ex.ToString());
+            }
+            finally
+            {
+                if (fileStream != null)
+                {
+                    fileStream.Close();
+                    fileStream.Dispose();
+                }
+            }
+
+            return inUse;
+        }
+
 
         #endregion Private methods
 
@@ -329,7 +417,11 @@ namespace Scanner
                                     }
                                 }
 
-                                if (imageTypes.Contains(string.Concat(buffur[0].ToString(), buffur[1].ToString())))
+                                bool fileIsImage = imageTypes.Contains(string.Concat(buffur[0].ToString(), buffur[1].ToString()));
+                                bool fileIsInUse = IsPhotoInUse(file);
+                                bool fileIsOpened = IsPhotoOpened(file);
+
+                                if (fileIsImage && !fileIsInUse && !fileIsOpened)
                                 {
                                     // The file is a type of image: jpg, gif, bmp, png
                                     item = new Dictionary<string, string>();
@@ -341,6 +433,8 @@ namespace Scanner
                                     IAsyncResult asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
                                     delegate4Resize.EndInvoke(asyncResult4Resize);
                                     messageLogger.LogMessage("Image resized...");
+
+
 
                                     // 2. Check whether folder 'thumbs' is empty
                                     messageLogger.LogMessage("Check whether 'thumbs' folder is empty");
@@ -363,6 +457,10 @@ namespace Scanner
 
                                         asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + fileName, null, null);
                                         delegate4Thumb.EndInvoke(asyncResult4Thumb);
+
+                                        
+                                        asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + fileName, null, null);
+                                        delegate4Resize.EndInvoke(asyncResult4Resize);
                                     }
                                     messageLogger.LogMessage("Thumb created...");
 
@@ -384,7 +482,6 @@ namespace Scanner
                                     IAsyncResult asyncResult4Cut = delegate4Cut.BeginInvoke(file, backup + "\\" + Path.GetFileName(file), null, null);
                                     delegate4Cut.EndInvoke(asyncResult4Cut);
                                     messageLogger.LogMessage("Image has been saved...");
-
                                 }
                                 else
                                 {
@@ -457,7 +554,7 @@ namespace Scanner
         public void Insert(string tableName, IDictionary<string, string> item)
         {
             MySQLCommand commn = null;
-            
+
             try
             {
                 List<string> columns = item.Keys.ToList<string>();
@@ -518,7 +615,7 @@ namespace Scanner
                     conn.Dispose();
                 }
             }
- 
+
         }
 
         public void Query(string tableName, string where, IDictionary<string, string> item)
@@ -533,7 +630,7 @@ namespace Scanner
                 // Query table column name
                 string[] columns = null;
                 commn = new MySQLCommand();
-                string queryString = 
+                string queryString =
                     "SELECT column_name FROM information_schema.columns WHERE table_schema = 'DB_NAME' AND table_name = 'TABLE_NAME'";
                 queryString = queryString.Replace("DB_NAME", databaseName);
                 queryString = queryString.Replace("TABLE_NAME", tableName);
@@ -551,7 +648,7 @@ namespace Scanner
                     columns[rowIndex] = myDataSet.Tables[0].Rows[rowIndex][0].ToString();
                 }
                 myDataSet.Clear();
-                
+
                 // Query table by where condition
                 commn.Dispose();
                 commn = new MySQLCommand();
@@ -600,7 +697,7 @@ namespace Scanner
                 }
             }
         }
-        
+
         public void Update(string tableName, string set, string where)
         {
             MySQLCommand commn = null;

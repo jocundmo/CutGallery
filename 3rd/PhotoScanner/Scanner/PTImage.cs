@@ -285,7 +285,6 @@ namespace Scanner
                 //原图片的宽高比例
                 double initRate = (double)initImage.Width / initImage.Height;
 
-                //原图与模版比例相等，直接缩放
                 if (templateRate == initRate)
                 {
                     //按模版大小生成最终图片
