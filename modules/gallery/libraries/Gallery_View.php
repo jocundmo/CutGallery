@@ -52,7 +52,6 @@ class Gallery_View_Core extends View {
     $v->last_page_url = null;
     // CutGallery ==>
     $v->back_page_url = null;
-
     if ($this->page_type == "collection") {
       $v->page = $this->page;
       $v->max_pages = $this->max_pages;
@@ -80,20 +79,21 @@ class Gallery_View_Core extends View {
           }
       }// <==
     } else if ($this->page_type == "item") {
+      $page_parameter = $_REQUEST['page'] == '' ? '' : '?page='.$_REQUEST['page'];
       $v->position = $this->position;
       $v->total = $this->sibling_count;
       if ($this->previous_item) {
-        $v->previous_page_url = $this->previous_item->url();
+        $v->previous_page_url = $this->previous_item->url().$page_parameter;
       }
 
       if ($this->next_item) {
-        $v->next_page_url = $this->next_item->url();
+        $v->next_page_url = $this->next_item->url().$page_parameter;
       }
       // CutGallery - ADDED ==>
       if (isset($this->parents)){
           $album_name = $this->parents[count($this->parents)-1]->name;
           $photo_name = $this->item->name;
-          $v->back_page_url = $this->parents[count($this->parents)-1]->url();
+          $v->back_page_url = $this->parents[count($this->parents)-1]->url().$page_parameter;
           $v->share_url = url::abs_site("form/share/photos/$album_name/$photo_name");
           $v->download_full_url = url::abs_site("form/download/photos/$album_name/$photo_name");
       }
