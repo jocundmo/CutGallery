@@ -31,7 +31,8 @@ class Item_Model_Core extends ORM_MPTT {
       $this->rand_key = random::percent();
       $this->thumb_dirty = 1;
       $this->resize_dirty = 1;
-      $this->sort_column = "created";
+// CutGallery - Sort by "title"    $this->sort_column = "created";
+      $this->sort_column = "title";
       $this->sort_order = "ASC";
       $this->owner_id = identity::active_user()->id;
     }
@@ -745,6 +746,7 @@ class Item_Model_Core extends ORM_MPTT {
    */
   function children($limit=null, $offset=null, $where=array(), $order_by=null) {
     if (empty($order_by)) {
+//      $order_by = array("name" => "ASC");
       $order_by = array($this->sort_column => $this->sort_order);
       // Use id as a tie breaker
       if ($this->sort_column != "id") {
