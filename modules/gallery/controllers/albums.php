@@ -57,7 +57,6 @@ class Albums_Controller extends Items_Controller {
     $children_count = $album->viewable()->children_count();
     $offset = ($page - 1) * $page_size;
     $max_pages = max(ceil($children_count / $page_size), 1);
-    //$order_by = array("name" => "ASC");
 
     // Make sure that the page references a valid offset
     if ($page < 1) {
@@ -73,8 +72,7 @@ class Albums_Controller extends Items_Controller {
             "max_pages" => $max_pages,
             "page_size" => $page_size,
             "item" => $album,
-			"children" => $album->viewable()->children($page_size, $offset),
-            //"children" => $album->viewable()->children($page_size, $offset, null, $order_by),
+            "children" => $album->viewable()->children($page_size, $offset),
             "parents" => $album->parents()->as_array(), // view calls empty() on this
             "children_count" => $children_count));
     $template->content = new View("album.html");
