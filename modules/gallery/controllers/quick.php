@@ -79,7 +79,21 @@ class Quick_Controller extends Controller {
     $v->form = item::get_add_photos_help_form($item);
     print $v;
   }
-  
+  public function form_manage_home_pic() {
+    $v = new View("quick_form_manage_home_pic.html");
+    $v->form = item::get_manage_home_pic_form();
+    print $v;
+  }
+  public function form_manage_aboutus_pic() {
+    $v = new View("quick_form_manage_aboutus_pic.html");
+    $v->form = item::get_manage_aboutus_pic_form();
+    print $v;
+  }
+  public function form_manage_contactus_pic() {
+    $v = new View("quick_form_manage_contactus_pic.html");
+    $v->form = item::get_manage_contactus_pic_form();
+    print $v;
+  }
   public function form_share($id) {
     $item = model_cache::get("item", $id);
     $v = new View("quick_share_confirm.html");

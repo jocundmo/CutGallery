@@ -215,6 +215,28 @@ class item_Core {
     $group = $form->group("confirm_add_photos_help")->label(t("批量上传帮助"));
     return $form;
   }
+  static function get_manage_home_pic_form(){
+      $form = new Forge(
+      "", "",
+      "post", array("id" => "g-confirm-manage-home-pic"));
+      $group = $form->group("confirm_get_manage_home_pic")->label(t("管理首页图片"));
+      
+      return $form;
+  }
+  static function get_manage_aboutus_pic_form(){
+      $form = new Forge(
+      "", "",
+      "post", array("id" => "g-confirm-manage-aboutus-pic"));
+      $group = $form->group("confirm_manage_aboutus_pic")->label(t("管理“关于我们”图片"));
+      return $form;
+  }
+  static function get_manage_contactus_pic_form(){
+      $form = new Forge(
+      "", "",
+      "post", array("id" => "g-confirm-manage-contactus-pic"));
+      $group = $form->group("confirm_manage_contactus_pic")->label(t("管理“联系我们”图片"));
+      return $form;
+  }
   /**
    * Get the next weight value
    */

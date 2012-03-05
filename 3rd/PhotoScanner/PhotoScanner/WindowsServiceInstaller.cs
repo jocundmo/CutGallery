@@ -24,12 +24,12 @@ namespace ReportingService
             serviceProcessInstaller.Password = null;
 
             //# Service Information
-            serviceInstaller.DisplayName = "ILoveSmile Scanner";
+            serviceInstaller.DisplayName = "ILoveSmile Photo Scanner";
             serviceInstaller.StartType = ServiceStartMode.Automatic;
 
             //# This must be identical to the WindowsService.ServiceBase name
             //# set in the constructor of WindowsService.cs
-            serviceInstaller.ServiceName = "Reporting Windows Service";
+            serviceInstaller.ServiceName = "PhotoScanner";
 
             this.Installers.Add(serviceProcessInstaller);
             this.Installers.Add(serviceInstaller);
