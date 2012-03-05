@@ -11,3 +11,10 @@ E:\temp\PhotoScanner\PhotoScanner\Scanner\bin\Release\MySQLDriverCS.dll
 E:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Release\ResolveAssemblyReference.cache
 E:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Release\Scanner.exe
 E:\temp\PhotoScanner\PhotoScanner\Scanner\obj\x86\Release\Scanner.pdb
+C:\PhotoScanner\Scanner\bin\Release\Scanner.exe.config
+C:\PhotoScanner\Scanner\obj\x86\Release\Scanner.exe
+C:\PhotoScanner\Scanner\obj\x86\Release\Scanner.pdb
+C:\PhotoScanner\Scanner\bin\Release\Scanner.exe
+C:\PhotoScanner\Scanner\bin\Release\Scanner.pdb
+C:\PhotoScanner\Scanner\bin\Release\MySQLDriverCS.dll
+C:\PhotoScanner\Scanner\obj\x86\Release\ResolveAssemblyReference.cache
