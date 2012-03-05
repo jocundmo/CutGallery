@@ -28,8 +28,10 @@ namespace Scanner
                 // No args, this application is called by PhotoScanner service
 
                 PhotoScanner myScanner = new PhotoScanner();
-                myScanner.LookupAndProcessPhoto(@"C:\ftproot\albums", @"C:\xampp\htdocs\CutGallery\var\Gallery_Folder", @"C:\backuproot\albums");
-
+                myScanner.LookupAndProcessPhoto(
+                    ConfigurationManager.AppSettings["ftproot"],
+                    ConfigurationManager.AppSettings["galleryroot"],
+                    ConfigurationManager.AppSettings["backuproot"]);
             }
             else
             {
@@ -390,7 +392,31 @@ namespace Scanner
                         {
                             if (Directory.Exists(file))
                             {
-                                LookupAndProcessPhoto(file, destination + "\\" + Path.GetFileName(file), backup + "\\" + Path.GetFileName(file));
+                                string temp_destination = destination;
+                                string temp_backup = backup;
+                                if (file.Contains("albums"))
+                                {
+                                    if (!destination.Contains("var"))
+                                    {
+                                        temp_destination += "\\var\\Gallery_Folder";
+                                    }
+                                }
+                                else
+                                {
+                                    if (!destination.Contains("themes"))
+                                    {
+                                        temp_destination += "\\themes\\wind";
+                                    }
+                                }
+
+                                if (!string.Equals(Path.GetFileName(file), "albums"))
+                                {
+                                    temp_destination = temp_destination + "\\" + Path.GetFileName(file);
+                                    temp_backup = temp_backup + "\\" + Path.GetFileName(file);
+                                }
+
+
+                                LookupAndProcessPhoto(file, temp_destination, temp_backup);
                             }
                             else
                             {
@@ -423,64 +449,87 @@ namespace Scanner
 
                                 if (fileIsImage && !fileIsInUse && !fileIsOpened)
                                 {
-                                    // The file is a type of image: jpg, gif, bmp, png
-                                    item = new Dictionary<string, string>();
-                                    InitialItem(item);
-
-                                    // 1. Resize image
-                                    messageLogger.LogMessage("Resizing image...");
-                                    MovePhotoDelegate delegate4Resize = new MovePhotoDelegate(ResizePhoto);
-                                    IAsyncResult asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
-                                    delegate4Resize.EndInvoke(asyncResult4Resize);
-                                    messageLogger.LogMessage("Image resized...");
-
-
-
-                                    // 2. Check whether folder 'thumbs' is empty
-                                    messageLogger.LogMessage("Check whether 'thumbs' folder is empty");
-                                    string[] photoList = Directory.GetFileSystemEntries(destination.Replace("Gallery_Folder", "thumbs"));
-                                    if (photoList.Length == 0)
+                                    if (file.Contains("albums"))
                                     {
-                                        thumbIsEmpty = true;
-                                    }
-                                    messageLogger.LogMessage("Thumb folder status: " + thumbIsEmpty.ToString());
+                                        // The file is a type of image: jpg, gif, bmp, png
+                                        item = new Dictionary<string, string>();
+                                        InitialItem(item);
 
-                                    // 2. Create thumb
-                                    messageLogger.LogMessage("Creating thumb...");
-                                    MovePhotoDelegate delegate4Thumb = new MovePhotoDelegate(ThumbPhoto);
-                                    IAsyncResult asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
-                                    delegate4Thumb.EndInvoke(asyncResult4Thumb);
+                                        // 1. Resize image
+                                        messageLogger.LogMessage("Resizing image...");
+                                        MovePhotoDelegate delegate4Resize = new MovePhotoDelegate(ResizePhoto);
+                                        IAsyncResult asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
+                                        delegate4Resize.EndInvoke(asyncResult4Resize);
+                                        messageLogger.LogMessage("Image resized...");
 
-                                    if (thumbIsEmpty)
-                                    {
-                                        string fileName = ".album" + Path.GetExtension(file);
 
-                                        asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + fileName, null, null);
+
+                                        // 2. Check whether folder 'thumbs' is empty
+                                        messageLogger.LogMessage("Check whether 'thumbs' folder is empty");
+                                        string[] photoList = Directory.GetFileSystemEntries(destination.Replace("Gallery_Folder", "thumbs"));
+                                        if (photoList.Length == 0)
+                                        {
+                                            thumbIsEmpty = true;
+                                        }
+                                        messageLogger.LogMessage("Thumb folder status: " + thumbIsEmpty.ToString());
+
+                                        // 2. Create thumb
+                                        messageLogger.LogMessage("Creating thumb...");
+                                        MovePhotoDelegate delegate4Thumb = new MovePhotoDelegate(ThumbPhoto);
+                                        IAsyncResult asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
                                         delegate4Thumb.EndInvoke(asyncResult4Thumb);
 
-                                        asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + fileName, null, null);
-                                        delegate4Resize.EndInvoke(asyncResult4Resize);
+                                        if (thumbIsEmpty)
+                                        {
+                                            string fileName = ".album" + Path.GetExtension(file);
+
+                                            asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + fileName, null, null);
+                                            delegate4Thumb.EndInvoke(asyncResult4Thumb);
+
+                                            asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + fileName, null, null);
+                                            delegate4Resize.EndInvoke(asyncResult4Resize);
+                                        }
+                                        messageLogger.LogMessage("Thumb created...");
+
+                                        // 3. Copy
+                                        messageLogger.LogMessage("Copyting image...");
+                                        MovePhotoDelegate delegate4Copy = new MovePhotoDelegate(Copy);
+                                        IAsyncResult asyncResult4Copy = delegate4Copy.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
+                                        delegate4Copy.EndInvoke(asyncResult4Copy);
+                                        messageLogger.LogMessage("Image copied...");
+
+                                        // 4. Update db
+                                        messageLogger.LogMessage("Updating database for photo...");
+                                        UpdateDatabaseForPhoto(file, item);
+                                        messageLogger.LogMessage("Table 'Items' updated...");
+
+                                        // 5. Backup
+                                        messageLogger.LogMessage("Backing up...");
+                                        MovePhotoDelegate delegate4Cut = new MovePhotoDelegate(Cut);
+                                        IAsyncResult asyncResult4Cut = delegate4Cut.BeginInvoke(file, backup + "\\" + Path.GetFileName(file), null, null);
+                                        delegate4Cut.EndInvoke(asyncResult4Cut);
+                                        messageLogger.LogMessage("Image has been saved...");
                                     }
-                                    messageLogger.LogMessage("Thumb created...");
+                                    else
+                                    {
+                                        if (!file.Contains("homepic"))
+                                        {
+                                            // Create thumb
+                                            string fileName = Path.GetFileNameWithoutExtension(file) + "-thumb" + Path.GetExtension(file);
+                                            messageLogger.LogMessage("Creating thumb...");
+                                            MovePhotoDelegate delegate4Thumb = new MovePhotoDelegate(ThumbPhoto);
+                                            IAsyncResult asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + fileName, null, null);
+                                            delegate4Thumb.EndInvoke(asyncResult4Thumb);
+                                        }
 
-                                    // 3. Copy
-                                    messageLogger.LogMessage("Copyting image...");
-                                    MovePhotoDelegate delegate4Copy = new MovePhotoDelegate(Copy);
-                                    IAsyncResult asyncResult4Copy = delegate4Copy.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
-                                    delegate4Copy.EndInvoke(asyncResult4Copy);
-                                    messageLogger.LogMessage("Image copied...");
-
-                                    // 4. Update db
-                                    messageLogger.LogMessage("Updating database for photo...");
-                                    UpdateDatabaseForPhoto(file, item);
-                                    messageLogger.LogMessage("Table 'Items' updated...");
-
-                                    // 5. Backup
-                                    messageLogger.LogMessage("Backing up...");
-                                    MovePhotoDelegate delegate4Cut = new MovePhotoDelegate(Cut);
-                                    IAsyncResult asyncResult4Cut = delegate4Cut.BeginInvoke(file, backup + "\\" + Path.GetFileName(file), null, null);
-                                    delegate4Cut.EndInvoke(asyncResult4Cut);
-                                    messageLogger.LogMessage("Image has been saved...");
+                                        // Copy
+                                        messageLogger.LogMessage("Copyting image...");
+                                        MovePhotoDelegate delegate4Cut = new MovePhotoDelegate(Cut);
+                                        IAsyncResult asyncResult4Cut = delegate4Cut.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
+                                        delegate4Cut.EndInvoke(asyncResult4Cut);
+                                        messageLogger.LogMessage("Image copied...");
+ 
+                                    }
                                 }
                                 else
                                 {
@@ -495,7 +544,11 @@ namespace Scanner
                     }
                 }
                 else
-                { }
+                {
+                    Directory.CreateDirectory(source);
+                    LookupAndProcessPhoto(source, destination, backup);
+
+                }
             }
             catch (Exception ex)
             {
