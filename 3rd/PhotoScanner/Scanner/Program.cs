@@ -11,6 +11,7 @@ using System.Threading;
 
 using MySQLDriverCS;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace Scanner
 {
@@ -24,7 +25,6 @@ namespace Scanner
             //mainLogger.LogMessage();
             if (args.Length == 0)
             {
-
                 // No args, this application is called by PhotoScanner service
 
                 PhotoScanner myScanner = new PhotoScanner();
@@ -51,7 +51,7 @@ namespace Scanner
             try
             {
                 thumbIsEmpty = false;
-                mySqlHelper = new DatabaseHelper("cutgallery", "root", "Admin123456");
+                mySqlHelper = new DatabaseHelper("cutgallery", ConfigurationManager.AppSettings["database_user"], ConfigurationManager.AppSettings["database_password"]);
                 item = new Dictionary<string, string>();
                 InitialItem(item);
             }
@@ -458,7 +458,6 @@ namespace Scanner
                                         asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + fileName, null, null);
                                         delegate4Thumb.EndInvoke(asyncResult4Thumb);
 
-                                        
                                         asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + fileName, null, null);
                                         delegate4Resize.EndInvoke(asyncResult4Resize);
                                     }

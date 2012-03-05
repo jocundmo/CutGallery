@@ -141,7 +141,7 @@ class graphics_Core {
     if ($item->thumb_dirty) {
       $ops["thumb"] = $item->thumb_path();
     }
-    if ($item->resize_dirty && !$item->is_album() && !$item->is_movie()) {
+    if ($item->resize_dirty && !$item->is_movie()) {
       $ops["resize"] = $item->resize_path();
     }
 
