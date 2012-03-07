@@ -3,9 +3,9 @@
 	var img1 = new Image();
         var img2 = new Image();
         var img3 = new Image();
-	img1.src = "<?= url::file("themes/wind/aboutuspic/business.png") ?>";
-        img2.src = "<?= url::file("themes/wind/aboutuspic/wedding.png") ?>";
-        img3.src = "<?= url::file("themes/wind/aboutuspic/party.png") ?>";
+	img1.src = "<?= url::file("themes/wind/aboutuspic/business.jpg") ?>";
+        img2.src = "<?= url::file("themes/wind/aboutuspic/wedding.jpg") ?>";
+        img3.src = "<?= url::file("themes/wind/aboutuspic/party.jpg") ?>";
 	img1.onload = function() {
 	document.getElementById("img-business").src = this.src;
 	}
@@ -21,13 +21,13 @@
         <ul class="Slides" id="Slides"> 
             
                     <li>
-                        <img id="img-business" title="business" src="<?= url::file("themes/wind/aboutuspic/business-thumb.png") ?>" /></li> 
+                        <img id="img-business" title="business" src="<?= url::file("themes/wind/aboutuspic/business-thumb.jpg") ?>" /></li> 
                 
                     <li>
-                        <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding-thumb.png") ?>" /></li> 
+                        <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding-thumb.jpg") ?>" /></li> 
                 
                     <li>
-                        <img id="img-party" title="Party" src="<?= url::file("themes/wind/images/party-thumb.png") ?>" /></li> 
+                        <img id="img-party" title="Party" src="<?= url::file("themes/wind/images/party-thumb.jpg") ?>" /></li> 
         </ul> 
         <ul class="SlideTriggers" id="SlideTriggers" style="display: block"> 
             <li class="current">1</li> 
