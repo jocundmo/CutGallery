@@ -467,7 +467,9 @@ class Admin_Users_Controller extends Admin_Controller {
     }
  * 
  */
-    // CutGalley - Only admin can see 'Admin' checkbox in edit user form. ==>
+
+/** CutGalley - The original design was only admin can see 'Admin' checkbox in edit user form. ==>
+    
     if ((strcmp($user->name, "admin") == 0)) {
         $group->checkbox("admin")->label(t("Admin"))->id("g-admin")->checked($user->admin);
         
@@ -477,6 +479,10 @@ class Admin_Users_Controller extends Admin_Controller {
         }
     }
     // <==
+ * 
+ * However, we decided to remove this checkbox.
+ * 
+ */
 
     module::event("user_edit_form_admin", $user, $form);
     $group->submit("")->value(t("Modify user"));
