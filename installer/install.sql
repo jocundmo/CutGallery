@@ -1633,7 +1633,7 @@ INSERT INTO `incoming_translations` (`key`, `locale`, `message`, `revision`, `tr
 ('656a6828d7ef1bb791e42087c4b5ee6e', 'zh_CN', 's:7:"API key";', 54096, 's:9:"API密钥";'),
 ('f72c3382802e756d42ec75cba4820a0d', 'zh_CN', 's:25:"Languages and translation";', 36222, 's:15:"语言与翻译";'),
 ('0077c6ed9df7125e9ea30e308f3ea9f5', 'zh_CN', 's:14:"Manage sidebar";', 36209, 's:15:"管理侧边栏";'),
-('01a569ddc6cf67ddec2a683f0a5f5956', 'zh_CN', 's:21:"Forgot your password?";', 70330, 's:22:"忘记您的密码了?";'),
+('01a569ddc6cf67ddec2a683f0a5f5956', 'zh_CN', 's:21:"Forgot your password?";', 70330, 's:22:"忘记密码请联系我们";'),
 ('01c32efae70b1872e05a791a4ca4f055', 'zh_CN', 's:30:"Operating system: %os %version";', 70321, 's:26:"操作系统: %os %version";'),
 ('02ed1e68a953eb2d75633728315618c1', 'zh_CN', 's:17:"Edit your profile";', 36220, 's:18:"编辑用户档案";'),
 ('13c90eeb9cb73a105be308024174de1d', 'zh_CN', 's:16:"Available blocks";', 58980, 's:12:"可用区块";'),
