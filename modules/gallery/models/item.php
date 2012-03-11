@@ -106,9 +106,14 @@ class Item_Model_Core extends ORM_MPTT {
         throw new Exception(
           "@todo DELETING_TOO_MUCH ($delete_resize_path, $delete_thumb_path, $path)");
       }
+      
+      $ftp_root = module::get_var("gallery", "ftp_root");
+      $splited_path = split("/", $path);
+      $album_name = $splited_path[count($splited_path) - 1];
       @dir::unlink($path);
       @dir::unlink($delete_resize_path);
       @dir::unlink($delete_thumb_path);
+      @dir::unlink($ftp_root."/".$album_name);
     } else {
       @unlink($path);
       @unlink($resize_path);
