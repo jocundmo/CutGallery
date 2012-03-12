@@ -46,21 +46,28 @@ class html extends html_Core {
     return SafeString::purify($html);
   }
   
-  static function max_rows($string, $max_rows){
-      $result = $string;
-      $inall = split("<br />", $string);
-      if (count($inall) >= $max_rows){
-          $result = $inall[0].'<br />'.$inall[1].'<br />'.$inall[2].'...';
-          }
-      return $result;
+  static function max_rows($string, $max_rows, $max_columns){
+    $result = $string;
+    $inall = split("<br />", $string);
+    if (count($inall) >= $max_rows){
+        $result = $inall[0].'<br />'.$inall[1].'<br />'.$inall[2].'...';
+    }
+    return $result;
   }
-  
-  static function truncate($string, $max) {
-      if (strlen($string) > $max){
-          return substr($string, 0, $max)."...";
-          }
-
-      return $string;
+  static function truncate($str, $length, $start=0, $charset="utf-8", $suffix=true) { 
+    if(function_exists("mb_substr")){ 
+       if(mb_strlen($str, $charset) <= $length) return $str; 
+       $slice = mb_substr($str, $start, $length, $charset); 
+    } 
+    else{ 
+       $re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/"; 
+       $re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/"; 
+       preg_match_all($re[$charset], $str, $match); 
+       if(count($match[0]) <= $length) return $str; 
+       $slice = join("",array_slice($match[0], $start, $length)); 
+     } 
+     if($suffix) return $slice."…"; 
+        return $slice; 
   }
   /**
    * Flags the given string as safe to be used in HTML (free of malicious HTML/JS).
