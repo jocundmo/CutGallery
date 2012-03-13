@@ -28,6 +28,7 @@ namespace Scanner
                 // No args, this application is called by PhotoScanner service
 
                 PhotoScanner myScanner = new PhotoScanner();
+                myScanner.InitialFolder();
                 myScanner.LookupAndProcessPhoto(
                     ConfigurationManager.AppSettings["ftproot"],
                     ConfigurationManager.AppSettings["galleryroot"],
@@ -369,6 +370,93 @@ namespace Scanner
 
         #region Public methods
 
+        public void InitialFolder()
+        {
+            string ftpRoot = "C:\\ftproot";
+            string albumsRoot = "C:\\ftproot\\albums";
+            string aboutUsPic = "C:\\ftproot\\aboutuspic";
+            string contactUsPic = "C:\\ftproot\\contactuspic";
+            string homePic = "C:\\ftproot\\homepic";
+            string homeSite = "C:\\ftproot\\homepic\\site";
+            bool createFtpRoot = false;
+            bool createAlbums = false;
+            bool createAboutUs = false;
+            bool createContactUs = false;
+            bool createHomePic = false;
+            bool createHomeSite = false;
+
+            if (!Directory.Exists(ftpRoot))
+            {
+                createFtpRoot = true;
+                createAlbums = true;
+                createAboutUs = true;
+                createContactUs = true;
+                createHomePic = true;
+                createHomeSite = true;
+                
+            }
+            else
+            {
+                if (!Directory.Exists(albumsRoot))
+                {
+                    createAlbums = true;
+                }
+
+                if (!Directory.Exists(aboutUsPic))
+                {
+                    createAboutUs = true;
+                }
+
+                if (!Directory.Exists(contactUsPic))
+                {
+                    createContactUs = true;
+                }
+
+                if (!Directory.Exists(homePic))
+                {
+                    createHomePic = true;
+                }
+
+                if (!Directory.Exists(homeSite))
+                {
+                    createHomeSite = true;
+                }
+            }
+
+            if (createFtpRoot)
+            {
+                Directory.CreateDirectory(ftpRoot);
+            }
+
+            if (createAlbums)
+            {
+                Directory.CreateDirectory(albumsRoot);
+            }
+
+            if (createAboutUs)
+            {
+                Directory.CreateDirectory(aboutUsPic);
+            }
+
+            if (createContactUs)
+            {
+                Directory.CreateDirectory(contactUsPic);
+            }
+
+            if (createHomePic)
+            {
+                Directory.CreateDirectory(homePic);
+            }
+
+            if (createHomeSite)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Directory.CreateDirectory(homeSite + i.ToString());
+                }
+            }
+        }
+
         public void LookupAndProcessPhoto(string source, string destination, string backup)
         {
             try
@@ -540,14 +628,11 @@ namespace Scanner
                     }
                     else
                     {
-                        // Current folder is empty. 
+
                     }
                 }
                 else
                 {
-                    Directory.CreateDirectory(source);
-                    LookupAndProcessPhoto(source, destination, backup);
-
                 }
             }
             catch (Exception ex)
