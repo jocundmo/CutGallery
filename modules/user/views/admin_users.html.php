@@ -100,11 +100,11 @@
                    alt="<?= html::clean_attribute($user->name) ?>"
                    width="20"
                    height="20" />
-              <?= html::clean($user->name) ?>
+              <span title="<?= html::clean($user->name) ?>"><?= html::truncate(html::clean($user->name), 8) ?></span>
             </td>
             <!-- CutGallery - Add 'password', 'Role', 'Created Date' ==> -->
             <td>
-              <?= html::clean($user->password) ?>
+                <span title="<?= html::clean($user->password) ?>"><?= html::truncate(html::clean($user->password), 10) ?></span>
             </td>
             <td>
               <?= html::clean($user->display_group()) ?>
@@ -132,7 +132,7 @@
             </td>
             <!-- CutGallery - Add 'Comments' ==> -->
             <td>
-              <?= html::clean($user->comments) ?>
+                <span title="<?= html::clean($user->comments) ?>"><?= html::truncate(html::clean($user->comments), 20) ?></span>
             </td>
             <!-- <== -->
             <td>

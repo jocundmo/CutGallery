@@ -1108,7 +1108,7 @@ div#g-action-status {
     margin: 0 auto;
 }
 #id-g-paginator{
-    width: 238px;
+    width: 288px;
     margin: 0 auto;
 }
 #id-g-paginator-level-1 {
@@ -1149,6 +1149,7 @@ div#g-action-status {
 /*  background-color: blueviolet;*/
   padding-top: 3px;
   text-align: center;
+  width: 60px;
 }
 
 .ui-icon-seek-share{
@@ -1169,7 +1170,7 @@ div#g-action-status {
     display: block;
     color: lightgrey;
     margin-top: 2px;
-    width: 80px;
+    width: 110px;
     background-color: #3D3D3D;
     height: 20px;
 }

@@ -181,7 +181,7 @@ $(function(){
                         </div>
                     </li>
                     <li id="g-item-prop-<?= $child->id ?>" class="album_prop">
-                        <span title="<?= html::purify($child->title)?>"><?= t("Name").":" ?> <?= html::truncate(html::purify($child->title), 21) ?></span>
+                        <span title="<?= html::purify($child->title)?>"><?= t("Name").":" ?> <?= html::truncate(html::purify($child->title), 10) ?></span>
                         <span><?= t("Owner").":" ?> <?= user::lookup($child->owner_id)->name ?></span>
                         <span><?= t("Photos").":" ?> <?= item::lookup_photos_by_owner_and_album($child->owner_id, $child->id) ?></span> <!-- CutGallery - Fix the count of photos -->
                         <? if (access::can("add", $item)): ?>
@@ -191,7 +191,7 @@ $(function(){
                         <? endif ?>
                     </li>
                     <li id="g-item-comments-<?= $child->id ?>" class="album_comments">
-                        <span class="g-description"><?= html::max_rows(html::truncate(nl2br(html::purify($child->description)), 155), 3) ?></span>
+                        <span class="g-description"><?= html::max_rows(html::truncate(nl2br(html::purify($child->description)), 60), 3) ?></span>
                     </li>
                 </ul>
         <? endforeach ?>
