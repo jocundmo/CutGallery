@@ -45,7 +45,7 @@
     </li>
     <? if (identity::is_writable() && !module::get_var("gallery", "maintenance_mode")): ?>
     <li>
-      <a href="<?=url::site("contact")?>" id="g-password-reset" class="g-right g-text-small"><?= t("Forgot your password?") ?></a>
+      <a href="<?=url::site("contact")?>" id="g-password-reset" class="g-right g-text-small"><?= t("忘记密码请联系我们") ?></a>
     </li>
     <? endif ?>
   </ul>
