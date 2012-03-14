@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Odbc;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using System.Xml;
 
 using MySQLDriverCS;
-using System.Diagnostics;
-using System.Configuration;
 
 namespace Scanner
 {
@@ -20,9 +21,6 @@ namespace Scanner
     {
         static void Main(string[] args)
         {
-            //Debugger.Launch();
-            //MessageLogger mainLogger = new MessageLogger();
-            //mainLogger.LogMessage();
             if (args.Length == 0)
             {
                 // No args, this application is called by PhotoScanner service
@@ -47,12 +45,19 @@ namespace Scanner
         private bool thumbIsEmpty;
         private DatabaseHelper mySqlHelper = null;
         IDictionary<string, string> item;
-        private MessageLogger messageLogger = new MessageLogger(@"C:\PhotoScanner.txt");
+        //private MessageLogger messageLogger = new MessageLogger(@"C:\PhotoScanner.txt");
         #region Constructor
         public PhotoScanner()
         {
             try
             {
+                // Get configuration setting
+                AppSettingsReader confAppSettings = new AppSettingsReader();
+                Common.LogFileSize = ((long)(confAppSettings.GetValue("Log_Size", typeof(long))));
+                Common.LogFileName = ((string)(confAppSettings.GetValue("Scanner_Log_FileName", typeof(string))));
+                Common.Log("****************************** START ******************************");
+                Common.Log("Report Service Starting...\n");
+
                 thumbIsEmpty = false;
                 mySqlHelper = new DatabaseHelper("cutgallery", ConfigurationManager.AppSettings["database_user"], ConfigurationManager.AppSettings["database_password"]);
                 item = new Dictionary<string, string>();
@@ -60,7 +65,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
         #endregion
@@ -83,7 +88,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
 
@@ -103,7 +108,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
 
@@ -120,7 +125,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
 
@@ -217,7 +222,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
 
@@ -242,7 +247,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
 
@@ -258,7 +263,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
 
@@ -316,7 +321,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
                 result = true;
             }
             finally
@@ -351,7 +356,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
             finally
             {
@@ -468,7 +473,7 @@ namespace Scanner
                 logStringBuilder.Append(destination);
                 logStringBuilder.Append(", backup is ");
                 logStringBuilder.Append(backup);
-                messageLogger.LogMessage(logStringBuilder.ToString());
+                Common.Log(logStringBuilder.ToString());
 
                 if (Directory.Exists(source))
                 {
@@ -544,25 +549,21 @@ namespace Scanner
                                         InitialItem(item);
 
                                         // 1. Resize image
-                                        messageLogger.LogMessage("Resizing image...");
+                                        Common.Log(string.Concat("Resizing image...", file));
                                         MovePhotoDelegate delegate4Resize = new MovePhotoDelegate(ResizePhoto);
                                         IAsyncResult asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
                                         delegate4Resize.EndInvoke(asyncResult4Resize);
-                                        messageLogger.LogMessage("Image resized...");
-
-
 
                                         // 2. Check whether folder 'thumbs' is empty
-                                        messageLogger.LogMessage("Check whether 'thumbs' folder is empty");
                                         string[] photoList = Directory.GetFileSystemEntries(destination.Replace("Gallery_Folder", "thumbs"));
                                         if (photoList.Length == 0)
                                         {
                                             thumbIsEmpty = true;
                                         }
-                                        messageLogger.LogMessage("Thumb folder status: " + thumbIsEmpty.ToString());
+                                        Common.Log(string.Concat("Thumb folder status: ", thumbIsEmpty.ToString()));
 
                                         // 2. Create thumb
-                                        messageLogger.LogMessage("Creating thumb...");
+                                        Common.Log(string.Concat("Creating thumb...", file));
                                         MovePhotoDelegate delegate4Thumb = new MovePhotoDelegate(ThumbPhoto);
                                         IAsyncResult asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
                                         delegate4Thumb.EndInvoke(asyncResult4Thumb);
@@ -577,26 +578,22 @@ namespace Scanner
                                             asyncResult4Resize = delegate4Resize.BeginInvoke(file, destination + "\\" + fileName, null, null);
                                             delegate4Resize.EndInvoke(asyncResult4Resize);
                                         }
-                                        messageLogger.LogMessage("Thumb created...");
 
                                         // 3. Copy
-                                        messageLogger.LogMessage("Copyting image...");
+                                        Common.Log(string.Concat("Copyting image...", file));
                                         MovePhotoDelegate delegate4Copy = new MovePhotoDelegate(Copy);
                                         IAsyncResult asyncResult4Copy = delegate4Copy.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
                                         delegate4Copy.EndInvoke(asyncResult4Copy);
-                                        messageLogger.LogMessage("Image copied...");
 
                                         // 4. Update db
-                                        messageLogger.LogMessage("Updating database for photo...");
+                                        Common.Log("Updating database for photo...");
                                         UpdateDatabaseForPhoto(file, item);
-                                        messageLogger.LogMessage("Table 'Items' updated...");
 
                                         // 5. Backup
-                                        messageLogger.LogMessage("Backing up...");
+                                        Common.Log(string.Concat("Backing up...", file));
                                         MovePhotoDelegate delegate4Cut = new MovePhotoDelegate(Cut);
                                         IAsyncResult asyncResult4Cut = delegate4Cut.BeginInvoke(file, backup + "\\" + Path.GetFileName(file), null, null);
                                         delegate4Cut.EndInvoke(asyncResult4Cut);
-                                        messageLogger.LogMessage("Image has been saved...");
                                     }
                                     else
                                     {
@@ -604,19 +601,17 @@ namespace Scanner
                                         {
                                             // Create thumb
                                             string fileName = Path.GetFileNameWithoutExtension(file) + "-thumb" + Path.GetExtension(file);
-                                            messageLogger.LogMessage("Creating thumb...");
+                                            Common.Log(string.Concat("Creating thumb...", fileName));
                                             MovePhotoDelegate delegate4Thumb = new MovePhotoDelegate(ThumbPhoto);
                                             IAsyncResult asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + fileName, null, null);
                                             delegate4Thumb.EndInvoke(asyncResult4Thumb);
                                         }
 
                                         // Copy
-                                        messageLogger.LogMessage("Copyting image...");
+                                        Common.Log(string.Concat("Copyting image...", file));
                                         MovePhotoDelegate delegate4Cut = new MovePhotoDelegate(Cut);
                                         IAsyncResult asyncResult4Cut = delegate4Cut.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
-                                        delegate4Cut.EndInvoke(asyncResult4Cut);
-                                        messageLogger.LogMessage("Image copied...");
- 
+                                        delegate4Cut.EndInvoke(asyncResult4Cut); 
                                     }
                                 }
                                 else
@@ -637,7 +632,7 @@ namespace Scanner
             }
             catch (Exception ex)
             {
-                messageLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
 
@@ -659,7 +654,7 @@ namespace Scanner
         private string databaseName = string.Empty;
         private string username = string.Empty;
         private string password = string.Empty;
-        private MessageLogger dbLogger = new MessageLogger(@"C:\PhotoScanner_Database.txt");
+        //private MessageLogger dbLogger = new MessageLogger(@"C:\PhotoScanner_Database.txt");
         private StringBuilder logStringBuilder = null;
         StringBuilder sqlCommnBuilder = null;
         private MySQLConnection conn = null;
@@ -679,12 +674,12 @@ namespace Scanner
                 logStringBuilder.Append(username);
                 logStringBuilder.Append(", password is ");
                 logStringBuilder.Append(password);
-                dbLogger.LogMessage(logStringBuilder.ToString());
+                Common.Log(logStringBuilder.ToString());
                 conn = new MySQLConnection(new MySQLConnectionString(databaseName, username, password).AsString);
             }
             catch (Exception ex)
             {
-                dbLogger.LogMessage(ex.ToString());
+                Common.Log(ex.ToString());
             }
         }
 
@@ -727,7 +722,7 @@ namespace Scanner
                 sqlCommnBuilder.Remove(sqlCommnBuilder.Length - 4, 4);
                 sqlCommnBuilder.Append("')");
                 conn.Open();
-                dbLogger.LogMessage(sqlCommnBuilder.ToString());
+                Common.Log(sqlCommnBuilder.ToString());
                 commn = new MySQLCommand();
                 commn.CommandType = CommandType.Text;
                 commn.CommandText = sqlCommnBuilder.ToString();
@@ -737,7 +732,7 @@ namespace Scanner
             }
             catch (MySQLException mySQLException)
             {
-                dbLogger.LogMessage(mySQLException.ToString());
+                Common.Log(mySQLException.ToString());
             }
             finally
             {
@@ -763,7 +758,7 @@ namespace Scanner
             try
             {
                 conn.Open();
-                dbLogger.LogMessage("Query columns from table: " + tableName);
+                Common.Log("Query columns from table: " + tableName);
                 // Query table column name
                 string[] columns = null;
                 commn = new MySQLCommand();
@@ -795,7 +790,7 @@ namespace Scanner
                 commn.CommandText = queryString2;
                 commn.CommandType = CommandType.Text;
                 commn.Connection = conn;
-                dbLogger.LogMessage(queryString2);
+                Common.Log(queryString2);
                 mySqlAdapter = new MySQLDataAdapter(commn);
                 myDataSet = new DataSet();
                 mySqlAdapter.Fill(myDataSet);
@@ -807,7 +802,7 @@ namespace Scanner
             }
             catch (MySQLException mySqlException)
             {
-                dbLogger.LogMessage(mySqlException.ToString());
+                Common.Log(mySqlException.ToString());
             }
             finally
             {
@@ -845,7 +840,7 @@ namespace Scanner
                 insertString = insertString.Replace("TABLE_NAME", tableName);
                 insertString = insertString.Replace("SET_CONDITION", set);
                 insertString = insertString.Replace("WHERE_CONDITION", where);
-                dbLogger.LogMessage(insertString);
+                Common.Log(insertString);
                 conn.Open();
                 commn = new MySQLCommand();
                 commn.CommandText = insertString;
@@ -855,7 +850,7 @@ namespace Scanner
             }
             catch (MySQLException mySqlException)
             {
-                dbLogger.LogMessage(mySqlException.ToString());
+                Common.Log(mySqlException.ToString());
             }
             finally
             {
@@ -898,6 +893,181 @@ namespace Scanner
             }
 
             return md5HashStringBuilder.ToString();
+        }
+    }
+
+    /// <summary>
+    /// Summary description for Common.
+    /// </summary>
+    public class Common
+    {
+        static FileStream fsLog;
+        static XmlTextReader xmlReader;
+        static XmlTextWriter xmlWriter;
+        static StreamWriter swLog;
+        static bool FirstRun = true;
+        static string logFileName;
+        static long logFileSize;
+        static string startTrigger;
+
+        public static string StartTrigger
+        {
+            get
+            {
+                return startTrigger;
+            }
+            set
+            {
+                startTrigger = value;
+            }
+        }
+
+        public static string LogFileName
+        {
+            get
+            {
+                return logFileName;
+            }
+            set
+            {
+                logFileName = value;
+            }
+        }
+
+        public static long LogFileSize
+        {
+            get
+            {
+                return logFileSize;
+            }
+            set
+            {
+                logFileSize = value;
+            }
+        }
+
+        public static XmlTextReader XmlReader
+        {
+            get
+            {
+                return xmlReader;
+            }
+            set
+            {
+                xmlReader = value;
+            }
+        }
+
+        public static XmlTextWriter XmlWriter
+        {
+            get
+            {
+                return xmlWriter;
+            }
+            set
+            {
+                xmlWriter = value;
+            }
+        }
+
+        public static string XmlValue
+        {
+            get
+            {
+                xmlReader.MoveToFirstAttribute();
+                return (String.Compare(xmlReader.Name, "value") == 0 ? xmlReader.Value : null);
+            }
+        }
+
+        public static void XmlDetail(string elementName, string valuePass)
+        {
+            xmlWriter.WriteStartElement(elementName);
+            xmlWriter.WriteAttributeString("value", valuePass);
+            xmlWriter.WriteEndElement();
+        }
+
+        public static bool IsNumeric(string valuePass)
+        {
+            if (valuePass == null)
+            {
+                throw new ArgumentNullException("valuePass");
+            }
+
+            for (int cnt = 0; cnt < valuePass.Length; cnt++)
+            {
+                if (Char.IsLetter(valuePass, cnt))
+                {
+                    return (false);
+                }
+            }
+            return (true);
+        }
+
+        public static bool IsAlpha(string valuePass)
+        {
+            if (valuePass == null)
+            {
+                throw new ArgumentNullException("valuePass");
+            }
+
+            for (int cnt = 0; cnt < valuePass.Length; cnt++)
+            {
+                if (Char.IsDigit(valuePass, cnt))
+                {
+                    return (false);
+                }
+            }
+            return (true);
+        }
+
+        public static void Log(string valuePass)
+        {
+            // Check if the directory exist
+            if (!Directory.Exists(logFileName.Substring(0, logFileName.LastIndexOf('\\'))))
+            {
+                Directory.CreateDirectory(logFileName.Substring(0, logFileName.LastIndexOf('\\')));
+            }
+
+            // Check if file exist for the first run of the application
+            if (FirstRun)
+            {
+                FirstRun = false;
+                if (File.Exists(logFileName))
+                {
+                    fsLog = new FileStream(logFileName, FileMode.Append, FileAccess.Write);
+                }
+                else
+                {
+                    fsLog = new FileStream(logFileName, FileMode.CreateNew, FileAccess.Write);
+                }
+            }
+
+            // Check the size of the log file.  Maximum ~1024K
+            if (fsLog.Length > logFileSize)
+            {
+                fsLog.Close();
+                // Check if file exist
+                int iCounter = 0;
+                string strFile = fsLog.Name.Substring(0, fsLog.Name.IndexOf('.')) + "_" +
+                    DateTime.Now.Year + DateTime.Now.Month.ToString().PadLeft(2, '0') +
+                    DateTime.Now.Day.ToString().PadLeft(2, '0') + "_" + ++iCounter +
+                    fsLog.Name.Substring(fsLog.Name.IndexOf('.'), fsLog.Name.Length - fsLog.Name.IndexOf('.'));
+                while (File.Exists(strFile))
+                {
+                    strFile = fsLog.Name.Substring(0, fsLog.Name.IndexOf('.')) + "_" +
+                        DateTime.Now.Year + DateTime.Now.Month.ToString().PadLeft(2, '0') +
+                        DateTime.Now.Day.ToString().PadLeft(2, '0') + "_" + ++iCounter +
+                        fsLog.Name.Substring(fsLog.Name.IndexOf('.'), fsLog.Name.Length - fsLog.Name.IndexOf('.'));
+                }
+                // Rename the old log file
+                File.Move(fsLog.Name, strFile);
+
+                fsLog = new FileStream(fsLog.Name, FileMode.CreateNew, FileAccess.Write);
+            }
+
+            swLog = new StreamWriter(fsLog);
+            swLog.Write(DateTime.Now + ": " + valuePass + "\r\n");
+            swLog.Flush();
         }
     }
 
