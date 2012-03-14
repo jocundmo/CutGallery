@@ -801,13 +801,18 @@ form .g-error {
 }
 
 .g-even {
-  background-color: #fff;
+  background-color: #eee;
 }
 
 .g-odd {
   background-color: #eee;
 }
-
+#g-user-admin-list-header{
+    background-color: #000;
+}
+#g-user-admin-list{
+    background-color: #eee;
+}
 /** *******************************************************************
  *  7) Navigation and menus
  *********************************************************************/

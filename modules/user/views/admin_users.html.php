@@ -67,7 +67,7 @@
       
       <div class="g-block-content">
         <table id="g-user-admin-list">
-          <tr>
+          <tr id="g-user-admin-list-header">
             <th><?= t("Username") ?></th>
             <!-- CutGallery - Disable 'Full name'.
             <th><? //= t("Full name") ?></th>
@@ -95,11 +95,11 @@
           <? if (!strcmp($user->name, "guest") == 0): ?> <!-- CutGallery - Disable 'guest' row. -->
           <tr id="g-user-<?= $user->id ?>" class="<?= text::alternate("g-odd", "g-even") ?> g-user <?= $user->admin ? "g-admin" : "" ?>">
             <td id="g-user-<?= $user->id ?>" class="g-core-info g-draggable">
-              <img src="<?= $user->avatar_url(20, $theme->url("images/avatar.jpg", true)) ?>"
-                   title="<?= t("Drag user onto a group to add as a new member")->for_html_attr() ?>"
-                   alt="<?= html::clean_attribute($user->name) ?>"
+<!--              <img src="<?//= $user->avatar_url(20, $theme->url("images/avatar.jpg", true)) ?>"
+                   title="<?//= t("Drag user onto a group to add as a new member")->for_html_attr() ?>"
+                   alt="<?//= html::clean_attribute($user->name) ?>"
                    width="20"
-                   height="20" />
+                   height="20" />-->
               <span title="<?= html::clean($user->name) ?>"><?= html::truncate(html::clean($user->name), 8) ?></span>
             </td>
             <!-- CutGallery - Add 'password', 'Role', 'Created Date' ==> -->
