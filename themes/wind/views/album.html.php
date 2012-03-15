@@ -100,7 +100,7 @@ $(function(){
         <? if ($child->is_album()): ?>  
             <a href="#"><?= html::purify($child->title) ?></a>
         <? else: ?>
-            <a href="<?= $_REQUEST['page'] == '' ? $child->url() : $child->url().'?page='.$_REQUEST['page'] ?>"><?= html::purify($child->title) ?></a>
+            <a title="<?= html::purify($child->title) ?>" href="<?= $_REQUEST['page'] == '' ? $child->url() : $child->url().'?page='.$_REQUEST['page'] ?>"><?= html::truncate(html::purify($child->title), 15) ?></a>
         <? endif ?>
     </h2>
     <ul class="g-metadata">

@@ -1136,7 +1136,6 @@ div#g-action-status {
 }
 .g-paginator {
 /* background-color: blue;*/
-
   /*position: absolute;/* CutGallery - MODIFIED */
   clear: both;
 }
@@ -1149,7 +1148,6 @@ div#g-action-status {
 /*  background-color: blueviolet;*/
   padding-top: 3px;
   text-align: center;
-  width: 60px;
 }
 
 .ui-icon-seek-share{
