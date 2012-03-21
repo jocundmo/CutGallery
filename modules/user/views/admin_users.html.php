@@ -100,11 +100,11 @@
                    alt="<?//= html::clean_attribute($user->name) ?>"
                    width="20"
                    height="20" />-->
-              <span title="<?= html::clean($user->name) ?>"><?= html::truncate(html::clean($user->name), 8) ?></span>
+              <span title="<?= html::clean($user->name) ?>"><?= html::truncate(html::clean($user->name), 12) ?></span>
             </td>
             <!-- CutGallery - Add 'password', 'Role', 'Created Date' ==> -->
             <td>
-                <span title="<?= html::clean($user->password) ?>"><?= html::truncate(html::clean($user->password), 10) ?></span>
+                <span title="<?= html::clean($user->password) ?>"><?= html::truncate(html::clean($user->password), 14) ?></span>
             </td>
             <td>
               <?= html::clean($user->display_group()) ?>
