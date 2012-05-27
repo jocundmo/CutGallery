@@ -29,7 +29,7 @@ function overItem(full_id){
     originalColor=$("#" + full_id + " h2 a").css("color");
     originalBackColor=$("#" + full_id).css("background-color");
     $("#" + full_id + " h2 a").css("color", "lightgrey");
-    $("#" + full_id).css("background-color", "#303030");
+    $("#" + full_id).css("background-color", "#545454");
 }
 function selectItem(full_id, container_id){
     clearItemCovers();
@@ -83,7 +83,7 @@ $(function(){
     <? if ($child->is_album()): ?>
       <? $item_class = "g-album"; ?>
     <? endif ?> <!-- CutGallery - MODIFIED -->
-    <li title="<?= ($theme->item->level < 2) ? t("Click album cover to enter"): "" ?>" id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
+    <li title="<?= ($theme->item->level < 2) ? t("Click album cover to enter"): "" ?>" id="g-item-id-<?= $child->id ?>" class="ui-corner-all g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
     <?= $theme->thumb_top($child) ?>
     <a href="<?= $_REQUEST['page'] == '' ? $child->url() : $child->url().'?page='.$_REQUEST['page'] ?>">
       <? if ($child->has_thumb()): ?>

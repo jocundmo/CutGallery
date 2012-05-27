@@ -84,7 +84,7 @@ a,
 .g-menu a,
 #g-dialog a,
 .g-button,
-.g-button:hover,
+
 .g-button:active,
 a.ui-state-hover,
 input.ui-state-hover,
@@ -94,7 +94,10 @@ button.ui-state-hover {
   text-decoration: none;
   -moz-outline-style: none;
 }
-
+.g-button:hover
+{
+    color: red;
+}
 a:hover,
 #g-dialog a:hover {
   text-decoration: underline;
@@ -468,7 +471,7 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-   background-color: green; 
+/*   background-color: green; */
 clear: left;
 /*  position: relative;
   left: 1em;*/
@@ -486,14 +489,16 @@ clear: left;
 #g-content #g-album-grid .g-photo {
 /*  background-color: grey;  */
 /*  background: black url("../images/photo-film-bg.png") repeat-x;*/
-  background-color: pink;
+/*  background-color: pink;*/
   padding: .36em 8px;
   z-index: 1;
 }
 #back_shadow{
-    background-color: white;
-    height: 110px;
-    padding-top: 10px;
+    background-color: #949599;
+/*    padding-top: 10px;
+    padding-bottom: 10px;*/
+    display: inline-block;
+    padding: 6px;
 }
 ul .g-photo{
     margin-top: 5px;
@@ -1162,19 +1167,21 @@ div#g-action-status {
 }
 .ui-icon-paginator-info-level-1{
     display: block;
-    color: lightgrey;
+    color: #FFF;
+    font-weight: bold;
     margin-top: 3px;
     width: 60px;
-    background-color: #3D3D3D;
+    background-color: #949599;
     height: 20px;
 }
 
 .ui-icon-paginator-info-level-2{
     display: block;
-    color: lightgrey;
+    color: #FFF;
+    font-weight: bold;
     margin-top: 2px;
     width: 100px;
-    background-color: #3D3D3D;
+    background-color: #949599;
     height: 20px;
 }
 /* Dialogs and panels ~~~~~~~~~~~~~~~~~~ */
