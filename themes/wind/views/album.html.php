@@ -35,7 +35,7 @@ function selectItem(full_id, container_id){
     clearItemCovers();
     document.getElementById(container_id).style.display='block';
     $("#" + full_id + " h2 a").css("color", "white");
-    $("#" + full_id).css("background-color", "#707070");
+    $("#" + full_id).css("background-color", "#949599");
     originalColor=$("#" + full_id + " h2 a").css("color");
     originalBackColor=$("#" + full_id).css("background-color");
 }
@@ -90,7 +90,9 @@ $(function(){
         <? if ($child->is_album()): ?>
             <? // if is Album, no thumb img to show.?>
         <? elseif ($child->is_photo()): ?>
+        <div id="back_shadow" class="ui-corner-all">
             <?= $child->thumb_img(array("class" => "g-thumbnail ui-corner-all"), 150) ?>
+        </div>
         <? endif ?> 
       <? endif ?>
     </a>
@@ -168,7 +170,7 @@ $(function(){
        <? if (count($children)): ?>
           <? foreach ($children as $i => $child): ?>
                 <ul id="g-item-panel-<?= $child->id ?>" class="album_panel_parent">
-                    <li id="g-item-cover-<?= $child->id ?>" class="album_cover">
+                    <li id="g-item-cover-<?= $child->id ?>" class="album_cover ui-corner-all">
                         <div>
                             <? if ($child->is_album()): ?>
                                <? if ($child->album_cover()): ?>

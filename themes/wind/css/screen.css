@@ -468,27 +468,32 @@ td {
   /*margin: 1em 0; CutGallery
   position: relative;
   z-index: 1;*/
-/*   background-color: pink; */
+   background-color: green; 
 clear: left;
 /*  position: relative;
   left: 1em;*/
 }
 #g-content #g-album-grid .g-item{
-    border: 1px solid #000;
+/*    border: 1px solid #000;*/
     float: left;
-    
     position: relative;
     text-align: center;
 }
 #g-content #g-album-grid .g-album{
-  background-color: #0A0A0A;
+/*  background-color: #0A0A0A;*/
   padding: .33em;
 }
 #g-content #g-album-grid .g-photo {
 /*  background-color: grey;  */
-  background: black url("../images/photo-film-bg.png") repeat-x;
+/*  background: black url("../images/photo-film-bg.png") repeat-x;*/
+  background-color: pink;
   padding: .36em 8px;
   z-index: 1;
+}
+#back_shadow{
+    background-color: white;
+    height: 110px;
+    padding-top: 10px;
 }
 ul .g-photo{
     margin-top: 5px;
@@ -499,13 +504,13 @@ ul .g-photo{
 /* CutGallery - ADDED start */
 .g-album{
   float:none !important;
-  background-color: green;
+/*  background-color: green;*/
 }
 .g-album h2{
     text-align: left;
 }
 .g-album h2 a{
-    color: grey;
+    color: #fff;
     font-size: 18px;
 }
 .g-album h2 a:hover {
@@ -525,7 +530,7 @@ ul .g-photo{
 }
 /* CutGallery -MODIFIED */
 #g-content #g-album-grid .g-album {
-  background-color: #000;
+/*  background-color: #000;*/
   width: 306px;
   padding-left: 30px;
 }

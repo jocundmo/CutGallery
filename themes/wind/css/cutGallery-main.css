@@ -1,13 +1,13 @@
 html {
 color: #fff;
 margin: 0;
-background: #000 url('../images/main-bg.png') repeat;
+background: #505050;
 }
 
 #mainHead{
     width: 1024px;
     margin: 0 auto;
-    background-color: #000;
+    background-color: #525252;
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-bottom-color: #AAA;
@@ -17,8 +17,8 @@ background: #000 url('../images/main-bg.png') repeat;
     clear: both;
 }
 #logo {
-width: 300px;
-height: 100px;
+width: 360px;
+height: 110px;
 background: transparent url('../images/site-logo.png') no-repeat;
 /* background-color: yellow !important; */
 /*color: blue;*/
@@ -43,7 +43,7 @@ float: left;
 #mainContent {
     width: 1024px;
 /*    height: 520px;*/
-    background-color: #000;
+    background-color: #525252;
     margin: 0 auto;
 }
 #mainNav {
@@ -57,7 +57,7 @@ float: left;
 #mainNav li {
     width: 160px;
     float: left;
-    height: 70px;
+    height: 80px;
     list-style: none;
 /*    background-color: white !important;*/
 
@@ -115,7 +115,7 @@ border-top-color: #AAA;
    height:60px;
    width:1024px;
    margin: 0 auto;
-   background-color: black;
+   background-color: #525252;
    /* background: aqua; */
 }
 #about_content{
@@ -164,7 +164,7 @@ border-top-color: #AAA;
 }
 /* Album panel ~~~~~~~~~~~~~~~~~~~~CutGallery - ADDED*/
 #g-item-panel{
-    width: 620px;
+    width: 552px;
 /*    background-color: yellowgreen;*/
 /*    position: absolute;
     margin: 10px;
@@ -177,8 +177,8 @@ float: right;
     height: 500px;
 }
 #g-item-panel ul .album_cover{
-    background: transparent url('../images/album-cover-bg.png') no-repeat center;
-    /*background-color: blueviolet; */
+/*    background: transparent url('../images/album-cover-bg.png') no-repeat center;*/
+    background-color: #929397; /*albumcover*/ 
     width: 100%;
     height: 374px;
 /*    text-align: left;*/
@@ -187,10 +187,10 @@ float: right;
 /*    background-color: pink;
     display: block;*/
     position: relative;
-    width: 510px;
-    height: 310px;
-    top: 24px;
-    left: 80px;
+/*    width: 510px;
+    height: 310px;*/
+    top: 10px;
+    /*left: 80px;*/
 }
 #g-item-panel ul .album_cover img{
     position: relative;
