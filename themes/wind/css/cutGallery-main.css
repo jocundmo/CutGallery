@@ -8,9 +8,9 @@ background: #343434;
     width: 1024px;
     margin: 0 auto;
     background-color: #343434;
-    border-bottom-width: 2px;
+/*    border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: #AAA;
+    border-bottom-color: #AAA;*/
 }
 
 .div-clear{
@@ -88,10 +88,13 @@ float: left;
     height: 100%;
     border-left: #AAA 2px solid;
 }
+#mainNav #contactus a{
+    border-right: #AAA 2px solid;
+}
 #album_header 
 {
     height: 2.2em;
-    margin-top: 16px;
+    margin-top: 8px;
 /*    background-color: yellow !important;*/
 }
 #album_header li{
