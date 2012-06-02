@@ -88,8 +88,11 @@ float: left;
     height: 100%;
     border-left: #AAA 2px solid;
 }
-#album_header {
+#album_header 
+{
+    height: 2.2em;
     margin-top: 16px;
+/*    background-color: yellow !important;*/
 }
 #album_header li{
     float: left;
@@ -99,12 +102,12 @@ float: left;
 }
 
 #album_header li a{
-    display: block !important;
-    color: red !important;
-    font-size: 14px !important;
-    /* background-color: grey; */
-    margin-left: 10px;
-    padding-top: 7px;
+    display: block !important;/*
+*/    color: red !important;
+    font-size: 14px !important;/*
+     background-color: grey; 
+*/    margin-left: 10px;/*
+*/    padding-top: 7px;
 }
 #footer {
     border-top-width: 2px;
@@ -251,8 +254,8 @@ background-color: green;
 
 #g-add-items {
 /*    background-color: yellow;*/
-    width: 12em;
-    height: 2em;
+/*    width: 12em;
+    height: 2em;*/
 }
 #about_content{
     margin: 0 auto;

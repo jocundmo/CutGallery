@@ -60,14 +60,13 @@ $(function(){
   <div class="g-description"><?= nl2br(html::purify($item->description)) ?></div>
 </div>
 <? if ($theme->item->level < 2): ?>
-<div id="g-add-items">
+
 <ul id="album_header">
     <li id="album_header_cpation"><?= t("Albums") ?></li>
     <? if (access::can("add", $item)): ?>
     <li id="album_header_new"><?= $theme->add_album_menu() ?></li>
     <? endif ?>
 </ul>
-</div>
 <? else: ?>
 <?= $theme->paginator() ?>
 <? if (access::can("add", $item)): ?>
