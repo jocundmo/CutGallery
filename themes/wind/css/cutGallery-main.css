@@ -52,6 +52,8 @@ float: left;
     top: 50px;
     float: right;
     clear: right;
+    display: block;
+    width: 480px; /* width: 480px is for fixing IE7 float issue*/
 /*    background-color: pink;*/
 }
 #mainNav li {
@@ -59,8 +61,7 @@ float: left;
     float: left;
     height: 80px;
     list-style: none;
-/*    background-color: white !important;*/
-
+/*    background-color: red !important;*/
 }
 #mainNav #gallery{
     background: transparent url('../images/gallery-icon.png') no-repeat;
@@ -88,7 +89,7 @@ float: left;
     border-left: #AAA 2px solid;
 }
 #album_header {
-
+    margin-top: 16px;
 }
 #album_header li{
     float: left;
