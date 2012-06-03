@@ -29,13 +29,13 @@ function overItem(full_id){
     originalColor=$("#" + full_id + " h2 a").css("color");
     originalBackColor=$("#" + full_id).css("background-color");
     $("#" + full_id + " h2 a").css("color", "lightgrey");
-    $("#" + full_id).css("background-color", "#303030");
+    $("#" + full_id).css("background-color", "#545454");
 }
 function selectItem(full_id, container_id){
     clearItemCovers();
     document.getElementById(container_id).style.display='block';
     $("#" + full_id + " h2 a").css("color", "white");
-    $("#" + full_id).css("background-color", "#707070");
+    $("#" + full_id).css("background-color", "#949599");
     originalColor=$("#" + full_id + " h2 a").css("color");
     originalBackColor=$("#" + full_id).css("background-color");
 }
@@ -60,14 +60,13 @@ $(function(){
   <div class="g-description"><?= nl2br(html::purify($item->description)) ?></div>
 </div>
 <? if ($theme->item->level < 2): ?>
-<div id="g-add-items">
+
 <ul id="album_header">
     <li id="album_header_cpation"><?= t("Albums") ?></li>
     <? if (access::can("add", $item)): ?>
     <li id="album_header_new"><?= $theme->add_album_menu() ?></li>
     <? endif ?>
 </ul>
-</div>
 <? else: ?>
 <?= $theme->paginator() ?>
 <? if (access::can("add", $item)): ?>
@@ -83,14 +82,16 @@ $(function(){
     <? if ($child->is_album()): ?>
       <? $item_class = "g-album"; ?>
     <? endif ?> <!-- CutGallery - MODIFIED -->
-    <li title="<?= ($theme->item->level < 2) ? t("Click album cover to enter"): "" ?>" id="g-item-id-<?= $child->id ?>" class="g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
+    <li title="<?= ($theme->item->level < 2) ? t("Click album cover to enter"): "" ?>" id="g-item-id-<?= $child->id ?>" class="ui-corner-all g-item <?= $item_class ?>" <?= ($theme->item->level < 2) ? "onmouseout=leaveItem(this.id); onmouseover=overItem(this.id); onclick=\"selectItem(this.id, 'g-item-panel-$child->id');\"" : ""?>>
     <?= $theme->thumb_top($child) ?>
     <a href="<?= $_REQUEST['page'] == '' ? $child->url() : $child->url().'?page='.$_REQUEST['page'] ?>">
       <? if ($child->has_thumb()): ?>
         <? if ($child->is_album()): ?>
             <? // if is Album, no thumb img to show.?>
         <? elseif ($child->is_photo()): ?>
+        <div id="back_shadow" class="ui-corner-all">
             <?= $child->thumb_img(array("class" => "g-thumbnail ui-corner-all"), 150) ?>
+        </div>
         <? endif ?> 
       <? endif ?>
     </a>
@@ -168,7 +169,7 @@ $(function(){
        <? if (count($children)): ?>
           <? foreach ($children as $i => $child): ?>
                 <ul id="g-item-panel-<?= $child->id ?>" class="album_panel_parent">
-                    <li id="g-item-cover-<?= $child->id ?>" class="album_cover">
+                    <li id="g-item-cover-<?= $child->id ?>" class="album_cover ui-corner-all">
                         <div>
                             <? if ($child->is_album()): ?>
                                <? if ($child->album_cover()): ?>
