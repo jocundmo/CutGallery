@@ -55,7 +55,7 @@
   </div>
 
   <div id="g-info">
-    <h1><?= html::purify($item->title) ?></h1>
+      <h1 title="<?= html::purify($item->title) ?>"><?= html::truncate(html::purify($item->title), 15) ?></h1>
     <div><?= nl2br(html::purify($item->description)) ?></div>
   </div>
 

@@ -1122,7 +1122,7 @@ div#g-action-status {
     width: auto;
 /*background-color: pink;*/
     height: 30px;
-    width: 238px;
+    width: 258px;
 }
 #id-g-paginator .g-menu li a{ /* override .g-menu for share */
     color: black !important;
@@ -1168,7 +1168,7 @@ div#g-action-status {
     display: block;
     color: lightgrey;
     margin-top: 2px;
-    width: 110px;
+    width: 100px;
     background-color: #3D3D3D;
     height: 20px;
 }
