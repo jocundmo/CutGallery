@@ -182,8 +182,8 @@ float: right;
 }
 .album_panel_parent{
     display: none; /* When page loaded, by default none is shown until the cursor move on */
-    height: 500px;
-/*    background-color: green;*/
+    height: 456px;
+    background-color: green;
 }
 #g-item-panel ul .album_cover{
 /*    background: transparent url('../images/album-cover-bg.png') no-repeat center;*/
@@ -239,20 +239,24 @@ display: inline-block;
 }
 .album_comments {
 /*    background: transparent url("../images/album-comments-bg.png") no-repeat;*/
-/*    background-color: pink !important;*/
+    background-color: pink !important;
 /*    position: absolute;*/
 /*    right: 4px;*/
-    height: 96px;
+    height: 76px;
     display: block;
     width: 100%;
-    text-align: center;
+    
+/*    text-align: center;*/
 /*    width: 590px;*/
 }
 .album_comments span {
+    top: 20px;
+    position: relative;
+    margin:auto 0;
 /*   display: block;
    padding-top: 8px;*/
 background-color: green;
-
+width: 100%;
 }
 
 #g-add-items {

@@ -483,8 +483,8 @@ clear: left;
     text-align: center;
 }
 #g-content #g-album-grid .g-album{
-/*  background-color: #0A0A0A;*/
-  padding: .33em;
+  background-color: blue;
+  padding: .53em;
 }
 #g-content #g-album-grid .g-photo {
 /*  background-color: grey;  */
@@ -516,7 +516,7 @@ ul .g-photo{
 }
 .g-album h2 a{
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
 }
 .g-album h2 a:hover {
 /*    color: lightgrey !important;*/
@@ -1123,8 +1123,8 @@ div#g-action-status {
 }
 #id-g-paginator-level-1 {
     float: left;
-/*    background-color: pink;*/
-    width: auto;
+    background-color: pink;
+/*    width: auto;*/
     width: 238px;
 }
 #id-g-paginator-level-2 {
