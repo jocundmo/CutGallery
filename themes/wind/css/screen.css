@@ -20,7 +20,8 @@
 
 body, html {
 
-  font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 微软雅黑, 'Microsoft YaHei', 华文细黑, 'STXihei' ,'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+/*  font-family: '微软雅黑'*/
 }
 
 p {

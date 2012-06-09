@@ -289,7 +289,8 @@ width: 100%;
 }
 
 #g-dialog{
-    background: transparent url('../images/dialog-bg.png') repeat;
+/*    background: transparent url('../images/dialog-bg.png') repeat;*/
+background-color: #F2F2F2;
 }
 
 .requires-flash div {
