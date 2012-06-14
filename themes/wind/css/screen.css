@@ -20,7 +20,8 @@
 
 body, html {
 
-  font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 微软雅黑, 'Microsoft YaHei', 华文细黑, 'STXihei' ,'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+/*  font-family: '微软雅黑'*/
 }
 
 p {
@@ -483,8 +484,8 @@ clear: left;
     text-align: center;
 }
 #g-content #g-album-grid .g-album{
-/*  background-color: #0A0A0A;*/
-  padding: .33em;
+  background-color: blue;
+  padding: .53em;
 }
 #g-content #g-album-grid .g-photo {
 /*  background-color: grey;  */
@@ -498,7 +499,7 @@ clear: left;
 /*    padding-top: 10px;
     padding-bottom: 10px;*/
     display: inline-block;
-    padding: 6px;
+    padding: 8px;
 }
 ul .g-photo{
     margin-top: 5px;
@@ -516,7 +517,7 @@ ul .g-photo{
 }
 .g-album h2 a{
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
 }
 .g-album h2 a:hover {
 /*    color: lightgrey !important;*/
@@ -1123,8 +1124,8 @@ div#g-action-status {
 }
 #id-g-paginator-level-1 {
     float: left;
-/*    background-color: pink;*/
-    width: auto;
+    background-color: pink;
+/*    width: auto;*/
     width: 238px;
 }
 #id-g-paginator-level-2 {

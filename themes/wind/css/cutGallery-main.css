@@ -8,9 +8,9 @@ background: #343434;
     width: 1024px;
     margin: 0 auto;
     background-color: #343434;
-    border-bottom-width: 2px;
+/*    border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: #AAA;
+    border-bottom-color: #AAA;*/
 }
 
 .div-clear{
@@ -88,10 +88,13 @@ float: left;
     height: 100%;
     border-left: #AAA 2px solid;
 }
+#mainNav #contactus a{
+    border-right: #AAA 2px solid;
+}
 #album_header 
 {
     height: 2.2em;
-    margin-top: 16px;
+    margin-top: 8px;
 /*    background-color: yellow !important;*/
 }
 #album_header li{
@@ -179,8 +182,8 @@ float: right;
 }
 .album_panel_parent{
     display: none; /* When page loaded, by default none is shown until the cursor move on */
-    height: 500px;
-/*    background-color: green;*/
+    height: 456px;
+    background-color: green;
 }
 #g-item-panel ul .album_cover{
 /*    background: transparent url('../images/album-cover-bg.png') no-repeat center;*/
@@ -236,20 +239,24 @@ display: inline-block;
 }
 .album_comments {
 /*    background: transparent url("../images/album-comments-bg.png") no-repeat;*/
-/*    background-color: pink !important;*/
+    background-color: pink !important;
 /*    position: absolute;*/
 /*    right: 4px;*/
-    height: 96px;
+    height: 76px;
     display: block;
     width: 100%;
-    text-align: center;
+    
+/*    text-align: center;*/
 /*    width: 590px;*/
 }
 .album_comments span {
+    top: 20px;
+    position: relative;
+    margin:auto 0;
 /*   display: block;
    padding-top: 8px;*/
 background-color: green;
-
+width: 100%;
 }
 
 #g-add-items {
@@ -282,7 +289,8 @@ background-color: green;
 }
 
 #g-dialog{
-    background: transparent url('../images/dialog-bg.png') repeat;
+/*    background: transparent url('../images/dialog-bg.png') repeat;*/
+background-color: #F2F2F2;
 }
 
 .requires-flash div {
