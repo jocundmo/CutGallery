@@ -16,30 +16,59 @@
 	document.getElementById("img-party").src = this.src;
 	}
 </script>
-<div id="about_content">
-<div id="SlidePlayer"> 
-        <ul class="Slides" id="Slides"> 
-            
-                    <li>
-                        <img id="img-business" title="business" src="<?= url::file("themes/wind/aboutuspic/business-thumb.jpg") ?>" /></li> 
-                
-                    <li>
-                        <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding-thumb.jpg") ?>" /></li> 
-                
-                    <li>
-                        <img id="img-party" title="Party" src="<?= url::file("themes/wind/images/party-thumb.jpg") ?>" /></li> 
-        </ul> 
-        <ul class="SlideTriggers" id="SlideTriggers" style="display: block"> 
-            <li class="current">1</li> 
-            
-            <li class=""> 
-                2</li> 
-            
-            <li class=""> 
-                3</li> 
-            
-        </ul> 
-    </div> 
+<ul id="about_content">
+    <li id="content_li_4_text">
+        <div id="aboutus_content_text">
+            <table id="context_table">
+                <tr>
+                    <td id="about_us_icon"><img src="<?= url::file("themes/wind/aboutuspic/Logo.png") ?>"/></td>
+                    <td id="about_us_text"><font size="4">笑一笑</font>Photobooth将北美自动照相册的创新概念在国内独一无二的首次隆重推出。</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td id="about_us_icon"><img src="<?= url::file("themes/wind/aboutuspic/Logo.png") ?>"/></td>
+                    <td id="about_us_text">无论你想要一个欢乐热闹的婚礼，生日派对，或是公司活动。新潮的笑一笑Photobooth更轻便，更有趣，适合各种活动场合。我们用最好的设备：DSLR相机，定制照片，高清设备打印，和一点点的魔法，为你捕捉每秒钟的快乐。</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td id="about_us_icon"><img src="<?= url::file("themes/wind/aboutuspic/Logo.png") ?>"/></td>
+                    <td id="about_us_text">有了笑一笑Photobooth，你的活动不再只是吃饭的流水席，而是和来宾一起分享幸福，感受快乐的聚会。</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td id="about_us_icon"><img src="<?= url::file("themes/wind/aboutuspic/Logo.png") ?>"/></td>
+                    <td id="about_us_text">来，让我们的活动更加欢乐起来，留下一辈子的美好回忆。快来体验一下笑一笑Photobooth带给我们的乐趣吧。</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td id="about_us_icon"><img src="<?= url::file("themes/wind/aboutuspic/Logo.png") ?>"/></td>
+                    <td id="about_us_text" style="vertical-align: middle;"><a href="<?= url::file("themes/wind/aboutuspic/XYX introducion.pdf") ?>" target="blank" ><u>下载详细介绍</u></a></td>
+                </tr>
+            </table>
+        </div>
+    </li>
+    <li id="content_li_4_picture">
+        <div id="SlidePlayer" class="ui-corner-all">
+            <ul class="Slides" id="Slides">
+                <li>
+                    <img id="img-business" title="business" src="<?= url::file("themes/wind/aboutuspic/business-thumb.jpg") ?>" />
+                </li> 
+                <li>
+                    <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding-thumb.jpg") ?>" />
+                </li>
+                <li>
+                    <img id="img-party" title="Party" src="<?= url::file("themes/wind/images/party-thumb.jpg") ?>" />
+                </li>    
+            </ul> 
+            <ul class="SlideTriggers" id="SlideTriggers" style="display: block"> 
+                <li class="current">1</li>
+                <li class="">2</li>
+                <li class="">3</li>
+            </ul>
+        </div>
+    </li>
+</ul>
+
 <script type="text/javascript"> 
     /*
 name:广告图片轮转显示
@@ -154,7 +183,7 @@ var xsfade = XsFade(document.getElementById("SlidePlayer").getElementsByTagName(
 var XsFade = function(imgsArr, Nums) {
     var imgs = null, current = 0, nIndex = 0;
     var pause = false;
-    var stime = 6000; //图片间隔时间
+    var stime = 4000; //图片间隔时间
     var _timer = null;
     var _timerFade = null;
  
@@ -284,10 +313,26 @@ var XsFade = function(imgsArr, Nums) {
     }
     #SlidePlayer
     {
-        margin: 0px;
-        position: relative;
+   /*     margin: 0px;  */
+        position: relative; 
         float: left;
         overflow: hidden;
+        
+/*    width: 580px;
+    margin-top: 5%;
+    margin-bottom: 79px;
+    margin-left: 30px;
+    margin-right: 28px;
+*/
+    width: 95.5%;
+    margin-top: 10%;
+    margin-bottom: 13.3%;
+    margin-left: 4.3%;
+    background-color: #949599;
+/*    padding-top: 10px;
+    padding-bottom: 10px;*/
+    display: inline-block;
+    padding: 6px;
     }
     .Slides li
     {
@@ -296,6 +341,7 @@ var XsFade = function(imgsArr, Nums) {
         display: inline;
         margin: 0px;
         overflow: hidden;
+        
     }
     .Slides img
     {
@@ -304,6 +350,12 @@ var XsFade = function(imgsArr, Nums) {
         top: 0;
         left: 0;
         position: absolute;
+        
+        
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     }
     .SlideTriggers
     {
