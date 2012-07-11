@@ -582,8 +582,8 @@ class Item_Model_Core extends ORM_MPTT {
     }
     // CutGallery - ADDED resize thumb
     if ($this->is_album() && $height){
-        $maxWidth = 474;//540;
-        $maxHeight = 316;//360;
+        $maxWidth = 590;//474;//540;
+        $maxHeight = 352;//316;//360;
             if ($width > $height){
             $scale = $width / $height;
             $width = $maxWidth;
@@ -678,8 +678,8 @@ class Item_Model_Core extends ORM_MPTT {
     $width = $this->resize_width;
     // CutGallery - ADDED resize thumb
     if ($this->is_album()){
-        $maxWidth = 474;//540;
-        $maxHeight = 316;//360;
+        $maxWidth = 590;//474;//540;
+        $maxHeight = 352;//316;//360;
             if ($width > $height){
             $scale = $width / $height;
             $width = $maxWidth;
