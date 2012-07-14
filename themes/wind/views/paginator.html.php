@@ -74,11 +74,20 @@
     <? $show_share = false ?>
     <? $show_download = true ?>
 <? endif ?>
+<script>
+function overItem1(full_id){
+    $("#" + full_id).removeClass("ui-icon-2")
+    $("#" + full_id).addClass("ui-icon-2-highlight")
+}
+function leaveItem1(full_id){
+    $("#" + full_id).removeClass("ui-icon-2-highlight")
+    $("#" + full_id).addClass("ui-icon-2")
+}</script>
 <ul id="<?=$id_g_paginator?>" class="g-paginator ui-helper-clearfix">
 <? if($show_back): ?>
   <li class="g-back">    
       <a href ="<?= $back_page_url ?>" class="g-button ui-corner-all">
-          <span class="ui-icon-2 <?=$class_seek_back?>"></span></a> <!-- CutGallery - ADDED -->
+          <span id="span_back" class="ui-icon-2 <?=$class_seek_back?>" onmouseover=overItem1(this.id) onmouseout=leaveItem1(this.id)></span></a> <!-- CutGallery - ADDED -->
   </li>
 <? endif ?>
 <? if ($show_prev): ?>
@@ -94,7 +103,7 @@
   <? endif ?>
   <? if (isset($previous_page_url)): ?>
     <a href="<?= $previous_page_url ?>" class="g-button ui-icon-left ui-corner-all">
-      <span class="ui-icon-2 <?=$class_prev?>"></span></a> <!-- CutGallery - REMOVE text -->
+      <span id="span_prev" class="ui-icon-2 <?=$class_prev?>" onmouseover=overItem1(this.id) onmouseout=leaveItem1(this.id)></span></a> <!-- CutGallery - REMOVE text -->
       
   <? else: ?>
     <a class="g-button ui-icon-left ui-state-disabled ui-corner-all">
@@ -127,7 +136,7 @@
   <li class="g-text-right">
   <? if (isset($next_page_url)): ?>
     <a href="<?= $next_page_url ?>" class="g-button ui-icon-right ui-corner-all">  
-      <span class="ui-icon-2 <?=$class_next?>"></span></a> <!--CutGallery - REMOVE-->
+      <span id="span_next" class="ui-icon-2 <?=$class_next?>" onmouseover=overItem1(this.id) onmouseout=leaveItem1(this.id)></span></a> <!--CutGallery - REMOVE-->
   <? else: ?>
     <a class="g-button ui-state-disabled ui-icon-right ui-corner-all">
       <span class="ui-icon-2 <?=$class_next?>"></span></a> <!--CutGallery - REMOVE-->
@@ -154,7 +163,7 @@
 <? if ($show_download): ?>
   <li class="g-download-full">
       <a href ="<?= $download_full_url ?>" class="g-button ui-corner-all">
-          <span class="ui-icon-2 ui-icon-seek-download"></span></a>
+          <span id="span_download" class="ui-icon-2 ui-icon-seek-download" onmouseover=overItem1(this.id) onmouseout=leaveItem1(this.id)></span></a>
   </li>
 <? endif ?>
 </ul>

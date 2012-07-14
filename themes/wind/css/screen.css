@@ -484,7 +484,7 @@ clear: left;
     text-align: center;
 }
 #g-content #g-album-grid .g-album{
-  background-color: blue;
+/*  background-color: blue;*/
   padding: .53em;
 }
 #g-content #g-album-grid .g-photo {
@@ -1124,7 +1124,7 @@ div#g-action-status {
 }
 #id-g-paginator-level-1 {
     float: left;
-    background-color: pink;
+/*    background-color: pink;*/
 /*    width: auto;*/
     width: 238px;
 }
