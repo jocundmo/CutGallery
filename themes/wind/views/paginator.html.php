@@ -74,15 +74,6 @@
     <? $show_share = false ?>
     <? $show_download = true ?>
 <? endif ?>
-<script>
-function overItem1(full_id){
-    $("#" + full_id).removeClass("ui-icon-2")
-    $("#" + full_id).addClass("ui-icon-2-highlight")
-}
-function leaveItem1(full_id){
-    $("#" + full_id).removeClass("ui-icon-2-highlight")
-    $("#" + full_id).addClass("ui-icon-2")
-}</script>
 <ul id="<?=$id_g_paginator?>" class="g-paginator ui-helper-clearfix">
 <? if($show_back): ?>
   <li class="g-back">    

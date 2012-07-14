@@ -1,7 +1,18 @@
 <?php defined("SYSPATH") or die("No direct script access.") ?>
 <? // @todo Set hover on AlbumGrid list items for guest users ?>
 <!--album.html.php start -->
+<script>
+function overItem1(full_id){
+    $("#" + full_id).removeClass("ui-icon-2")
+    $("#" + full_id).addClass("ui-icon-2-highlight")
+}
+function leaveItem1(full_id){
+    $("#" + full_id).removeClass("ui-icon-2-highlight")
+    $("#" + full_id).addClass("ui-icon-2")
+}</script>
 <? if ($theme->item->level < 2): ?>
+
+
 <script> 
 // CutGallery
 
