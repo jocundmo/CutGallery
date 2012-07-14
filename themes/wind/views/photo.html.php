@@ -2,6 +2,15 @@
 
 <? if (access::can("view_full", $theme->item())): ?>
 <!-- Use javascript to show the full size as an overlay on the current page -->
+<script>
+function overItem1(full_id){
+    $("#" + full_id).removeClass("ui-icon-2")
+    $("#" + full_id).addClass("ui-icon-2-highlight")
+}
+function leaveItem1(full_id){
+    $("#" + full_id).removeClass("ui-icon-2-highlight")
+    $("#" + full_id).addClass("ui-icon-2")
+}</script>
 <script type="text/javascript">
   $(document).ready(function() {
     full_dims = [<?= $theme->item()->width ?>, <?= $theme->item()->height ?>];

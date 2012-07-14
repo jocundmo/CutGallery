@@ -41,7 +41,7 @@
 /* states and images */
 .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_469bdd_256x240.png); }
 .ui-icon-2 { display: block; width: 25px; height: 25px; background-image: url(images/ui-icons-normal.png); } /* CutGallery - Customized icons */
-
+.ui-icon-2-highlight { display: block; width: 25px; height: 25px; background-image: url(images/ui-icons-highlight.png); } /* CutGallery - Customized icons */
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_469bdd_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_d8e7f3_256x240.png); }
 .ui-state-default .ui-icon { background-image: url(images/ui-icons_6da8d5_256x240.png); }

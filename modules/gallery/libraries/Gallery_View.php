@@ -35,7 +35,7 @@ class Gallery_View_Core extends View {
    *
    * See themes/wind/views/pager.html for documentation on the variables generated here.
    */
-  public function paginator() {
+  public function paginator($pid = "") {
     // CutGallery - ADDED ==>
     if (isset($this->item)){
         if ($this->item->level < 2){
@@ -44,6 +44,7 @@ class Gallery_View_Core extends View {
     }// <==
     $v = new View("paginator.html");
     $v->page_type = $this->page_type;
+    $v->pid = $pid;
     $v->page_subtype = $this->page_subtype;
     $v->parent_theme = $this;
     $v->first_page_url = null;
