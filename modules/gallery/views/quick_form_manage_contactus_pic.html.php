@@ -14,8 +14,9 @@
         <li><?= t("请输入如下地址：ftp://www.ilovesmile.hk/contactuspic")?></li>
         <li><?= t("按提示输入ftp账号和密码（如有不知请咨询管理员）")?></li>
         <li><?= t("拖入您需要更换的图片") ?></li>
-        <li><?= t("图片格式为“979*577”") ?></li>
-        <li><?= t("图片名为“contact-us.jpg”，大小不要超过100k") ?></li>
+        <li><?= t("图片格式为“582*392”") ?></li>
+        <li><?= t("图片名为\t“contactus1.jpg”，“contactus2.jpg”，\t“contactus3.jpg”，“contactus4.jpg”") ?></li>
+        <li><?= t("单张建议大小不要超过100k") ?></li>
         <li><?= t("稍等片刻刷新页面") ?></li>
     </ul>
 <?= $form ?>
