@@ -50,16 +50,16 @@
         <div id="SlidePlayer" class="ui-corner-all">
             <ul class="Slides" id="Slides">
                         <li>
-                            <img id="img-contactus1" title="contactus1" src="<?= url::file("themes/wind/contactuspic/contactus1.jpg") ?>" />
+                            <img id="img-contactus1" title="contactus1" src="<?= url::file("themes/wind/contactuspic/contactus1-thumnb.jpg") ?>" />
                         </li>
                         <li>
-                            <img id="img-contactus2" title="contactus2" src="<?= url::file("themes/wind/contactuspic/contactus2.jpg") ?>" />
+                            <img id="img-contactus2" title="contactus2" src="<?= url::file("themes/wind/contactuspic/contactus2-thumb.jpg") ?>" />
                         </li>
                         <li>
-                            <img id="img-contactus3" title="contactus3" src="<?= url::file("themes/wind/contactuspic/contactus3.jpg") ?>" />
+                            <img id="img-contactus3" title="contactus3" src="<?= url::file("themes/wind/contactuspic/contactus3-thumb.jpg") ?>" />
                         </li>
                         <li>
-                            <img id="img-contactus4" title="contactus4" src="<?= url::file("themes/wind/contactuspic/contactus4.jpg") ?>" />
+                            <img id="img-contactus4" title="contactus4" src="<?= url::file("themes/wind/contactuspic/contactus4-thumb.jpg") ?>" />
                         </li>
             </ul> 
             <ul class="SlideTriggers" id="SlideTriggers" style="display: block"> 
