@@ -453,13 +453,14 @@ namespace Scanner
                 Directory.CreateDirectory(homePic);
             }
 
-            if (createHomeSite)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    Directory.CreateDirectory(homeSite + i.ToString());
-                }
-            }
+            // Version 2 does not requires four sub folders, just one is good.
+            //if (createHomeSite)
+            //{
+            //    for (int i = 0; i < 5; i++)
+            //    {
+            //        Directory.CreateDirectory(homeSite + i.ToString());
+            //    }
+            //}
         }
 
         public void LookupAndProcessPhoto(string source, string destination, string backup)
