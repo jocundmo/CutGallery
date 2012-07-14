@@ -309,17 +309,17 @@ width: 100%;
     float: left;
     width: 38%;
     
- /*   background-color: #0099FF; */
+/*    background-color: #0099FF; */
 }
 #content_li_4_picture{
     float: left;
     width: 62%;
-/*    background-color: #e17009;*/
+/*    background-color: #e17009; */
 }
 
 #aboutus_content_text {
     margin-top: 28%;
-    margin-left: 11%;
+    margin-left: 3%;
   /*  margin-right: 5%; */
  /*   width: 385px;*/
  /*   heiht: 67%;*/
@@ -377,9 +377,10 @@ width: 100%;
 {
     text-align: justify;
     vertical-align: bottom;
-    font-size: 9pt;
+    font-size: 7.475pt;
     font-weight: lighter;
     letter-spacing: 0.3em;
+    line-height: 200%;
     font-family: 微软雅黑, 'Microsoft YaHei';
 }
 #contact_us_text
