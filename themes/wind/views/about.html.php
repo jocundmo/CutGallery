@@ -42,7 +42,7 @@
                 <tr></tr>
                 <tr>
                     <td id="about_us_icon"><img src="<?= url::file("themes/wind/aboutuspic/Logo.png") ?>"/></td>
-                    <td id="about_us_text" style="vertical-align: middle;"><a href="<?= url::file("themes/wind/aboutuspic/XYX introducion.pdf") ?>" target="blank" ><u>下载详细介绍</u></a></td>
+                    <td id="about_us_text" style="vertical-align: middle;"><a href="<?= url::file("themes/wind/aboutuspic/XYX introduction.pdf") ?>" target="blank" ><u>下载详细介绍</u></a></td>
                 </tr>
             </table>
         </div>

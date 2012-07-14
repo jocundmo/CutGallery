@@ -38,8 +38,8 @@ function leaveItem1(full_id){
   <?= $theme->photo_top() ?>
 
   
-  <div id="g-photo-top-decoration"></div>
-  <div id="g-photo"><div id="g-photo-decoration">
+  <div id="g-photo-top-decoration"  class="back_shadow_class"></div>
+  <div id="g-photo"><div id="g-photo-decoration"  class="back_shadow_class">
     <?= $theme->resize_top($item) ?>
     <!--<?// if (access::can("view_full", $item)): ?>
     <a href="<?//= $item->file_url() ?>" class="g-fullsize-link" title="<?//= t("View full size")->for_html_attr() ?>">
@@ -59,7 +59,7 @@ function leaveItem1(full_id){
 	}
   </script>
  
-  <div id="g-photo-bottom-decoration">
+  <div id="g-photo-bottom-decoration" class="back_shadow_class">
          <?= $theme->paginator() ?>
   </div>
 

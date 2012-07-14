@@ -537,6 +537,17 @@ namespace Scanner
                                     }
                                 }
 
+
+                                if (string.Compare(Path.GetExtension(file), ".pdf") == 0)
+                                {
+
+                                    Common.Log(string.Concat("Copyting pdf...", file));
+                                    MovePhotoDelegate delegate4Cut = new MovePhotoDelegate(Cut);
+                                    IAsyncResult asyncResult4Cut = delegate4Cut.BeginInvoke(file, destination + "\\" + Path.GetFileName(file), null, null);
+                                    delegate4Cut.EndInvoke(asyncResult4Cut); 
+                                    continue;
+                                }
+
                                 bool fileIsImage = imageTypes.Contains(string.Concat(buffur[0].ToString(), buffur[1].ToString()));
                                 bool fileIsInUse = IsPhotoInUse(file);
                                 bool fileIsOpened = IsPhotoOpened(file);
@@ -598,15 +609,13 @@ namespace Scanner
                                     }
                                     else
                                     {
-                                        if (!file.Contains("homepic"))
-                                        {
-                                            // Create thumb
-                                            string fileName = Path.GetFileNameWithoutExtension(file) + "-thumb" + Path.GetExtension(file);
-                                            Common.Log(string.Concat("Creating thumb...", fileName));
-                                            MovePhotoDelegate delegate4Thumb = new MovePhotoDelegate(ThumbPhoto);
-                                            IAsyncResult asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + fileName, null, null);
-                                            delegate4Thumb.EndInvoke(asyncResult4Thumb);
-                                        }
+                                        // Create thumb
+                                        string fileName = Path.GetFileNameWithoutExtension(file) + "-thumb" + Path.GetExtension(file);
+                                        Common.Log(string.Concat("Creating thumb...", fileName));
+                                        MovePhotoDelegate delegate4Thumb = new MovePhotoDelegate(ThumbPhoto);
+                                        IAsyncResult asyncResult4Thumb = delegate4Thumb.BeginInvoke(file, destination + "\\" + fileName, null, null);
+                                        delegate4Thumb.EndInvoke(asyncResult4Thumb);
+                                        
 
                                         // Copy
                                         Common.Log(string.Concat("Copyting image...", file));
