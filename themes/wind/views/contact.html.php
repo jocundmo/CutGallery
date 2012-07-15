@@ -50,7 +50,7 @@
         <div id="SlidePlayer" class="ui-corner-all">
             <ul class="Slides" id="Slides">
                         <li>
-                            <img id="img-contactus1" title="contactus1" src="<?= url::file("themes/wind/contactuspic/contactus1-thumnb.jpg") ?>" />
+                            <img id="img-contactus1" title="contactus1" src="<?= url::file("themes/wind/contactuspic/contactus1-thumb.jpg") ?>" />
                         </li>
                         <li>
                             <img id="img-contactus2" title="contactus2" src="<?= url::file("themes/wind/contactuspic/contactus2-thumb.jpg") ?>" />
