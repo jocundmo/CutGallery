@@ -182,7 +182,7 @@ $(function(){
                 <ul id="g-item-panel-<?= $child->id ?>" class="album_panel_parent">
                     <li id="g-item-cover-<?= $child->id ?>" class="album_cover ui-corner-all">
                         <div>
-                            <? if ($child->is_album()): ?>
+                            <? if ($child->is_album()): ?>  
                                <? if ($child->album_cover()): ?>
                                    <a style="display:block" href='<?= $child->url() ?>'><?= $child->thumb_img(array("class" => "g-album-thumbnail ui-corner-all", "id" => "img-cover-".$child->id)) ?></a>
                                <? else: ?>

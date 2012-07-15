@@ -38,14 +38,14 @@ function leaveItem1(full_id){
   <?= $theme->photo_top() ?>
 
   
-  <div id="g-photo-top-decoration"  class="back_shadow_class"></div>
-  <div id="g-photo"><div id="g-photo-decoration"  class="back_shadow_class">
+<!--  <div id="g-photo-top-decoration"  class="back_shadow_class"></div>-->
+  <div id="g-photo"><div id="g-photo-decoration"  class="back_shadow_class ui-corner-top">
     <?= $theme->resize_top($item) ?>
     <!--<?// if (access::can("view_full", $item)): ?>
     <a href="<?//= $item->file_url() ?>" class="g-fullsize-link" title="<?//= t("View full size")->for_html_attr() ?>">
       <? //endif ?> -->
       <?// here we show the thumb img first for user friendly, at behind, we load the resize img, when done, replace the resize with the fuzzy thumb image. ?>
-      <?= $item->thumb_img(array("id" => "g-item-id-{$item->id}", "class" => "g-resize ui-corner-all pic_shadow"),null,false,$item->resize_width,$item->resize_height) ?>
+          <?= $item->thumb_img(array("id" => "g-item-id-{$item->id}", "class" => "g-resize ui-corner-all pic_shadow"),null,false,$item->resize_width,$item->resize_height) ?>
       <!--<?// if (access::can("view_full", $item)): ?>
     </a>
     <?// endif ?>-->
@@ -59,7 +59,7 @@ function leaveItem1(full_id){
 	}
   </script>
  
-  <div id="g-photo-bottom-decoration" class="back_shadow_class">
+  <div id="g-photo-bottom-decoration" class="back_shadow_class ui-corner-bottom">
          <?= $theme->paginator() ?>
   </div>
 
