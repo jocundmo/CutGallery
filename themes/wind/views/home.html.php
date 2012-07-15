@@ -24,12 +24,12 @@
 </script>
 <div id="home_pictures" class="ui-corner-all">
     <ul>
-        <li><img id="home_pic1" src="<?= url::file("themes/wind/homepic/home-pic1-thumb.jpg") ?>"/></li>
-        <li><img id="home_pic2" src="<?= url::file("themes/wind/homepic/home-pic2-thumb.jpg") ?>"/></li>
+        <li><img id="home_pic1" src="<?= url::file("themes/wind/homepic/home-pic1.jpg") ?>"/></li>
+        <li><img id="home_pic2" src="<?= url::file("themes/wind/homepic/home-pic2.jpg") ?>"/></li>
     </ul>
     <ul>
-        <li><img id="home_pic3" src="<?= url::file("themes/wind/homepic/home-pic3-thumb.jpg") ?>"/></li>
-        <li><img id="home_pic4" src="<?= url::file("themes/wind/homepic/home-pic4-thumb.jpg") ?>"/></li>
+        <li><img id="home_pic3" src="<?= url::file("themes/wind/homepic/home-pic3.jpg") ?>"/></li>
+        <li><img id="home_pic4" src="<?= url::file("themes/wind/homepic/home-pic4.jpg") ?>"/></li>
     </ul>
 <!--<table id="home_table" >
     <tr>

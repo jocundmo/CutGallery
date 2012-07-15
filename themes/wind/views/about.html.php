@@ -51,13 +51,13 @@
         <div id="SlidePlayer" class="ui-corner-all">
             <ul class="Slides" id="Slides">
                 <li>
-                    <img id="img-business" title="business" src="<?= url::file("themes/wind/aboutuspic/business-thumb.jpg") ?>" />
+                    <img id="img-business" title="business" src="<?= url::file("themes/wind/aboutuspic/business.jpg") ?>" />
                 </li> 
                 <li>
-                    <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding-thumb.jpg") ?>" />
+                    <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding.jpg") ?>" />
                 </li>
                 <li>
-                    <img id="img-party" title="Party" src="<?= url::file("themes/wind/images/party-thumb.jpg") ?>" />
+                    <img id="img-party" title="Party" src="<?= url::file("themes/wind/aboutuspic/party.jpg") ?>" />
                 </li>    
             </ul> 
             <ul class="SlideTriggers" id="SlideTriggers" style="display: block"> 
