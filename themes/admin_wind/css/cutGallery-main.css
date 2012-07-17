@@ -1,5 +1,6 @@
 html {
-background: #000 url('../images/main-bg.png') repeat;
+/* background: #343434; */
+background: #2A2A2A;
 color: grey;
 margin: 0;
 }
@@ -7,7 +8,7 @@ margin: 0;
 #mainHead{
     width: 1024px;
     margin: 0 auto;
-    background-color: #000;
+    background: #343434;
         border-bottom-width: 2px;
 border-bottom-style: solid;
 border-bottom-color: #AAA;
@@ -17,8 +18,8 @@ border-bottom-color: #AAA;
     clear: both;
 }
 #logo {
-width: 300px;
-height: 100px;
+width: 360px;
+height: 110px;
 background: transparent url('../images/site-logo.png') no-repeat;
 /* background-color: yellow !important; */
 /*color: blue;*/
@@ -39,11 +40,14 @@ float: left;
 #mainInfo ul, #mainInfo li{
     float: right;
     list-style: none;
+    
 }
+
+
 #mainContent {
     width: 1024px;
 /*    height: 520px;*/
-    background-color: #000;
+    background: #343434;
     margin: 0 auto;
 }
 #mainNav {
@@ -116,7 +120,7 @@ border-top-color: #AAA;
    height:30px;
    width:1024px;
    margin: 0 auto;
-   background-color: black;
+   background: #343434;
    /* background: aqua; */
 }
 #about_content{
@@ -230,5 +234,5 @@ float: right;
 }
 
 #g-dialog{
-    background: transparent url('../images/dialog-bg.png') repeat;
+    background-color: #F2F2F2;
 }

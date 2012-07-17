@@ -112,7 +112,7 @@
     <div id="mainInfo">
         <ul>
             <? if (identity::active_user()->admin): ?>
-                <li id="admin"><a href="<?= url::site("admin/home") ?>">&nbsp; | &nbsp; <?= t("Admin")?></a></li>
+                <li id="admin"> &nbsp;|<a href="<?= url::site("admin/home") ?>"> <?= t("Admin")?></a></li>
             <? endif ?>
             <li><?= $theme->user_menu() ?></li>
         </ul>
