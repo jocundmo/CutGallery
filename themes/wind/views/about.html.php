@@ -1,21 +1,4 @@
 <?php defined("SYSPATH") or die("No direct script access.") ?>
-<script language="JavaScript" type="text/javascript">
-	var img1 = new Image();
-        var img2 = new Image();
-        var img3 = new Image();
-	img1.src = "<?= url::file("themes/wind/aboutuspic/business.jpg") ?>";
-        img2.src = "<?= url::file("themes/wind/aboutuspic/wedding.jpg") ?>";
-        img3.src = "<?= url::file("themes/wind/aboutuspic/party.jpg") ?>";
-	img1.onload = function() {
-	document.getElementById("img-business").src = this.src;
-	}
-        img2.onload = function() {
-	document.getElementById("img-wedding").src = this.src;
-	}
-        img3.onload = function() {
-	document.getElementById("img-party").src = this.src;
-	}
-</script>
 <ul id="about_content">
     <li id="content_li_4_text">
         <div id="aboutus_content_text">
@@ -54,13 +37,13 @@
                     <img id="img-business" title="business" src="<?= url::file("themes/wind/aboutuspic/business.jpg") ?>" />
                 </li> 
                 <li>
-                    <img id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding.jpg") ?>" />
+                    <img style="display:none" id="img-wedding" title="wedding" src="<?= url::file("themes/wind/aboutuspic/wedding.jpg") ?>" />
                 </li>
                 <li>
-                    <img id="img-party" title="Party" src="<?= url::file("themes/wind/aboutuspic/party.jpg") ?>" />
+                    <img style="display:none" id="img-party" title="Party" src="<?= url::file("themes/wind/aboutuspic/party.jpg") ?>" />
                 </li>    
             </ul> 
-            <ul class="SlideTriggers" id="SlideTriggers" style="display: block"> 
+            <ul class="SlideTriggers" id="SlideTriggers" style="display:none"> 
                 <li class="current">1</li>
                 <li class="">2</li>
                 <li class="">3</li>
@@ -325,6 +308,7 @@ var XsFade = function(imgsArr, Nums) {
     margin-right: 28px;
 */
     width: 95.5%;
+    height: 392px;
     margin-top: 10%;
     margin-bottom: 13.3%;
     margin-left: 4.3%;
@@ -336,6 +320,7 @@ var XsFade = function(imgsArr, Nums) {
     }
     .Slides li
     {
+        height: 392px;
         float: left;
         list-style: none;
         display: inline;
@@ -394,5 +379,5 @@ var XsFade = function(imgsArr, Nums) {
         width: 17px;
         cursor: pointer;
     }
-</style> 
-</div>
+</style>
+<script>document.getElementById("SlideTriggers").style.display="block"</script>

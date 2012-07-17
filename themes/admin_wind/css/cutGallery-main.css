@@ -1,5 +1,6 @@
 html {
-background: #343434;
+/* background: #343434; */
+background: #2A2A2A;
 color: grey;
 margin: 0;
 }
@@ -39,7 +40,10 @@ float: left;
 #mainInfo ul, #mainInfo li{
     float: right;
     list-style: none;
+    
 }
+
+
 #mainContent {
     width: 1024px;
 /*    height: 520px;*/
@@ -230,5 +234,5 @@ float: right;
 }
 
 #g-dialog{
-    background: transparent url('../images/dialog-bg.png') repeat;
+    background-color: #F2F2F2;
 }
