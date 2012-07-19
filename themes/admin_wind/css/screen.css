@@ -335,7 +335,8 @@ th {
 
 .g-block,
 #g-content #g-admin-dashboard .g-block {
-  background-color: #000;
+/*  background-color: #000;*/
+  background: #343434;
   border: 1px solid #ccc;
 
 }
@@ -468,7 +469,8 @@ body .g-view {
 /* Layout containers ~~~~~~~~~~~~~~~~~~~~~ */
 
 #g-header {
-  background-color: #000;
+  /*background-color: #000;*/
+  background: #343434;
 /*  border-bottom: 1px solid #ccc;*/
   font-size: .8em;
   margin-bottom: 20px;
@@ -808,7 +810,8 @@ form .g-error {
   background-color: #eee;
 }
 #g-user-admin-list-header{
-    background-color: #000;
+    /*background-color: #000;*/
+    background: #343434;
 }
 #g-user-admin-list{
     background-color: #eee;

@@ -1,26 +1,4 @@
 <?php defined("SYSPATH") or die("No direct script access.") ?>
-<script language="JavaScript" type="text/javascript">
-	var img1 = new Image();
-        var img2 = new Image();
-        var img3 = new Image();
-        var img4 = new Image();
-	img1.src = "<?= url::file("themes/wind/contactuspic/contactus1.jpg") ?>";
-        img2.src = "<?= url::file("themes/wind/contactuspic/contactus2.jpg") ?>";
-        img3.src = "<?= url::file("themes/wind/contactuspic/contactus3.jpg") ?>";
-        img4.src = "<?= url::file("themes/wind/contactuspic/contactus4.jpg") ?>";
-	img1.onload = function() {
-	document.getElementById("img-contactus1").src = this.src;
-	}
-        img2.onload = function() {
-	document.getElementById("img-contactus2").src = this.src;
-	}
-        img3.onload = function() {
-	document.getElementById("img-contactus3").src = this.src;
-	}
-        img4.onload = function() {
-	document.getElementById("img-contactus4").src = this.src;
-	}
-</script>
 <ul id="about_content">
     <li id="content_li_4_text">
         <div id="contactus_content_text">
@@ -50,19 +28,19 @@
         <div id="SlidePlayer" class="ui-corner-all">
             <ul class="Slides" id="Slides">
                         <li>
-                            <img id="img-contactus1" title="contactus1" src="<?= url::file("themes/wind/contactuspic/contactus1-thumb.jpg") ?>" />
+                            <img id="img-contactus1" title="contactus1" src="<?= url::file("themes/wind/contactuspic/contactus1.jpg") ?>" />
                         </li>
                         <li>
-                            <img id="img-contactus2" title="contactus2" src="<?= url::file("themes/wind/contactuspic/contactus2-thumb.jpg") ?>" />
+                            <img style="display: none" id="img-contactus2" title="contactus2" src="<?= url::file("themes/wind/contactuspic/contactus2.jpg") ?>" />
                         </li>
                         <li>
-                            <img id="img-contactus3" title="contactus3" src="<?= url::file("themes/wind/contactuspic/contactus3-thumb.jpg") ?>" />
+                            <img style="display: none" id="img-contactus3" title="contactus3" src="<?= url::file("themes/wind/contactuspic/contactus3.jpg") ?>" />
                         </li>
                         <li>
-                            <img id="img-contactus4" title="contactus4" src="<?= url::file("themes/wind/contactuspic/contactus4-thumb.jpg") ?>" />
+                            <img style="display: none" id="img-contactus4" title="contactus4" src="<?= url::file("themes/wind/contactuspic/contactus4.jpg") ?>" />
                         </li>
             </ul> 
-            <ul class="SlideTriggers" id="SlideTriggers" style="display: block"> 
+            <ul class="SlideTriggers" id="SlideTriggers" style="display: none"> 
                 <li class="current">1</li>
                 <li class="">2</li>
                 <li class="">3</li>
@@ -397,5 +375,5 @@ var XsFade = function(imgsArr, Nums) {
         width: 17px;
         cursor: pointer;
     }
-</style> 
-</div>
+</style>
+<script>document.getElementById("SlideTriggers").style.display="block"</script>
