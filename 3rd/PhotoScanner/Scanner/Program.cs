@@ -484,6 +484,11 @@ namespace Scanner
                     {
                         foreach (string file in fileList)
                         {
+                            if (file.Contains("installs"))
+                            {
+                                continue;
+                            }
+
                             if (Directory.Exists(file))
                             {
                                 string temp_destination = destination;
