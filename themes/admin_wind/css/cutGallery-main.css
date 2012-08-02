@@ -42,8 +42,10 @@ float: left;
     list-style: none;
     
 }
-
-
+a:hover {
+    text-decoration: none;
+    color: red !important;
+}
 #mainContent {
     width: 1024px;
 /*    height: 520px;*/
