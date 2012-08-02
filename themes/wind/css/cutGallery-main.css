@@ -68,22 +68,22 @@ a:hover {
 /*    background-color: red !important;*/
 }
 #mainNav #gallery{
-    background: transparent url('../images/gallery-icon.png') no-repeat;
+    background: #343434 url('../images/gallery-icon.png') no-repeat;
 }
 #mainNav #gallery a:hover{
-    background: transparent url('../images/gallery-icon-hover.png') no-repeat;
+    background: #343434 url('../images/gallery-icon-hover.png') no-repeat;
 }
 #mainNav #intro{
-    background: transparent url('../images/aboutus-icon.png') no-repeat;
+    background: #343434 url('../images/aboutus-icon.png') no-repeat;
 }
 #mainNav #intro a:hover{
-    background: transparent url('../images/aboutus-icon-hover.png') no-repeat;
+    background: #343434 url('../images/aboutus-icon-hover.png') no-repeat;
 }
 #mainNav #contactus{
-    background: transparent url('../images/contactus-icon.png') no-repeat;
+    background: #343434 url('../images/contactus-icon.png') no-repeat;
 }
 #mainNav #contactus a:hover{
-    background: transparent url('../images/contactus-icon-hover.png') no-repeat;
+    background: #343434 url('../images/contactus-icon-hover.png') no-repeat;
 }
 
 #mainNav * a{
