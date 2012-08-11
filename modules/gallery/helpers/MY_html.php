@@ -50,7 +50,7 @@ class html extends html_Core {
     $result = $string;
     $inall = split("<br />", $string);
     if (count($inall) >= $max_rows){
-        $result = $inall[0].'<br />'.$inall[1].'<br />'.$inall[2].'...';
+        $result = $inall[0].'...';
     }
     return $result;
   }

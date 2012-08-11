@@ -203,7 +203,7 @@ $(function(){
                         <? endif ?>
                     </li>
                     <li id="g-item-comments-<?= $child->id ?>" class="album_comments">
-                        <span class="g-description"><?= html::max_rows(html::truncate(nl2br(html::purify($child->description)), 260), 3) ?></span>
+                        <span class="g-description"></br><?= html::max_rows(html::truncate(nl2br(html::purify($child->description)), 260), 2, 1) ?></span>
                     </li>
                 </ul>
         <? endforeach ?>
